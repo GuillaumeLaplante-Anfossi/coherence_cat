@@ -134,13 +134,15 @@
 
 \title{Categorified operads, polytopes and Koszulity}
 
+\author{Pierre-Louis Curien}
+\address{IRIF, Universit\'e Paris Diderot and $\pi r^2$ team, Inria, France.}
+\email{curien@irif.fr}
+
 \author{Guillaume Laplante-Anfossi}
 \address{Universit\'e Sorbonne Paris Nord, Laboratoire Analyse, G\'eom\'etrie et Applications, CNRS, UMR 7539, F-93430 Villetaneuse, France.}
 \email{laplante-anfossi@math.univ-paris13.fr}
 
-\author{Pierre-Louis Curien}
-\address{IRIF, Universit\'e Paris Diderot and $\pi r^2$ team, Inria, France.}
-\email{curien@irif.fr}
+
 
 \date{\today}
 
@@ -148,30 +150,35 @@
 
 \keywords{Polytopes [...]}
 
+\dedicatory{"We shall construct $KP_n$, as a CW-complex, in Section 2 and show that it is an $(n-1)$-ball. This gives an instant one-step proof of MacLane's theorem in full generality."  \\ --  Mikhail M. Kapranov}
+
 \thanks{The second author was supported by the European Union's Horizon 2020 research and innovation program under the Marie Sklodowska-Curie grant agreement No 754362 \inlinegraphics{EU.png}, by the Natural Sciences and Engineering Research Council of Canada (NSERC) and by the ANR-20-CE40-0016 Higher Algebra, Geometry and Topology.}
 
 \begin{document}
 
 
 \begin{abstract}
-The purpose of this short note is to provide a new 
+The purpose of this note is to provide a new 
 \end{abstract}
 
 
 \maketitle
 
+\section{Introduction}
 
+\begin{enumerate}
+    \item We introduce a new notion of categorified non-symmetric (ns) operad. We prove that this notion is equivalent the one of weak Cat-operad, introduced by K. Do{\v s}en and Z. Petri{\'c} in \cite{DP15}. 
+
+    \item We prove a generalization of MacLane's coherence theorem for categorified ns operads. We use explicitly the fact that the diagrams associated to a categorified ns operad are 1-skeletons of a family of polytopes, the operahedra. We thus make Kapranov's claim into a theorem. 
+    
+    \item We use the rewriting method to prove that the operad encoding ns operads is Koszul, and observe that this provides an alternative proof of the preceding coherence theorem. 
+
+\end{enumerate}
 
 \section{Categorified non-symmetric operads}
 
-\cite{LA21}
-A \emph{Cat-operad} is a non-symmetric operad in the cartesian monoidal category of small categories.
 
-As non-symmetric operad concentrated in arity 1 is a monoid, a Cat-operad concentrated in arity 1 is a strict monoidal category. 
-
-It is possible to define an analoguous notion of pseudo-operad in any monoidal bicategory, such that a non-symmmetric pseudo-operad concentrated in arity 1 is a pseudomonoid in that bicategory. In the case where we consider the cartesian 2-category of small categories, functors and natural transformations, we obtain the following notion of a \emph{weak Cat-operad}. 
-
-\begin{definition}[Weak Cat-operad {\cite[Section 12]{DP15}}] A \emph{weak Cat-operad} $\mathcal{P}$ is a collection $\left\{  \mathcal{P}(n)  \right\}_{n\in \mathbb{N}}$ of small categories equipped with bifunctors  
+\begin{definition}[Categorified non-symmetric operad] A \emph{categorified non-symmetric operad} $\mathcal{P}$ is a collection $\left\{  \mathcal{P}(n)  \right\}_{n\in \mathbb{N}}$ of small categories equipped with bifunctors  
 $$ \begin{array}{clll}
 \circ_i&\colon& \mathcal{P}(n) \times
                   \mathcal{P}(k)
@@ -281,10 +288,37 @@ and hexagonal identities \\
 \end{center}
 \end{definition}
 
-A weak Cat-operad concentrated in arity 1 is a monoidal category. The main result of \cite{DP15} is the proof of the following operadic generalization of MacLane's coherence theorem for monoidal categories.
+A categorified ns operad concentrated in arity 1 is a monoidal category.
 
-\begin{thm}[Do\v sen-Petri\'c coherence theorem {\cite[Proposition 14.2]{DP15}}] Every weak Cat-operad is monoidally equivalent to a Cat-operad.
+\begin{definition}[Weak Cat-operad {\cite{DP15}}]
+\end{definition}
+
+\begin{thm} \label{thm:equivalenceDPGLA}
+    The data of a categorified ns operad and the data of a weak Cat-operad are equivalent.  
 \end{thm}
+
+\begin{proof}
+    TBC
+\end{proof}
+
+\section{Coherence for categorified operads}
+
+Recall from [REF] the definition of the $\mathbb{N}$-colored operad $\mathcal{O}$ encoding ns operads. Its minimal resolution is given by the cellular chains on the operahedra [DEF]. 
+
+
+
+\begin{thm}[Coherence theorem] \label{thm:coherence}
+    Every diagram with vertices iterates of the $\circ_i$ and edges expansions of instances of $\beta, \theta, \lambda$ and $\rho$ arrows is commutative. 
+\end{thm}
+
+\begin{proof} TBC
+\end{proof}
+
+Restricted to categorified ns operad concentrated in arity 1, i.e. to monoidal categories, we recover MacLane's original coherence tbeorem [REF].
+
+There is an analogous statement for weak Cat-operads \cite[Proposition 14.2]{DP15}. In the same fashion as for \cref{thm:equivalenceDPGLA}, one can prove that the two statements are equivalent. 
+
+\section{Koszulity}
 
 Let us take a detour by the Koszul duality theory for operads. One of the standard method for proving that an operad is Koszul is the "rewriting method" \cite[Section 8.3]{LodayVallette12}. The generalization to the colored case was done recently by V. Kharitonov and A. Khoroshkin \cite[Theorem 3.12]{KhariKhoro20}.
 
@@ -293,7 +327,7 @@ Let us take a detour by the Koszul duality theory for operads. One of the standa
 
 In this case, the operad $\mathcal{O}$ admits an induced shuffle tree basis sharing nice properties, called a PBW basis, see \cite[Section 8.5.3]{LodayVallette12}. Parler Grobner Basis
 
-\begin{thm} \label{thm:Koszulrewriting} The colored operad $\mathcal{O}_{ns}$ is a Koszul colored operad. 
+\begin{thm} \label{thm:Koszulrewriting} The colored operad $\mathcal{O}$ is a Koszul colored operad. 
 \end{thm}
 \begin{proof} The partial order on complete nested trees defined in X induces, via the proof of X, a suitable order on shuffle trees, see X. The 1-skeleton of operahedra appears as the application of the rewriting rules given by the sequential and parallel axioms. We consider the family of trees $F=\{\tau \in \mathrm{OT}=\ | \ |V(\tau)|=4\}$ and the oriented operahedra $\{(P_\tau,\vec v)\}_{\tau \in F}$ for any vector $\vec v=(v_1,v_2,v_3)$ such that $v_1>v_2>v_3$. Every critical monomial corresponds to the complete nested trees associated to $\{bot(P_\tau,\vec v)\}_{\tau \in F}$, and X implies that every critical monomial is confluent. We conclude by \cref{thm:rewriting}. 
 The complete nested trees associated to $\{top(P_\tau, \vec v)\}_{\tau \in F}$ form the PBW basis of $\mathcal{O}_{ns}$.
@@ -308,26 +342,20 @@ Restricting to linear trees, we have that the operad $\mathrm{Ass}$ is Koszul. R
 
 \medskip
 
-\cref{thm:Koszulrewriting} gives an alternative proof of Do\v sen-Petri\'c coherence theorem for non-unital weak Cat-operads. 
+\cref{thm:Koszulrewriting} gives an alternative proof of \cref{thm:coherence}. 
 
-\begin{thm}[Do\v sen-Petri\'c nu coherence theorem] Every non-unital weak Cat-operad is monoidally equivalent to a non-unital Cat-operad.
-\end{thm}
-
-\begin{proof} Let $\mathcal{O}$ be a non-unital weak Cat-operad. The pentagonal and hexagonal diagrams commute, and they correspond precisely to the 1-skeleton of the 2-dimensional oriented operahedra $\{(P_\tau,\vec v)\}_{\tau \in F}$. Using the Diamond Lemma as in the proof of \cref{thm:rewriting}, we have that every diagram made up of $\theta$ and $\beta$ arrows commute. 
+\begin{proof}[Second proof of {\cref{thm:coherence}}] Let $\mathcal{O}$ be a non-unital categorified ns operad. The pentagonal and hexagonal diagrams commute, and they correspond precisely to the 1-skeleton of the 2-dimensional oriented operahedra $\{(P_\tau,\vec v)\}_{\tau \in F}$. Using the Diamond Lemma as in the proof of \cref{thm:rewriting}, we have that every diagram made up of $\theta$ and $\beta$ arrows commute. 
 \end{proof}
 
 Here again, resorting to the Diamond Lemma is not necessary.
 
-\begin{proof}[Second proof] Any diagram $D$ made up of $\theta$ and $\beta$ arrows lives on the 1-skeleton of an operahedron of some dimension $n\geq 0$. As this operahedron is topologically a $n$-dimensional ball, the diagram $D$ is obtained by gluing together 1-skeletons of 2-dimensional operahedra, which commute by hypothesis.
+\begin{proof}[Third proof of {\cref{thm:coherence}}] Any diagram $D$ made up of $\theta$ and $\beta$ arrows lives on the 1-skeleton of an operahedron of some dimension $n\geq 0$. As this operahedron is topologically a $n$-dimensional ball, the diagram $D$ is obtained by gluing together 1-skeletons of 2-dimensional operahedra, which commute by hypothesis.
 \end{proof}
 
-As noted in \cite[Remark p.266]{LodayVallette12} for MacLane's coherence theorem (which we recover by restricting to weak Cat-operads concentrated in arity 1), the proofs of the Koszulity of $\mathcal{O}_{ns}$ and of Do\v sen-Petri\'c coherence theorem are formally the same. 
-
-
-  
+As noted in \cite[Remark p.266]{LodayVallette12} for MacLane's coherence theorem, the proofs of the Koszulity of $\mathcal{O}$ and of the coherence theorem are formally the same, and both can be given "instant one-step proofs" via the underlying polytopes. This suggests a common ground for both statements [Maxime Lucas?].
   
 
-\emph{Acknowledgements.}    
+%\emph{Acknowledgements.}    
 
 
 \bibliographystyle{amsalpha}
