@@ -1,0 +1,39 @@
+% !TEX root = ../Coherence.tex
+
+\section{Rewriting method} 
+\label{s:rewriting}
+
+
+Let us take a detour by the Koszul duality theory for operads. One of the standard method for proving that an operad is Koszul is the "rewriting method" \cite[Section 8.3]{LodayVallette12}. The generalization to the colored case was done recently by V. Kharitonov and A. Khoroshkin \cite[Theorem 3.12]{KhariKhoro20}.
+
+\begin{thm}[Rewriting method for colored operads {\cite[Theorem 8.3.1]{LodayVallette12}}] \label{thm:rewriting} Let $\mathcal{O}(E,R)$ be a quadratic colored operad. If its generating space $E$ admits a $\mathbb{K}$-linear ordered basis, for which there exists a suitable order on shuffle trees, such that every critical monomial is confluent then the colored operad $\mathcal{O}$ is Koszul. 
+\end{thm}
+
+In this case, the operad $\mathcal{O}$ admits an induced shuffle tree basis sharing nice properties, called a PBW basis, see \cite[Section 8.5.3]{LodayVallette12}. Parler Grobner Basis
+
+\begin{thm} \label{thm:Koszulrewriting} The colored operad $\mathcal{O}$ is a Koszul colored operad. 
+\end{thm}
+\begin{proof} The partial order on complete nested trees defined in X induces, via the proof of X, a suitable order on shuffle trees, see X. The 1-skeleton of operahedra appears as the application of the rewriting rules given by the sequential and parallel axioms. We consider the family of trees $F=\{\tau \in \mathrm{OT}=\ | \ |V(\tau)|=4\}$ and the oriented operahedra $\{(P_\tau,\vec v)\}_{\tau \in F}$ for any vector $\vec v=(v_1,v_2,v_3)$ such that $v_1>v_2>v_3$. Every critical monomial corresponds to the complete nested trees associated to $\{bot(P_\tau,\vec v)\}_{\tau \in F}$, and X implies that every critical monomial is confluent. We conclude by \cref{thm:rewriting}. 
+The complete nested trees associated to $\{top(P_\tau, \vec v)\}_{\tau \in F}$ form the PBW basis of $\mathcal{O}_{ns}$.
+\end{proof}
+
+The proof of \cref{thm:rewriting} relies on the Diamond Lemma \cite[Theorem 8.5.5]{LodayVallette12}. Instead, we can use the full power of X.
+
+\begin{proof}[Second proof] Every rewriting diagram associated to a monomial is part of the 1-skeleton of some operahedron of dimension $n\geq 0$. By X, this 1-skeleton is oriented and forms the boundary of a topological $n$-ball. Thus, it has a unique maximal element. 
+\end{proof}
+
+Restricting to linear trees, we have that the operad $\mathrm{Ass}$ is Koszul. Restricting to the 2-leveled trees as in X, we obtain that the permutad $\mathrm{permAs}^h$ is Koszul, in the sense of M. Markl \cite[Definition 21]{Markl19}.
+
+\medskip
+
+\cref{thm:Koszulrewriting} gives an alternative proof of \cref{thm:coherence}. 
+
+\begin{proof}[Second proof of {\cref{thm:coherence}}] Let $\mathcal{O}$ be a non-unital categorified ns operad. The pentagonal and hexagonal diagrams commute, and they correspond precisely to the 1-skeleton of the 2-dimensional oriented operahedra $\{(P_\tau,\vec v)\}_{\tau \in F}$. Using the Diamond Lemma as in the proof of \cref{thm:rewriting}, we have that every diagram made up of $\theta$ and $\beta$ arrows commute. 
+\end{proof}
+
+Here again, resorting to the Diamond Lemma is not necessary.
+
+\begin{proof}[Third proof of {\cref{thm:coherence}}] Any diagram $D$ made up of $\theta$ and $\beta$ arrows lives on the 1-skeleton of an operahedron of some dimension $n\geq 0$. As this operahedron is topologically a $n$-dimensional ball, the diagram $D$ is obtained by gluing together 1-skeletons of 2-dimensional operahedra, which commute by hypothesis.
+\end{proof}
+
+As noted in \cite[Remark p.266]{LodayVallette12} for MacLane's coherence theorem, the proofs of the Koszulity of $\mathcal{O}$ and of the coherence theorem are formally the same, and both can be given "instant one-step proofs" via the underlying polytopes. This suggests a common ground for both statements [Maxime Lucas?].
