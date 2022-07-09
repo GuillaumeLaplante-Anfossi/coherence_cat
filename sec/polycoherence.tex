@@ -3,20 +3,86 @@
 \section{Polytopal coherence theorem} 
 \label{s:polycoherence}
 
-Let $s=s_1 s_2 s_3$ be a path on the $1$-skeleton of $P$, that is a connected sequence of distinct edges, between two vertices $u$ and $v$.
-Suppose that $s_2$ lies on a $2$-face $F$ of $P$, and let $s_2'$ be the complementary path on $F$ of $s_2$. 
-Then, we say that $s$ is \emph{homotopic} to $s_1 s_2' s_3$. 
+\Guillaume{Add figures}
 
-\Guillaume{Add figure}
+Let $P$ be polytope.
+A (non-oriented) \emph{path} on $P$ is the cellular image of a continuous, cellular, injective map $\gamma : [0,1] \to P$. 
+The two vertices $\gamma(0)$ and $\gamma(1)$ are called the \emph{endpoints} of the path. 
+Two paths $\gamma_1$ and $\gamma_2$ are \emph{parallel} if they have the same endpoints. 
+
+Let $\gamma$ be a path on a $2$-dimensional polytope. 
+We observe that there is a unique path $\gamma^\op \neq \gamma$ on $F$ which is parallel to $\gamma$. 
+
+\begin{definition}[Discrete homotopy]
+    Two parallel paths are \emph{elementary homotopic} is they differ only on a $2$-face of $P$. 
+    More generally, two parallel paths are \emph{homotopic} if they are related by a finite number of elementary homotopies.
+\end{definition}
 
 \begin{thm}
-    Let $s,t$ be any two parallel paths on the $1$-skeleton of $P$. 
-    Then, $s$ and $t$ are homotopic. 
+    \label{t:polytopal-coherence}
+    Any two parallel paths on a polytope are homotopic. 
 \end{thm}
 
 \begin{proof}
-    Vertex figure...
+    Let $\gamma$ and $\gamma'$ be two parallel paths on $P$, denote by $v$ one of their common endpoints, and denote by $e$ and $e'$ the edges of $\gamma$ and $\gamma'$ which contain $v$. 
+    We let $m$ denote the maximal length of a path parallel to $\gamma$ and $\gamma'$, and we let $n$ denote the minimal length of a path between between $e$ and $e'$ in the vertex figure of $P$ at $v$ \cite[Section 2.1]{Ziegler95}.
+    We proceed by lexicographic induction on $(m,n)$. 
+    If $e=e'$, then we can apply the induction hypothesis to the two parallel paths $\gamma - e$ and $\gamma' - e'$ (in this case, $m$ diminishes by $1$ and $n=0$ is constant). 
+    If $e \neq e'$, we consider the family $\mathcal{F}$ of $2$-faces defined by a path of minimal length from $e$ to $e'$ in the vertex figure. 
+    We write $\gamma = \gamma_1 \gamma_2$, where $\gamma_1$ is the restriction of $\gamma$ to the $2$-face in $\mathcal{F}$ containing $e$. 
+    We consider the path $\gamma''=\gamma_1^\op \gamma_2$, which is parallel to $\gamma$ and $\gamma'$, and we apply to it the induction hypothesis (in this case, $m$ is constant and $n$ diminishes by $1$), which finishes the proof. 
 \end{proof}
 
+One is often interested in a \emph{coherent families} of polytopes. 
+We will say that a family of polytopes $P_\bullet = \{P_i\}_{i \in I}$ is \emph{$n$-coherent} if every $n$-face of a polytope in the family is combinatorially isomorphic to the product of polytopes in the family. 
+A family of polytopes is \emph{coherent} if it is $n$-coherent for all $n \geq 0$.
+
+\begin{example}
+    Any family of realizations of the associahedra is coherent. 
+    The family of standard permutahedra is coherent. 
+    More generally, any choice of realizations of graph-associahedra are coherent. \Guillaume{Refs}
+\end{example}
+
+We will be interested in $2$-coherence of certain families of polytopes. 
+
+\begin{proposition}
+    Hypergraph polytopes are $2$-coherent. 
+\end{proposition}
+
+\begin{proof}
+    Case by case
+\end{proof}
+
+\begin{corollary}
+    \label{c:operahedra-2-coh}
+    Operahedra and associahedra are $2$-coherent.
+\end{corollary}
+
+\begin{proof}
+    Case by case
+\end{proof}
+
+\begin{thm}
+    Coherence theorem for categorified ns operads
+\end{thm}
+
+\begin{proof}
+    Follows \cref{t:polytopal-coherence} and \cref{c:operahedra-2-coh}.
+\end{proof}
+
+\begin{corollary}
+    MacLane's coherence theorem for non-unital non-symmetric monoidal categories
+\end{corollary}
+
+\begin{rem}
+    What about the unital case? 
+    What about the symmetric case? --
+\end{rem}
+
+\Guillaume{$n$-coherence related to $n$-categories instead of simply categories??!! A commencer par les 2-cat; le theoreme de coherence ne tient plus pour les n plus grands!!}
+
+\subsection{Other examples}
+
+\subsection{Weak Cat-operads}
 
 
