@@ -25,7 +25,7 @@ We observe that there is a unique path $\gamma^\op \neq \gamma$ on $F$ which is 
 
 \begin{proof}
     Let $\gamma$ and $\gamma'$ be two parallel paths on $P$, denote by $v$ one of their common endpoints, and denote by $e$ and $e'$ the edges of $\gamma$ and $\gamma'$ which contain $v$. 
-    We let $m$ denote the maximal length of a path parallel to $\gamma$ and $\gamma'$, and we let $n$ denote the minimal length of a path between between $e$ and $e'$ in the vertex figure of $P$ at $v$ \cite[Section 2.1]{Ziegler95}.
+    We let $m$ denote the maximal length of a path parallel to $\gamma$ and $\gamma'$, and we let $n$ denote the maximal length of a path between between $e$ and $e'$ in the vertex figure of $P$ at $v$ \cite[Section 2.1]{Ziegler95}.
     We proceed by lexicographic induction on $(m,n)$. 
     If $e=e'$, then we can apply the induction hypothesis to the two parallel paths $\gamma - e$ and $\gamma' - e'$ (in this case, $m$ diminishes by $1$ and $n=0$ is constant). 
     If $e \neq e'$, we consider the family $\mathcal{F}$ of $2$-faces defined by a path of minimal length from $e$ to $e'$ in the vertex figure. 
@@ -50,7 +50,11 @@ We will be interested in $2$-coherence of certain families of polytopes.
 \end{proposition}
 
 \begin{proof}
-    Case by case
+    It is clear from the definition that any face of an hypergraph polytope is itself an hypergraph polytope, so they form a coherent family, and in particular a $2$-coherent family. 
+    The $2$-faces of hypergraph polytopes can be described very precisely, splitting into tow kinds. 
+    The first one corresponds to constructs with exactly two non-singleton nodes, which are of cardinality two, and they form squares (see Figure).
+    The $2$-faces of the second kind are defined by constructs with exactly one non-singleton node, which is of cardinality three. 
+    These form four different polygons: a triangle, two types of pentagons, and one hexagon (see Figure). 
 \end{proof}
 
 \begin{corollary}
@@ -59,20 +63,35 @@ We will be interested in $2$-coherence of certain families of polytopes.
 \end{corollary}
 
 \begin{proof}
-    Case by case
+    There are $1$-dimensional operahedra, and the $2$-dimensional operahedra include pentagons and hexagons. 
+    In general, their $2$-faces are either squares, pentagons or hexagons (the triangle cannot appear, since they arise from hypegraphs that are trees).
+    So, they are $2$-coherent. 
+    In the case of the associahedra, all $2$-faces are pentagons or squares, hence the result. 
 \end{proof}
 
+\Guillaume{Don't we need to restrict to non-unital?}
+
+We can now prove a coherence theorem for non-symmetric non-unital categorified operads. 
+
 \begin{thm}
-    Coherence theorem for categorified ns operads
+\label{t:coherence-operahedra}
+    Every diagram with vertices iterates of the $\circ_i$ and edges expansions of instances of $\beta, \theta, \lambda$ and $\rho$ arrows is commutative. 
 \end{thm}
 
 \begin{proof}
     Follows \cref{t:polytopal-coherence} and \cref{c:operahedra-2-coh}.
 \end{proof}
 
+We can now deduce the classical coherence theorem of MacLane for monoidal categories. 
+
 \begin{corollary}
-    MacLane's coherence theorem for non-unital non-symmetric monoidal categories
+    For any two terms $M,M':T\rightarrow T'$  of the same type we have $\dl M\dr^\rho_{\cat{C}}=\dl M'\dr^\rho_{\cat{C}}$.
 \end{corollary}
+
+\begin{proof}
+    This is just resricting \cref{t:coherence-operahedra} to the case of a categorified non-symmetric operad with one object, which is just a non-symmetric non-unital monoidal category. 
+    Equivalently, it can be obtained by reworking the proof of \cref{t:coherence-operahedra} while restricting the attention to the associahedra, and use again \cref{t:polytopal-coherence} and \cref{c:operahedra-2-coh}.
+\end{proof}
 
 \begin{rem}
     What about the unital case? 

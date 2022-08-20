@@ -10,26 +10,69 @@
 
 
 \subsection{Coherence and rewriting for monoidal categories}
-
-We start from a set $X$, considered as a set of  ``object variables"  (they are meant to be interpreted as objects in some category).  We define two sets   of object terms and morphism terms, respectively:
+We start from a set $A$, considered as a set of  ``formal generating objects"  (they are meant to be interpreted as objects in some category).  We define two sets   of object terms and morphism terms, respectively:
 $$\begin{array}{l}
-T::= x\  \;(\mbox{where}\;x\in X) \Alt I \Alt T\otimes T\\
+T::= a\  \;(\mbox{where}\;a\in A) \Alt I \Alt T\otimes T\\
 M ::= \alpha \Alt \lambda \Alt\rho\Alt  \alpha^{-1} \Alt \lambda^{-1} \Alt\rho^{-1} \Alt M\comp M\Alt \id\Alt M\otimes M
 \end{array}$$
-In English, an object term is either a variable $x$, or $I$, or, if $s,t$ are object terms, then so is $(s\otimes t)$.
-We actually only consider {\em well-typed} morphism terms  which are the ones accepted by the following typing rules, involving judgements of the form $M:T_1\rightarrow T_2$:
+In English, an object term is either a generator $a$, or $I$, or, if $S,T$ are object terms, then so is $S\otimes T$.
+We actually only consider {\em well typed} morphism terms  which are the ones accepted by the following typing rules, where $M:T_1\rightarrow T_2$, called a typing assertion, should be read as ``$M$ is a morphism term with source $T_1$ and target $T_2$'':
 $$\seq{}{\alpha:(T_1\otimes T_2)\otimes T_3\rightarrow T_1\otimes(T_2\otimes T_3)}\quad\quad
 \seq{}{\lambda:I\otimes T\rightarrow T}\quad\quad\seq{}{\rho:T\otimes I\rightarrow T}$$
 $$\seq{}{\alpha^{-1}:T_1\otimes(T_2\otimes T_3)\rightarrow (T_1\otimes T_2)\otimes T_3}\quad\quad
 \seq{}{\lambda^{-1}: T\rightarrow I\otimes T}\quad\quad\seq{}{\rho^{-1}:T\rightarrow T\otimes I}$$
 
 $$\seq{}{\id:T\rightarrow T}\quad\quad \seq{M_1:T_1\rightarrow T_2\quad M_2:T_2\rightarrow T_3}{M_2\comp M_1:T_1\rightarrow T_3}\quad\quad \seq{M_1:T_1\rightarrow T'_1\quad M_2:T_2\rightarrow T'_2}{M_1\otimes M_2:T_1\otimes T_2\rightarrow T'_1\otimes T'_2}$$
-In English, the formal typing rules read as: if all the typing assertions above the horizontal bar hold, then the typîng assertion below the bar holds.
+In English, each formal typing rule reads as: if all the typing assertions above the horizontal bar hold, then the typîng assertion below the bar holds.  If $M:T_1\rightarrow T_2$ is well-typed, we write $T_1={\text s}(M)$ and $T_2={\text t}(M)$. Two well typed morphism terms are called {\em parallel} it they have the same source and target.
 
 One quotients the set of morphism terms by the laws of categories and of bifunctors, and by Mac Lane's coherence equations.
-What one then obtains is the free monoidal category ${Free}(X)$ over $X$ i.e., for every {\em function} $\rho:X\rightarrow \cat{C}$ (mapping each $x$ to an object of  a monoidal category $\cat{C}$) there exists a unique strict monoidal functor $\dl \_\dr^\rho_{\cat{C}}:{Free}(X)\rightarrow\cat{C}$ that extends it.
+What one then obtains is the free monoidal category ${Free}(A)$ over $A$, i.e., for every {\em function} $\rho:A\rightarrow \cat{C}$ (mapping each formal generator $a$ to an object of  a monoidal category $\cat{C}$), there exists a unique {\em strict monoidal functor} $\dl \_\dr^\rho_{\cat{C}}:{Free}(A)\rightarrow\cat{C}$ that extends it.
 
-The coherence theorem asserts that for any two terms $M,M':T\rightarrow T'$  of the {\em same type} we have $\dl M\dr^\rho_{\cat{C}}=\dl M'\dr^\rho_{\cat{C}}$  (for any monoidal category, and any valuation).
+The coherence theorem asserts that, for any two  parallel morphism terms $M,M':T\rightarrow T'$, we have $\dl M\dr^\rho_{\cat{C}}=\dl M'\dr^\rho_{\cat{C}}$  (for any monoidal category, and any valuation). An equivalent variant of this statement is limited to morphism terms which are stratified as composites (or sequences, or paths) of {\em basic} morphism terms, i.e., those terms that are formed without using composition and in which there is at most one occurrence of a constant, i.e., $\alpha,\lambda,\rho$ or their inverses. Formally, they are the terms defined by the following subsyntax:
+$$B ::= \alpha \Alt \lambda \Alt\rho\Alt  \alpha^{-1} \Alt \lambda^{-1} \Alt\rho^{-1} \Alt  \id\otimes B \Alt B\otimes \id.$$
+As usual, one writes also, say, $T\otimes B$ for $\id\otimes B$, when $\id:T\rightarrow T$. Alternatively, we can emphasise the unique occurrence of $\kappa\in\set{\alpha,\lambda,\rho,\alpha^{-1},\lambda^{-1},\rho^{-1}}$ in $B$ by defining a syntax of basic {\em contexts}:
+$$C ::= [\,] \Alt \id\otimes C \Alt C\otimes \id.$$
+We  write  $C[\kappa]$ (resp.$C[T]$) for the result of the obvious operation of filling the unique occurrence of the {\em hole} $[\,]$ with a constant $\kappa$ (resp. an object term $T$). With this notation, we see that, say, if $\alpha:(T_1\otimes T_2)\otimes T_3\rightarrow T_1\otimes(T_2\otimes T_3)$, then we have
+$C[\alpha]:C[(T_1\otimes T_2)\otimes T_3]\rightarrow C[T_1\otimes(T_2\otimes T_3)]$.
+
+Then our restricted morphism terms, viewed as {\em composable} sequences of basic terms, can be generically drawn as $$T=T_0\stackrel{C_1[\kappa_1]}{\longrightarrow} T_1 \longrightarrow\dots \longrightarrow T_{n-1} \stackrel{C_n[\kappa_n]}{\longrightarrow} T_n=T'$$
+the composability assumption being that  $C_i[{\text t}(\kappa_i)]=C_{i+1}[{\text s}(\kappa_{i+1}]$, for all $i<n$.
+Here is a simple illustration:
+$$T_1\otimes((T_2\otimes I)\otimes T_3)\stackrel{C_1[\alpha]}{\longrightarrow}  T_1\otimes(T_2\otimes (I\otimes T_3)) 
+\stackrel{C_2[\lambda]}{\longrightarrow} T_1\otimes (T_2\otimes T_3),$$
+where $C_1=T_1\otimes[\,]$ and $C_2=T_1\otimes(T_2\otimes\lambda)$.
+It is readily seen that any morphism term can be brought into this restricted form, so that the coherence result above can be reformulated to its more usual form that ``all diagrams commute'', where ``all'' ranges over diagrams each of whose arrows is a basic morphism term.
+
+There are four  ingredients in Mac Lane's original proof in \cite{MacLane98}, that we recast here in the language of term rewriting theory. 
+Each of the {\em non inverted} constants is a name for an associated {\em rewriting rule}, via the following dictionary:
+$$\begin{array}{ccc}
+\alpha & \lambda & \rho\\
+(x\otimes y)\otimes z\rightarrow x\otimes(y\otimes z) & I\otimes x\rightarrow x & x\otimes I \rightarrow x.
+\end{array}$$
+Here $x,y,z$ stand for {\em variables}. The typing rules for $\alpha,\lambda,\rho$ provide names for the {\em instantiations} of these rewriting rules. More precisely, say,  $\alpha:(T_1\otimes T_2)\otimes T_3\rightarrow T_1\otimes(T_2\otimes T_3)$ ``is'' the instantiation of the rule $\alpha$
+where $x,y,z$ are mapped to $T_1$, $T_2$, $T_3$, respectively.
+Each $C[\kappa]$ is a name for a {\em rewriting step}, consisting in applying (an instance of) rule $\kappa$ in context $C$.
+In the example above, we have rewritten the object term $T_1\otimes((T_2\otimes I)\otimes T_3)$ to $T_1\otimes(T_2\otimes (I\otimes T_3))$ by applying $\alpha$, instantiated at $T_1$, $(T_2\otimes I)$, $T_3$, and in context $T_1\otimes[\,]$.
+
+The first three ingredients of Mac Lane's proof of coherence are the following.
+\begin{enumerate}
+\item The rewriting system defined by $\alpha,\lambda,\rho$ is strongly normalising (i.e. there is no infinite rewriting sequence).
+\item All critical pairs can be solved.  We explain this notion by an example.  The term $(((x_1\otimes x_2)\otimes x_3)\otimes x_4$ can be rewritten via $\alpha$, but also via $\alpha\otimes x_4$, leading to $t_1=(x_1\otimes x_2)\otimes (x_3\otimes x_4)$ and $t_2=((x_1\otimes (x_2\otimes x_3))\otimes x_4$, respectively.  Solving the critical pair means finding a term $t$, a rewriting path from $t_1$ to $t$ and a rewriting path from $t_2$ to $t$. Applying this to the current situation, we get $t=x_1\otimes(x_2\otimes (x_3\otimes x_4))$ and
+$$t_1 \stackrel{\alpha}{\longrightarrow} t \quad\quad\quad\quad t_2 \stackrel{\alpha}{\longrightarrow} (x_1\otimes ((x_2\otimes x_3)\otimes x_4) \stackrel{\alpha}{\longrightarrow} t$$
+We have synthesised Mac Lane's pentagonal coherence condition! The adjective ``critical'' refers to both {\em overlapping} and {\em minimality} of the situation described above. As an example of non-overlapping, consider $(I\otimes x_1)\otimes(((x_2\otimes x_3)\otimes x_4)$ where the reductions $\lambda\otimes \id$ and $\id \otimes\alpha$ are independent and can be performed in either order, leading to a square of reductions. As an example of non-minimality, place the whole above pentagon in some non trivial context $C$, i.e., start from 
+$C[(((x_1\otimes x_2)\otimes x_3)\otimes x_4]$.
+\end{enumerate}
+Condition (2) implies local confluence (this is known as Knuth-Bendix lemma, and is closely related to Bergman's diamond lemma), and local confluence and condition (1) imply confluence (this is known as Newman's lemma). The next ingredient is the following:
+\begin{enumerate}
+\item[(3)]
+The proof of Newman's lemma can be upgraded to a proof of coherence for parallel paths $M,M':T\rightarrow T'$, where $M,M'$ contain no inverted constants. This is just a matter of naming the steps taken in the proof! 
+\end{enumerate}
+Then comes the fourth  and last ingredient.
+\begin{enumerate}
+\item[(4)] Coherence follows from this restricted (directed) coherence. The strategy for establishing this is to note that for fixed $T,T'$, if   there exists at least one morphism term $M:T\rightarrow T'$, then  $T$ and $T'$  have the same normal form $\tilde T$, and that for any such pair 
+$T,T'$, the restricted coherence gives  us morphism terms from $T$ to $\tilde T$ and from $T'$ to $\tilde T$, depending from $T$ and $T'$ only (up to the coherence conditions). By inverting the second path and concatenating, we get a special morphism term from $T$ to $T'$ and one shows that every morphism term $M:T\rightarrow T'$ is equal to this path, modulo the coherence conditions.
+\end{enumerate}
+We shall expand this discussion when dealing with coherence for hypergraph polytopes obtained via rewriting techniques.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
