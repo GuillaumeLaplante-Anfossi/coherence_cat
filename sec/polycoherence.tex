@@ -1,107 +1,69 @@
 % !TEX root = ../Coherence.tex
 
-\section{Polytopal coherence theorem} 
+\section{Topological coherence theorem} 
 \label{s:polycoherence}
 
-\Guillaume{Add figures}
-
-Let $P$ be polytope.
-A (non-oriented) \emph{path} on $P$ is the cellular image of a continuous, cellular, injective map $\gamma : [0,1] \to P$. 
+Let $X$ be a regular CW complex. 
+A \emph{combinatorial path} on $X$ is the cellular image of a continuous and cellular map $\gamma : [0,1] \to X$. 
 The two vertices $\gamma(0)$ and $\gamma(1)$ are called the \emph{endpoints} of the path. 
-Two paths $\gamma_1$ and $\gamma_2$ are \emph{parallel} if they have the same endpoints. 
+Two paths $\gamma_1$ and $\gamma_2$ are \emph{parallel} if they share the same endpoints. 
 
-Let $\gamma$ be a path on a $2$-dimensional polytope. 
-We observe that there is a unique path $\gamma^\op \neq \gamma$ on $F$ which is parallel to $\gamma$. 
+A combinatorial path $\gamma$ is called \emph{regular} if it is either constant, or injective on the open interval $]0,1[$.
+We observe that for $\gamma$ a regular combinatorial path on a $2$-cell $A$ of $X$, there is a unique parallel regular combinatorial path $\gamma^{\op}\neq \gamma$ on $A$. 
+We say that $\gamma$ and $\gamma^{\op}$ are related by a \emph{flip}.
 
-\begin{definition}[Discrete homotopy]
-    Two parallel paths are \emph{elementary homotopic} is they differ only on a $2$-face of $P$. 
-    More generally, two parallel paths are \emph{homotopic} if they are related by a finite number of elementary homotopies.
+\begin{definition}
+    Two parallel combinatorial paths are \emph{elementary combinatorially homotopic} is they differ only by a flip on a $2$-face of $X$. 
+    More generally, two parallel combinatorial paths are \emph{combinatorially homotopic} if they are related by a finite number of elementary combinatorial homotopies.
 \end{definition}
+
+We say that $v \in \R^n$ \emph{orients} $X$, or is an \emph{orientation vector} for $X$, if $v$ is not perpendicular to any edge of $X$.
+We say that an oriented polyhedral complex $(X,v)$ is \emph{flow link connected} if the set of outgoing edges of each vertex is connected by $2$-faces. 
+In other words, $X$ is flow link connected if for every vertex $x$, and for any pair of outgoing edges $e, e'$ at $x$, there is a ordered sequence of outgoing edges $e=e_0, e_1, \ldots, e_n=e'$ at $x$ such that for all $1\leq i \leq n-1$, the two edges $e_i$ and $e_{i+1}$ are both faces of a $2$-face of $X$.  
 
 \begin{thm}
     \label{t:polytopal-coherence}
-    Any two parallel paths on a polytope are homotopic. 
+    Any two parallel combinatorial paths on a flow link connected polyhedral complex $(X,v)$ are combinatorially homotopic. 
 \end{thm}
 
 \begin{proof}
-    Let $\gamma$ and $\gamma'$ be two parallel paths on $P$, denote by $v$ one of their common endpoints, and denote by $e$ and $e'$ the edges of $\gamma$ and $\gamma'$ which contain $v$. 
-    We let $m$ denote the maximal length of a path parallel to $\gamma$ and $\gamma'$, and we let $n$ denote the maximal length of a path between between $e$ and $e'$ in the vertex figure of $P$ at $v$ \cite[Section 2.1]{Ziegler95}.
-    We proceed by lexicographic induction on $(m,n)$. 
-    If $e=e'$, then we can apply the induction hypothesis to the two parallel paths $\gamma - e$ and $\gamma' - e'$ (in this case, $m$ diminishes by $1$ and $n=0$ is constant). 
-    If $e \neq e'$, we consider the family $\mathcal{F}$ of $2$-faces defined by a path of minimal length from $e$ to $e'$ in the vertex figure. 
-    We write $\gamma = \gamma_1 \gamma_2$, where $\gamma_1$ is the restriction of $\gamma$ to the $2$-face in $\mathcal{F}$ containing $e$. 
-    We consider the path $\gamma''=\gamma_1^\op \gamma_2$, which is parallel to $\gamma$ and $\gamma'$, and we apply to it the induction hypothesis (in this case, $m$ is constant and $n$ diminishes by $1$), which finishes the proof. 
-\end{proof}
-
-One is often interested in a \emph{coherent families} of polytopes. 
-We will say that a family of polytopes $P_\bullet = \{P_i\}_{i \in I}$ is \emph{$n$-coherent} if every $n$-face of a polytope in the family is combinatorially isomorphic to the product of polytopes in the family. 
-A family of polytopes is \emph{coherent} if it is $n$-coherent for all $n \geq 0$.
-
-\begin{example}
-    Any family of realizations of the associahedra is coherent. 
-    The family of standard permutahedra is coherent. 
-    More generally, any choice of realizations of graph-associahedra are coherent. \Guillaume{Refs}
-\end{example}
-
-We will be interested in $2$-coherence of certain families of polytopes. 
-
-\begin{proposition}
-    Hypergraph polytopes are $2$-coherent. 
-\end{proposition}
-
-\begin{proof}
-    It is clear from the definition that any face of an hypergraph polytope is itself an hypergraph polytope, so they form a coherent family, and in particular a $2$-coherent family. 
-    The $2$-faces of hypergraph polytopes can be described very precisely, splitting into tow kinds. 
-    The first one corresponds to constructs with exactly two non-singleton nodes, which are of cardinality two, and they form squares (see Figure).
-    The $2$-faces of the second kind are defined by constructs with exactly one non-singleton node, which is of cardinality three. 
-    These form four different polygons: a triangle, two types of pentagons, and one hexagon (see Figure). 
+    We proceed in two steps. 
+    \begin{enumerate}
+        \item We first reduce to the case of \emph{oriented} paths. 
+        \item Now let us prove the case of oriented paths. 
+    \end{enumerate}
+    %Let $\gamma$ and $\gamma'$ be two parallel paths on $P$, denote by $v$ one of their common endpoints, and denote by $e$ and $e'$ the edges of $\gamma$ and $\gamma'$ which contain $v$. 
+    %We let $m$ denote the maximal length of a path parallel to $\gamma$ and $\gamma'$, and we let $n$ denote the maximal length of a path between between $e$ and $e'$ in the vertex figure of $P$ at $v$ \cite[Section 2.1]{Ziegler95}.
+    %We proceed by lexicographic induction on $(m,n)$. 
+    %If $e=e'$, then we can apply the induction hypothesis to the two parallel paths $\gamma - e$ and $\gamma' - e'$ (in this case, $m$ diminishes by $1$ and $n=0$ is constant). 
+    %If $e \neq e'$, we consider the family $\mathcal{F}$ of $2$-faces defined by a path of minimal length from $e$ to $e'$ in the vertex figure. 
+    %We write $\gamma = \gamma_1 \gamma_2$, where $\gamma_1$ is the restriction of $\gamma$ to the $2$-face in $\mathcal{F}$ containing $e$. 
+    %We consider the path $\gamma''=\gamma_1^\op \gamma_2$, which is parallel to $\gamma$ and $\gamma'$, and we apply to it the induction hypothesis (in this case, $m$ is constant and $n$ diminishes by $1$), which finishes the proof. 
 \end{proof}
 
 \begin{corollary}
-    \label{c:operahedra-2-coh}
-    Operahedra and associahedra are $2$-coherent.
+    Any two combinatorial parallel paths on a polytope are combinatorially homotopic. 
 \end{corollary}
 
 \begin{proof}
-    There are $1$-dimensional operahedra, and the $2$-dimensional operahedra include pentagons and hexagons. 
-    In general, their $2$-faces are either squares, pentagons or hexagons (the triangle cannot appear, since they arise from hypegraphs that are trees).
-    So, they are $2$-coherent. 
-    In the case of the associahedra, all $2$-faces are pentagons or squares, hence the result. 
+    It suffices to show that any oriented polytope is flow link connected. 
+    Examine the vertex figure...
 \end{proof}
 
-\Guillaume{Don't we need to restrict to non-unital?}
+In fact, the preceding theorem holds in greater generality. 
 
-We can now prove a coherence theorem for non-symmetric non-unital categorified operads. 
+
+
+Let $X$ be a finite CW-complex. 
 
 \begin{thm}
-\label{t:coherence-operahedra}
-    Every diagram with vertices iterates of the $\circ_i$ and edges expansions of instances of $\beta, \theta, \lambda$ and $\rho$ arrows is commutative. 
+    Any two parallel paths on $X$ are combinatorially homotopic if and only if $X$ is simply connected.
 \end{thm}
 
 \begin{proof}
-    Follows \cref{t:polytopal-coherence} and \cref{c:operahedra-2-coh}.
+    This is an instance of Seifert--Van Kampen. 
 \end{proof}
 
-We can now deduce the classical coherence theorem of MacLane for monoidal categories. 
 
-\begin{corollary}
-    For any two terms $M,M':T\rightarrow T'$  of the same type we have $\dl M\dr^\rho_{\cat{C}}=\dl M'\dr^\rho_{\cat{C}}$.
-\end{corollary}
-
-\begin{proof}
-    This is just resricting \cref{t:coherence-operahedra} to the case of a categorified non-symmetric operad with one object, which is just a non-symmetric non-unital monoidal category. 
-    Equivalently, it can be obtained by reworking the proof of \cref{t:coherence-operahedra} while restricting the attention to the associahedra, and use again \cref{t:polytopal-coherence} and \cref{c:operahedra-2-coh}.
-\end{proof}
-
-\begin{rem}
-    What about the unital case? 
-    What about the symmetric case? --
-\end{rem}
-
-\Guillaume{$n$-coherence related to $n$-categories instead of simply categories??!! A commencer par les 2-cat; le theoreme de coherence ne tient plus pour les n plus grands!!}
-
-\subsection{Other examples}
-
-\subsection{Weak Cat-operads}
-
+\Guillaume{Add figures}
 

@@ -1,31 +1,24 @@
 % !TEX root = ../Coherence.tex
 
-\section{Rewriting method for coherence} 
+\section{Coherence for categorified operads} 
 \label{s:catoperads}
 
+\subsection{Categorified operads}
 
+We can now prove a coherence theorem for non-symmetric non-unital categorified operads. 
 
-
-
-
-
-\subsection{Coherence for categorified operads}
-
-Recall from [REF] the definition of the $\mathbb{N}$-colored operad $\mathcal{O}$ encoding ns operads. Its minimal resolution is given by the cellular chains on the operahedra [DEF]. 
-
-
-\begin{thm}[Coherence theorem] 
+\begin{thm}
+\label{t:coherence-operahedra}
+    Every diagram with vertices iterates of the $\circ_i$ and edges expansions of instances of $\beta, \theta, \lambda$ and $\rho$ arrows is commutative. 
 \end{thm}
 
-\begin{proof} TBC
+\begin{proof}
+    Follows \cref{t:polytopal-coherence} and \cref{c:operahedra-2-coh}.
 \end{proof}
 
-Restricted to categorified ns operad concentrated in arity 1, i.e. to monoidal categories, we recover MacLane's original coherence tbeorem [REF].
+\subsection{Weak Cat-operads}
 
 There is an analogous statement for weak Cat-operads \cite[Proposition 14.2]{DP15}. In the same fashion as for \cref{thm:equivalenceDPGLA}, one can prove that the two statements are equivalent. 
-
-
-\subsection{Weak Cat-operads}
 
 \begin{definition}[Weak Cat-operad {\cite{DP15}}]
 \end{definition}
@@ -38,5 +31,34 @@ There is an analogous statement for weak Cat-operads \cite[Proposition 14.2]{DP1
     TBC
 \end{proof}
 
+
+\subsection{MacLane's theorem}
+
+We can now deduce the classical coherence theorem of MacLane for monoidal categories. 
+
+\begin{corollary}
+    For any two terms $M,M':T\rightarrow T'$  of the same type we have $\dl M\dr^\rho_{\cat{C}}=\dl M'\dr^\rho_{\cat{C}}$.
+\end{corollary}
+
+\begin{proof}
+    This is just resricting \cref{t:coherence-operahedra} to the case of a categorified non-symmetric operad with one object, which is just a non-symmetric non-unital monoidal category. 
+    Equivalently, it can be obtained by reworking the proof of \cref{t:coherence-operahedra} while restricting the attention to the associahedra, and use again \cref{t:polytopal-coherence} and \cref{c:operahedra-2-coh}.
+\end{proof}
+
+\subsubsection{The symmetric case}
+
+\subsubsection{The unital case}
+
+Unital AND symmetric?
+
+\subsection{Perspectives}
+
+Multiplihedra/multiploperahedra
+Operadic families
+
+\Guillaume{$n$-coherence related to $n$-categories instead of simply categories??!! A commencer par les 2-cat; le theoreme de coherence ne tient plus pour les n plus grands!!}
+
+
+The same can be applied to 
 
 
