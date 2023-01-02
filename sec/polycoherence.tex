@@ -39,53 +39,62 @@ More generally, two parallel combinatorial paths are \emph{combinatorially homot
 \subsection{Morse theoretic coherence}
 
 Let $X\subset \R^n$ be a polyhedral complex, and let $\vec v \in \R^n$ be \emph{generic}, meaning that for any pair of vertices $x,y \in X$, we have $\langle \vec v , x \rangle \neq \langle \vec v, y\rangle$.  
-For any face $F \subset X$ of $X$, there is a unique \emph{source} vertex $\so(F)$ which satisfies $\langle \vec v , \so(F) \rangle = \min \{\langle \vec v , y \rangle \ | \ y \in F \}$, and a unique \emph{sink} vertex $\sk(F)$ which satisfies $\langle \vec v , \sk(F) \rangle = \max \{\langle \vec v , y \rangle \ | \ y \in F \}$.
+For any face $F \subset X$ of $X$, there is a unique \emph{source} vertex $\so(F)$ which satisfies $\langle \vec v , \so(F) \rangle = \min \{\langle \vec v , y \rangle \ | \ y \in F \}$, and a unique \emph{sink} vertex $\sk(F)$ defined similarly with $\max$ instead of $\min$.
+Similar definitions make sense for any families of faces $X' \subset X$, and in particular $X$ itself has unique source $\so(X)$ and sink $\sk(X)$. 
+
+Let $H:=\{y \in \R^n \ | \ \langle \vec v , y \rangle = 0\}$ be the linear hyperplane orthogonal to $\vec v$.  
+For every vertex $x \in X$, choose $\varepsilon >0$ such that the interval between $\langle \vec v , x \rangle$ and $\langle \vec v , x \rangle + \varepsilon$ does not contain the image of any other vertex. 
 
 \begin{definition}
-    The \emph{outgoing link} of a vertex $x \in X$ is the non-trivial intersection $\mathcal{F} \cap H \neq \{*\}$ of the family of faces $\mathcal{F}:=\{ F \subset X \ | \ \so(F)=x \}$ with an hyperplane $H$ perpendicular to $\vec v$.
+    The \emph{outgoing link} of a vertex $x \in X$ is the intersection $\mathcal{F} \cap (H+x+\varepsilon \vec v)$ of the family of faces $\mathcal{F}:=\{ F \subset X \ | \ \so(F)=x \}$ with the affine hyperplane $H+x+\varepsilon \vec v$.
+    The \emph{incoming link} of a vertex is defined similarly with $\sk(F)$ instead of $\so(F)$, and $-\varepsilon \vec v$ instead of $+ \varepsilon \vec v$. 
 \end{definition}
 
-\begin{proposition}
-    \label{prop:outgoing-link}
+\begin{lemma}
+    \label{lemma:outgoing-link}
     Every path component of $X$ is simply connected if and only if for any choice of generic vector $\vec v \in \R^n$, the outgoing link of every vertex is connected. 
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
+    We consider the case where $X$ has a unique path component; if not the proof can be applied to every path component of $X$ separately. 
+
     Let $\vec v \in \R^n$ be generic with respect to $X$, and suppose that the outgoing link of every vertex is connected. 
-    Since $\langle \vec v , -\rangle$ defines a Morse function on $X$ \cite[Definition 2.2]{bestvinaMorseTheoryFiniteness1997}, we have that $X$ is homotopy equivalent to a cell complex with its cells of dimension $k$ in bijection with the critical points of index $k$ for $\langle \vec v , -\rangle$.
-    These critical points are vertices of $X$ \cite[Lemma 2.3]{bestvinaMorseTheoryFiniteness1997}, and they are of index one if and only if their outgoing link is made of $2$ disconnected points \cite[Lemma 4.5]{grunertPLMorseTheory2019}.
-    Since we assumed every such link to be connected, we have that $X$ is homotopy equivalent to a cell complex which has a trivial $1$-skeleton, and thus each of its path components is simply connected. 
-
-    In the other way around, if we suppose that every path component of $X$ is simply connected, then for any generic $\vec v$, the function $\langle \vec v , -\rangle$ has no critical point of index one. 
-    By the characterization of \cite[Lemma 4.5]{grunertPLMorseTheory2019}, we must have that the outgoing link of any vertex is connected. 
+    Since $\langle \vec v , -\rangle$ defines a Morse function on $X$ \cite[Definition 2.2]{bestvinaMorseTheoryFiniteness1997}, we have that $X$
+    is homotopy equivalent to a cell complex constructed inductively as follows.
+    Start with the empty set, and scan the complex $X$ by looking at the intersections $X \cap (H+r\vec v)$ with $r$ going from $r=+\infty$ to $r=-\infty$; each time a vertex $x$ of $X$ is encountered, attach a cell which is homotopy equivalent to the cone over the outgoing link of $x$ \cite[Lemma 2.5]{bestvinaMorseTheoryFiniteness1997}.
+    This cell will be of dimension $1$ if and only if the outgoing link is disconnected, homotopy equivalent to the $0$-sphere (see for instance \cite[Lemma 4.5]{grunertPLMorseTheory2019}). 
+    Assuming that every outgoing link is connected will therefore create a homotopy equivalent cell complex with trivial $1$-skeleton \cite[Point (3) of Corollary 2.6]{bestvinaMorseTheoryFiniteness1997}.
+    This implies that the polyhedral complex $X$ is simply connected.
+    
+    In the other way around, supposing that $X$ is simply connected, then for any generic $\vec v$, the function $\langle \vec v , -\rangle$ presents no disconnected outgoing link; otherwise $X$ would be homotopy equivalent to a complex with non-trivial fundamental groupoid. 
 \end{proof}
-
-\Guillaume{A revoir, etre plus precis; pourquoi ils demandent ingoing ET outgoing dans le Inventiones? Processus d'attachement}
 
 We are now in position to give an "oriented proof" of the fact that any two parallel combinatorial paths on $X$ are combinatorially homotopic if and only if every path component of $X$ is simply connected.
 
-\begin{proof}[Second proof of {\cref{thm:top-coherence}}, for polyhedral complexes]
-    First, we prove an oriented version of the statement: every pair of parallel \emph{oriented} paths on $X$ are combinatorially homotopic if and only if every path component of $X$ is simply connected.
+\begin{proof}[Second proof of {\cref{thm:top-coherence}} for polyhedral complexes]
+    Once again, we restrict to the case where $X$ has only one path component. 
+
+    First, we prove an oriented version of the statement: every pair of parallel \emph{oriented} paths on $X$ are combinatorially homotopic if and only if $X$ is simply connected.
     Here, given a generic $\vec v \in \R^n$, a combinatorial path $\gamma$ on $X$ is \emph{oriented} if for any pair $(e, f)$ of consective edges in $\gamma$, we have that $\sk(e)=\so(f)$.  
-    From \cref{prop:outgoing-link} we can equivalently prove the following: for any generic $\vec v$, every pair of parallel oriented paths on $X$ are combinatorially homotopic if and only if the outgoing link of every vertex is connected.
+    Using \cref{lemma:outgoing-link}, we will prove the following equivalent statement: for any generic $\vec v$, every pair of parallel oriented paths on $X$ are combinatorially homotopic if and only if the outgoing link of every vertex is connected.
 
     Suppose that the outgoing link of every vertex is connected. 
     We prove that any two oriented parallel combinatorial paths in $X$ are combinatorially homotopic. 
-    Let $\gamma, \gamma'$ be two parallel oriented paths between two vertices $x$ and $y$. 
+    Let $\gamma$ and $\gamma'$ be two parallel oriented paths between two vertices $x$ and $y$. 
     We proceed by induction on the maximal length $m$ of an oriented path between $x$ and $y$ in $X$. 
-    Without loss of generality, we can suppose that $y=\sk(X)$ (if $y\neq\sk(X)$, we can always find an oriented path between $y$ and $\sk(X)$; by $\sk(X)$ we mean $\sk(X')$ for the $X'$ the path component of $X$ under consideration).
+    Without loss of generality, we can suppose that $y=\sk(X)$; if $y\neq\sk(X)$, we can always find an oriented path between $y$ and $\sk(X)$.
     The cases when $m=0$ and $m=1$ are trivial. 
-    Suppose that the hypothesis holds up to $m=k-1, k\geq 2$, and consider $\gamma,\gamma'$ such that $m=k$. 
+    Suppose that the hypothesis holds up to $m=k-1, k\geq 2$, and consider two paths $\gamma$ and $\gamma'$ for which $m=k$. 
     Let $e$ and $e'$ denote the edges of $\gamma$ and $\gamma'$ that are adjacent to $x$. 
     We examine three cases.
     \begin{enumerate}
         \item If $e=e'$, we can apply the induction hypothesis to $\gamma \setminus e$ and $\gamma' \setminus e'$. 
-        \item If $e \neq e'$ and both edges are on the same $2$-face $F$ of $X$, then we have that $\gamma$ and $\gamma$ are respectively combinatorially homotopic to the paths $\delta$ and $\delta'$ that go from $\so(F)$ to $\sk(F)$ and then to $y$ along the same arbitrary oriented path, and contain respectively $e$ and $e'$. 
-        Since $\delta$ and $\delta'$ are combinatorially homotopic by definition, the conclusion follows from the transitivity of the equivalence relation "being combinatorially homotopic". 
+        \item If $e \neq e'$ and both edges are on the same $2$-face $F$ of $X$, then using the induction hypothesis we have that $\gamma$ and $\gamma'$ are respectively combinatorially homotopic to the paths $\delta$ and $\delta'$ defined as follows: they go from $x=\so(F)$ to $\sk(F)$ by the unique path containing $e$ and $e'$, respectively, and then from $\sk(F)$ to $y$ along the same arbitrary oriented path. 
+        Since $\delta$ and $\delta'$ are combinatorially homotopic by definition, the conclusion follows from the transitivity of the homotopy equivalence relation. 
         \item Suppose that $e\neq e'$, and that $e$ and $e'$ are \emph{not} on the same $2$-face of $X$. 
         Since the outgoing link of $x$ is connected, there exists a path $\theta$ between $e$ and $e'$ in this link. 
-        For every edge $e_i$ of $X$ in $\theta$, choose a an oriented path $\gamma_i$ from $x$ to $y$ going through $e_i$. 
-        Now we can apply Point (2) above to every pair of parallel oriented paths $(\gamma_i, \gamma_{i+1})$ with $e_i$ and $e_{i+1}$ consecutive in $\theta$, and conclude again by transitivity of the combinatorial homotopy equivalence relation. 
+        For every edge $e_i$ of $X$ in the path $\theta$, choose an oriented path $\gamma_i$ in $X$ from $x$ to $y$ going through $e_i$. 
+        Now apply Point (2) above to every pair of parallel oriented paths $(\gamma_i, \gamma_{i+1})$ with $e_i$ and $e_{i+1}$ consecutive in $\theta$, and conclude again by transitivity of the combinatorial homotopy equivalence relation. 
     \end{enumerate}
 
     In the other direction, suppose that every pair of parallel oriented combinatorial paths are combinatorially homotopic. 
@@ -94,14 +103,13 @@ We are now in position to give an "oriented proof" of the fact that any two para
     By hypothesis, these two paths are combinatorially homotopic, that is, there is a sequence of parallel oriented paths from $\gamma$ to $\gamma'$. 
     The collection of first edges in each of these paths defines a path between $e$ and $e'$ in the outgoing link of $x$. 
     Thus, this link is connected. 
-    This finishes the proof that every pair of parallel oriented paths on $X$ are combinatorially homotopic if and only if every path component of $X$ is simply connected.
+    This finishes the proof that every pair of parallel oriented paths on $X$ are combinatorially homotopic if and only if $X$ is simply connected.
 
     To show \cref{thm:top-coherence} for polyhedral complexes, it remains to show that any two parallel combinatorial paths are combinatorially homotopic if and only if for any generic $\vec v$, any two parallel \emph{oriented} combinatorial paths are combinatorially homotopic. 
     The fact that the non-oriented version implies the oriented one is obvious. 
-    For the other implication, suppose that the oriented version holds and let $\gamma$ be a combinatorial path on $X$ between $x$ and $y$.
+    For the other implication, suppose that the oriented version holds and let $\gamma$ be a (non-oriented) combinatorial path on $X$ between $x$ and $y$.
     For every vertex $z$ along $\gamma$, one can choose an oriented path $\delta_z$ from $z$ to $\sk(X)$. 
-    Let $e: z \to z'$ be an edge of $\gamma$. 
-    The paths $\delta_z$ and $\delta_{z'}e$ are combinatorially homotopic, by hypothesis. 
+    We observe that for any edge $e: z \to z'$ of $\gamma$, the oriented paths $\delta_z$ and $\delta_{z'}e$ are combinatorially homotopic by hypothesis. 
     Going from $x$ to $y$ inductively one edge at a time and using transitivity of the homotopy equivalence relation, one obtains that $\gamma$ is combinatorially homotopic to $\delta_y^{-1}\delta_x$. 
     Taking another combinatorial path $\gamma'$ parallel to $\gamma$, the same argument shows that $\gamma'$ is combinatorial homotopic to $\delta_y^{-1}\delta_x$.
     Thus $\gamma$ and $\gamma'$ are combinatorially homotopic, which completes the proof. 
