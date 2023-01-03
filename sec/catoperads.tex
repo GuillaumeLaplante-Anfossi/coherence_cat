@@ -187,6 +187,12 @@ Two parallel morphisms in $\mathcal{F}(S)$ thus define two parallel combinatoria
 Since an operahedron is simply connected, \cref{thm:top-coherence} implies that these two combinatorial paths are combinatorially homotopic. 
 The result then follows from the fact that a $2$-face of an operahedron is exactly either a square (witnessing naturality), a pentagon or an hexagon (witnessing a coherence condition) as in \cref{def:catoperad} above.
 \end{proof}
+
+\begin{proof}[Second proof]
+    Alternatively, since the operahedra are polytopes, one can use the second proof of \cref{thm:top-coherence} given in \cref{p:second-proof}. 
+    Using the Loday realizations \cite[Section 2.2]{laplante-anfossiDiagonalOperahedra2022a}, and choosing a generic vector $\vec v$ which has strictly decreasing coordinates, one obtains the orientations of the diagrams given in \cref{def:catoperad} on every $2$-face \cite[Proposition 3.11]{laplante-anfossiDiagonalOperahedra2022a}.
+    One then obtains a topological proof of coherence which is almost word for word the original proof of MacLane \cite[Theorem 3.1]{MacLane63}, suitably generalized to categorified operads. 
+\end{proof}
    
 Following \cref{rem:DPLA}, we have that \cref{thm:coherence-operahedra} gives an alternative, more economical proof of coherence for weak Cat-operads \cite[Proposition 14.2]{DP15}. 
 Restricting the theorem above to non-symmetric operads concentrated in arity $1$, the category $\mathcal{F}(S)$ becomes the free non-symmetric monoidal category on $S$, and we get the following corollary. 
@@ -198,9 +204,19 @@ Restricting the theorem above to non-symmetric operads concentrated in arity $1$
 
 \begin{proof}
     The morphisms in $\mathcal{F}(S)$ are in bijection with combinatorial paths on the associahedra \cite{Stasheff63,CSZ15}, a subfamily of the operahedra associated to linear trees. 
-    One checks easily that each $2$-face of an associahedron is either a square (witnessing naturality) or a pentagon (witnessing a coherence condition) of the type considered by MacLane \cite[Equation 3.5]{MacLane63}.
+    One checks easily that each $2$-face of an associahedron is either a square (witnessing naturality) or a pentagon (witnessing a coherence condition) of the type considered by MacLane \cite[Equation (3.5)]{MacLane63}.
 \end{proof}
 
+\begin{proof}[Second proof]
+    Since the associahedra are polytopes, one can use the second proof of \cref{thm:top-coherence} given in \cref{p:second-proof}. 
+    Using the Loday realizations \cite[Section 1.2]{masudaDiagonalAssociahedra2021a}, and choosing a generic vector $\vec v$ which has strictly decreasing coordinates, one obtains the orientation of the pentagon given in \cref{def:catoperad} on every $2$-face (i.e. the Hasse diagram of the Tamari lattice) \cite[Proposition 2]{masudaDiagonalAssociahedra2021a}. 
+    One then obtains a topological proof of coherence which is almost word for word the original proof of MacLane \cite[Theorem 3.1]{MacLane63}. 
+\end{proof}
+
+
+
+\subsection{Further applications} 
+\label{sec:further}
 One can use the exact same strategy to prove coherence theorems for 
 \begin{itemize}
     \item \emph{symmetric} monoidal categories, using the family of permutoassociahedra \cite{kapranov1993,reinerCoxeterassociahedra1994}, and
@@ -209,8 +225,6 @@ One can use the exact same strategy to prove coherence theorems for
 It is natural to ask if the construction of unital associahedra could be extended to the permutoassociahedra, in such a way as to provide a topological proof of coherence for unital symmetric monoidal categories. 
 The question of the existence of these constructions at the operadic level (i.e. does there exist unital operahedra, symmetric operahedra, and unital symmetric operahedra?) is, to our knowledge, still open as well. 
 
-\subsection{Further applications} 
-\label{sec:further}
 Another immediate application of \cref{thm:top-coherence} is the coherence of strong non-symmetric monoidal functors between non-symmetric monoidal categories \cite{epsteinFunctorsTensoredCategories1966}. 
 The corresponding topological objects are in this case the family of multiplihedra \cite{Stasheff70,Forcey08}.
 The generalization to strong morphisms between non-symmetric categorified operads also goes through, involving this time the family of multiploperahedra described at the end of the introduction in \cite{MazuirLA22}.
@@ -218,11 +232,20 @@ The generalization to strong morphisms between non-symmetric categorified operad
 In the same spirit as in \cref{thm:coherence-operahedra}, one could obtain coherence results for categorifications of many operad-like structures, for instance the ones described in \cite{BMO20}: categorified modular operads, wheeled properads, and permutads (shuffle algebras), among others.
 In order to treat cyclic and symmetric structures, one could take inspiration from the reduction process followed in \cite{curienCategorifiedCyclicOperads2020} for the case of cyclic symmetric categorified operads.
 
+\Guillaume{Markl \& applications algebriques?}
+\Guillaume{Flow categories?}
+\Guillaume{Morse theory and rewriting; polygraphs, higher dimensional rewriting?}
+
+\section{Perspectives}
+
 \subsection{Higher categories} 
 \label{sec:higher}
 \cref{thm:top-coherence} demonstrates that, in the case of monoidal categories, coherence is equivalent to the vanishing of the first homotopy groups of the associahedra. 
 Since the associahedra are contractible, and therefore all their homotopy groups vanish, one could hope for a topological proof of higher dimensional coherence theorems.
 Seeing a monoidal category as a bicategory with one object, one can ask about a coherence theorem for tricategories with one object. 
 A first look at the diagrams in the beginning of \cite[Section 2]{gordonCoherenceTricategories1995} suggests that such a theorem should be at least related to the vanishing of the second homotopy groups of the associahedra.  
-To formulate higher dimensional statements, one needs a good structure of pasting scheme on each associahedron, which is the subject of ongoing work \cite{AMMLA}.  
+To formulate higher dimensional statements, one needs a good structure of pasting scheme on each associahedron, which is the subject of ongoing work \cite{AMMLA}. 
 
+Recent results of S. Barkan provide evidence for these higher dimensional statements, in the context of $\infty$-operads \cite{barkanArityApproximationInfty2022}.
+It seems likely that the present results could be interpreted as a strict version and a special case of \cite[Theorem B]{barkanArityApproximationInfty2022}. 
+It would be interesting to see how the permutoassociahedra arise in the strictification process, and how they are related to operadic partition complexes.  
