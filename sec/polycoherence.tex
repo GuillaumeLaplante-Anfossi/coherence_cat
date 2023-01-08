@@ -36,11 +36,12 @@ More generally, two parallel combinatorial paths are \emph{combinatorially homot
     The theorem then follows, since every path component of $X$ is simply connected if and only if its fundamental groupoid $\Pi(X)$ is trivial.  
 \end{proof}
 
-\subsection{Morse theoretic coherence}
+\subsection{Coherence \`a la Morse}
 
-Let $X\subset \R^n$ be a polyhedral complex, and let $\vec v \in \R^n$ be \emph{generic}, meaning that for any pair of vertices $x,y \in X$, we have $\langle \vec v , x \rangle \neq \langle \vec v, y\rangle$.  
+Let $X\subset \R^n$ be a polyhedral complex, and let $\vec v \in \R^n$ be \emph{generic} on the deges of $X$, meaning that for any pair of vertices $x,y \in X$ lying on the same edge of $X$, we have $\langle \vec v , x \rangle \neq \langle \vec v, y\rangle$.  
 For any face $F \subset X$ of $X$, there is a unique \emph{source} vertex $\so(F)$ which satisfies $\langle \vec v , \so(F) \rangle = \min \{\langle \vec v , y \rangle \ | \ y \in F \}$, and a unique \emph{sink} vertex $\sk(F)$ defined similarly with $\max$ instead of $\min$.
-Similar definitions make sense for any families of faces $X' \subset X$, and in particular $X$ itself has unique source $\so(X)$ and sink $\sk(X)$. 
+Similar definitions make sense for any families of faces $X' \subset X$.
+In particular, the complex $X$ itself has unique source $\so(X)$ and sink $\sk(X)$. 
 
 Let $H:=\{y \in \R^n \ | \ \langle \vec v , y \rangle = 0\}$ be the linear hyperplane orthogonal to $\vec v$.  
 For every vertex $x \in X$, choose $\varepsilon >0$ such that the interval between $\langle \vec v , x \rangle$ and $\langle \vec v , x \rangle + \varepsilon$ does not contain the image of any other vertex. 
@@ -59,12 +60,10 @@ For every vertex $x \in X$, choose $\varepsilon >0$ such that the interval betwe
     We consider the case where $X$ has a unique path component; if not the proof can be applied to every path component of $X$ separately. 
 
     Let $\vec v \in \R^n$ be generic with respect to $X$, and suppose that the outgoing link of every vertex is connected. 
-    Since $\langle \vec v , -\rangle$ defines a Morse function on $X$ \cite[Definition 2.2]{bestvinaMorseTheoryFiniteness1997}, we have that $X$
-    is homotopy equivalent to a cell complex constructed inductively as follows.
-    Start with the empty set, and scan the complex $X$ by looking at the intersections $X \cap (H+r\vec v)$ with $r$ going from $r=+\infty$ to $r=-\infty$; each time a vertex $x$ of $X$ is encountered, attach a cell which is homotopy equivalent to the cone over the outgoing link of $x$ \cite[Lemma 2.5]{bestvinaMorseTheoryFiniteness1997}.
-    This cell will be of dimension $1$ if and only if the outgoing link is disconnected, homotopy equivalent to the $0$-sphere (see for instance \cite[Lemma 4.5]{grunertPLMorseTheory2019}). 
-    Assuming that every outgoing link is connected will therefore create a homotopy equivalent cell complex with trivial $1$-skeleton \cite[Point (3) of Corollary 2.6]{bestvinaMorseTheoryFiniteness1997}.
-    This implies that the polyhedral complex $X$ is simply connected.
+    Since $\vec v$ is generic, it defines a Morse function $\langle \vec v , -\rangle$ on $X$, in the sense of \cite[Definition 2.2]{bestvinaMorseTheoryFiniteness1997} and \cite[Definition 4.1]{grunertPLMorseTheory2019}.
+    Like in classical Morse theory, this implies that $X$ is homotopy equivalent to a cell complex whose $k$-cells are in bijection with critical points of $\langle \vec v , -\rangle$ of index $k$ (see \cite[Lemma 2.5]{bestvinaMorseTheoryFiniteness1997} and \cite[Lemma 4.7]{grunertPLMorseTheory2019}).
+    These critical points are always vertices \cite[Lemma 2.3]{bestvinaMorseTheoryFiniteness1997}, and they are of index $1$ if and only if their outgoing link is disconnected, homotopy equivalent to the $0$-sphere \cite[Lemma 4.5]{grunertPLMorseTheory2019}.
+    Thus, assuming that every outgoing link of $X$ is connected implies that $X$ is homotopy equivalent to a cell complex with trivial $1$-skeleton; therefore it is simply connected \cite[Point (3) of Corollary 2.6]{bestvinaMorseTheoryFiniteness1997}.
     
     In the other way around, supposing that $X$ is simply connected, then for any generic $\vec v$, the function $\langle \vec v , -\rangle$ presents no disconnected outgoing link; otherwise $X$ would be homotopy equivalent to a complex with non-trivial fundamental groupoid. 
 \end{proof}
@@ -91,7 +90,7 @@ We are now in position to give an "oriented proof" of the fact that any two para
     \begin{enumerate}
         \item If $e=e'$, we can apply the induction hypothesis to $\gamma \setminus e$ and $\gamma' \setminus e'$. 
         \item If $e \neq e'$ and both edges are on the same $2$-face $F$ of $X$, then using the induction hypothesis we have that $\gamma$ and $\gamma'$ are respectively combinatorially homotopic to the paths $\delta$ and $\delta'$ defined as follows: they go from $x=\so(F)$ to $\sk(F)$ by the unique path containing $e$ and $e'$, respectively, and then from $\sk(F)$ to $y$ along the same arbitrary oriented path. 
-        Since $\delta$ and $\delta'$ are combinatorially homotopic by definition, the conclusion follows from the transitivity of the homotopy equivalence relation. 
+        Since $\delta$ and $\delta'$ are combinatorially homotopic by definition, the conclusion follows from the transitivity of the combinatorial homotopy equivalence relation. 
         \item Suppose that $e\neq e'$, and that $e$ and $e'$ are \emph{not} on the same $2$-face of $X$. 
         Since the outgoing link of $x$ is connected, there exists a path $\theta$ between $e$ and $e'$ in this link. 
         For every edge $e_i$ of $X$ in the path $\theta$, choose an oriented path $\gamma_i$ in $X$ from $x$ to $y$ going through $e_i$. 
