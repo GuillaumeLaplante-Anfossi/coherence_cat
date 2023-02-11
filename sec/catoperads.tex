@@ -6,7 +6,7 @@
 \subsection{Basic definitions}
 
 Throughout this section we consider structures without units.
-Unless otherwise stated, the adjective "non-unital" will be implicitly assumed. 
+Unless otherwise stated, the adjective ``non-unital" will be implicitly assumed. 
 
 \begin{definition} 
 \label{def:catoperad}
@@ -99,6 +99,112 @@ and hexagonal identities \\
 The diagrams above hold for all instances of composable $\beta$ and $\theta$; these depend on the indices $i,j,k$, which are omitted for the sake of readability. 
 Observe that a categorified non-symmetric operad concentrated in arity $1$ is a non-symmetric monoidal category.
 
+One can picture an object $\mu \in \mathcal{P}(n)$ as a planar tree with one vertex decorated by $\mu$, $n$ leaves and one root (a \emph{corolla}). 
+The $\circ_i$ bifunctors then correspond to the operation of \emph{grafting} a corolla on top of another.
+Iterated applications of the $\circ_i$ give rise to fully nested planar trees \cite[Definition 2.2]{laplante-anfossiDiagonalOperahedra2022a}, with vertices decorated by objects of $\mathcal{P}$, see \cref{fig:treeandnesting}. 
+The $\beta$ and $\theta$ arrows correspond to the sequential and parallel axioms of an operad, and relate the two possible ways of parenthesizing a tree with $3$ vertices, see \cref{fig:betatheta}. 
+
+\begin{figure}[h!]
+\begin{center}
+\resizebox{0.25\linewidth}{!}{
+\quad
+\begin{tikzpicture}
+    \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\mu$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,2) {\small $\nu$};  
+    \draw[-] (t3)--(t2) node {};
+    \draw[-] (t2)--(t1) node {};
+    \draw [Plum,rounded corners,thick] (-0.15+2,0.7) -- (-0.3+2,0.9) -- (-0.3+2,2.1) -- (-0.15+2,2.3) -- (0.15+2,2.3) -- (0.3+2,2.1) -- (0.3+2,0.9) -- (0.15+2,0.7) -- cycle;
+
+    \node (B) at (1,1) {$\overset{\beta}{\longrightarrow}$};
+
+    \node (b3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (2,0) {\small $\kappa$};
+    \node (b2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (2,1) {\small $\mu$};
+    \node (b1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (2,2) {\small $\nu$};  
+    \draw[-] (b3)--(b2) node {};
+    \draw[-] (b2)--(b1) node {};
+    \draw [Plum,rounded corners,thick] (1.85-2,-0.3) -- (1.7-2,-.1) -- (1.7-2,1.1) -- (1.85-2,1.3) -- (2.15-2,1.3) -- (2.3-2,1.1) -- (2.3-2,-.1) -- (2.15-2,-.3) -- cycle;
+\end{tikzpicture}} \quad\quad \raisebox{2.75em}{}\quad\quad 
+\resizebox{0.4\linewidth}{!}{
+\raisebox{1em}{\begin{tikzpicture}
+    \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.71,0.71) {\small $\mu$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.71,0.71) {\small $\nu$};  
+    \draw[-] (t3)--(t1) node {};
+    \draw[-] (t2)--(t3) node {};
+    \draw [Plum,rounded corners,thick] (0.11,-0.32) -- (-0.14,-0.28) -- (-0.99,0.57) -- (-1.03,0.81) -- (-0.81,1.03) -- (-0.57,0.99)  -- (0.28,0.14) -- (0.32,-0.11) -- cycle;
+
+    \node (B) at (1.5,0.5) {$\overset{\theta}{\longrightarrow}$};
+
+    \node (b3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (3,0) {\small $\kappa$};
+    \node (b2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (3+0.71,0.71) {\small $\mu$};
+    \node (b1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (3-0.71,0.71) {\small $\nu$};  
+    \draw[-] (b3)--(b1) node {};
+    \draw[-] (b2)--(b3) node {};
+    \draw [Plum,rounded corners,thick] (3-0.32,-0.11) -- (3-0.28,0.14) -- (3+0.57,0.99) -- (3+0.81,1.03) -- (3+1.03,0.81) -- (3+0.99,0.57) -- (3+0.14,-0.28) -- (3-0.11,-0.32) -- cycle;
+\end{tikzpicture}}} \raisebox{2.75em}{} 
+\end{center} 
+\caption{The $\beta$ and $\theta$ isomorphisms defining a categorified non-symmetric operad.}
+\label{fig:betatheta}
+\end{figure}
+
+Moreover, there is then one coherence diagram (pentagon or hexagon) for every planar tree with $4$ vertices, see \cref{fig:planar4trees}.
+
+\begin{figure}[h!]
+\centering 
+\begin{tikzpicture}
+    \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\mu$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,2) {\small $\nu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,3) {\small $\rho$};  
+    \draw[-] (t4)--(t1) node {};
+    \draw[-] (t3)--(t2) node {};
+    \draw[-] (t2)--(t1) node {};
+\end{tikzpicture}
+\quad \quad
+\begin{tikzpicture}
+    \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,1) {\small $\mu$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,2) {\small $\nu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,1) {\small $\rho$};  
+    \draw[-] (t4)--(t3) node {};
+    \draw[-] (t3)--(t2) node {};
+    \draw[-] (t2)--(t1) node {};
+\end{tikzpicture}
+\quad \quad
+\begin{tikzpicture}
+    \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,1) {\small $\mu$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,1) {\small $\nu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,2) {\small $\rho$};  
+    \draw[-] (t4)--(t1) node {};
+    \draw[-] (t3)--(t1) node {};
+    \draw[-] (t2)--(t3) node {};
+\end{tikzpicture}
+\quad \quad
+\begin{tikzpicture}
+    \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\mu$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,2) {\small $\nu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,2) {\small $\rho$};  
+    \draw[-] (t4)--(t2) node {};
+    \draw[-] (t3)--(t2) node {};
+    \draw[-] (t2)--(t1) node {};
+\end{tikzpicture}
+\quad \quad
+\begin{tikzpicture}
+    \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-1,1) {\small $\mu$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\nu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (1,1) {\small $\rho$};  
+    \draw[-] (t4)--(t3) node {};
+    \draw[-] (t3)--(t2) node {};
+    \draw[-] (t3)--(t1) node {};
+\end{tikzpicture}
+\caption{The five planar trees with four vertices, giving rise to the pentagonal (first three) and hexagonal (last two) identites.}
+\label{fig:planar4trees}
+\end{figure}
+
 \begin{rem}
 \label{rem:DPLA}
 K. Do{\v s}en and Z. Petri{\'c} introduce in \cite[Section 12]{DP15} the notion of weak Cat-operad.
@@ -106,6 +212,10 @@ Despite looking different at first sight, the two notions are in fact equivalent
 The crucial observation is the following: the $\theta$-isomorphisms of Do{\v s}en--Petri{\'c} comprise both the isomorphisms~$\theta$ in \cref{def:catoperad} and their inverses $\theta^{-1}$.
 Therefore, there are only two pentagonal coherence diagrams in the definition of a weak Cat-operad, the equations ($\beta$ $pent_e$) and ($\beta\theta 2_e$) of \cite[Section 9]{DP15}.
 The set of diagrams of the form ($\beta$ $pent_e$) is the same as the set of diagrams which arises from the first pentagon in \cref{def:catoperad}, while the set of diagrams of the form ($\beta\theta 2_e$) is partitioned into the sets of diagrams which arise from the second and third pentagons in \cref{def:catoperad}.
+
+We will give in \cref{thm:coherence-operahedra} two topological proofs of coherence for categorified non-symmetric operads.
+A benefit of our presentation is that, adopting the oriented approach (see the second proof of \cref{thm:coherence-operahedra}), we get a proof of coherence where $\beta$ and $\theta$ are both treated as rewriting rules, in contrast with the proof in \cite{DP15}, which proceeds in two stages: first get rid of $\beta$ (rewriting), then deal with $\theta$. 
+See also \cref{rem:29}.
 \end{rem}
 
 \begin{definition}
@@ -151,23 +261,25 @@ Observe that a strong (resp. strict) morphism between categorified non-symmetric
 
 We now aim at the coherence theorem for categorified non-symmetric operads.
 In order to state the theorem, we construct the free non-symmetric categorified operad on a family of sets $S=\{S_n\}_{n \geq 1}$.
-We define a family of groupoids $\mathcal{S}=\{\mathcal{S}_n\}_{n \geq 1}$ whose objects are given by the following rules:
+We define a family of categories $\mathcal{S}=\{\mathcal{S}_n\}_{n \geq 1}$ whose objects are given by the following rules:
 \begin{enumerate}
     \item if $\mu \in S_n$, then $\mu$ is an object of $\mathcal{S}_n$;
     \item if $\mu \in \mathcal{S}_m$ and $\nu \in \mathcal{S}_n$, then $\mu \circ_i \nu$ is an object of $\mathcal{S}_{m-1+n}$, for any $1 \leq i \leq m$.
 \end{enumerate}
-Now we define a set $M$ of basic morphisms $\id_\mu : \mu \to \mu$ for all objects $\mu\in \mathcal{S}$, $\beta: (\kappa \circ_i \mu) \circ_{j+i-1} \nu \leftrightarrow \kappa \circ_i (\mu \circ_j \nu) : \beta^{-1}$ for every $\kappa \in \mathcal{S}_m, \mu \in \mathcal{S}_n, \nu \in \mathcal{S}_k$, $1 \leq i \leq m$ and $1 \leq j \leq n$, and $\theta: (\kappa \circ_i \nu) \circ_{j-1+k} \mu \leftrightarrow (\kappa \circ_j \mu) \circ_i \nu : \theta^{-1}$ whenever $i<j$.
-We then define the morphisms of the family $\mathcal{S}$ by the following rules:
+If an object $\mu$ is in $\mathcal{S}_n$, we say that $\mu$ has \emph{arity} $n$. 
+Now we define a set $M$ of basic morphisms $\mu\in \mathcal{S}$, $\beta: (\kappa \circ_i \mu) \circ_{j+i-1} \nu \leftrightarrow \kappa \circ_i (\mu \circ_j \nu) : \beta^{-1}$ for every $\kappa \in \mathcal{S}_m, \mu \in \mathcal{S}_n, \nu \in \mathcal{S}_k$, $1 \leq i \leq m$ and $1 \leq j \leq n$, and $\theta: (\kappa \circ_i \nu) \circ_{j-1+k} \mu \leftrightarrow (\kappa \circ_j \mu) \circ_i \nu : \theta^{-1}$ whenever $i<j$.
+We then define the generating morphisms of the family $\mathcal{S}$ by the following rules:
 \begin{enumerate}
-    \item if $\phi \in M$, then $\phi$ is a morphism of $\mathcal{S}$; 
-    \item if $\phi_1: t_1 \to t_2$ and $\phi_2: t_2 \to t_3$ are morphisms of $\mathcal{S}$, then so is $\phi_2 \phi_1 : t_1 \to t_3$;
-    \item if $\phi : t_1 \to t_2$ is a morphism in $\mathcal{S}_m$, and $t_3 \in \mathcal{S}_n$, then $\phi \circ_i \id : t_1 \circ_i t_3 \to t_2 \circ_i t_3$ is a morphism for any $1 \leq i \leq m$, and $\id \circ_j \phi : t_3 \circ_j t_1 \to t_3 \circ_j t_2$ is a morphism for any $1 \leq j \leq n$. 
+    \item if $\phi \in M$, then $\phi$ is a generating morphism of $\mathcal{S}$; 
+    \item if $\phi : t_1 \to t_2$ is a generating morphism in $\mathcal{S}$, and $t_3 \in \mathcal{S}$, then $\phi \circ_i \id : t_1 \circ_i t_3 \to t_2 \circ_i t_3$ is a morphism for any $i$ between $1$ and the arity of $t_1$; and $\id \circ_j \phi : t_3 \circ_j t_1 \to t_3 \circ_j t_2$ is a morphism for any $j$ between $1$ and the arity of $t_3$. 
 \end{enumerate}
-This finishes the construction of our family of groupoids $\mathcal{S}$.
+Note that by construction, for all $\phi : t_1 \to t_2$, the objects $t_1$ and $t_2$ have the same arity, and we say that $\phi$ has this \emph{arity}. 
+We then define $\mathcal{S}_n$ as the free category over all generating morphisms of arity $n$. 
+This finishes the construction of our family $\mathcal{S}$ of categories.
 
-One can think about the objects of $\mathcal{S}$ as the set of fully nested planar trees \cite[Definition 2.2]{laplante-anfossiDiagonalOperahedra2022a} whose vertices are decorated by objects of $S$, subject to the requirement that if a vertex has $n$ incoming edges, it must be decorated by an element of $S_n$. 
-The nestings in the tree represent the order in which the objects decorating the vertices should be formally composed, as represented in \cref{fig:treeandnesting}.
-Morphisms in $\mathcal{S}$ are sequences of applications of the associativity rules $\beta$ and $\theta$, moving one nest at a time to a neighbouring pair of vertices. 
+One can think about the objects of $\mathcal{S}$ as the set of fully nested planar trees whose vertices are decorated by objects of $S$, subject to the requirement that if a vertex has $n$ incoming edges, it must be decorated by an element of $S_n$. 
+The nests in the tree represent the order in which the objects decorating the vertices should be formally composed, as represented in \cref{fig:treeandnesting}.
+Morphisms in $\mathcal{S}$ are sequences of applications of the associativity rules $\beta$ and $\theta$, moving one nest at a time to a neighbouring pair of vertices, as in \cref{fig:betatheta}. 
 
 \begin{figure}[h!]
 \centering
@@ -202,32 +314,33 @@ Morphisms in $\mathcal{S}$ are sequences of applications of the associativity ru
 \end{figure} 
 
 \begin{definition}
-    We denote by $\mathcal{F}(S)$ the quotient of the family of groupoids $\mathcal{S}$ by the axioms of bifunctors, and the coherence diagrams defining a categorified non-symmetric operad. 
+    We denote by $\mathcal{F}(S)$ the quotient of the family of categories $\mathcal{S}$ by the axioms of bifunctors, and the coherence diagrams defining a categorified non-symmetric operad. 
 \end{definition}
 
 \begin{rem}
-    In the tree representation for $\mathcal{S}$, there is a coherence diagram for every decorated planar tree with 4 vertices \cite[p.258]{curienSyntacticAspectsHypergraph2019a}.
+    In the tree representation for $\mathcal{S}$, there is a coherence diagram for every decorated planar tree with 4 vertices, see \cref{fig:planar4trees}.
     In the rewriting system formed by the fully nested planar trees and the $\beta$ and $\theta$ arrows, these correspond precisely to the critical pairs \cite[Section 6.2]{baaderTermRewritingAll1998}.
 \end{rem}
 
 We obtain that $\mathcal{F}(S)$ is the free categorified non-symmetric operad on $S$. 
-That is, for any categorified non-symmetric operad $\mathcal{P}$, and for family of functions $\rho_n : S_n \to \obj(\mathcal{P}(n))$, there is a unique strict morphism of non-symmetric categorified operads $[-]:\mathcal{F}(S) \to \mathcal{P}$ that extends $\rho=\{\rho_n\}_{n\geq 1}$. 
+That is, for any categorified non-symmetric operad $\mathcal{P}$, and for family of functions $\rho_n : S_n \to \obj(\mathcal{P}(n))$, there is a unique strict morphism of non-symmetric categorified operads $\mathcal{F}(S) \to \mathcal{P}$ that extends $\rho=\{\rho_n\}_{n\geq 1}$. 
+By precomposing it with the quotient map $\mathcal{S} \to \mathcal{F}(S)$, we get a levelwise functor $[-]:\mathcal{S} \to \mathcal{P}$.
 
 \begin{thm}[Coherence theorem]
 \label{thm:coherence-operahedra}
-    For any categorified non-symmetric operad $\mathcal{P}$, for any family of functions $\rho : S \to \obj(P)$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{F}(S)$, we have $[\phi_1]=[\phi_2]$.
+    For any categorified non-symmetric operad $\mathcal{P}$, for any family of functions $\rho : S \to \obj(P)$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{S}$, we have $[\phi_1]=[\phi_2]$.
 \end{thm}
 
 \begin{proof}
 The morphisms of $\mathcal{S}$ are in bijection with combinatorial paths on a family of polytopes called operahedra \cite[Section 2.1]{laplante-anfossiDiagonalOperahedra2022a}, see also \cite[Section 13]{DP15} and \cite{curienSyntacticAspectsHypergraph2019a}, whose faces are in bijection with the set of all nestings on a planar tree. 
 There is one operahedron for each planar tree $t$, and its vertices are in bijection with the maximal nestings of~$t$. 
-Two parallel morphisms in $\mathcal{S}$ thus define two parallel combinatorial parths on some operahedron. 
+Two parallel morphisms in $\mathcal{S}$ thus define two parallel combinatorial paths on some operahedron. 
 Since an operahedron is simply connected, \cref{thm:top-coherence} implies that these two combinatorial paths are combinatorially homotopic. 
 The result then follows from the fact that a $2$-face of an operahedron is exactly either a square (witnessing naturality), a pentagon or an hexagon (witnessing a coherence condition) as in \cref{def:catoperad} above.
 \end{proof}
 
 \begin{proof}[Second proof]
-    Alternatively, since the operahedra are polytopes, one can use \cref{p:second-proof}. 
+    Alternatively, since the operahedra are polytopes, one can use \cref{prop:polytopes} and \cref{p:second-proof}. 
     Choosing a generic vector $\vec v$ which has strictly decreasing coordinates for the Loday realizations \cite[Section 2.2]{laplante-anfossiDiagonalOperahedra2022a} gives the orientations of the diagrams given in \cref{def:catoperad} on every $2$-face \cite[Proposition 3.11]{laplante-anfossiDiagonalOperahedra2022a}.
     The posets/rewriting system obtained generalize the Tamari lattice on fully nested linear trees \cite[Definition 2.8]{laplante-anfossiDiagonalOperahedra2022a}.
     One then obtains a topological proof of coherence which is almost word for word the original proof of MacLane \cite[Theorem 3.1]{MacLane63}, suitably generalized to categorified operads. 
@@ -244,7 +357,7 @@ Restricting the theorem above to non-symmetric operads concentrated in arity $1$
 \end{corollary}
 
 \subsection{Symmetric monoidal categories} 
-One can use the same ideas to prove MacLane's coherence theorem for \emph{symmetric} monoidal categories, using the family of permutoassociahedra \cite{kapranov1993,reinerCoxeterassociahedra1994}. 
+One can use the same ideas to prove MacLane's coherence theorem for \emph{symmetric} monoidal categories, using the family of permutoassociahedra \cite{kapranov1993,reinerCoxeterassociahedra1994,baralicSimplePermutoassociahedron2019,CastilloLiu21}. 
 Here we simply formulate the theorem, the proof is really the same as the one of \cref{thm:coherence-operahedra}.
 
 Let $W_n$ denote the set of non-commutative, fully parenthesized words on $n$ distinct letters. 
@@ -255,17 +368,23 @@ For instance, if $w=((ab)c)(ed)$, then the associated functor is defined on obje
     [w] \quad : \quad \mathcal{C}^{\times n} & \to & \mathcal{C} \\
     (a,b,c,d,e) & \mapsto & ((a \otimes b) \otimes c)\otimes (e \otimes d) \ .
 \end{eqnarray*}
-We consider the groupoid $\mathcal{W}_n$ which has objects the elements of $W_n$, and morphisms generated by the ones of the form $\phi : w_1 \to w_2$, where the word $w_2$ is obtained from $w_1$ by applying either $\alpha : ((ww')w'') \to (w(w'w''))$ or $\tau : ab \to ba$ to a subword of $w_1$.
-To any such $\phi$ one can associate a natural transformation $[\phi] : [w_1] \to [w_2]$ in the obvious way. 
+We consider the free category $\mathcal{W}_n$ which has objects the elements of $W_n$, and morphisms generated by the ones of the form $\phi : w_1 \to w_2$, where the word $w_2$ is obtained from $w_1$ by applying either $\alpha : ((ww')w'') \to (w(w'w''))$, $\alpha^{-1}$, $\tau : ab \to ba$ or $\tau^{-1}$ to a subword of $w_1$.
+To any such $\phi$ one can associate a natural transformation $[\phi] : [w_1] \to [w_2]$ in $\mathcal{C}$ in the obvious way. 
 
 \begin{thm}[MacLane's coherence theorem]
     \label{thm:MacLane}
     For any symmetric monoidal category $\mathcal{C}$, and for any pair of parallel morphisms $\phi_1,\phi_2: w_1 \to w_2$ in $\mathcal{W}=\{\mathcal{W}_n\}_{n\geq 1}$, we have $[\phi_1]=[\phi_2]$.
 \end{thm}
 
+\begin{rem}
+\label{rem:29}
+MacLane's original proof \cite{MacLane63} proceeds in two stages, (anachronically) much like the one of Do{\v s}en--Petri{\'c} for weak Cat-operads (\cref{rem:DPLA}).
+But the second proof of \cref{thm:coherence-operahedra} suggests a one stage proof: indeed, fixing a total order on the letters, allowing $\tau: ab \to ba$ only if the maximal letter is in $a$ (and adding $\tau^{-1}$), we get a terminating and confluent rewriting system. 
+\end{rem}
+
 \subsection{Further applications} 
 \label{sec:further}
-One can also use the same strategy to prove coherence theorem \emph{unital} non-symmetric monoidal categories, using the unital associahedra of F. Muro and A. Tonks \cite{muroUnitalAssociahedra2014}.
+One can also use the same strategy to prove coherence for \emph{unital} non-symmetric monoidal categories, using the unital associahedra of F. Muro and A. Tonks \cite{muroUnitalAssociahedra2014}.
 
 It is natural to ask if the construction of unital associahedra could be extended to the permutoassociahedra, in such a way as to provide a topological proof of coherence for unital symmetric monoidal categories. 
 The question of the existence of these constructions at the operadic level (i.e. does there exist unital operahedra, symmetric operahedra, and unital symmetric operahedra?) is, to our knowledge, still open as well. 
