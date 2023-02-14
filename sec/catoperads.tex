@@ -26,6 +26,7 @@ $$ \begin{array}{clll}
     \overset{\cong}{\longrightarrow} (\kappa \circ_j \mu) \circ_i \nu \ , & \text{when}\ i < j \ , 
 \end{array}  $$
 such that the following diagrams commute: the pentagonal \\
+\begin{center}
 \resizebox{\linewidth}{!}{
 \begin{tikzpicture}[scale=2.5]
     \node (P1) at (0,1) {$((\kappa\circ\tau)\circ\mu)\circ\nu$};
@@ -50,7 +51,11 @@ such that the following diagrams commute: the pentagonal \\
     \draw[->] (P3)--(P4) node[midway,below left] {$\beta_{\kappa\circ\nu,\tau,\mu}$};
     \draw[->] (P1)--(P5) node[midway,above right] {$\beta_{\kappa,\tau,\mu}\circ 1_\nu$};
     \draw[->] (P5)--(P4) node[midway,below right] {$\theta_{\kappa,\tau\circ\mu,\nu}$};
-\end{tikzpicture} \quad 
+\end{tikzpicture} } \\
+\end{center}
+
+\begin{center}
+\resizebox{0.5\linewidth}{!}{
 \begin{tikzpicture}[scale=2.5]
     \node (P1) at (0,1) {$((\kappa\circ\tau)\circ\mu)\circ\nu$};
     \node (P2) at (-0.866,0.5) {$((\kappa\circ\mu)\circ\tau)\circ\nu$};
@@ -62,10 +67,12 @@ such that the following diagrams commute: the pentagonal \\
     \draw[->] (P3)--(P4) node[midway,below left] {$\beta_{\kappa,\mu,\nu}\circ 1_\tau$};
     \draw[->] (P1)--(P5) node[midway,above right] {$\beta_{\kappa\circ\tau,\mu,\nu}$};
     \draw[->] (P5)--(P4) node[midway,below right] {$\theta_{\kappa,\tau,\mu\circ\nu}$};
-\end{tikzpicture} } \\
+\end{tikzpicture}}
+\end{center}
+
 and hexagonal identities \\
 \begin{center}
-\resizebox{0.8\linewidth}{!}{
+\resizebox{\linewidth}{!}{
 \begin{tikzpicture}[scale=2.5]
     \node (P1) at (0,1) {$((\kappa\circ\tau)\circ\mu)\circ\nu$};
     \node (P2) at (-0.866,0.5) {$(\kappa\circ(\tau\circ\mu))\circ\nu$};
@@ -101,8 +108,43 @@ Observe that a categorified non-symmetric operad concentrated in arity $1$ is a 
 
 One can picture an object $\mu \in \mathcal{P}(n)$ as a planar tree with one vertex decorated by $\mu$, $n$ leaves and one root (a \emph{corolla}). 
 The $\circ_i$ bifunctors then correspond to the operation of \emph{grafting} a corolla on top of another.
-Iterated applications of the $\circ_i$ give rise to fully nested planar trees \cite[Definition 2.2]{laplante-anfossiDiagonalOperahedra2022a}, with vertices decorated by objects of $\mathcal{P}$, see \cref{fig:treeandnesting}. 
-The $\beta$ and $\theta$ arrows correspond to the sequential and parallel axioms of an operad, and relate the two possible ways of parenthesizing a tree with $3$ vertices, see \cref{fig:betatheta}. 
+Iterated applications of the $\circ_i$ can be visualized as fully nested planar trees \cite[Definition 2.2]{laplante-anfossiDiagonalOperahedra2022a}, with vertices decorated by objects of $\mathcal{P}$, see \cref{fig:treeandnesting}. 
+
+\begin{figure}[h!]
+\centering
+\resizebox{0.4\linewidth}{!}{
+\begin{tikzpicture}[scale=1.2]
+        \node (E)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0,0) {\small $\kappa$};
+        \node (F) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-1,1) {\small $\tau$};
+        \node (A) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-1,2) {\small $\mu$};
+        \node (q) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\nu$};
+        \node (r) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (1.65,1) {\small $\rho$};
+        \node (x) [circle,draw=none,minimum size=4mm,inner sep=0.1mm] at (-0.4,0.62) {\color{Cyan} \small $1$};
+        \node (y) [circle,draw=none,minimum size=4mm,inner sep=0.1mm] at (-0.875,1.6) {\color{Cerulean} \small $2$};
+        \node (u) [circle,draw=none,minimum size=4mm,inner sep=0.1mm] at (0.15,0.65) {\color{NavyBlue} \small $3$};
+        \node (v) [circle,draw=none,minimum size=4mm,inner sep=0.1mm] at (1.1,0.5) {\color{MidnightBlue} \small $4$};
+        \draw[-] (0.8,0.8) -- (E)--(-1.65,0.8); 
+        \draw[-] (-1.2,2.8) -- (A)--(-0.8,2.8); 
+        \draw[-] (-0.2,1.8) -- (q)--(0.2,1.8);   
+        \draw[-] (1.85,1.8) -- (r)--(1.45,1.8); 
+        \draw[-] (E)--(0,-0.55); 
+        \draw[-] (-1.4,1.8) -- (F)--(-0.6,1.8);   
+        \draw[-] (E)--(F) node {};
+        \draw[-] (E)--(q) node  {};
+        \draw[-] (E)--(r) node {};
+        \draw[-] (F)--(A) node {};
+        \draw [Cyan,rounded corners,thick] (0.11,-0.32) -- (-0.14,-0.28) -- (-1.28,0.86) -- (-1.32,1.1) --  (-1.1,1.32) -- (-0.86,1.28) -- (0.28,0.14) -- (0.32,-0.11) -- cycle;
+        \draw [Cerulean,rounded corners,thick] (0.14,-0.42) -- (-0.18,-0.36) -- (-1.2,0.6) -- (-1.4,0.9) -- (-1.3,2.1) -- (-1.15,2.3) -- (-0.85,2.3) -- (-0.7,2.1) --  (-0.7,1.3) -- (0.36,0.18) -- (0.42,-0.14) -- cycle;
+        \draw [NavyBlue,rounded corners,thick] (0.18,-0.5) -- (-0.23,-0.45) -- (-1.3,0.6) -- (-1.5,0.9) --  (-1.35,2.3) --  (-1.15,2.4) --  (-0.85,2.4) --  (-0.7,2.3) --  (.25,1.2) -- (0.45,0.23) -- (0.5,-0.18) -- cycle;
+        \draw [MidnightBlue,rounded corners,thick] (0.16,-0.6) -- (-0.25,-0.55) -- (-1.4,0.6) -- (-1.6,0.9) --  (-1.4,2.4) --  (-1.15,2.5) --  (-0.75,2.5) --  (1.8,1.2) --  (1.95,1) --  (1.8,0.8) -- cycle;
+\end{tikzpicture} }
+\caption{A fully nested planar tree.}
+\label{fig:treeandnesting}
+\end{figure} 
+
+
+The $\beta$ and $\theta$ arrows correspond to the sequential and parallel axioms of an operad, and relate the two possible ways of nesting a tree with $3$ vertices, see \cref{fig:betatheta}. 
+Moreover, there is then one coherence diagram (pentagon or hexagon) for every planar tree with $4$ vertices, see \cref{fig:planar4trees}.
 
 \begin{figure}[h!]
 \begin{center}
@@ -148,15 +190,15 @@ The $\beta$ and $\theta$ arrows correspond to the sequential and parallel axioms
 \label{fig:betatheta}
 \end{figure}
 
-Moreover, there is then one coherence diagram (pentagon or hexagon) for every planar tree with $4$ vertices, see \cref{fig:planar4trees}.
+
 
 \begin{figure}[h!]
 \centering 
 \begin{tikzpicture}
     \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
-    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\mu$};
-    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,2) {\small $\nu$};  
-    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,3) {\small $\rho$};  
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\tau$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,2) {\small $\mu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,3) {\small $\nu$};  
     \draw[-] (t4)--(t1) node {};
     \draw[-] (t3)--(t2) node {};
     \draw[-] (t2)--(t1) node {};
@@ -164,9 +206,9 @@ Moreover, there is then one coherence diagram (pentagon or hexagon) for every pl
 \quad \quad
 \begin{tikzpicture}
     \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
-    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,1) {\small $\mu$};
-    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,2) {\small $\nu$};  
-    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,1) {\small $\rho$};  
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,1) {\small $\tau$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,2) {\small $\mu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,1) {\small $\nu$};  
     \draw[-] (t4)--(t3) node {};
     \draw[-] (t3)--(t2) node {};
     \draw[-] (t2)--(t1) node {};
@@ -174,9 +216,9 @@ Moreover, there is then one coherence diagram (pentagon or hexagon) for every pl
 \quad \quad
 \begin{tikzpicture}
     \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
-    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,1) {\small $\mu$};
-    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,1) {\small $\nu$};  
-    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,2) {\small $\rho$};  
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,1) {\small $\tau$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,1) {\small $\mu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,2) {\small $\nu$};  
     \draw[-] (t4)--(t1) node {};
     \draw[-] (t3)--(t1) node {};
     \draw[-] (t2)--(t3) node {};
@@ -184,9 +226,9 @@ Moreover, there is then one coherence diagram (pentagon or hexagon) for every pl
 \quad \quad
 \begin{tikzpicture}
     \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
-    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\mu$};
-    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,2) {\small $\nu$};  
-    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,2) {\small $\rho$};  
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\tau$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.7,2) {\small $\mu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.7,2) {\small $\nu$};  
     \draw[-] (t4)--(t2) node {};
     \draw[-] (t3)--(t2) node {};
     \draw[-] (t2)--(t1) node {};
@@ -194,9 +236,9 @@ Moreover, there is then one coherence diagram (pentagon or hexagon) for every pl
 \quad \quad
 \begin{tikzpicture}
     \node (t3)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\small $\kappa$};
-    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-1,1) {\small $\mu$};
-    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\nu$};  
-    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (1,1) {\small $\rho$};  
+    \node (t2) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-1,1) {\small $\tau$};
+    \node (t1) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $\mu$};  
+    \node (t4) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (1,1) {\small $\nu$};  
     \draw[-] (t4)--(t3) node {};
     \draw[-] (t3)--(t2) node {};
     \draw[-] (t3)--(t1) node {};
@@ -207,7 +249,7 @@ Moreover, there is then one coherence diagram (pentagon or hexagon) for every pl
 
 \begin{rem}
 \label{rem:DPLA}
-K. Do{\v s}en and Z. Petri{\'c} introduce in \cite[Section 12]{DP15} the notion of weak Cat-operad.
+K. Do{\v s}en and Z. Petri{\'c} introduced in \cite[Section 12]{DP15} the notion of weak Cat-operad.
 Despite looking different at first sight, the two notions are in fact equivalent.
 The crucial observation is the following: the $\theta$-isomorphisms of Do{\v s}en--Petri{\'c} comprise both the isomorphisms~$\theta$ in \cref{def:catoperad} and their inverses $\theta^{-1}$.
 Therefore, there are only two pentagonal coherence diagrams in the definition of a weak Cat-operad, the equations ($\beta$ $pent_e$) and ($\beta\theta 2_e$) of \cite[Section 9]{DP15}.
@@ -219,9 +261,9 @@ See also \cref{rem:29}.
 \end{rem}
 
 \begin{definition}
-    A \emph{strong morphism of categorified non-symmetric operads} $F: \mathcal{P} \to \mathcal{Q}$ is a collection of functors $F_n : \mathcal{P}(n) \to \mathcal{Q}(n)$ together with natural isomorphisms $\gamma_{\kappa,\mu}: F_{m-1+n}(\kappa \circ_i \mu) \overset{\cong}{\longrightarrow} F_m(\kappa) \circ_i F_n(\mu)$ such that the following diagrams commute:
+    A \emph{strong morphism of categorified non-symmetric operads} $F: \mathcal{P} \to \mathcal{Q}$ is a collection of functors $F_n : \mathcal{P}(n) \to \mathcal{Q}(n)$ together with natural isomorphisms $$ \gamma_{\kappa,\mu}: F_{m-1+n}(\kappa \circ_i \mu) \overset{\cong}{\longrightarrow} F_m(\kappa) \circ_i F_n(\mu) $$ such that the following diagrams commute:
     \begin{center}
-    \resizebox{0.8\linewidth}{!}{
+    \resizebox{\linewidth}{!}{
     \begin{tikzpicture}[scale=3]
         \node (P1) at (0,1) {$F((\kappa\circ\mu)\circ\nu)$};
         \node (P2) at (-0.866,0.5) {$F(\kappa\circ\mu)\circ F(\nu)$};
@@ -267,54 +309,22 @@ We define a family of categories $\mathcal{S}=\{\mathcal{S}_n\}_{n \geq 1}$ whos
     \item if $\mu \in \mathcal{S}_m$ and $\nu \in \mathcal{S}_n$, then $\mu \circ_i \nu$ is an object of $\mathcal{S}_{m-1+n}$, for any $1 \leq i \leq m$.
 \end{enumerate}
 If an object $\mu$ is in $\mathcal{S}_n$, we say that $\mu$ has \emph{arity} $n$. 
-Now we define a set $M$ of basic morphisms $\mu\in \mathcal{S}$, $\beta: (\kappa \circ_i \mu) \circ_{j+i-1} \nu \leftrightarrow \kappa \circ_i (\mu \circ_j \nu) : \beta^{-1}$ for every $\kappa \in \mathcal{S}_m, \mu \in \mathcal{S}_n, \nu \in \mathcal{S}_k$, $1 \leq i \leq m$ and $1 \leq j \leq n$, and $\theta: (\kappa \circ_i \nu) \circ_{j-1+k} \mu \leftrightarrow (\kappa \circ_j \mu) \circ_i \nu : \theta^{-1}$ whenever $i<j$.
+Now we define a set $M$ of basic morphisms $\beta: (\kappa \circ_i \mu) \circ_{j+i-1} \nu \leftrightarrow \kappa \circ_i (\mu \circ_j \nu) : \beta^{-1}$ for every $\kappa \in \mathcal{S}_m, \mu \in \mathcal{S}_n, \nu \in \mathcal{S}_k$, $1 \leq i \leq m$ and $1 \leq j \leq n$, and $\theta: (\kappa \circ_i \nu) \circ_{j-1+k} \mu \leftrightarrow (\kappa \circ_j \mu) \circ_i \nu : \theta^{-1}$ whenever $i<j$.
 We then define the generating morphisms of the family $\mathcal{S}$ by the following rules:
 \begin{enumerate}
     \item if $\phi \in M$, then $\phi$ is a generating morphism of $\mathcal{S}$; 
-    \item if $\phi : t_1 \to t_2$ is a generating morphism in $\mathcal{S}$, and $t_3 \in \mathcal{S}$, then $\phi \circ_i \id : t_1 \circ_i t_3 \to t_2 \circ_i t_3$ is a morphism for any $i$ between $1$ and the arity of $t_1$; and $\id \circ_j \phi : t_3 \circ_j t_1 \to t_3 \circ_j t_2$ is a morphism for any $j$ between $1$ and the arity of $t_3$. 
+    \item if $\phi : t_1 \to t_2$ is a generating morphism in $\mathcal{S}$, and $t_3 \in \mathcal{S}$, then $\phi \circ_i \id : t_1 \circ_i t_3 \to t_2 \circ_i t_3$ and $\id \circ_j \phi : t_3 \circ_j t_1 \to t_3 \circ_j t_2$ are morphisms, for any $i$ (resp. $j$) between $1$ and the arity of $t_1$ (resp. $t_3$).
 \end{enumerate}
-Note that by construction, for all $\phi : t_1 \to t_2$, the objects $t_1$ and $t_2$ have the same arity, and we say that $\phi$ has this \emph{arity}. 
+Note that by construction, for every morphism $\phi : t_1 \to t_2$, the objects $t_1$ and $t_2$ have the same arity, and we say that $\phi$ has this \emph{arity}. 
 We then define $\mathcal{S}_n$ as the free category over all generating morphisms of arity $n$. 
 This finishes the construction of our family $\mathcal{S}$ of categories.
 
 One can think about the objects of $\mathcal{S}$ as the set of fully nested planar trees whose vertices are decorated by objects of $S$, subject to the requirement that if a vertex has $n$ incoming edges, it must be decorated by an element of $S_n$. 
 The nests in the tree represent the order in which the objects decorating the vertices should be formally composed, as represented in \cref{fig:treeandnesting}.
-Morphisms in $\mathcal{S}$ are sequences of applications of the associativity rules $\beta$ and $\theta$, moving one nest at a time to a neighbouring pair of vertices, as in \cref{fig:betatheta}. 
-
-\begin{figure}[h!]
-\centering
-\resizebox{0.4\linewidth}{!}{
-\begin{tikzpicture}[scale=1.2]
-        \node (E)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0,0) {\small $1$};
-        \node (F) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-1,1) {\small $2$};
-        \node (A) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-1,2) {\small $3$};
-        \node (q) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,1) {\small $4$};
-        \node (r) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (1.65,1) {\small $5$};
-        \node (x) [circle,draw=none,minimum size=4mm,inner sep=0.1mm] at (-0.4,0.62) {\color{Cyan} \small $1$};
-        \node (y) [circle,draw=none,minimum size=4mm,inner sep=0.1mm] at (-0.875,1.6) {\color{Cerulean} \small $2$};
-        \node (u) [circle,draw=none,minimum size=4mm,inner sep=0.1mm] at (0.15,0.65) {\color{NavyBlue} \small $3$};
-        \node (v) [circle,draw=none,minimum size=4mm,inner sep=0.1mm] at (1.1,0.5) {\color{MidnightBlue} \small $4$};
-        \draw[-] (0.8,0.8) -- (E)--(-1.65,0.8); 
-        \draw[-] (-1.2,2.8) -- (A)--(-0.8,2.8); 
-        \draw[-] (-0.2,1.8) -- (q)--(0.2,1.8);   
-        \draw[-] (1.85,1.8) -- (r)--(1.45,1.8); 
-        \draw[-] (E)--(0,-0.55); 
-        \draw[-] (-1.4,1.8) -- (F)--(-0.6,1.8);   
-        \draw[-] (E)--(F) node {};
-        \draw[-] (E)--(q) node  {};
-        \draw[-] (E)--(r) node {};
-        \draw[-] (F)--(A) node {};
-        \draw [Cyan,rounded corners,thick] (0.11,-0.32) -- (-0.14,-0.28) -- (-1.28,0.86) -- (-1.32,1.1) --  (-1.1,1.32) -- (-0.86,1.28) -- (0.28,0.14) -- (0.32,-0.11) -- cycle;
-        \draw [Cerulean,rounded corners,thick] (0.14,-0.42) -- (-0.18,-0.36) -- (-1.2,0.6) -- (-1.4,0.9) -- (-1.3,2.1) -- (-1.15,2.3) -- (-0.85,2.3) -- (-0.7,2.1) --  (-0.7,1.3) -- (0.36,0.18) -- (0.42,-0.14) -- cycle;
-        \draw [NavyBlue,rounded corners,thick] (0.18,-0.5) -- (-0.23,-0.45) -- (-1.3,0.6) -- (-1.5,0.9) --  (-1.35,2.3) --  (-1.15,2.4) --  (-0.85,2.4) --  (-0.7,2.3) --  (.25,1.2) -- (0.45,0.23) -- (0.5,-0.18) -- cycle;
-        \draw [MidnightBlue,rounded corners,thick] (0.16,-0.6) -- (-0.25,-0.55) -- (-1.4,0.6) -- (-1.6,0.9) --  (-1.4,2.4) --  (-1.15,2.5) --  (-0.75,2.5) --  (1.8,1.2) --  (1.95,1) --  (1.8,0.8) -- cycle;
-\end{tikzpicture} }
-\caption{A fully nested planar tree.}
-\label{fig:treeandnesting}
-\end{figure} 
+Morphisms in $\mathcal{S}$ are sequences of applications of the associativity rules $\beta$ and $\theta$, moving one nest at a time to a neighbouring pair of vertices as in \cref{fig:betatheta}. 
 
 \begin{definition}
-    We denote by $\mathcal{F}(S)$ the quotient of the family of categories $\mathcal{S}$ by the axioms of bifunctors, and the coherence diagrams defining a categorified non-symmetric operad. 
+    We denote by $\mathcal{F}(S)$ the quotient of the family of categories $\mathcal{S}$ by localization (inverting the $\beta$ and $\theta$ morphisms), the axioms of bifunctors, and the coherence diagrams defining a categorified non-symmetric operad. 
 \end{definition}
 
 \begin{rem}
@@ -323,17 +333,17 @@ Morphisms in $\mathcal{S}$ are sequences of applications of the associativity ru
 \end{rem}
 
 We obtain that $\mathcal{F}(S)$ is the free categorified non-symmetric operad on $S$. 
-That is, for any categorified non-symmetric operad $\mathcal{P}$, and for family of functions $\rho_n : S_n \to \obj(\mathcal{P}(n))$, there is a unique strict morphism of non-symmetric categorified operads $\mathcal{F}(S) \to \mathcal{P}$ that extends $\rho=\{\rho_n\}_{n\geq 1}$. 
+That is, for any categorified non-symmetric operad $\mathcal{P}$, and for any family of functions $\rho_n : S_n \to \obj(\mathcal{P}(n))$, there is a unique \emph{strict} morphism of non-symmetric categorified operads $\mathcal{F}(S) \to \mathcal{P}$ which extends $\rho=\{\rho_n\}_{n\geq 1}$. 
 By precomposing it with the quotient map $\mathcal{S} \to \mathcal{F}(S)$, we get a levelwise functor $[-]:\mathcal{S} \to \mathcal{P}$.
 
 \begin{thm}[Coherence theorem]
 \label{thm:coherence-operahedra}
-    For any categorified non-symmetric operad $\mathcal{P}$, for any family of functions $\rho : S \to \obj(P)$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{S}$, we have $[\phi_1]=[\phi_2]$.
+    For any categorified non-symmetric operad $\mathcal{P}$, for any family of functions $\rho : S \to \obj(\mathcal{P})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{S}$, we have $[\phi_1]=[\phi_2]$.
 \end{thm}
 
 \begin{proof}
 The morphisms of $\mathcal{S}$ are in bijection with combinatorial paths on a family of polytopes called operahedra \cite[Section 2.1]{laplante-anfossiDiagonalOperahedra2022a}, see also \cite[Section 13]{DP15} and \cite{curienSyntacticAspectsHypergraph2019a}, whose faces are in bijection with the set of all nestings on a planar tree. 
-There is one operahedron for each planar tree $t$, and its vertices are in bijection with the maximal nestings of~$t$. 
+There is one operahedron for each planar tree $t$, and its vertices are in bijection with the maximal (full) nestings of~$t$ and edges between them are in bijection with the generating morphisms between the corresponding terms. 
 Two parallel morphisms in $\mathcal{S}$ thus define two parallel combinatorial paths on some operahedron. 
 Since an operahedron is simply connected, \cref{thm:top-coherence} implies that these two combinatorial paths are combinatorially homotopic. 
 The result then follows from the fact that a $2$-face of an operahedron is exactly either a square (witnessing naturality), a pentagon or an hexagon (witnessing a coherence condition) as in \cref{def:catoperad} above.
@@ -353,7 +363,7 @@ Restricting the theorem above to non-symmetric operads concentrated in arity $1$
 
 \begin{corollary}[MacLane's coherence theorem for non-symmetric monoidal categories]
 \label{cor:MacLane}
-    For any non-symmetric monoidal category $\mathcal{C}$, for any function $\rho : S \to \obj(\mathcal{C})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{F}(S)$, we have $[\phi_1]=[\phi_2]$.
+    For any non-symmetric monoidal category $\mathcal{C}$, for any function $\rho : S \to \obj(\mathcal{C})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{S}$, we have $[\phi_1]=[\phi_2]$.
 \end{corollary}
 
 \subsection{Symmetric monoidal categories} 
@@ -368,7 +378,7 @@ For instance, if $w=((ab)c)(ed)$, then the associated functor is defined on obje
     [w] \quad : \quad \mathcal{C}^{\times n} & \to & \mathcal{C} \\
     (a,b,c,d,e) & \mapsto & ((a \otimes b) \otimes c)\otimes (e \otimes d) \ .
 \end{eqnarray*}
-We consider the free category $\mathcal{W}_n$ which has objects the elements of $W_n$, and morphisms generated by the ones of the form $\phi : w_1 \to w_2$, where the word $w_2$ is obtained from $w_1$ by applying either $\alpha : ((ww')w'') \to (w(w'w''))$, $\alpha^{-1}$, $\tau : ab \to ba$ or $\tau^{-1}$ to a subword of $w_1$.
+We consider the free category $\mathcal{W}_n$ which has objects the elements of $W_n$, and morphisms generated by the ones of the form $\phi : w_1 \to w_2$, where the word $w_2$ is obtained from $w_1$ by applying either $\alpha : ((ww')w'') \to (w(w'w''))$, $\alpha^{-1}$, or $\tau : ww' \to w'w$ to a subword of $w_1$.
 To any such $\phi$ one can associate a natural transformation $[\phi] : [w_1] \to [w_2]$ in $\mathcal{C}$ in the obvious way. 
 
 \begin{thm}[MacLane's coherence theorem]

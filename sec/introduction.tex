@@ -3,18 +3,21 @@
 \section*{Introduction} 
 \label{s:introduction}
 
-The present note stems from a desire to understand the epigraph, a claim of M. Kapranov in \cite{kapranov1993}. 
-The $n$-dimensional permutassociahedron, a CW complex whose cells are in bijection with parenthesized permutations of a word with $n+1$ letters, was introduced there and later realized as a convex polytope by V. Reiner and G. M. Ziegler \cite{reinerCoxeterassociahedra1994}. 
-A new realization was found recently in \cite{CastilloLiu21}, and a simple version has been defined in \cite{baralicSimplePermutoassociahedron2019}.
-In both of these works, the epigraph above is restated without proof. 
-The present note fills that gap, clarifying Kapranov's statement: in fact, only the \emph{simple connectedness} of the permutoassociahedron is required (\cref{thm:MacLane}).
-This is done through a general ``topological coherence theorem" which applies to any regular CW complex (\cref{thm:top-coherence}).
-We use it to prove an operadic generalization of MacLane's coherence theorem (\cref{thm:coherence-operahedra}), simplifying a result of K. Do{\v s}en and Z. Petri{\'c} \cite{DP15}.
-We present other similar applications in \cref{sec:further}. 
-We also present an alternative proof for polyhedral complexes (\cref{p:second-proof}), giving a topological argument which follows closely MacLane's original one, in the spirit of rewriting theory. 
-Morse theoretic considerations show that this proof is much less general, but still sufficient for many applications.
-The main takeaway of this note is that $1$-categorical coherence is tied, in many cases, to $1$-connectedness of a family of spaces. 
-This encourages further study of the relation between strict $n$-categorical coherence and $n$-connectedness of appropriate spaces, in the same vein as recent work of S. Barkan in the $\infty$-categorical setting \cite{barkanArityApproximationInfty2022}, see \cref{sec:higher}.
+The $n$-dimensional permutoassociahedron, a CW-complex whose faces are in bijection with parenthesized permutations of $n+1$ letters, was first introduced by M. Kapranov in his study of higher dimensional Yang--Baxter equations, through the moduli spaces of curves $\overline{\mathcal{M}_{0,n+1}}(\R)$ and the solutions of the Knizhnik--Zamolodchikov equation \cite{kapranov1993}.
+It was later realized as a convex polytope by V. Reiner and G. M. Ziegler \cite{reinerCoxeterassociahedra1994}, and more recently as a simple polytope in \cite{baralicSimplePermutoassociahedron2019} and through the nested braid fan in \cite{CastilloLiu21}.
 
+The present note stems from a desire to understand the epigraph, taken from the introduction of \cite{kapranov1993}: what is the precise relationship between the permutoassociahedron and MacLane's coherence theorem for symmetric monoidal categories? 
+We show that the \emph{simple connectedness} of the former implies the latter, thereby refining and proving Kapranov's conjecture (see \cref{thm:MacLane}).
 
+This is done through a general ``topological coherence theorem" which applies to any simply connected, regular CW complex (\cref{thm:top-coherence}).
+We use it to prove coherence result for categorified non-symmetric operads, symplifying the proof of \cite{DP15}. 
+These objects, introduced in \cite{DP15}, are an operadic generalization of non-symmetric monoidal categories. 
+
+We also investigate a topological incarnation of MacLane's original argument, in the spirit of rewriting theory. 
+Using Morse theory on affine cell complexes \cite{bestvinaMorseTheoryFiniteness1997}, we obtain a general topological theorem which applies to a certain family of simply connected polyhedral complexes; the ones that admit a terminating and confluent rewriting system on their $1$-skeleton (\cref{p:second-proof}). 
+In particular, this second theorem can be applied to polytopes, allowing us to give a second, rewriting-theoretic proof of both previously mentioned coherence results. 
+
+These two general topological coherence theorems can be used to prove other categorical results where polytopes appear, such as coherence for monoidal functors between monoidal categories \cite{epsteinFunctorsTensoredCategories1966}, which we present in \cref{sec:further}.
+This all points towards further investigation of the relationship between $n$-categorical coherence and $n$-connectedness of appropriate spaces.
+As a motivation in this direction, the present results could well be the strict, $n=1$ case of recent theorems of S. Barkan in the $\infty$-categorical setting \cite{barkanArityApproximationInfty2022}, see \cref{sec:higher}.
 
