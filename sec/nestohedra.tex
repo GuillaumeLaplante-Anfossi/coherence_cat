@@ -1,0 +1,140 @@
+% !TEX root = ../Coherence2.tex
+
+\section{Hypergraph polytopes} 
+\label{s:hypergraph}
+
+In this section, we recall the definition of hypergraph polytopes. 
+We refer to \cite{DP-HP,COI} for more details. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Hypergraphs}
+A \defn{hypergraph} is given by a finite set $H$ of \defn{vertices} and a subset of \defn{hyperedges} $\hyper{H}\inc {\cal P}(H)\setminus\emptyset$ such that $\Union \hyper{H}=H$. 
+We always assume that $\hyper{H}$ is \defn{atomic}, that is $\set{x}\in \hyper{H}$, for all $x\in H$. 
+A hyperedge of cardinality 2 is called an \defn{edge}.  
+For $X\inc H$, the \defn{plain restriction} of $\hyper{H}$ to $X$ is the set 
+$\hyper{H}_X := \setc{Z\in \hyper{H}}{\; Z\inc X}$.
+The \defn{reconnected restriction} of $\hyper{H}$ to $X$ is the set $$\recrestr{\hyper{H}}{X}:=\setc{Z\cap X}{Z\in \Sat(\hyper{H}), Z\cap X\neq\emptyset}.$$
+
+We say that $\hyper{H}$ is \defn{connected} if there is no non-trivial partition $H=X_1\union X_2$ such that $\hyper{H}=\hyper{H}_{X_1}\union \hyper{H}_{X_2}$. 
+For each hypergraph, there exists a partition $H=X_1\union\ldots\union X_m$ such that each $\hyper{H}_{X_i}$ is connected and $\hyper{H}=\Union(\hyper{H}_{X_i})$.  
+The $\hyper{H}_{X_i}$'s are called the \defn{connected components} of $\hyper{H}$.
+For $X\inc H$, we say that a non-empty subset $X$ of vertices is \defn{connected} (resp. a \defn{connected component}) whenever $\hyper{H}_X$ is connected (resp. a connected component of $\hyper{H}$).  
+We denote by $\restrH{H}{X}:=\hyper{H}_{H\setminus X}$ the plain restriction of $\hyper{H}$ to $H \setminus X$.
+The \defn{saturation} of $\hyper{H}$ is the hypergraph
+$\Sat(\hyper{H})=\setc{X}{\emptyset\incs X\inc H\;\mbox{and}\;\hyper{H}_X\;\mbox{is connected}}$.
+A hypergraph is called \defn{saturated} when $\hyper{H}=\Sat(\hyper{H})$.  
+
+\begin{rem}
+    Atomic and saturated hypergraphs are called \defn{building sets} in the nestohedra literature, see for example \cite{P09,FS05}.
+\end{rem}
+
+For $X\inc H$, we will express the fact that $\setc{H_i}{i\in I}$ is the set of connected components of $\restrH{H}{X}$ by the notation $\hyper{H},X  \leadsto  \setc{H_i}{i\in I}.$
+If $I=\set{1,\ldots,n}$, we write simply $\hyper{H},X  \leadsto H_1,\ldots,H_n$, with no order intended.
+We will write $\hyper{H}_i$ for $\hyper{H}_{H_i}$.
+In the specific situation where $x,y,z\in H$ and $\hyper{H},\set{x}\leadsto \setc{H_i}{i\in I}$, we shall write
+$$\begin{array}{ll}
+\xyz{x}{\hyper{H}}{\set{y,z}} & \mathrm{if}\; y,z\in H_i\; \mbox{for some}\; i \in I\\
+\xyz{x}{\hyper{H}}{\set{y},\set{z}} & \mbox{otherwise}.
+\end{array}$$
+In the second case, we will say that $x$ \defn{disconnects} $y$ and $z$ in $\hyper{H}$. 
+The reconnected restriction allows one to charaterize the preceding two situations as follows.
+
+\begin{lemma} 
+\label{xyz-reconnected} 
+We have
+$$\begin{array}{lll}
+\xyz{x}{\hyper{H}}{\set{y,z}} & \mathrm{iff} & \recrestr{\hyper{H}}{\set{x,y,z}},\set{x}\leadsto\set{y,z} \\
+\xyz{x}{\hyper{H}}{\set{y},\set{z}} & \mathrm{iff} & \recrestr{\hyper{H}}{\set{x,y,z}},\set{x}\leadsto \set{y},\set{z}.
+\end{array}$$
+\end{lemma}
+
+\begin{proof} 
+    Let $\hyper{H},x\leadsto H_1,\ldots,H_n$. 
+    Suppose $\xyz{x}{\hyper{H}}{\set{y,z}}$. 
+    Then there exists $i$ such that $\set{y,z}\inc H_i$, and hence $\set{y,z}\inc H_i\cap\set{x,y,z}$, and in fact $\set{y,z} = H_i\cap\set{x,y,z}$ since $x\not\in H_i$. 
+    Thus $\recrestr{\hyper{H}}{\set{x,y,z}},\set{x}\leadsto\set{y,z}$ holds by definition of reconnected restriction.
+    If $\xyz{x}{\hyper{H}}{\set{y},\set{z}}$, then there exist $i\neq j$ such that $y\in H_i$ and $z\in H_j$. 
+    We then derive likewise $H_i\cap\set{x,y,z}=\set{y}$ and $H_j\cap\set{x,y,z}=\set{z}$ from which $ \recrestr{\hyper{H}}{\set{x,y,z}},\set{x}\leadsto \set{y},\set{z}$ follows.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Constructs}
+A {connected} hypergraph $\hyper{H}$ gives rise to a set of \defn{constructs}, which are defined inductively as follows.
+ 
+\begin{definition} 
+\label{inductive-construct}
+%as follows.
+Let $\hyper{H}$ be a connected hypergraph and $Y$ be a non-empty subset of $H$.
+\begin{enumerate}
+\item  If $Y = H$, then  the one-node tree decorated with $H$, written $H$, is a construct of $\hyper{H}$.
+\item If $\hyper{H},Y  \leadsto H_1,\ldots,H_n$, and if  $T_1,\ldots,T_n$ are constructs of $\hyper{H}_1,\ldots,\hyper{H}_n$, respectively, then the
+tree whose root is decorated by $Y$, with $n$ outgoing edges on which the respective $T_i\,$'s are grafted, written
+$Y(\set{T_1,\ldots,T_n})$, or simply
+$Y(T_1,\ldots,T_n)$, is a construct.  
+\end{enumerate}
+When $Y={z}$ is a singleton, we freely write $z$ in place of $\set{z}$.
+A \defn{construction} is a construct all of whose nodes are  decorated with singletons. 
+\end{definition}
+
+Since all decorations in a construct are disjoint, we freely identify nodes with subsets of $H$. 
+We use the notation $\occ{T}{X}$ to denote the full subtree of $T$ rooted at $X$, defined only if $X$ is indeed a decoration of a node of $T$. 
+If $U$ is a (not necessarily full) subtree of $T$, we denote by $\supp(U)$ the union of the decorations of the nodes of $U$.
+
+\begin{rem} \label{subconstruct-restriction}
+The intention behind this presentation is algorithmic: a construct is built by picking and removing a non-empty subset $Y$ of $H$, then branching to the connected components of $\restrH{H}{Y}$ and continuing inductively in all the branches.
+It follows readily from the definition that $\occ{T}{X}$ is a construct of $\hyper{H}_{\supp(\occ{T}{X})}$.
+\end{rem}
+
+\begin{rem}
+    The notion of construct is equivalent to the notion of nested set \cite{P09}, and to the notion of tubing in the case where $\hyper{H}$~\cite{CD-CCGA} is a graph.  
+    We refer to \cite[Sec.~3.1]{COI} for details.
+\end{rem}
+
+%Here we content ourselves with a sketchy description of the
+%dictionary (for the readers familiar with nested sets).
+%Given a construct $T$, take the set $\setc{\supp(\occ{T}{X})}{X\:\textrm{is a node of}\: T}$. Conversely, read a construct from a nested set $\mathbb{T}$ as follows: for each  $Z\in\mathbb{T}$, consider the elements $Z_1,\ldots, Z_n\in\mathbb{T}$ that are maximal among all elements of $\mathbb{T}$ that are strictly included in $Z$, then $Z\setminus\bigcup(Z_1\cup \ldots \cup Z_n)$ will decorate a node of the corresponding construct. 
+%The subface relation formulated in terms of nested sets is just the inclusion of nested sets.
+
+If $X,Y$ are two nodes of a construct $S$ of $\hyper{H}$, $X$ being the father of $Y$, we can define a new construct $T$ by contracting the edge between $X$ and $Y$, and labeling the resulting vertex of~$T$ by the union of the labels of $X$ and $Y$. 
+
+\begin{definition}
+    We denote $({\cal A}(\hyper{H}),\preceq)$ the poset of constructs of a connected hypergraph $\hyper{H}$ obtained as the reflexive and transitive closure of the following covering relations: a construct $S$ covers a construct $T$ if $T$ can be obtained from $S$ by contracting an edge.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Hypergraph polytopes}
+
+We are now ready to define hypergraph polytopes, a.k.a nestohedra.
+
+\begin{definition}
+    A \defn{hypergraph polytope} is a polytope whose face lattice is isomorphic to the poset of constructs of some connected hypergraph $\hyper{H}$.
+\end{definition}
+
+Do\v sen and Petri\'c gave polytopal realisations of hypergraph polytopes in ~\cite{DP-HP}.
+The idea is that the connected subsets of $\hyper{H}$ specify the faces of a fixed $(|H|-1)$-dimensional simplex, that are to be truncated according to the constructs of $\hyper{H}$.
+
+\begin{rem}
+    Quite different geometric realisations of nestohedra were given in \cite{P09}. 
+\end{rem}
+
+
+\begin{example}
+    Our key basic examples of hypergraphs form the following ``quatuor'':
+$$\begin{array}{lll}
+\hyper{S}^n=\set{\set{1},\ldots,\set{n},\set{1,\ldots,n}} \\
+\hyper{C}^n= \set{\set{1},\ldots,\set{n},\set{1,2},\ldots,\set{1,2,\ldots,i},\ldots,\set{1,\ldots,n}}\\
+\hyper{K}^n= \set{\set{1},\ldots,\set{n},\set{1,2},\ldots,\set{i-1,i},\ldots,\set{n-1,n}}\\
+\hyper{P}^n=\setc{X\inc\set{1,\ldots,n}}{1\leq |X|\leq 2}.
+\end{array}$$
+Their geometric realisations are the $(n-1)$-dimensional simplex,  hypercube,  associahedron, and permutohedron, respectively. 
+Note that $\hyper{K}_n$ and $\hyper{P}_n$ are graphs while $\hyper{S}_n$ and $\hyper{C}_n$ are genuine hypergraphs. 
+Note also that the definition of $\hyper{S}_n$ and $\hyper{P}_n$ does not depend on any order on the vertices, while the definition of $\hyper{C}_n$ and $\hyper{K}_n$ involves the total (or linear) order on $\set{1\ldots,n}$. 
+Another way to say this is that we can replace $\set{1,\ldots,n}$ by any finite set (resp. finite linearly ordered set) and define $\hyper{S}^X$ and $\hyper{P}^X$ (resp. $\hyper{C}^X$, $\hyper{K}^X$).
+\end{example}
+
+Many more examples of  hypergraph polytopes are to be found in~\cite{DP-HP,COI,CDOO}, as well as in the abundant literature on nestohedra.
+
+
