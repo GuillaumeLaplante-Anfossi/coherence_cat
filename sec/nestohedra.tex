@@ -14,7 +14,6 @@ We always assume that $\hyper{H}$ is \defn{atomic}, that is $\set{x}\in \hyper{H
 A hyperedge of cardinality 2 is called an \defn{edge}.  
 For $X\inc H$, the \defn{plain restriction} of $\hyper{H}$ to $X$ is the set 
 $\hyper{H}_X := \setc{Z\in \hyper{H}}{\; Z\inc X}$.
-The \defn{reconnected restriction} of $\hyper{H}$ to $X$ is the set $$\recrestr{\hyper{H}}{X}:=\setc{Z\cap X}{Z\in \Sat(\hyper{H}), Z\cap X\neq\emptyset}.$$
 
 We say that $\hyper{H}$ is \defn{connected} if there is no non-trivial partition $H=X_1\union X_2$ such that $\hyper{H}=\hyper{H}_{X_1}\union \hyper{H}_{X_2}$. 
 For each hypergraph, there exists a partition $H=X_1\union\ldots\union X_m$ such that each $\hyper{H}_{X_i}$ is connected and $\hyper{H}=\Union(\hyper{H}_{X_i})$.  
@@ -24,6 +23,7 @@ We denote by $\restrH{H}{X}:=\hyper{H}_{H\setminus X}$ the plain restriction of 
 The \defn{saturation} of $\hyper{H}$ is the hypergraph
 $\Sat(\hyper{H})=\setc{X}{\emptyset\incs X\inc H\;\mbox{and}\;\hyper{H}_X\;\mbox{is connected}}$.
 A hypergraph is called \defn{saturated} when $\hyper{H}=\Sat(\hyper{H})$.  
+The \defn{reconnected restriction} of $\hyper{H}$ to $X$ is the set $$\recrestr{\hyper{H}}{X}:=\setc{Z\cap X}{Z\in \Sat(\hyper{H}), Z\cap X\neq\emptyset}.$$
 
 \begin{rem}
     Atomic and saturated hypergraphs are called \defn{building sets} in the nestohedra literature, see for example \cite{P09,FS05}.
@@ -68,11 +68,9 @@ A {connected} hypergraph $\hyper{H}$ gives rise to a set of \defn{constructs}, w
 %as follows.
 Let $\hyper{H}$ be a connected hypergraph and $Y$ be a non-empty subset of $H$.
 \begin{enumerate}
-\item  If $Y = H$, then  the one-node tree decorated with $H$, written $H$, is a construct of $\hyper{H}$.
-\item If $\hyper{H},Y  \leadsto H_1,\ldots,H_n$, and if  $T_1,\ldots,T_n$ are constructs of $\hyper{H}_1,\ldots,\hyper{H}_n$, respectively, then the
-tree whose root is decorated by $Y$, with $n$ outgoing edges on which the respective $T_i\,$'s are grafted, written
-$Y(\set{T_1,\ldots,T_n})$, or simply
-$Y(T_1,\ldots,T_n)$, is a construct.  
+\item  If $Y = H$, then the one-node tree $H$ decorated with $H$ is a construct of $\hyper{H}$.
+\item If $\hyper{H},Y  \leadsto H_1,\ldots,H_n$, and if $T_1,\ldots,T_n$ are constructs of $\hyper{H}_1,\ldots,\hyper{H}_n$, respectively, then the
+tree $Y(T_1,\ldots,T_n)$ whose root is decorated by $Y$, with $n$ outgoing edges on which the respective $T_i\,$'s are grafted is a construct.  
 \end{enumerate}
 When $Y={z}$ is a singleton, we freely write $z$ in place of $\set{z}$.
 A \defn{construction} is a construct all of whose nodes are  decorated with singletons. 
@@ -119,7 +117,6 @@ The idea is that the connected subsets of $\hyper{H}$ specify the faces of a fix
 \begin{rem}
     Quite different geometric realisations of nestohedra were given in \cite{P09}. 
 \end{rem}
-
 
 \begin{example}
     Our key basic examples of hypergraphs form the following ``quatuor'':

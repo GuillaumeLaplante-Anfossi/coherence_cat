@@ -1,15 +1,104 @@
 % !TEX root = ../Coherence2.tex
 
-\section{Dimensional faces} 
-\label{s:2faces}
+\section{Anatomy of the 2-skeleton} 
+\label{s:anatomy}
 
-In this section, we describe the $2$-dimensional faces of hypergraph polytopes.
+In this section we describe all the possible $2$-faces of a hypergraph polytope.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Two types of $2$-faces}
-woijew
+\subsection{Two types of two-faces}
+The \defn{dimension} of a construct $T$, or equivalently of its corresponding face in the associated hypergraph polytope, is given by
+$$\dim T :=\sum_{X\:\mathrm{node\: of}\: T}(|X|-1).$$
+In particular, constructions have dimension $0$. 
+Constructs of dimension $1$ have a single non-singleton node of the form $\set{x,y}$. 
+Constructs $T$ of dimension $2$ are of two kinds:
+\begin{itemize}
+\item[A)]  $T$ has exactly two non-singleton nodes $\set{x_1,x_2}$ and $\set{y_1,y_2}$, both of cardinal $2$.
+\item[B)] $T$ has exactly one non-singleton node $\set{x_1,x_2,x_3}$ of cardinal $3$.
+\end{itemize}
+If $T$ is of type A, we get the following generic picture.
+$$ 
+\xymatrix @-1.65pc { x_1(x_2)\cdots y_1(y_2) \ar @{-}[dddd]_{x_1(x_2)\cdots \set{y_1,y_2}} 
+ \ar @{-}[rrrr]_{\set{x_1,x_2}\cdots y_1(y_2)} &&&& x_2(x_1)\cdots y_1(y_2) \ar @{-}[dddd]^{x_2(x_1)\cdots \set{y_1,y_2}} \\
+ &&&&\\
+ && \set{x_1,x_2} \cdots \set{y_1,y_2}&&\\
+ &&&&\\
+ x_1(x_2)\cdots y_2(y_1)  \ar @{-}[rrrr]_{\set{x_1,x_2}\cdots y_2(y_1)} &&  && x_2(x_1)\cdots y_2(y_1)}
+ $$
+The central construct $T$, schematised as $\set{x_1,x_2} \cdots \set{y_1,y_2}$, has two distinct nodes $\set{x_1,x_2}$ and $\set{y_1,y_2}$. 
+All the other constructs are obtained by replacing in $T$ one or two of these nodes, say $\set{x_1,x_2}$, by a  tree $x_1(x_2)$ or $x_2(x_1)$ and redistributing the children of  $\set{x_1,x_2}$  as children of either $x_1$ or $x_2$, in a unique way dictated by connectivity. 
 
+If $T$ is of type B, then, up to permutation of $x_1,x_2,x_3$, we get four possible shapes corresponding to the number $N$ of  elements in $\set{x_1,x_2,x_3}$ that disconnect the  other two in~$\hyper{K}:=\hyper{H}_{\supp(\occ{T}{\set{x_1,x_2,x_3}})}$.
+Here there are no $\cdots$ on the picture, but likewise all the edges and vertices of $T$ (considered as a 2-face) are the result of replacing in $T$ the node $\set{x_1,x_2,x_3}$ with the indicated respective trees and redistributing uniquely the  children of $\set{x_1,x_2,x_3}$ (see Lemma~\ref{instance-construct}). 
+ 
+\smallskip\noindent
+(a)  When $N=3$, that is when $\xyz{x_1}{\hyper{K}}{\set{x_2}\!,\! \set{x_3}}$, $\xyz{x_2}{\hyper{K}}{\set{x_1}\!,\! \set{x_3}}$, and
+ $\xyz{x_3}{\hyper{K}}{\set{x_1}\!,\! \set{x_2}}$, we have
+ 
+ $$\xymatrix @-1.65pc {&& x_1(x_2,x_3) \ar @{-}[ddll]_{\set{x_1,x_2}(x_3)} \ar @{-}[ddrr]^{\set{x_1,x_3}(x_2)}&& \\
+ &&&&\\
+ x_2(x_3,x_1) \ar @{-}[rrrr]^{\set{x_2,x_3}(x_1)} &&&& x_3(x_1,x_2)}$$
+
+\smallskip\noindent
+(b) When $N=2$, that is when $\xyz{x_1}{\hyper{K}}{\set{x_2}\!,\! \set{x_3}}$, $\xyz{x_2}{\hyper{K}}{\set{x_1,x_3}}$ and
+ $\xyz{x_3}{\hyper{K}}{\set{x_1}\!,\! \set{x_2}}$, we have
+ 
+ $$ \xymatrix @-1.65pc {&& x_1(x_2,x_3) \ar @{-}[ddll]_{\set{x_1,x_2}(x_3)} \ar @{-}[ddrr]^{\set{x_1,x_3}(x_2)}&& \\
+ &&&&\\
+ x_2(x_1(x_3)) \ar @{-}[ddrr]_{x_2(\set{x_1,x_3})}&& \set{x_1,x_2,x_3}  && x_3(x_1,x_2)\ar @{-}[ddll]^{\set{x_2,x_3}(x_1)}\\
+ &&&&\\
+ &&  x_2(x_3(x_1))&&}$$
+
+\smallskip\noindent
+(c) When $N=1$, that is when $\xyz{x_1}{\hyper{K}}{\set{x_2}\!,\! \set{x_3}}$, $\xyz{x_2}{\hyper{K}}{\set{x_1,x_3}}$ and
+ $\xyz{x_3}{\hyper{K}}{\set{x_1,x_2}}$, we have
+ 
+$$
+ \xymatrix @-1.65pc {&& x_1(x_2,x_3) \ar @{-}[ddll]_{\set{x_1,x_2}(x_3)} \ar @{-}[ddrr]^{\set{x_1,x_3}(x_2)}&& \\
+ &&&&\\
+ x_2(x_1(x_3)) \ar @{-}[ddr]^{x_2(\set{x_1,x_3})}&& \set{x_1,x_2,x_3}  && x_3(x_1(x_2))\ar @{-}[ddl]_{x_3(\set{x_1,x_2})}\\
+ &&&&\\
+ &x_2(x_3(x_1))\ar @{-}[rr]^{\set{x_2,x_3}(x_1)}&  & x_3(x_2(x_1))&}
+$$
+
+\smallskip\noindent
+(d) When $N=0$, that is when $\xyz{x_1}{\hyper{K}}{\set{x_2,x_3}}$, $\xyz{x_2}{\hyper{K}}{\set{x_1,x_3}}$ and
+ $\xyz{x_3}{\hyper{K}}{\set{x_1,x_2}}$, we have
+ 
+ $$\xymatrix @-1.65pc {&& x_1(x_2(x_3)) \ar @{-}[ddll]_{\set{x_1,x_2}(x_3)} \ar @{-}[ddrr]^{x_1(\set{x_2,x_3})}&& \\
+ &&&&\\
+ x_2(x_1(x_3)) \ar @{-}[dd]^{x_2(\set{x_1,x_3})}&& \set{x_1,x_2,x_3} && x_1(x_3(x_2))\ar @{-}[dd]_{\set{x_1,x_3}(x_2)}\\
+ &&  &&\\
+ x_2(x_3(x_1)) \ar @{-}[ddrr]_{\set{x_2,x_3}(x_1)} &&  && \ar @{-}[ddll]^{x_3(\set{x_1,x_2})} x_3(x_1(x_2))\\
+ &&&&\\
+ &&  x_3(x_2(x_1))&&}
+$$
+
+By Lemma~\ref{xyz-reconnected}, we can read those pictures as describing (the realisations  of) the 
+respective reconnected restrictions $\recrestr{\hyper{K}}{\set{x_1,x_2,x_3}}$ of $\hyper{K}$:
+$$\begin{array}{lll}
+\mathrm{(a)} & \set{\set{x_1},\set{x_2},\set{x_3},\set{x_1,x_2,x_3}} & \mbox{(2-simplex)}\\
+\mathrm{(b)} & \set{\set{x_1},\set{x_2},\set{x_3},\set{x_1,x_3},\set{x_1,x_2,x_3}} & \mbox{(2-hypercube})\\
+\mathrm{(c)} & \set{\set{x_1},\set{x_2},\set{x_3},\set{x_1,x_3},\set{x_1,x_2},\set{x_1,x_2,x_3}} & \mbox{(2-associahedron)}\\
+\mathrm{(d)} & \set{\set{x_1},\set{x_2},\set{x_3},\set{x_1,x_3},\set{x_1,x_2},\set{x_2,x_3},\set{x_1,x_2,x_3}} & \mbox{(2-permutohedron)}
+\end{array}$$
+
+\begin{rem}
+    Incidentally, these  hypergraphs witness the fact that there do exist 2-faces of  each  of these types: take $\hyper{H}$ to be one of those four hypergraphs, and $T$ to be their unique construct of dimension 2.
+\end{rem}
+
+Let us end this section by recalling a property that will be useful later in [---].
+
+\begin{lemma} \label{simplified-a-la-Morse} 
+Let $\hyper{H}$ be a connected hypergraph, let $S$ be a construction of $\hyper{H}$ and let $S_1,S_2$ be two 1-dimensional constructs of $\hyper{H}$ such that $S\prec S_1$ and $S\prec S_2$. 
+Then, there is 2-dimensional construct $T$ such that $S_1\prec T$ and $S_2\prec T$.
+\end{lemma}
+\begin{proof} 
+    Denoting by $X_1$ (resp. $X_2$) the unique non-singleton node of $S_1$ (resp. $S_2$), one obtains $T$ by contracting the two edges of $S$ determined by $X_1$ and $X_2$.
+\end{proof}
+
+In other words, the hypergraph polytope associated to $\hyper{H}$ is \emph{simple} \cite[Prop.~9.3]{DP-HP}.
 
 
 

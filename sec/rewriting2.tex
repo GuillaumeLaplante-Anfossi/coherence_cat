@@ -1,0 +1,78 @@
+% !TEX root = ../Coherence2.tex
+
+\section{Hypergraphic rewrite systems} 
+\label{s:rewriting}
+
+We associate to each hypergraph a term rewrite system given by its constructs.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Definition}
+
+A \defn{signature} $\Sigma$ is a tuple $(V,F,S,\ari,\sort,\arisort)$ made of 
+\begin{itemize}
+  \item a set $V$ of \defn{variables},
+  \item a non-empty set $F$ of \defn{function symbols}, and
+  \item a set $S$ of \defn{sorts},
+\end{itemize}
+together with an \defn{arity}, \defn{sort} and \defn{arity-sort} functions
+\begin{itemize}
+  \item $\ari : F \to \mathbb{N}$,
+  \item $\sort : F \cup V \to S$,
+  \item $\arisort : F \to \prod_{n \geq 0} S^{n}$,
+\end{itemize}
+such that for $f \in F$, we have $\arisort(f) \in S^{\ari(f)}$. 
+The $i$th component of $\arisort(f)$ is denoted $\arisort(f,i)$.
+The set $\Ter(\Sigma)$ of \defn{terms} over a signature $\Sigma$ is defined inductively as follows. 
+\begin{enumerate}
+  \item If $t \in V$ is a variable, then $t$ is a term.
+  \item If $f \in F$ is an arity $n$ function symbol, and $t_1,\ldots,t_n$ are terms such that $\sort(t_i)=\arisort(f,i)$, then $f(t_1,\ldots,t_n)$ is a term, and $\sort(f(t_1,\ldots,t_n)):=\sort(f)$.
+\end{enumerate}
+For a term $t \in \Ter(\Sigma)$, its set of \defn{variables} is defined as 
+\begin{equation*}
+  \var(t) := 
+  \begin{cases}
+    \{t\} & \text{ if } t \in V, \\
+    \bigcup_{1 \leq i \leq n}\var(t_i) & \text{ if } t=f(t_1,\ldots,t_n).
+  \end{cases}
+\end{equation*}
+A \defn{rewrite rule} over $\Sigma$ is an ordered pair $(l,r)$ of terms in $\Ter(\Sigma)$, denoted $l \to r$, such that
+\begin{enumerate}
+  \item the first term $l$ is not a variable, that is $l \notin V$.
+  \item the variables of the second term are already in the first term, that is $\var(r) \subseteq \var(l)$.
+\end{enumerate}
+
+\begin{definition}
+  A (many-sorted) \defn{term rewrite system} is a pair $(\Sigma,R)$ made of a signature and a set of rewrite rules $R$ over $\Sigma$.
+\end{definition}
+
+Let $\hyper{H}$ be a connected hypergraph. 
+Consider the following \defn{signature} $\Sigma_\hyper{H}$ of $\hyper{H}$,  
+\begin{itemize}
+  \item variables are pairs $(X,Y)$ of non-empty subsets $X \subseteq Y \subseteq H$,
+  \item function symbols are non-empty subsets $Y \subseteq H$,
+  \item sorts are non-empty subsets $Y \subseteq H$,
+  \item $\ari(Y)$ is the number of connected components of $\hyper{H}\setminus Y$,
+  \item $\sort(X,Y):=Y$, $\sort(Y):=Y$.
+  \item $\arisort(Y,i):=H_i$
+\end{itemize}
+
+\begin{lemma}
+  There is a bijection between the set of terms of sort $H$ over $\Sigma_\hyper{H}$ and the set of constructs of $\hyper{H}$.
+\end{lemma}
+
+\begin{proof}
+  
+\end{proof}
+
+contextuel c'est $\hyper{H}_{\cap X}=(\hyper{H}_E)_{\cap X}$ pour tout $X$ de taille $3$ et tout sous-ensemble connexe $E$ de cardinalite plus grande ou egale a $3$.
+%contextuel c'est par rapport à la cohérence! Pas au système de réécriture
+
+%je veux que les termes soient les constructs
+
+%instantiation 
+%in context 
+%critical pair
+
+%Est-ce qu'on n'est pas en train de montrer que c'est une opérade colorée...
+
