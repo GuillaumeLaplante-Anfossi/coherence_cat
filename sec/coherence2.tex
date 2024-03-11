@@ -1,0 +1,125 @@
+% !TEX root = ../Coherence2.tex
+
+\section{Categorical coherence} 
+\label{s:coherence}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[h!]
+	\begin{center}
+	\begin{tabular}{c|c|c}
+	Family & Algebraic structure & Coherence theorem \\
+	\hline
+	Simplices & - & - \\
+	Cubes & - & - \\
+	Associahedra & Monoidal category & \cite{MacLane63} \\
+	Permutahedra & Categorified permutads & \cite{CLA1} \\
+	Operahedra & Categorified operads & \cite{DP15,CLA1} \\
+	Contextual graph-associahedra & Categorified reconnectads? & - \\
+	Contextual nestohedra & - & - 
+	\end{tabular}
+	\end{center}
+\end{table}
+
+Conjectures: 
+\begin{itemize}
+  \item contextual graph-associahedra give coherence for (some specific) categorified reconnectads \cite{DotsenkoKeilthyLyskov}
+  \item contextual nestohedra give coherence for a hypergraphic generalization
+\end{itemize}
+
+
+
+
+\subsection{Interpretation}
+
+Associahedra form a subfamily of operahedra: those obtained from linear trees.  Consider the linear tree
+
+\vspace{-1cm}
+\begin{center}
+$$\xymatrix @-1.65pc {{\cal L} & = &X \ar @{-}[rr]^{1}&& Y \ar @{-}[rr]^{2}&& Z \ar @{-}[rr]^{3}&& U}
+ $$
+ \end{center}
+ \vspace{-.2cm}
+ 
+ \noindent
+ (represented horizontally).  Then $\hyper{G}({\cal L})$ is the associahedron $\hyper{K}^3$. The constructs of
+  ${\cal L}$ decorate a pentagon as follows:
+
+%$$
+% \xymatrix @-1.65pc {&& 3(2(1)) \ar @{->}[ddll]_{3(\set{1,2})} \ar @{->}[dddrr]^{\set{2,3}(1)}&& \\
+% &&&&\\
+%3(1(2)) \ar @{->}[dd]^{\set{1,3}(2)} }&&   && \\
+% &&&&2(1,3) \ar @{->}[dddll]_{\set{1,2}(3)}\\
+%1(3(2)) \ar @{->}[ddrr]^{1(2,3)} &  &\\
+% &&&&\\
+% &&1(2(3))&&}
+%$$
+\begin{center}
+$$\xymatrix @-1.65pc {&& 3(2(1)) \ar @{->}[ddll]_{3(\set{1,2})} \ar @{->}[dddrr]^{\set{2,3}(1)}&& \\
+ &&&&\\
+3(1(2))   \ar @{->}[dd]^{\set{1,3}(2)}&&   && \\
+ &&&&2(1,3) \ar @{->}[dddll]^{\set{1,2}(3)}\\
+ 1(3(2)) \ar @{->}[ddrr]^{1(\set{2,3})} &  &\\
+ &&&&\\
+ &&1(2(3))&&}$$
+\end{center}
+and are in bijective correspondence with the vertices and edges of Mac Lane's pentagon (cf. Section \ref{preamble-section}). 
+  Let us sketch the encoding:
+  \begin{itemize}
+  \item $(X\otimes_1 Y)\otimes_2 (Z\otimes_3 U)$, where we annotaded the ``compositions'' $\otimes$ with the vertices of $\hyper{K}^3$, can be written $\otimes_2(\otimes_1(X,Y),\otimes_3(Z,U))$ in prefix (or tree) notation. Then we get 
+ $2(1,3)$ by removing the leaf nodes of that tree.
+ \item $\alpha_{X,Y,Z}\otimes_3 U$ can be interpreted as $(X\otimes_1 Y\otimes_2 Z)\otimes_3 U$ (a non fully parenthesed expression), which likewise 
+ translates as $3(\set{1,2})$,where $3(\_)$ makes the job of contextualisation.
+ \item Likewise, we can move from
+$\alpha_{X,Y\otimes_2 Z,U}$ to $X\otimes_1(Y\otimes_2 Z)\otimes_3 U$ to $\set{1,3}(2)$, where $2$ makes the job of instantiation.
+\end{itemize}
+
+Taking the 4-dimensional associahedron $\hyper{K}^5$ (with vertex set $\set{0,1,2,3,4}$), we get the following instance in context of $\hyper{K}^3=\recrestr{\hyper{K}^5}{\set{1,2,3}}$, i.e. of Mac Lane's condition:
+\begin{center}
+$$\xymatrix @-1.65pc {&& 4(3(2(1(0)))) \ar @{->}[ddll]_{4(3(\set{1,2}(0)))} \ar @{->}[dddrr]^{4(\set{2,3}(1(0)))}&& \\
+ &&&&\\
+4(3(1(0,2)))  \ar @{->}[dd]^{4(\set{1,3}(0,2))}&&   && \\
+ &&&&4(2(1(0),3)) \ar @{->}[dddll]^{4(\set{1,2}(0,3))}\\
+ 4(1(0,3(2))) \ar @{->}[ddrr]^{4(1(0,\set{2,3}))} &  &\\
+ &&&&\\
+ &&4(1(0,2(3)))&&}$$
+\end{center}
+We recover the (encoding of the) edge 
+ $$
+ \xymatrix @-2pc {&& ((((X_1\otimes_0 X_2)\otimes_1 Y)\otimes_2 Z)\otimes_3 U)\otimes_4 V \ar @{->}[dddddll]_(.6){(\alpha_{(X_1\otimes X_2),Y,Z}\otimes U)\otimes V\quad} && \\
+ &&&&\\
+ &&&&\\
+  &&&&\\
+    &&&&\\
+( ((X_1\otimes_0 X_2)\otimes_1 (Y\otimes_2 Z))\otimes_3 U)\otimes_4 V  &&   && \\
+\ }
+$$
+displayed of Section \ref{s:introduction} as the top left edge above.
+
+
+\section{Recovering MacLane}
+
+Let $\hyper{H}$ be a connected hypergraph. 
+Suppose that for any connected subset $Y$, and $X \subseteq Y$, the number of connected components of~$\hyper{H}_Y\setminus X$ is less than or equal to $|X|+1$.
+Then, we can consider the following variation on \cref{def:signature-hyper}.
+Consider the signature $\Sigma_\hyper{H}$ made of the following data: 
+\begin{itemize}
+  \item Variables are any set $V$. 
+  \item Function symbols are pairs of a connected subset of $H$ and one of its subsets 
+  $$F:=\{(X,Y) \ | \ X \subseteq Y \subseteq H, \ \hyper{H}_Y \text{ is connected}\}.$$
+  \item Sorts are either the ``variable" sort, or a connected subset of $H$, i.e. 
+  $$S:=\{ X \subseteq H \ | \ \hyper{H}_X \text{ is connected}\}\cup\{*\}.$$
+  \item For $(X,Y) \in F$, we define $\ari(X,Y):=|X|+1$.
+  \item All variables $v \in V$ have the same output sort $\outsort(v):=*$, while function symbols $(X,Y) \in F$ have output sort $\outsort(X,Y):=Y$.
+  \item For function symbols $(X,Y) \in F$ such that $\hyper{H}_Y,X \leadsto Y_1,\ldots,Y_k$, we define $\insort((X,Y),i):=Y_i$ for $1 \leq i \leq k$, and $\insort((Y,X),i)=*$ for the remaining inputs.
+\end{itemize}
+
+Closed terms of output sort $H$ are still in bijection with constructs, i.e. \cref{l:bijection-terms} holds \emph{mutatis mutandis} for this new signature. 
+But now one can define rewriting rules that recover precisely MacLane in the case of the associahedra. 
+
+
+
+
+
+
+
