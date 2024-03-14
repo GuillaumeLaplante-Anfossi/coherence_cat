@@ -7,7 +7,7 @@ We associate to each hypergraph a term rewrite system given by its constructs.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Constructs as closed terms}
+\subsection{Recollections on rewriting}
 
 A \defn{signature} $\Sigma$ is a tuple $(V,F,S,\ari,\outsort,\insort)$ made of 
 \begin{itemize}
@@ -76,11 +76,15 @@ We say that $r$ is a \defn{normal form} of $l$ if $l \overset{*}{\to} r$ and $r$
 %If a pair of terms $t,t'$ have a unique common normal form, we write $t \downarrow t'$.
 
 We say that $(\Sigma,R)$ is \defn{locally confluent} (resp.\ \defn{confluent}) if for all $w,x,y \in \Ter(\Sigma)$ such that $x \leftarrow w \to y$ (resp.\ $x \overset{*}{\leftarrow} w \overset{*}{\to} y$), there exists a term $z$ with $x \overset{*}{\to} z \overset{*}{\leftarrow} y$.
-\defn{Newman's lemma} asserts that if $(\Sigma,R)$ is terminating, then it is confluent if and only if it is locally confluent.
-%termination
-%confluence
 
-%Now, our goal is to..
+\begin{thm}[Newman's lemma]
+  \label{thm:Newman}
+  If $(\Sigma,R)$ is terminating, then it is confluent if and only if it is locally confluent.
+\end{thm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Rewriting on constructs}
 
 \begin{definition} \label{def:signature-hyper}
   Let $\hyper{H}$ be a connected hypergraph. 
@@ -182,7 +186,7 @@ Their instantiation in context defines rewriting steps on the set of constructs 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Rewriting constructions}
+\subsection{Rewriting on constructions}
 
 Restricting our attention to constructions, it is natural to adapt the term rewriting subsystem induced by $(\Sigma_\hyper{H},R_\hyper{H})$.
 
@@ -415,7 +419,7 @@ $x(y(v(\ldots),\ldots),\ldots)$ (with $x>y>z$), and the four subcases  (in their
 
 \begin{proof}
   Since all critical pairs can be resolved, we have that $(\Sigma_\hyper{H},R_\hyper{H})$ is locally confluent. 
-  By \cref{thm:termination}, it is also terminating, and therefore confluent by Neumann's Lemma.
+  By \cref{thm:termination}, it is also terminating, and therefore confluent by Newman's Lemma (\cref{thm:Newman}).
 \end{proof}
 
 
