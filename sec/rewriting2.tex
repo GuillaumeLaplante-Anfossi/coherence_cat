@@ -48,20 +48,18 @@ A \defn{rewrite (or reduction) rule} over $\Sigma$ is an ordered pair $(l,r)$ of
 \end{definition}
 
 A \defn{context} $C[-]$ is defined inductively as follows.
-We give ourselves symbols $[-]_s$ for $s \in S$. 
+We give ourselves symbols $[-]_s$ for $s \in S$, which we declare to be contexts with $\outsort([-]_s)=s$. 
+Then, 
 \begin{enumerate}
   \item If $t \in V$ is a variable, then $t$ is a context.
-  \item $[-]_s$ is a context with $\outsort([-]_s)=s$.
   \item If $f \in F$ is an arity $n$ function symbol, $t_1,\ldots,t_{i-1},t_{i+1},\ldots,t_n$ are terms such that $\outsort(t_j)=\insort(f,j)$ and $C$ is a context such that $\outsort(C)=\insort(f,i)$, then 
   $$f(t_1,\ldots,t_{i-1},C,t_{i+1},\ldots,t_n)$$
    is a context, and $\outsort(f(t_1,\ldots,t_n)):=\outsort(f)$.
 \end{enumerate}
-
 Note that by construction a context contains exactly one symbol $[-]_s$, for some $s \in S$.
-Given such a context $C$ and a term $t$ with $\outsort(t)=s$, then we denote by $C[t]$ the result of replacing $[-]_s$ by $t$ in $C$.
-This is a term. 
+Given such a context $C$ and a term $t$ with $\outsort(t)=s$, then we denote by $C[t]$ the term obtained by replacing $[-]_s$ by $t$ in $C$.
 
-A \defn{substitution} is a map $\sigma : \Ter(\Sigma) \to \Ter(\Sigma)$ which satisfies $\sigma(f(t_1,\ldots,t_n))=f(\sigma(t_1),\ldots,\sigma(t_n))$ for all terms $f(t_1,\ldots,t_n)$ in $\Ter(\Sigma)$.
+A \defn{substitution} is a map $\sigma : \Ter(\Sigma) \to \Ter(\Sigma)$ which satisfies $$\sigma(f(t_1,\ldots,t_n))=f(\sigma(t_1),\ldots,\sigma(t_n))$$ for all terms $f(t_1,\ldots,t_n)$ in $\Ter(\Sigma)$.
 That is, a substitution is completely determined by its value on variables.
 We use the shorthand notation $t^{\sigma}:=\sigma(t)$.
 
@@ -285,9 +283,10 @@ $\overline{\mu}(v^S)- \overline{\mu}(v^T)=\lambda(\mu_x-\mu_y)<0$. This prevents
 
 In other words, we have the following.
 
-\begin{corollary}
+\begin{thm}
+  \label{thm:termination}
   The rewriting system $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$ is terminating.
-\end{corollary}
+\end{thm}
 
 But there is more to it. 
 It turns out that the map $v^{\_}$ from constructions to $\mathbb{R}^{|H|}$
@@ -408,12 +407,16 @@ This gives evidence that case (B) features the two (an only two) overlapping sit
 $x(y(v(\ldots),\ldots),\ldots)$ (with $x>y>z$), and the four subcases  (in their oriented version as above) show how to resolve the branchings.
 \end{itemize}
 
-Formally, the following proposition says that, if $\hyper{H}$ is contextual, any such local confluence diagram, stemming from any $\set{x_1,x_2,x_3}$-face, is an instance in context of a local confluence diagram in $\recrestr{\hyper{H}}{\set{x_1,x_2,x_3}}$ (which depends only on $\hyper{H}$ and ${x_1,x_2,x_3}$) and hence is determined by the latter, which therefore deserves the name of coherence condition, in reference to the discussions in \cref{s:introduction} and \cref{s:contextual}.
 
-\begin{proposition} Given a contextual hypergraph $\hyper{H}$ and a total order on $H$, all order-isomorphisms
-of
-Proposition \ref{situation-construct} preserve and reflect the flip order on constructions, i.e.  $S$ rewrites to $S'$ according to this order if and only if the image of $S$ rewrites to the image of $S'$.
-\end{proposition}
+\begin{thm}
+  \label{thm:confluent}
+  The rewriting system $(\Sigma_\hyper{H},R_\hyper{H})$ is confluent.
+\end{thm}
 
-\begin{proof} The proof is an easy variation on the proof of Lemma~\ref{instance-construct}. 
+\begin{proof}
+  Since all critical pairs can be resolved, we have that $(\Sigma_\hyper{H},R_\hyper{H})$ is locally confluent. 
+  By \cref{thm:termination}, it is also terminating, and therefore confluent by Neumann's Lemma.
 \end{proof}
+
+
+

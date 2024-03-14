@@ -94,6 +94,16 @@ If $X$ is a subset of $H$ such that $|X|=3$ and $T$ is an $X$-face of $\hyper{H}
 Proposition~\ref{situation-construct} allows us to see all $X$-faces as ``instantiations in context'' of $\recrestr{\hyper{H}}{X}$, which therefore acts  as a rule or axiom in the terminology of equational theories.
 Motivated by the examples presented below in \cref{ss:examples} and their associated categorical coherence theorems, we define now the notion of a contextual \emph{family} of nestohedra.
 
+Formally, the following proposition says that, if $\hyper{H}$ is contextual, any such local confluence diagram, stemming from any $\set{x_1,x_2,x_3}$-face, is an instance in context of a local confluence diagram in $\recrestr{\hyper{H}}{\set{x_1,x_2,x_3}}$ (which depends only on $\hyper{H}$ and ${x_1,x_2,x_3}$) and hence is determined by the latter, which therefore deserves the name of coherence condition
+
+\begin{proposition} Given a contextual hypergraph $\hyper{H}$ and a total order on $H$, all order-isomorphisms
+of
+Proposition \ref{situation-construct} preserve and reflect the flip order on constructions, i.e.  $S$ rewrites to $S'$ according to this order if and only if the image of $S$ rewrites to the image of $S'$.
+\end{proposition}
+
+\begin{proof} The proof is an easy variation on the proof of Lemma~\ref{instance-construct}. 
+\end{proof}
+
 Identifying an hypergraph $\hyper{H}$ with the maximal construct $T$ of $({\cal A}(\hyper{H}),\preceq)$, we say that $\hyper{H}$ has \defn{dimension} $\dim T$.
 
 \begin{definition}
