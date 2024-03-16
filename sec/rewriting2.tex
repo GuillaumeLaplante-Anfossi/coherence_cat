@@ -3,7 +3,8 @@
 \section{Hypergraphic rewrite systems} 
 \label{s:rewriting}
 
-We associate to each hypergraph a term rewrite system given by its constructs.
+We associate to each hypergraph two term rewrite systems, one given by its constructs, and one given by its constructions.
+We show that the latter is confluent, and describe its critical pairs. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -19,9 +20,8 @@ together with an \defn{arity}, \defn{output sort} and \defn{input sort} function
 \begin{itemize}
   \item $\ari : F \to \mathbb{N}$,
   \item $\outsort : F \cup V \to S$,
-  \item $\insort : F \to \Sigma_{n \geq 0} S^{n}$,
+  \item $\insort : F \to \Sigma_{n \geq 0} S^{n}$, such that for $f \in F$, we have $\insort(f) \in S^{\ari(f)}$. 
 \end{itemize}
-such that for $f \in F$, we have $\insort(f) \in S^{\ari(f)}$. 
 The $i$th component of $\insort(f)$ is denoted $\insort(f,i)$.
 The set $\Ter(\Sigma)$ of \defn{terms} over a signature $\Sigma$ is defined inductively as follows. 
 \begin{enumerate}
@@ -48,7 +48,7 @@ A \defn{rewrite (or reduction) rule} over $\Sigma$ is an ordered pair $(l,r)$ of
 \end{definition}
 
 A \defn{context} $C[-]$ is defined inductively as follows.
-We give ourselves symbols $[-]_s$ for $s \in S$, which we declare to be contexts with $\outsort([-]_s)=s$. 
+We give ourselves symbols $[-]_s$ for~$s\in S$, which we declare to be contexts with $\outsort([-]_s)=s$. 
 Then, 
 \begin{enumerate}
   \item If $t \in V$ is a variable, then $t$ is a context.
@@ -76,25 +76,51 @@ We say that $r$ is a \defn{normal form} of $l$ if $l \overset{*}{\to} r$ and $r$
 %If a pair of terms $t,t'$ have a unique common normal form, we write $t \downarrow t'$.
 
 We say that $(\Sigma,R)$ is \defn{locally confluent} (resp.\ \defn{confluent}) if for all $w,x,y \in \Ter(\Sigma)$ such that $x \leftarrow w \to y$ (resp.\ $x \overset{*}{\leftarrow} w \overset{*}{\to} y$), there exists a term $z$ with $x \overset{*}{\to} z \overset{*}{\leftarrow} y$.
+It is moreover \defn{strongly normalizing} if...
 
-\begin{thm}[Newman's lemma]
+\begin{lemma}[Newman's lemma]
   \label{thm:Newman}
   If $(\Sigma,R)$ is terminating, then it is confluent if and only if it is locally confluent.
-\end{thm}
+\end{lemma}
+
+A pair of rewrites $s \to t_1$ and $s\to t_2$ is said to form a \defn{critical pair} if 
+\begin{enumerate}
+  \item there is no terms $s',t_1',t_2'$ and context $C[-]$ such that $s' \to t_1'$, $s' \to t_2'$, $s=C[s']$, $t_1=C[t_1']$ and $t_2=C[t_2']$.
+  \item there is no terms $s',t_1',t_2'$ and substitution $\sigma$ such that $s' \to t_1'$, $s' \to t_2'$, $s=\sigma(s')$, $t_1=\sigma(t_1')$ and $t_2=\sigma(t_2')$.
+\end{enumerate}
+Such a critical pair is \defn{convergent} if there exists a term $t$ such that $t_1 \overset{*}{\to} t \overset{*}{\leftarrow} t_2$. 
+Any convergent critical pair gives rise to a \defn{local confluence diagram}
+\begin{center}
+  \begin{tikzcd}
+    & s \arrow[ld] \arrow[rd] &                     \\
+t_1 \arrow[rd, "*"'] &                         & t_2 \arrow[ld, "*"] \\
+    & t                       &                    
+\end{tikzcd}
+\end{center}
+This diagram can be seen as the graph of a $2$-dimensional polytope $P$ (which is not necessarily is square!), with terms in bijection with vertices of $P$, and rewrites in bijection with edges of $P$.
+We shall say that a convergent critical pair $s \to t_1$, $s\to t_2$ has \defn{form} $P$.
+
+
+\begin{lemma}
+  \label{l:local-confluence-critical-pair}
+  A term rewriting system is locally confluent if and only if every critical pair is convergent. 
+\end{lemma}
+
+Thus, for a terminating rewriting system, it suffices to check that all critical pairs converge to conclude that the system is confluent. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Rewriting on constructs}
+\label{ss:rewriting-constructs}
 
 \begin{definition} \label{def:signature-hyper}
   Let $\hyper{H}$ be a connected hypergraph. 
 Consider the \defn{signature} $\Sigma_\hyper{H}$ made of the following data: 
 \begin{itemize}
-  \item Variables are connected subsets of $H$, that is $$V:=\{ X \subseteq H \ | \ \hyper{H}_{X} \text{ is connected}\}.$$ 
+  \item Variables are connected subsets of $H$, that is $V:=\{ X \subseteq H \ | \ \hyper{H}_{X} \text{ is connected}\}$. 
   \item Function symbols are pairs of a connected subset of $H$ and one of its subsets 
   $$F:=\{(X,Y) \ | \ \emptyset \neq X \subseteq Y \subseteq H, \ \hyper{H}_Y \text{ is connected}\}.$$
-  \item Sorts are connected subsets of $H$, i.e. 
-  $$S:=\{ X \subseteq H \ | \ \hyper{H}_X \text{ is connected}\}.$$
+  \item Sorts are connected subsets of $H$, i.e. $S:=\{ X \subseteq H \ | \ \hyper{H}_X \text{ is connected}\}$.
   \item For $(X,Y) \in F$, we define $\ari(X,Y)$ as the number of connected components of~$\hyper{H}_Y\setminus X$.
   \item Variables $X \in V$ are their own output sort $\outsort(X):=X$, while function symbols~$(X,Y) \in F$ have output sort $\outsort(X,Y):=Y$.
   \item For function symbols $(X,Y) \in F$ such that $\hyper{H}_Y,X \leadsto Y_1,\ldots,Y_n$, and for $1 \leq i \leq n$, we define $\insort((X,Y),i):=Y_i$.
@@ -122,19 +148,19 @@ Consider the \defn{signature} $\Sigma_\hyper{H}$ made of the following data:
 \end{proof}
 
 Now suppose that the vertices of our hypergraph $\hyper{H}$ are equipped with a total ordering.
-According to \cref{l:bijection-terms}, we can consider the consructs of $\hyper{H}$ as terms. 
+We shall say that $\hyper{H}$ is \defn{ordered}.
 Then, we can define a family of rewrite rules as follows.
 
 \begin{definition} \label{def:rules}
   Let $\hyper{H}$ be a connected hypergraph. 
-  Let $K$ be a connected subset of $H$, and let $X \subseteq K$ be such that $\mathbb{K},X \leadsto K_1,\ldots K_n$.
-  Let $Y \subseteq K_i$ be a subset of a connected component $K_i$ for some $1 \leq i \leq n$, and suppose that $\mathbb{K}_i\setminus Y$ has $p$ connected components. 
-  Then for $V_1,\ldots,V_n$ and $V_i^1,\ldots,V_i^p$ variables of the appropriate output sort, we define the \defn{rewrite rule}
-  $$(X,K)(V_1,\ldots, V_{i-1},(Y,K_i)(V_i^1,\ldots, V_i^p),V_{i+1},\ldots,V_n)$$
-  $$ \longrightarrow (X\cup Y,K)(V_1,\ldots,V_{i-1},V_i^1,\ldots, V_i^p,V_{i+1},\ldots,V_n)$$
+  Let $K$ be a connected subset of $H$, and let $X \subseteq K$ be such that $\mathbb{K},X \leadsto U_1,\ldots U_n$.
+  Let $Y \subseteq U_i$ and suppose that $\mathbb{K}_i\setminus Y \leadsto V_1,\ldots, V_k$. 
+  Then, we define the \defn{rewrite rule}
+  $$(X,K)(U_1,\ldots, U_{i-1},(Y,U_i)(V_1,\ldots, V_k),U_{i+1},\ldots,U_n)$$
+  $$ \longrightarrow (X\cup Y,K)(U_1,\ldots,U_{i-1},V_1,\ldots, V_k,U_{i+1},\ldots,U_n)$$
   if $\max(X\cup Y)\in Y$, and 
-  $$(X\cup Y,K)(V_1,\ldots,V_{i-1},V_i^1,\ldots, V_i^p,V_{i+1},\ldots,V_n)$$
-  $$\longrightarrow (X,K)(V_1,\ldots, V_{i-1},(Y,K_i)(V_i^1,\ldots, V_i^p),V_{i+1},\ldots,V_n)$$
+  $$(X\cup Y,K)(U_1,\ldots,U_{i-1},V_1,\ldots, V_k,U_{i+1},\ldots,U_n)$$
+  $$\longrightarrow (X,K)(U_1,\ldots, U_{i-1},(Y,U_i)(V_1,\ldots, V_k),U_{i+1},\ldots,U_n)$$
   if $\max(X\cup Y)\in X$.
   We denote this set of rules by $R_\hyper{H}$.
 \end{definition} 
@@ -143,7 +169,7 @@ It is clear that these are well-defined rewriting rules: the term on the left is
 Their instantiation in context defines rewriting steps on the set of constructs of a given hypergraph, i.e. on the faces of a given nestohedron.
 
 \begin{lemma} 
-  The instantiations in context of the rewriting rules $R_\hyper{H}$ admit the following description.
+  The instantiations in context on closed terms of the rewriting rules $R_\hyper{H}$ admit the following description.
   Let $S,T$ be two constructs such that $S \prec T$. 
   This means that there exists a node $X$ of $S$ such that $\occ{S}{X}=X(Y(\ldots),\ldots)$, and that $T$ is obtained by replacing in $S$ the full subtree rooted at $X$ with $(X\cup Y)(\ldots)$. 
   Then, we have
@@ -154,50 +180,34 @@ Their instantiation in context defines rewriting steps on the set of constructs 
 \end{lemma} 
 
 \begin{proof}
-  Comparing with \cref{def:rules}, we have taken $K=\supp(\occ{S}{X})$ and $K_i=\supp(\occ{S}{Y})$, and each variable to be itself a construct. 
-  That is, we have mapped each variable to a consruct by some substitution $\sigma$.
+  Restricting our attention to closed terms, and using \cref{l:bijection-terms} gives the result. 
+  Concretely, one just needs to set $K=\supp(\occ{S}{X})$ and $K_i=\supp(\occ{S}{Y})$ in \cref{def:rules}, and map each variable to a construct by some substitution $\sigma$.
 \end{proof}
 
-\begin{rem}
-  Behind the scene, the two clauses are not as symmetric as they seem to be. 
-  Procedurally speaking, in the first case, when moving from $S$ to $T$, there is nothing else to check than the condition $\max(X\cup Y)\in Y$, while in the second case, when moving from $T$ to $S$, one has first to decide on a splitting of a node $Z$ of $T$ as some $X\cup Y$ in such a way that $Y$ is connected in $\supp(\occ{T}{Z})\setminus X$ and  that  the condition $\max(X\cup Y)\in X$ holds.
-\end{rem}
+Behind the scene, the two clauses are not as symmetric as they seem to be. 
+Procedurally speaking, in the first case, when moving from $S$ to $T$, there is nothing else to check than the condition $\max(X\cup Y)\in Y$, while in the second case, when moving from $T$ to $S$, one has first to decide on a splitting of a node $Z$ of $T$ as some $X\cup Y$ in such a way that $Y$ is connected in $\supp(\occ{T}{Z})\setminus X$ and  that  the condition $\max(X\cup Y)\in X$ holds.
 
 \begin{rem}
-  This can be seen as the definition of a partial order on the set $\mathcal{A}(\hyper{H})$ of constructs of $\hyper{H}$, distinct from the face relation. 
-  Is this relation a partial order?
-  Computations suggest that this is the case, and that this order should define a \emph{facial order} on nestohedra, and in particular coincide with the \emph{facial weak order} \cite{KrobLatapyNovelliPhanSchwer,PalaciosRonco,DermenjianHohlwegPilaud} on the permutahedra and the \emph{generalised Tamari order} \cite{Ronco12} on the associahedra.
+  This can be seen as the definition of a preorder on the set $\mathcal{A}(\hyper{H})$ of constructs of $\hyper{H}$, distinct from the face relation. 
+  Is this preorder a partial order?
+  Computations suggest that this is the case, and that this order should define a \emph{facial order} on nestohedra, and in particular coincide with the \emph{facial weak order} \cite{KrobLatapyNovelliPhanSchwer,PalaciosRonco,DermenjianHohlwegPilaud} on the permutahedra and the \emph{generalised Tamari order} \cite{Ronco-Tamari} on the associahedra.
 \end{rem}
-
-
-%CONTEXTUEL
-%contextual: ''on peut ecrire $X$ a la place de $(X,K)$"
-%(on veut que ca depende seulement de $X$ et $Y$)
-%contextuel c'est $\hyper{H}_{\cap X}=(\hyper{H}_E)_{\cap X}$ pour tout $X$ de taille $3$ et tout sous-ensemble connexe $E$ de cardinalite plus grande ou egale a $3$.
-%contextuel c'est par rapport à la cohérence! Pas au système de réécriture
-
-%SPÉCIFIER SUR LES CONSTRUCTIONS
-
-%instantiation 
-%in context 
-%critical pair
-
-%Est-ce qu'on n'est pas en train de montrer que c'est une opérade colorée...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Rewriting on constructions}
+\label{ss:rewriting-constructions}
 
 Restricting our attention to constructions, it is natural to adapt the term rewriting subsystem induced by $(\Sigma_\hyper{H},R_\hyper{H})$.
 
 \begin{definition}
   For a connected hypergraph $\hyper{H}$, we consider the \defn{constructions signature}~$\Sigma_\hyper{H}^c$ defined by the following data:
   \begin{itemize}
-    \item Variables are connected subsets of $H$, that is $$V:=\{ X \subseteq H \ | \ \hyper{H}_{X} \text{ is connected}\}.$$ 
+    \item Variables are connected subsets of $H$, that is $V:=\{ X \subseteq H \ | \ \hyper{H}_{X} \text{ is connected}\}$. 
     \item Function symbols are pairs of a connected subset of $H$ and one of its elements 
     $$F:=\{(x,Y) \ | \ x \in Y \subseteq H, \ \hyper{H}_Y \text{ is connected}\}.$$
     \item Sorts are connected subsets of $H$, i.e. 
-    $$S:=\{ X \subseteq H \ | \ \hyper{H}_X \text{ is connected}\}.$$
+    $S:=\{ X \subseteq H \ | \ \hyper{H}_X \text{ is connected}\}$.
     \item For $(x,Y) \in F$, we define $\ari(x,Y)$ as the number of connected components of~$\hyper{H}_Y\setminus {x}$.
     \item Variables $X \in V$ are their own output sort $\outsort(X):=X$, while function symbols~$(x,Y) \in F$ have output sort $\outsort(x,Y):=Y$.
     \item For function symbols $(x,Y) \in F$ such that $\hyper{H}_Y,x \leadsto Y_1,\ldots,Y_n$, and for $1 \leq i \leq n$, we define $\insort((x,Y),i):=Y_i$.
@@ -205,6 +215,7 @@ Restricting our attention to constructions, it is natural to adapt the term rewr
 \end{definition}
 
 \begin{lemma} 
+  \label{l:bijection-constructions}
   There is a bijection between the set of closed terms of output sort $H$ over $\Sigma_\hyper{H}^c$ and the set of constructions of $\hyper{H}$.
 \end{lemma}
 
@@ -214,7 +225,7 @@ Restricting our attention to constructions, it is natural to adapt the term rewr
 \end{proof}
 
 The rewrite rules for this system are obtained by joining together the rules in \cref{def:rules}. 
-As before, we suppose that the vertices of $\hyper{H}$ are given a total ordering.
+As before, we suppose that $\hyper{H}$ is ordered.
 
 \begin{definition} \label{def:rules-2}
   Let $\hyper{H}$ be a connected hypergraph. 
@@ -233,53 +244,62 @@ Once again, it is clear that these are well-defined rewriting rules: the term on
 Their instantiation in context defines rewriting steps on the set of constructions of a given hypergraph, i.e. on the vertices of a given nestohedron.
 
 \begin{lemma} 
-  The instantiations in context of the rewriting rules $R_\hyper{H}^c$ admit the following description.
+  \label{l:instantiation-constructions}
+  The instantiations in context on closed terms of the rewriting rules $R_\hyper{H}^c$ admit the following description.
   Let $S,T$ be two constructions which are both faces of the same edge. 
-  This means that there exists a node $x$ of $S$ such that $\occ{S}{x}=x(y(\ldots_1),\ldots_2)$, and that $T$ is obtained by replacing in $S$ the full subtree rooted at $x$ with $y(x(\ldots_3),\ldots_4)$. 
+  This means that there exists a node $x$ of $S$ such that $\occ{S}{x}=x(y(\ldots),\ldots)$, and that $T$ is obtained by replacing in $S$ the full subtree rooted at $x$ with $y(x(\ldots),\ldots)$. 
   Then, we have
   $$\begin{array}{lll}
     S \to T &  \mathrm{if} & x < y. 
   \end{array}$$
-  Here, the $\ldots_i$ stand for sets of constructs indexed by $A_i$ such that $A_1\sqcup A_2 = A_3\sqcup A_4$.
+%Here, the $\ldots_i$ stand for sets of constructs indexed by $A_i$ such that $A_1\sqcup A_2 = A_3\sqcup A_4$.
 \end{lemma} 
 
 \begin{proof}
-  Comparing with \cref{def:rules-2}, we have taken $K=\supp(\occ{S}{x})$ and $K_y=\supp(\occ{S}{y})$, and each variable to be itself a construct. 
-  That is, we have mapped each variable to a construct by some substitution $\sigma$.
+  Restricing our attention to closed terms and using \cref{l:bijection-constructions} gives the result. 
+  Concretely, one just needs to set $K=\supp(\occ{S}{x})$ and $K_y=\supp(\occ{S}{y})$ in \cref{def:rules-2}, and map each variable to a construct by some substitution $\sigma$.
 \end{proof}
 
-We shall write $S\precdot_{x,y} T$ to record that the  minimal full subtree of $S$ responsible for the reduction from $S$ to $T$ is $\occ{S}{\set{x}}$ and that the reduction concerns the son $y$ of $x$, together with $x$.
+We shall write $S \pre{x}{y} T$ to record that the  minimal full subtree of $S$ responsible for the reduction from $S$ to $T$ is $\occ{S}{\set{x}}$ and that the reduction concerns the son $y$ of $x$.
+This defines a preorder $<$ on the set of consructions of an hypergraph $\hyper{H}$.
+Is this preorder a partial order? 
 
-Our definition of $\precdot$ on constructions is equivalent to the flip relation given by  Barnard and McConville in \cite{Barnard-McConville}, of which particular cases are considered in ~\cite{Forcey-Tamari}, via the dictionary between constructs and building sets -- up to the inessential difference that we deal here with hypergraphs and not only graphs.
-As a matter of fact, their proof that the  reflexive and transitive closure of the flip relation (which they define for graph associahedra) is a partial order~\cite[Lem.~2.8]{Barnard-McConville} extends readily to hypergraph polytopes.
+It turns out that our definition of $<$ on constructions is equivalent to the definition of the \emph{flip relation} on maximal tubings of a graph associahedron given by Barnard and McConville in \cite{Barnard-McConville}, of which particular cases are considered in ~\cite{Forcey-Tamari}.
+%, via the dictionary between constructs and building sets -- up to the inessential difference that we deal here with hypergraphs and not only graphs.
+Their proof that the reflexive and transitive closure of the flip relation is a partial order extends readily to hypergraph polytopes.
 
-Below, for completeness, we reproduce that proof, translated into the current tree-based formalism of constructs. 
-The main ingredient consists in associating with every construction~$S$ a vector of positive integers $v^S=(\ldots,v^S_y,\ldots,v^S_x,\ldots)$ where the coordinates appear according to the increasing order of the elements of $H$. Note that those vectors are all of length $|H|$.
-The coordinates are defined as follows: 
-$$v^S_x=|\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc \supp(\occ{S}{x})}|.$$
+\begin{definition}
+  \label{def:coordinate-vector}
+  Given a construct $S$ of an ordered hypergraph $\hyper{H}$, its \defn{coordinate vector}
+  $v^S:=(\ldots,v^S_y,\ldots,v^S_x,\ldots) \in \mathbb{R}^{|H|}$, where the coordinates appear according to the increasing order of the elements of $H$, is defined by
+  $$v^S_x=|\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc \supp(\occ{S}{x})}|.$$
+\end{definition}
+
 
 \begin{proposition}[{\cite[Lem.~2.8]{Barnard-McConville}}] 
-\label{flip-partial-order}
-Let $\hyper{H}$ be a connected hypergraph. The preorder generated by the flip relation defined above is a partial order.
+\label{p:flip-partial-order}
+Let $\hyper{H}$ be an ordered connected hypergraph. 
+The preorder generated by the flip relation defined above is a partial order.
 \end{proposition}
+
 \begin{proof}
-Let $S,T$ be as above. We set $K={supp}(\occ{S}{x})={supp}(\occ{T}{y})$, $I={supp}(\occ{S}{y})$, and $J={supp}(\occ{T}{x})$.
-Let us examine $v^S$ and $v^T$. One sees easily that they have the same coordinates in all positions other than $x$ and  $y$. We have, by definition:
-$$\begin{array}{l}
-v^S_x  = |\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc K}|\\
-v^T_x  = |\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc J}|\\ 
-v^S_y  = |\setc{e\in{\Sat}(\hyper{H})}{y\in e\inc I}|\\
-v^T_y  = |\setc{e\in{\Sat}(\hyper{H})}{y\in e\inc K}|.
-\end{array}$$
+Let $S,T$ be as in \cref{l:instantiation-constructions}. 
+We set $K:=\supp(\occ{S}{x})=\supp(\occ{T}{y})$, $I:=\supp(\occ{S}{y})$, and $J:=\supp(\occ{T}{x})$.
+Let us examine $v^S$ and $v^T$. 
+One sees easily that they have the same coordinates in all positions other than $x$ and $y$. 
+We have, by definition
+$$ v^S_x  = |\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc K}| \quad \text{and} \quad v^T_x  = |\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc J}|, $$
+$$ v^S_y  = |\setc{e\in{\Sat}(\hyper{H})}{y\in e\inc I}| \quad \text{and} \quad v^T_y  = |\setc{e\in{\Sat}(\hyper{H})}{y\in e\inc K}|.$$
 We next claim that the following equality holds:
 $$v^S_x  - v^T_x  = \lambda = 
-v^T_y - v^S_y \quad\quad\textrm{where}\: \lambda= |\setc{e\in{\Sat}(\hyper{H})}{\set{x,y}\inc e\inc K}|.$$
-We just prove 
-$$(\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc K}\setminus\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc J})\inc\setc{e\in{\Sat}(\hyper{H})}{\set{x,y}\inc e\inc K}.$$
-Suppose that $e$ is connected, $x\in e$, $e\inc K$ and $e\not\inc J$, and $y\not\in e$. Then $y$ has to lie entirely inside one of the connected components of $\restrH{K}{y}$, which has to be $J$ since $x\in e$, contradicting $e\not\inc J$.
-We thus have 
-$v^S - v^T = (0,\ldots,-\lambda,…,\lambda,\ldots)$, where $\lambda$ is a positive integer.
-Consider now an arbitrary vector $\mu=(\ldots,\mu_y,\ldots,\mu_x,\ldots)$ such that $\mu_{\_}:H\rightarrow\mathbb{R}$ is strictly decreasing, and consider the linear functional $\overline{\mu}=\langle\_,\mu\rangle$. 
+v^T_y - v^S_y \quad\textrm{where}\: \lambda:= |\setc{e\in{\Sat}(\hyper{H})}{\set{x,y}\inc e\inc K}|.$$
+We just prove the inclusion of sets
+$$\left(\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc K}\setminus\setc{e\in{\Sat}(\hyper{H})}{x\in e\inc J}\right)
+\inc\setc{e\in{\Sat}(\hyper{H})}{\set{x,y}\inc e\inc K}.$$
+Suppose that $e$ is connected, $x\in e$, $e\inc K$ and $e\not\inc J$, and $y\not\in e$. Then $y$ has to lie entirely inside one of the connected components of $\restrH{K}{y}$, which has to be $J$ since $x\in e$, contradicting~$e\not\inc J$.
+We thus have
+$v^S - v^T = (0,\ldots,-\lambda,\ldots,\lambda,\ldots)$, where $\lambda$ is a positive integer.
+Consider now an arbitrary vector $\mu=(\ldots,\mu_y,\ldots,\mu_x,\ldots)$ such that $\mu_{\bullet}:H\rightarrow\mathbb{R}$ is strictly decreasing, and consider the linear functional $\overline{\mu}:=\langle -,\mu\rangle$. 
 Then we have 
 $\overline{\mu}(v^S)- \overline{\mu}(v^T)=\lambda(\mu_x-\mu_y)<0$. This prevents to create cycles when composing flips, concluding the proof.
 %et l’on obtient la mesure de décroissance en faisant le produit scalaire <_,u> où u est un vecteur à coordonnées décroissantes quelconque.
@@ -292,24 +312,33 @@ In other words, we have the following.
   The rewriting system $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$ is terminating.
 \end{thm}
 
-But there is more to it. 
-It turns out that the map $v^{\_}$ from constructions to $\mathbb{R}^{|H|}$
-has a geometric significance.  
-(A special case of) Postnikov's realisation is defined as follows. 
-Let $\hyper{H}$ be a hypergraph such that $H=\set{1,\ldots,n}$. 
-Let $\Delta^{n-1}$ be the standard $(n-1)$-dimensional simplex in $\mathbb{R}^n$, i.e., the convex hull of the base vectors $e_1,\ldots,e_n$. 
-Each non-empty subset $I$ of $\set{1,\ldots,n}$ determines a face $\Delta^I$ of $\Delta^{n-1}$, namely the convex hull of $\setc{e_i}{i\in I}$. 
-Define $P_{\hyper{H}}$ as the Minkowski sum of all $\Delta^E$, where $E$ ranges over the connected subsets of $H$, i.e.
-$$P_{\hyper{H}}=\set{\sum_{E\in{\Sat}(\hyper{H}), u^E\in\Delta^e} u^E}.$$
-We have that $P_{\hyper{H}}$, as a Minkowski sum of polytopes, is a polytope.
+\begin{proof}
+  It suffices to prove that its restriction to closed terms is terminating, which follows immediately from \cref{p:flip-partial-order} via \cref{l:instantiation-constructions}.
+\end{proof}
 
-\begin{proposition}[{\cite[Prop.~7.9]{P09}}] \label{Postnikov-correspondence}
-The map $v^{\_}$ is a bijection from the set of constructions of $\hyper{H}$ to the set of vertices of $P_{\hyper{H}}$.
+But there is more to it. 
+It turns out that the map $v^{\bullet}$ from constructions to $\mathbb{R}^{|H|}$
+in \cref{def:coordinate-vector} has a geometric significance.  
+Let $\Delta^{n-1}$ be the standard $(n-1)$-dimensional \defn{standard simplex} in $\mathbb{R}^n$, the convex hull of the basis vectors $e_1,\ldots,e_n$. 
+Each non-empty subset $I \subseteq \set{1,\ldots,n}$ determines a face $\Delta^I$ of $\Delta^{n-1}$, the convex hull of $\setc{e_i}{i\in I}$. 
+
+\begin{definition}
+  Let $\hyper{H}$ be a connected hypergraph such that $H=\set{1,\ldots,n}$. 
+  The \defn{Postnikov realization} of the hypergraph polytope associated to $\hyper{H}$ is the Minkowski sum
+  $$P_{\hyper{H}}:=\sum_{E\in{\Sat}(\hyper{H})} \Delta^E.$$
+\end{definition}
+
+\begin{proposition}[{\cite[Prop.~7.9]{P09}}] 
+  \label{Postnikov-correspondence}
+  Let $\hyper{H}$ be an ordered connected hypergraph.
+  The map $v^{\bullet}$ is a bijection from the set of constructions of $\hyper{H}$ to the set of vertices of $P_{\hyper{H}}$.
 \end{proposition}
 
 \begin{rem}
   Constructions correspond to \emph{maximal nested sets} in the terminology of \cite{P09}.
 \end{rem}
+
+Recall that an \defn{orientation vector} of a polytope $P\subset \R^n$ is a vector $\mu \in \R^n$ which is not perpendicular to any edge of $P$. 
 
 \begin{corollary} 
   \label{Tamari-orientation-vector}
@@ -317,21 +346,33 @@ The map $v^{\_}$ is a bijection from the set of constructions of $\hyper{H}$ to 
 \end{corollary} 
 
 \begin{proof}
-The statement follows immediately from reading the proof of \cref{flip-partial-order} in the light of \cref{Postnikov-correspondence}.
+The statement follows immediately from reading the proof of \cref{p:flip-partial-order} in the light of \cref{Postnikov-correspondence}.
 \end{proof}
 
 \begin{rem} 
   Our presentation is anachronical, since the vectors $v^S$ preexisted their use by Barnard and McConville. 
-  But our presentation stresses the fact that the proof of termination in Proposition \ref{flip-partial-order} is purely combinatorial and does not rely on the existence of a geometric realisation.
+  But our presentation stresses the fact that the proof of termination in Proposition \ref{p:flip-partial-order} is purely combinatorial and does not rely on the existence of a geometric realisation.
 \end{rem}
+
+\begin{thm}
+  \label{thm:normal-form}
+  Every pair of terms in $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$ has a unique common normal form. 
+\end{thm}
+
+\begin{proof}
+  An orientation vector $\mu$ on a polytope $P$ defines a unique \emph{sink}, that is a unique vertex of $P$ on which the linear functional $\overline{\mu}$ is maximized \cite[Thm.~3.7]{Ziegler95}.
+  Therefore, given two constructions, or equivalently two vertices on $P_\hyper{H}$, one can rewrite them until they reach the sink determined by $\mu$. 
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Critical pairs and confluence}
+\label{ss:critical}
 
-We next examine the orientation induced on the $X$-faces of $\hyper{H}$, for some $X=\set{x_1,x_2,x_3}\inc H$. 
-Depending on the total order chosen on $H$ (and hence on $\set{x_1,x_2,x_3}$), each of the four shapes of type B of Section \ref{s:anatomy} gives rise to 6 possible local confluence diagrams. 
-We list them below in schematic form (i.e., without the \ldots) for the quadrilateral shape (B.b) (we use overlining and underlining to stress the minimum and the maximum in the partial order, respectively):
+We next examine the orientation induced on the $X$-faces of $\hyper{H}$, for some $X:=\set{x_1,x_2,x_3}\inc H$. 
+Depending on the total order chosen on $H$, each of the four shapes of type B of Section \ref{s:anatomy} gives rise to 6 possible local confluence diagrams. 
+We list them below in schematic form (i.e., without the $\cdots$) for the quadrilateral shape (b).
+We overline (resp.\ underline) the minimum (resp.\ maximum) in the partial order.
 $$\begin{array}{ccc}
 \boxed{x_1>x_2>x_3} && \boxed{x_1>x_3>x_2}\\
 &&\\
@@ -389,38 +430,50 @@ x_2(x_1(x_3)) \ar @{<-}[ddrr]_{x_2(\set{x_1,x_3})}&&   && \overline{x_3(x_1,x_2)
 &&  x_2(x_3(x_1))&&}
   \end{array}
 $$
+Each of these local confluence diagrams stems from a critical pair. 
+For example, in the first diagram, we can see the minimal overlapping between applying rewriting to the parts $x_1(x_2,-)$ and $x_1(-,x_3)$ of the construct $x_1(x_2,x_3)$. 
 
-%Restricting ourselves to contextual hypergraphs, 
-We argue that each of these diagrams can be seen as a critical pair diagram. 
-For example, in the first diagram, we can see the minimal overlapping between applying rewriting to the parts
-$x_1(x_2,\_)$ and $x_1(\_,x_3)$ of the construct $x_1(x_2,x_3)$. 
+We shall call a local confluence diagram with form a $X$-face of $\hyper{H}$ an \defn{$X$-local confluence diagram}.
 
-Slowly, let us consider  $S,T,U$ such that $S\precdot_{x,y} T$ and $S\precdot_{u,v} U$, with  $(x,y)\neq(u,v)$.
-We have
-$\occ{S}{\set{x}}=x(y(\ldots),\ldots)$ and $\occ{T}{\set{u}}=u(v(\ldots),\ldots)$. There are two cases:
-\begin{itemize}
-\item[A)] $\set{x,y}\cap\set{u,v}=\emptyset$: then the two reductions do not overlap and we are in the situation in which $S,T,U$ fit in a 2-face of type (A).
-\item[B)] $\set{x,y}\cap\set{u,v}\neq\emptyset$. There are a priori four subcases:
-\begin{itemize}
-\item $x=u$: then $\occ{S}{\set{x}}=x(y(\ldots),v(\ldots),\ldots)$;
-\item $y=u$: then  $\occ{S}{\set{x}}=x(y(v(\ldots),\ldots),\ldots)$;
-\item $x=v$: up to permuting $T$ and $U$, this is the previous case:
-\item $y=v$: this would force $x=u$, contrary to our assumption.
+\begin{thm}
+  \label{thm:critical-pairs}
+  Let $\hyper{H}$ be an ordered connected hypergraph. 
+  Then, any local confluence diagram of the rewriting system $(\Sigma_\hyper{H},R_\hyper{H})$ is an $X$-local confluence diagram, for some $X$-face of type B.
+\end{thm}
+
+\begin{proof}
+  Once again, we use \cref{l:bijection-constructions} to work directly with constructions. 
+Let us consider three constructions $S,T,U$ such that $S\pre{x}{y}T$ and $S \pre{u}{v} U$, with $(x,y)\neq(u,v)$.
+  We have~$\occ{S}{\set{x}}=x(y(\ldots),\ldots)$ and $\occ{T}{\set{u}}=u(v(\ldots),\ldots)$. 
+  There are two cases to consider:
+  \begin{itemize}
+  \item[A)] $\set{x,y}\cap\set{u,v}=\emptyset$: then the two reductions do not overlap and we are in the situation in which $S,T,U$ fit in a 2-face of type A.
+  \item[B)] $\set{x,y}\cap\set{u,v}\neq\emptyset$. 
+  There are a priori four subcases:
+  \begin{itemize}
+  \item $x=u$: then $\occ{S}{\set{x}}=x(y(\ldots),v(\ldots),\ldots)$,
+  \item $y=u$: then  $\occ{S}{\set{x}}=x(y(v(\ldots),\ldots),\ldots)$,
+  \item $x=v$: up to permuting $T$ and $U$, this is the previous case,
+  \item $y=v$: this would force $x=u$, contrary to our assumption.
+  \end{itemize}
+  This gives evidence that case B features the two (an only two) overlapping situations $x(y(\ldots),v(\ldots),\ldots)$ (with $x>y$ and $x>z$) and 
+  $x(y(v(\ldots),\ldots),\ldots)$ (with $x>y>z$), and the four subcases  (in their oriented version as above) show how to resolve the branchings.
 \end{itemize}
-This gives evidence that case (B) features the two (an only two) overlapping situations $x(y(\ldots),v(\ldots),\ldots)$ (with $x>y$ and $x>z$) and 
-$x(y(v(\ldots),\ldots),\ldots)$ (with $x>y>z$), and the four subcases  (in their oriented version as above) show how to resolve the branchings.
-\end{itemize}
+\end{proof}
 
 
 \begin{thm}
   \label{thm:confluent}
   The rewriting system $(\Sigma_\hyper{H},R_\hyper{H})$ is confluent.
+  In fact, it is strongly normalizing.
 \end{thm}
 
 \begin{proof}
-  Since all critical pairs can be resolved, we have that $(\Sigma_\hyper{H},R_\hyper{H})$ is locally confluent. 
+  Since all critical pairs can be resolved, we have that $(\Sigma_\hyper{H},R_\hyper{H})$ is locally confluent (\cref{l:local-confluence-critical-pair}). 
   By \cref{thm:termination}, it is also terminating, and therefore confluent by Newman's Lemma (\cref{thm:Newman}).
+  In fact, since every pair of elements has a unique common normal form (\cref{thm:normal-form}), the system is strongly normalizing. 
 \end{proof}
+
 
 
 

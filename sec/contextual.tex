@@ -3,25 +3,31 @@
 \section{Contextual nestohedra} 
 \label{s:contextual}
 
-We define special families of hypergraph polytopes (nestohedra) which we call ``contextual'', and exhibit several examples.
+We define special families of hypergraph polytopes which we call ``contextual'', and exhibit several examples.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Definition}
 
-For a 3-element subset $X=\set{x_1,x_2,x_3}$ of $H$, we say that a 2-face $T$  of $\hyper{H}$ is an \defn{$X$-face} if its unique non-singleton node is decorated by $X$.  
+For a 3-element subset $X=\set{x_1,x_2,x_3}$ of $H$, we say that a 2-face $T$ of $\hyper{H}$ is an \defn{$X$-face} if its unique non-singleton node is decorated by $X$.  
 If $X$ is the root of $T$, the following  lemma allows us to see $T=X(\ldots)$ as an ``instantiation'' of $X$, viewed as the maximum face of $\recrestr{\hyper{H}}{X}$.
 
-\begin{lemma} \label{instance-construct} 
+\begin{lemma} 
+  \label{instance-construct} 
   If $\hyper{H}$ is a connected hypergraph, if $X$ is a subset of $H$ such that $|X|=3$ and $T$ is a 2-dimensional construct with root $X$, then the poset of faces of $T$ is isomorphic to the poset of faces of $\recrestr{\hyper{H}}{X}$.
- \end{lemma}
- 
- \begin{proof}
- In Section~\ref{s:anatomy}, we have described (cases (a), (b), (c) and (d)) up to permutation all the possible connected hypergraphs on the set $\set{x_1,x_2,x_3}$ of vertices and their respective posets of faces. Suppose, say, that
-  ${\cal A}(\recrestr{\hyper{H}}{X})$ is the poset underlying the picture of case (B.c). Pick, say the 0-face $S= x_1(x_2,x_3)$. We map $S$ to a 0-subface $\phi(S)$ of $T$ as follows. Let $\hyper{H},\set{x}\leadsto H_1,\ldots,H_n$. By Lemma \ref{xyz-reconnected}, we have $\xyz{x_1}{\hyper{H}}{\set{x_2},\set{x_3}}$, hence we have, say $x_2\in H_1$ and $x_3\in H_2$. Then let
+\end{lemma}
+
+\begin{proof}
+In Section~\ref{ss:type-B}, we have described up to permutation all the possible connected hypergraphs on the set $X$ of vertices and their respective posets of faces. 
+We will treat the case where ${\cal A}(\recrestr{\hyper{H}}{X})$ is the poset of (c), the others are similar.
+Pick the 0-face~$S:= x_1(x_2,x_3)$. 
+We map $S$ to a $0$-face $\phi(S)$ of $T$ as follows. 
+Let $\hyper{H},\set{x}\leadsto H_1,\ldots,H_n$. 
+By \cref{xyz-reconnected}, we have $\xyz{x_1}{\hyper{H}}{\set{x_2},\set{x_3}}$, hence we have, say $x_2\in H_1$ and $x_3\in H_2$. Then let
   $\hyper{H_1},\set{x_2}\leadsto H_{1,1},\ldots,H_{1,p}$ and $\hyper{H_2},\set{x_3}\leadsto H_{2,1},\ldots,H_{2,q}$.
   Then we have $\hyper{H},X\leadsto H_{1,1},\ldots,H_{1,p},H_{2,1},\ldots,H_{2,q},H_3,\ldots H_n$, so that $T$ writes as
-  $T= X(T_{1,1},\ldots,T_{1,p},T_{2,1},\ldots,T_{2,q},T_3,\ldots T_n)$. All these data determine uniquely a 0-dimensional subface of $T$, namely
+  $$T= X(T_{1,1},\ldots,T_{1,p},T_{2,1},\ldots,T_{2,q},T_3,\ldots T_n).$$ 
+All these data determine uniquely a 0-dimensional subface of $T$, namely
   $$\phi(S)=x_1(x_2(T_{1,1},\ldots,T_{1,p}),x_3(T_{2,1},\ldots,T_{2,q}),T_3,\ldots T_n)$$
  and one recovers $S$
   by  pruning in $\phi(S)$ all nodes except those decorated by subsets of $X$.
@@ -33,26 +39,21 @@ If $X$ is the root of $T$, the following  lemma allows us to see $T=X(\ldots)$ a
  $$\phi(\set{x_1,x_2,x_3})=\set{x_1,x_2,x_3}(T_{1,1},\ldots,T_{1,p},T_{2,1},\ldots,T_{2,q},T_3,\ldots T_n)=T.$$
  \end{proof}
 
-Now, if $T'$ is another $X$-face and $\occ{T'}{X}\neq T'$ (i.e., $X$ is not the root of $T'$), then we would like to see  $T'$ as $\occ{T'}{X}$ in context, and hence $T'$ as ``$X$ in situation''.  
-But, to be able to see $X$ as a ``coherence condition'', we should have that all $X$-faces have isomorphic posets of faces.  
-Is it the case?  
-Let us take $T,T'$ as  above: the poset of subfaces of $T'$ is isomorphic  to the poset of subfaces of $\occ{T'}{X}$, which is a construct of $\hyper{H}_E$, where $E={supp}(\occ{T}{X})$ and has $X$ as root, so that the latter poset (and hence the former) is isomorphic to the poset of faces of $\recrestr{\hyper{(H_E)}}{X}$.
-Is it always the case that $\recrestr{\hyper{(H_E})}{X}=\recrestr{\hyper{H}}{X}$ for $E$ connected in $\hyper{H}$? 
+Now, if $T'$ is another $X$-face and $\occ{T'}{X}\neq T'$, then we would like to see  $T'$ as $\occ{T'}{X}$ in context, and hence $T'$ as ``$X$ in situation''.  
+For this to hold, $T'$ should be of the same form as $T$. 
+Setting $Y:=\supp(\occ{T}{X})$, we have that the poset of faces of $T'$ is isomorphic to the poset of faces of $\occ{T'}{X}$, which is a construct of $\hyper{H}_Y$ and has $X$ as root, so is in turn isomorphic to the poset of faces of $\recrestr{\hyper{(\hyper{H}_Y)}}{X}$ (\cref{instance-construct}).
+Is it always the case that $\recrestr{(\hyper{H}_Y)}{X}=\recrestr{\hyper{H}}{X}$ for~$Y$ connected in $\hyper{H}$? 
 The following examples give a negative answer.
 
 \begin{example} \label{non-contextual-1}
 Consider the hypergraph 
-$$\hyper{H}= \set{\set{x},\set{y},\set{z},\set{u},\set{x,y,z}, \set{x,u,z}}$$
-and its two $\set{x,y,z}$-faces $S=u(\set{x,y,z})$ and $T=\set{x,y,z}(u)$. 
-Then $\occ{S}{\set{x,y,z}}$ is a construct of
-$\hyper{K}=\restrH{H}{\set{u}}$ while $\occ{T}{\set{x,y,z}}=T$ is a construct of $\hyper{H}$.
-But we have $\xyz{y}{\hyper{K}}{\set{x}\!,\!\set{z}}$ while  $\xyz{y}{\hyper{H}}{\set{x,z}}$. 
-As a matter of fact,
-$S$ is a triangle while $T$ is a quadrilateral, since
-$$\begin{array}{lllll}
-\recrestr{\hyper{K}}{\set{x,y,z}} &=& \hyper{K} & = & \set{\set{x},\set{y},\set{z},\set{x,y,z}}\\
-\recrestr{\hyper{H}}{\set{x,y,z}} && =&&  \set{\set{x},\set{y},\set{z},\set{u},\set{x,z}\set{x,y,z}}.
-\end{array}$$
+\[
+  \hyper{H}:= \set{\set{x},\set{y},\set{z},\set{u},\set{x,y,z}, \set{x,u,z}},
+  \]
+the set $X:=\set{x,y,z}$ and the two $X$-faces $S:=u(X)$ and $T:=X(u)$. 
+Then $\occ{S}{X}$ is a construct of $\hyper{K}:=\restrH{H}{\set{u}}$ while $\occ{T}{X}=T$ is a construct of $\hyper{H}$.
+But we have $\xyz{y}{\hyper{K}}{\set{x}\!,\!\set{z}}$ while $\xyz{y}{\hyper{H}}{\set{x,z}}$, and $S$ is a triangle while $T$ is a quadrilateral, as
+$\recrestr{\hyper{K}}{\set{x,y,z}} = \hyper{K}  =  \set{\set{x},\set{y},\set{z},\set{x,y,z}}$ and $\recrestr{\hyper{H}}{\set{x,y,z}}  =  \set{\set{x},\set{y},\set{z},\set{u},\set{x,z}\set{x,y,z}}$.
 \end{example}
   
 \begin{example} 
@@ -65,14 +66,14 @@ Then exactly the same data as in Example \ref{non-contextual-1} provide evidence
 This motivates the following definition.
 
 \begin{definition} 
-A connected hypergraph $\hyper{H}$ is contextual if for all connected subsets $Y\inc H$ of cardinal $|Y|\geq 3$, and for all $3$-elements subsets $X=\{x,y,z\} \subseteq Y$, we have 
+A connected hypergraph $\hyper{H}$ is \defn{contextual} if for all connected subsets $Y\inc H$ of cardinal $|Y|\geq 3$, and for all $3$-elements subsets $X=\{x,y,z\} \subseteq Y$, we have 
 $$\begin{array}{lll}
   \xyz{x}{{\hyper{H}_Y}}{\set{y,z}} & \Leftrightarrow & \xyz{x}{\hyper{H}}{\set{y,z}}.
   \end{array}$$
 \end{definition}
 
 \begin{lemma} \label{context-lemma}
-  A connected hypergraph $\hyper{H}$ is \defn{contextual} if for all connected subsets $Y \subseteq H$ of cardinal $|Y|\geq 3$, and for all subsets $X \subseteq Y$ of cardinal $|X|=3$, we have
+  A connected hypergraph $\hyper{H}$ is contextual if for all connected subsets $Y \subseteq H$ of cardinal $|Y|\geq 3$, and for all subsets $X \subseteq Y$ of cardinal $|X|=3$, we have
   $$\hyper{H}_{\cap X} = (\hyper{H}_Y)_{\cap X}.$$ 
 \end{lemma}
 
@@ -82,209 +83,172 @@ $$\begin{array}{lll}
 
 \begin{proposition} \label{situation-construct}
 Let $\hyper{H}$ be a contextual hypergraph.
-If $X$ is a subset of $H$ such that $|X|=3$ and $T$ is an $X$-face of $\hyper{H}$, then the poset of faces of $T$ is isomorphic to the poset of faces of $\recrestr{\hyper{H}}{X}$.
+If $X$ is a subset of $H$ such that $|X|=3$ and $T$ is an $X$-face of $\hyper{H}$, then the poset of faces of $T$ is isomorphic to the poset of faces of~$\recrestr{\hyper{H}}{X}$.
 \end{proposition}
 
 \begin{proof} 
-  Let $\hyper{K}=\hyper{H}_{\supp(S)}$ where $S=\occ{T}{X}$. 
-  By \cref{subconstruct-restriction}, $S$ is a constuct of $\hyper{K}$. By definition of the face relation, and since the only non-singleton (and hence ``splittable'') node of $T$ is $X$, we have that the poset of subfaces of $T$ is isomorphic to the poset of subfaces of $S$, which by \Cref{instance-construct} is isomorphic to ${\cal A}(\recrestr{\hyper{K}}{X})$, which is isomorphic to ${\cal A}(\recrestr{\hyper{H}}{X})$ since $\hyper{H}$ is contextual.
+  Let $\hyper{K}:=\hyper{H}_{\supp(S)}$ where $S:=\occ{T}{X}$. 
+  By \cref{subconstruct-restriction}, $S$ is a constuct of $\hyper{K}$. By definition of the face relation, and since the only non-singleton (and hence ``splittable'') node of $T$ is $X$, we have that the poset of subfaces of $T$ is isomorphic to the poset of subfaces of $S$, which by \Cref{instance-construct} is isomorphic to ${\cal A}(\recrestr{\hyper{K}}{X})$, which is isomorphic to ${\cal A}(\recrestr{\hyper{H}}{X})$ since~$\hyper{H}$ is contextual.
 \end{proof}
 
 Proposition~\ref{situation-construct} allows us to see all $X$-faces as ``instantiations in context'' of $\recrestr{\hyper{H}}{X}$, which therefore acts  as a rule or axiom in the terminology of equational theories.
 
-Motivated by the examples presented below in \cref{ss:examples} and their associated categorical coherence theorems listed in \cref{table:contextual-hyper}, we define now the notion of a contextual \emph{family} of nestohedra.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Contextual families}
+
+Motivated by the examples presented in \cref{ss:hypergraph-polytopes,ss:examples} and their associated categorical coherence theorems listed in \cref{table:contextual-hyper}, we define now the notion of a contextual \emph{family} of nestohedra.
+
 Identifying an hypergraph $\hyper{H}$ with the maximal construct $T$ of $({\cal A}(\hyper{H}),\preceq)$, we say that $\hyper{H}$ has \defn{dimension} $\dim T$.
+For a family of hypergraphs $\calH$, we denote by $\calH(n)$ the subset of hypergraphs of dimension $n \geq 0$.
+
+We will consider families of ordered hypergraphs. 
+Note that when $\hyper{H}$ is ordered, all the restrictions $\hyper{H}_X$ and reconnected restrictions $\hyper{H}_{\cap X}$ are naturally ordered hypergraphs.
 
 \begin{definition}
-    A family $\calH=\{\calH(n)\}_{n\geq 0}$ of hypergraphs is \defn{contextual} if 
+  \label{def:contextual-family}
+    A family $\calH$ of ordered hypergraphs is \defn{contextual} if 
     \begin{enumerate}
-      \item any hypergraph $\hyper{H} \in \calH$ is contextual,
-      \item every $2$-dimensional hypergraph in $\calH(2)$ is isomorphic to $\hyper{H}_{\cap X}$ for some $X$-face of an hypergraph $\hyper{H} \in \calH(n)$ with $n\geq 3$. 
+      \item any ordered hypergraph $\hyper{H} \in \calH$ is contextual.
+      \item for any $\hyper{H} \in \calH$ an any $X \subseteq H$, all the connected components of $\hyper{H}\setminus X$ are in $\calH$.
+      \item we have $\{\hyper{H}_{\cap X} \ | \ X \subset H, |X|=3, \hyper{H} \in \calH \} \subseteq \calH(2)$.
     \end{enumerate}
 \end{definition}
 
-Formally, the following proposition says that, if $\hyper{H}$ is contextual, any such local confluence diagram, stemming from any $\set{x_1,x_2,x_3}$-face, is an instance in context of a local confluence diagram in $\recrestr{\hyper{H}}{\set{x_1,x_2,x_3}}$ (which depends only on $\hyper{H}$ and ${x_1,x_2,x_3}$) and hence is determined by the latter, which therefore deserves the name of coherence condition.
+The term rewrite systems from \cref{ss:rewriting-constructs,ss:rewriting-constructions} can be adapted to a rewrite system on \emph{all} hypergraphs of $\calH$.
+We shall focus on the constructions rewrite system. 
+
+\begin{definition}
+  For a contextual family of hypergraphs $\calH$, we consider the \defn{constructions signature}~$\Sigma_\calH^c$ defined by the following data:
+  \begin{itemize}
+    \item Variables and sorts are elements of $\calH$, 
+    \item Function symbols are pairs of an hypergraph $\hyper{H} \in \calH$ and one of its elements 
+    $$F:=\{(x,\hyper{H}) \ | \ x \in H, \ \hyper{H} \in \calH \}.$$
+    \item For $(x,\hyper{H}) \in F$, we define $\ari(x,H)$ as the number of connected components of~$\hyper{H} \setminus {x}$.
+    \item Variables $\hyper{H} \in V$ are their own output sort $\outsort(\hyper{H}):=\hyper{H}$, while function symbols~$(x,\hyper{H}) \in F$ have output sort $\outsort(x,\hyper{H}):=\hyper{H}$.
+    \item For function symbols $(x,\hyper{H}) \in F$ such that $\hyper{H},x \leadsto H_1,\ldots,H_n$, and for $1 \leq i \leq n$, we define $\insort((x,\hyper{H}),i):=\hyper{H}_i$.
+  \end{itemize}
+\end{definition}
+
+It is clear from \cref{def:contextual-family} and the fact that the (reconnected) restriction of a contextual hypergraph is contextual, that this signature is well-defined.
+Moreover, it is straightforward to adapt \cref{l:bijection-constructions} and \cref{def:rules-2} to obtain a term rewrite system $(\Sigma_\calH,R_\calH)$ on the constructions of $\calH$. 
+
+From \cref{thm:critical-pairs}, we have that all local confluence diagrams for $(\Sigma_\calH,R_\calH)$ have the form of some $X$-face, for $X \subseteq H$, $|X|=3$ and $\hyper{H} \in \calH$. 
+The fact that $\calH$ is contextual imposes an additional uniformity constraint on these diagrams.
 
 \begin{thm} 
-  Let $\calH$ be a contextual family of hypergraphs.
-\begin{itemize}
-  \item For any $\hyper{H} \in \calH$, total order on $H$ and subset $X \subseteq H$ with $|X|=3$, all instances of local confluence diagrams in $(\Sigma_\hyper{H},R_\hyper{H})$ stemming from $X$ have the same form $\hyper{H}_{\cap X}$. 
-  \item Any instance in context of a local confluence diagram is of the form $H$, for some $H \in \calH(2)$.
-\end{itemize}
+Let $\calH$ be a contextual family of ordered hypergraphs.
+For any $\hyper{H} \in \calH$ and subset $X \subseteq H$ with $|X|=3$, all the $X$-local confluence diagrams have the same form $\hyper{H}_{\cap X}$. 
 \end{thm}
 
 \begin{proof} 
-  The proof is an easy variation on the proof of Lemma~\ref{instance-construct}. 
+  The proof is an easy consequence of Lemma~\ref{instance-construct} and \cref{situation-construct}. 
 \end{proof}
+
+\cref{thm:confluent} implies that $(\Sigma_\calH,R_\calH)$ is confluent.
+Moreover, in virtue of Condition (3) in \cref{def:contextual-family} all the possible forms of the local confluence diagrams of $(\Sigma_\calH,R_\calH)$ are in~$\calH(2)$.
+We argue that these diagrams should be called \emph{coherence conditions}, in view of the following examples of contextual families and their coherence theorems. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Examples}
 \label{ss:examples}
 
-Let us briefly introduce some families of hypergraph polytopes, that will be shown in \cref{thm:examples} to be contextual. 
-Recall that any graph can by considered an hypergraph with no hyperedges.
-The resulting hypergraph polytopes are known as \emph{graph-associahedra} \cite{CD-CCGA}.
+We call \defn{contextual graph-associahedra} (resp.\ \defn{contextual nestohedra}) the hypergraph polytopes whose underlying hypergraph is a connected (hyper)graph which is moreover contextual.
+Here, we include a copy of each (hyper)graph for each possible total order on its vertices.
+Recall that simplices, cubes, associahedra, permutahedra and operahedra were introduced in \cref{ss:hypergraph-polytopes}.
 
-\subsubsection{Simplices}
-The $n$-dimensional \defn{simplex} is the realization of the hypergraph 
-$$\mathbb{S}_n:=\{\{x_1\},\{x_2\},\ldots,\{x_{n+1}\},\{x_1,\ldots,x_{n+1}\}\}.$$
-
-\subsubsection{Cubes}
-The $n$-dimensional \defn{cube} is the realization of the hypergraph
-$$\mathbb{C}_n:=\{\{x_j \ | \ 1 \leq j \leq i \} \ | \ 1 \leq i \leq n+1\}.$$
-
-\begin{rem}
-  Note that these two families of hypergraph polytopes are defined by genuine hypergraphs, contrary to the following families of graph-associahedra.
-\end{rem}
-
-\subsubsection{Associahedra}
-The $n$-dimensional \defn{associahedron} is the realization of the hypergraph 
-$$\mathbb{K}_n:=\{\{x_1\},\{x_2\},\ldots,\{x_{n+1}\},\{x_1,x_2\},\ldots,\{x_n,x_{n+1}\}\}.$$
-In other words, it is the graph-associahedron for the linear graph with $n+1$ vertices.
-
-\subsubsection{Permutahedra}
-The $n$-dimensional \defn{permutahedron} is the realization of the hypergraph 
-$$\mathbb{P}_n:=\{\{x_1\},\{x_2\},\ldots,\{x_{n+1}\}\} \cup \{\{x_i,x_j\} \ | \ 1 \leq i \neq j \leq n+1 \}.$$
-In other words, it is the graph-associahedron for the complete graph on $n+1$ vertices.
-
-\subsubsection{Operahedra}
-To every rooted planar tree $\calT$ with $n+2$ vertices, one can associate its $n$-dimensional \defn{operahedron}, whose faces are in bijection with nestings of $\calT$ \cite{laplante-anfossiDiagonalOperahedra2022a,CLA1}.
-These are in bijections with the tubings of the \defn{line graph} $\mathbb{L}(\calT)$ of $\calT$.
-The vertices of $\mathbb{L}(\calT)$ are the edges of ${\cal T}\!$, and two vertices are connected whenever as edges of ${\cal T}$ they share a common vertex, see \cref{fig:line-graph}.
-In other words, an $n$-dimensional operahedron is the graph-associahedron for a clawfree block graph with $n+1$ vertices.
-
-\begin{figure}[h!]
-  \begin{center}
-    \begin{tabular}{ccc}
-    \resizebox{2cm}{!}{\begin{tikzpicture}[scale=0.8]
-        % set up the nodes
-        \node (E)[circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,0) {\scriptsize $a$};
-        \node (F) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-0.5,1) { \scriptsize $b$};
-        \node (A) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0.5,1) {\scriptsize $e$};
-        \node (Asubt) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (-1,2) {\scriptsize  $c$};
-        \node (P) [circle,draw=black,minimum size=4mm,inner sep=0.1mm] at (0,2) {\scriptsize $d$};
-        % draw arrows and text between them
-        \draw[-] (E)--(F) node  [midway,left] {\scriptsize $z$};
-        \draw[-] (E)--(A) node  [midway,right] {\scriptsize $u$};
-     \draw[-] (F)--(Asubt) node [midway,left] {\scriptsize $x$};
-     \draw[-] (F)--(P) node [midway,right] {\scriptsize $y$};
-       \end{tikzpicture}}
-    
-    &&
-    \resizebox{2cm}{!}{
-    \begin{tikzpicture}
-        % set up the nodes
-        \node (Z)[] at (-0.5,0) {$z$};
-        \node (U)[]  at (0.5,0) {$u$};
-        \node (X)[]  at (-1,1) {$x$};
-        \node (Y)[]  at (0,1) {$y$};
-        % draw arrows and text between them
-        \draw[-] (Z)--(U) node  {};
-     \draw[-] (Z)--(X) node  {};
-     \draw[-] (Z)--(Y) node {};
-     \draw[-] (X)--(Y) node {};
-       \end{tikzpicture}}
-    \end{tabular}
-    \end{center}
-    \caption{A planar tree with $5$ vertices (left) and its line graph (right).}
-    \label{fig:line-graph}
-\end{figure}
-
-\subsubsection{Contextual graph-associahedra}
-We call \defn{contextual graph-associahedra} the hypergraph polytopes whose underlying hypergraph is a connected simple graph which is moreover contextual.
-This family includes all the three previous families, but is far from containing all graph-associahedra.
-For instance, we have seen in \cref{non-contextual-2} that the well-known cyclohedra are \emph{not} part of this family. 
-
-\subsubsection{Contextual nestohedra}
-We call \defn{contextual nestohedra} the family of hypergraph polytopes whose underlying hypergraph is contextual. 
-
-\begin{rem}
-  It would be interesting to characterize combinatorially contextual graphs and hypergraphs.
-\end{rem}
-
-
-
-\begin{thm}
-  \label{thm:examples}
-  The following families of hypergraph polytopes are contextual:
-  \begin{enumerate}
-    \item simplices,
-    \item cubes,
-    \item associahedra,
-    \item permutahedra,
-    \item operahedra,
-    \item contextual graph-associahedra,
-    \item contextual nestohedra.
-  \end{enumerate}
-\end{thm}
+\begin{samepage}
+  \begin{thm}
+    \label{thm:examples}
+    The following families of hypergraph polytopes are contextual:
+    \begin{enumerate}[label=(\alph*)]
+      \item simplices,
+      \item cubes,
+      \item associahedra,
+      \item permutahedra,
+      \item operahedra,
+      \item contextual graph-associahedra,
+      \item contextual nestohedra.
+    \end{enumerate}
+  \end{thm}
+\end{samepage}
 
 \begin{proof}
   Let us proceed one family at a time.
-  \begin{enumerate}
-    \item simplices,
-    \item We first note that the above description of $\hyper{C}_n$ is saturated, and that $(\hyper{C}_n)_{\set{1,\ldots,m}}=\hyper{C}_m$ (if $m\leq n$).
-    So we have to check that  for all $m\leq n$ and all $i,j,k\leq m$, we have $\xyz{k}{{\hyper{H}_n}}{\set{i,j}}$ iff
-    $\xyz{k}{{\hyper{H}_m}}{\set{i,j}}$, which follows immediately from the observation that for all $p\geq m$ we have
-    $\xyz{k}{{\hyper{H}_p}}{\set{i,j}}$ iff $i<k$ and $j<k$.
-    \item associahedra,
-    \item permutahedra,
-    \item It is proved in~\cite[Lem.~12]{COI} that the connected subsets of $\hyper{G}({\cal T})$ are in bijective correspondence with the subtrees of $\cal T$ having at least two nodes, through a map $E\mapsto  {\cal T}_E$ such that $\hyper{G}({\cal T})_E=\hyper{G}({\cal T_E})$. Suppose, say, that $\set{x,y,z}\inc E$ and $\xyz{x}{\hyper{G}({\cal T})_E}{\set{y},\set{z}}$. Then it means on the tree side that after removing the edge $x$ from ${\cal T}_E$, resulting in two disjoint subtrees ${\cal T}_E^1$ and ${\cal T}_E^2$ of ${\cal T}_E$, we have, say, $y\in{\cal T}_E^1$ and $z\in{\cal T}_E^2$. 
-    On the other hand, removing $x$ from ${\cal T}$ results in subtrees ${\cal T}^1$ and ${\cal T}^2$, containing ${\cal T}_E^1$ and ${\cal T}_E^2$, respectively. 
-    Therefore $\xyz{x}{\hyper{G}({\cal T}))}{\set{y},\set{z}}$. 
-    And vice-versa.
-    \item We only need to check that every $2$-dimensional contextual graph-associahedron appears as a $2$-face of a higher dimensional contextual graph-associahedron. 
-    \item We only need to check that every $2$-dimensional contextual nestohedron appears as a $2$-face of a higher dimensional contextual nestohedron.
+  For each one, we check Conditions (1)-(3) in \cref{def:contextual-family}.
+  We consider sets of vertices to be $H=\{1,\ldots,n\}$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Conditions (1)-(3) follow easily from the fact that hyperedges of simplices are all either singletons or the maximal hyperedge.
+    \item We first prove Condition (1). 
+    Note $\hyper{C}_n$ is saturated, and that $(\hyper{C}_n)_{\set{1,\ldots,m}}=\hyper{C}_m$ if $m\leq n$.
+    So we have to check that for all $m\leq n$ and all $i,j,k\leq m$, we have $\xyz{k}{{\hyper{C}_n}}{\set{i,j}}$ iff
+    $\xyz{k}{{\hyper{C}_m}}{\set{i,j}}$, which follows immediately from the observation that for all $p\geq m$ we have
+    $\xyz{k}{{\hyper{C}_p}}{\set{i,j}}$ iff $i<k$ and $j<k$.
+    For Conditions (2) and (3) it suffices to observe that the connected components of $\hyper{C}_n\setminus X$, for some $X$, are all cubes $\hyper{C}_m$ with $m<n$.
+    \item[(c)-(e)] Conditions (1) and (2) follow from the fact that any connected subgraph of a linear (resp. complete, clawfree block) graph is a linear (resp. complete, clawfree block) graph. 
+    Condition (3) follows from the fact that any reconnected complement of a subset in a linear (resp. complete, clawfree block) graph is a linear (resp. complete, clawfree block) graph.
+    %As to Condition (1), it is proved in~\cite[Lem.~12]{COI} that the connected subsets of $\hyper{L}({\cal T})$ are in bijective correspondence with the subtrees of $\cal T$ having at least two nodes, through a map $E\mapsto  {\cal T}_E$ such that $\hyper{L}({\cal T})_E=\hyper{L}({\cal T_E})$. Suppose, say, that $\set{x,y,z}\inc E$ and $\xyz{x}{\hyper{L}({\cal T})_E}{\set{y},\set{z}}$. Then it means on the tree side that after removing the edge $x$ from ${\cal T}_E$, resulting in two disjoint subtrees ${\cal T}_E^1$ and ${\cal T}_E^2$ of ${\cal T}_E$, we have, say, $y\in{\cal T}_E^1$ and $z\in{\cal T}_E^2$. 
+    %On the other hand, removing $x$ from ${\cal T}$ results in subtrees ${\cal T}^1$ and ${\cal T}^2$, containing ${\cal T}_E^1$ and ${\cal T}_E^2$, respectively. 
+    %Therefore $\xyz{x}{\hyper{L}({\cal T}))}{\set{y},\set{z}}$. 
+    %And vice-versa.
+    \item[(f)-(g)] This is immediate from the definitions.
   \end{enumerate}
 \end{proof}
+
+%toute restriction d'un hypergraphe contextuel est contextuelle
+
+\begin{rem}
+  Note that contextual (hyper)graphs do not contain all graph-associahedra.
+  For instance, we have seen in \cref{non-contextual-2} that the cyclohedra are not contextual. 
+  It would be interesting to characterize combinatorially contextual (hyper)graphs.
+\end{rem}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Categorical coherence}
+\label{ss:coherence}
 
-Some of these families encode categorical structures, which have their coherence theorems, as displayed in \cref{table:contextual-hyper}.
-
-\begin{table}[h!]
-	\begin{center}
-	\begin{tabular}{c|c|c}
-	Family & Algebraic structure & Coherence theorem \\
-	\hline
-	Simplices & - & - \\
-	Cubes & - & - \\
-	Associahedra & Monoidal category & \cite{MacLane63} \\
-	Permutahedra & Categorified permutads & \cite{CLA1} \\
-	Operahedra & Categorified operads & \cite{DP15,CLA1} \\
-	Contextual graph-associahedra & - & - \\
-	Contextual nestohedra & - & - 
-	\end{tabular}
-	\end{center}
-  \caption{Families of contextual hypergraphs, the categorical structures that they encode, and their associated coherence theorems.}
-  \label{table:contextual-hyper}
-\end{table}
-
-Let us sketch how one should recover MacLane's coherence theorem. 
-A similar description holds for the operahedra, see \cite{CLA1}. 
-
-\begin{rem}
-  It would be interesting to complete \cref{table:contextual-hyper} with appropriate structures and coherence theorems.
-  It seems likely that contextual graph-associahedra would be related to a certain type of categorified reconnectads \cite{DotsenkoKeilthyLyskov}.
-\end{rem}
-
-
-Associahedra form a subfamily of operahedra: those obtained from linear trees.  Consider the linear tree
-
-\vspace{-1cm}
+Let us quickly recall MacLane's coherence theorem.
+The scene is the data of a category $\mathbf C$, a bifunctor $\otimes:\mathbf{C}^2\rightarrow \mathbf C$ and a natural iso $\alpha$ from the functor
+$(X,Y,Z)\mapsto (X\otimes Y)\otimes Z$ to the functor  $(X,Y,Z)\mapsto X \otimes (Y\otimes Z)$. 
+The coherence theorem states that for any two functors $F,G$ from $\mathbf{C}^{n+1}$ to $\mathbf{C}$ arising from $n$ iterations of $\otimes$, any two  natural transformations $\lambda_1,\lambda_2$ from $F$ to $G$  ``written using $\alpha$ or its inverse'' are equal, provided the statement holds in the following special case  -- called  {\em coherence condition}: 
+\begin{itemize}
+\item $F=(X,Y,Z,U)\mapsto ((X\otimes Y)\otimes Z)\otimes U,$ 
+\item $G=(X,Y,Z,U)\mapsto X\otimes (Y\otimes (Z\otimes U)),$ 
+\item $\lambda_1=(X\otimes\alpha_{Y,Z,U})\circ\alpha_{X,Y\otimes Z,U} \circ (\alpha_{X,Y,Z}\otimes U),$ and
+\item $\lambda_2= \alpha_{X,Y,Z\otimes U}\circ \alpha_{X\otimes Y,Z,U},$ 
+\end{itemize}
+i.e., provided the following diagram (Mac Lane's pentagon) commutes:
 \begin{center}
-$$\xymatrix @-1.65pc {{\cal L} & = &X \ar @{-}[rr]^{1}&& Y \ar @{-}[rr]^{2}&& Z \ar @{-}[rr]^{3}&& U}
- $$
- \end{center}
- \vspace{-.2cm}
- 
- \noindent
- (represented horizontally).  Then $\hyper{G}({\cal L})$ is the associahedron $\hyper{K}^3$. The constructs of
-  ${\cal L}$ decorate a pentagon as follows:
+\vspace{-.5cm}
+$$
+ \xymatrix @-1.65pc {&& ((X\otimes Y)\otimes Z)\otimes U \ar @{->}[ddll]^{\alpha_{X,Y,Z}\otimes U} \ar @{->}[dddrr]^{\alpha_{X\otimes Y,Z,U}}&& \\
+ &&&&\\
+ (X\otimes (Y\otimes Z))\otimes U  \ar @{->}[dd]^{\alpha_{X,Y\otimes Z,U} }&&   && \\
+ &&&&(X\otimes Y)\otimes (Z\otimes U) \ar @{->}[dddll]_{\alpha_{X,Y,Z\otimes U}}\\
+ X\otimes ((Y\otimes Z)\otimes U) \ar @{->}[ddrr]_{X\otimes\alpha_{Y,Z,U}} &  &\\
+ &&&&\\
+ &&X\otimes (Y\otimes (Z\otimes U))&&}
+$$
+\end{center}
 
+Via Huet's correspondence \cite{Huet-notes-cat}, the annotated proof of confluence of the rewriting system $(\Sigma_\calH, R_\calH)$ associated to the contextual family of associahedra $\calH$ provides a proof of MacLane's coherence theorem, with the pentagon in $\calH(2)$ acting as the coherence condition. 
+The following examples explain the translation between the language of hypergraph polytopes and the language of monoidal categories. 
+
+\begin{example}
+Consider the linear tree
+
+\vspace{-.7cm}
+\begin{center}
+$$\xymatrix @-1.65pc {{\cal T} & := &X \ar @{-}[rr]^{1}&& Y \ar @{-}[rr]^{2}&& Z \ar @{-}[rr]^{3}&& U}
+  $$
+\end{center}
+%\vspace{-.2cm}
+Then $\hyper{L}({\cal T})$ is the associahedron $\hyper{K}^3$. 
+The constructs of ${\cal T}$ decorate a pentagon as follows
 %$$
 % \xymatrix @-1.65pc {&& 3(2(1)) \ar @{->}[ddll]_{3(\set{1,2})} \ar @{->}[dddrr]^{\set{2,3}(1)}&& \\
 % &&&&\\
@@ -303,17 +267,19 @@ $$\xymatrix @-1.65pc {&& 3(2(1)) \ar @{->}[ddll]_{3(\set{1,2})} \ar @{->}[dddrr]
  &&&&\\
  &&1(2(3))&&}$$
 \end{center}
-and are in bijective correspondence with the vertices and edges of Mac Lane's pentagon (cf. Section \ref{preamble-section}). 
-  Let us sketch the encoding:
+and are in bijective correspondence with the vertices and edges of Mac Lane's pentagon. 
+The encoding is given as follows:
   \begin{itemize}
   \item $(X\otimes_1 Y)\otimes_2 (Z\otimes_3 U)$, where we annotaded the ``compositions'' $\otimes$ with the vertices of $\hyper{K}^3$, can be written $\otimes_2(\otimes_1(X,Y),\otimes_3(Z,U))$ in prefix (or tree) notation. Then we get 
  $2(1,3)$ by removing the leaf nodes of that tree.
  \item $\alpha_{X,Y,Z}\otimes_3 U$ can be interpreted as $(X\otimes_1 Y\otimes_2 Z)\otimes_3 U$ (a non fully parenthesed expression), which likewise 
- translates as $3(\set{1,2})$,where $3(\_)$ makes the job of contextualisation.
+ translates as $3(\set{1,2})$,where $3(-)$ makes the job of contextualisation.
  \item Likewise, we can move from
 $\alpha_{X,Y\otimes_2 Z,U}$ to $X\otimes_1(Y\otimes_2 Z)\otimes_3 U$ to $\set{1,3}(2)$, where $2$ makes the job of instantiation.
 \end{itemize}
+\end{example}
 
+\begin{example}
 Taking the 4-dimensional associahedron $\hyper{K}^5$ (with vertex set $\set{0,1,2,3,4}$), we get the following instance in context of $\hyper{K}^3=\recrestr{\hyper{K}^5}{\set{1,2,3}}$, i.e. of Mac Lane's condition:
 \begin{center}
 $$\xymatrix @-1.65pc {&& 4(3(2(1(0)))) \ar @{->}[ddll]_{4(3(\set{1,2}(0)))} \ar @{->}[dddrr]^{4(\set{2,3}(1(0)))}&& \\
@@ -334,7 +300,41 @@ We recover the (encoding of the) edge
 ( ((X_1\otimes_0 X_2)\otimes_1 (Y\otimes_2 Z))\otimes_3 U)\otimes_4 V  &&   && \\
 \ }
 $$
-displayed of Section \ref{s:introduction} as the top left edge above.
+as the top left edge above.
+\end{example}
+
+Here, the fact that the family of associahedra is contextual implies in particular that the local confluence diagram associated to the expression
+$$ (-\otimes_0 - \otimes_1 - \otimes_2 (U \otimes_3 V)),$$
+which takes place on the $4$-dimensional associahedron, has the same form as the local confluence diagram associated to the expression
+$$ ((X \otimes_0 Y \otimes_1 Z \otimes_2 U) \otimes_3 -),$$
+and thus that the former one can be seen as an ``instance'' of MacLane's pentagon, while the latter can be seen as the same pentagon ``in context''.
+As we have seen in \cref{non-contextual-2}, this interpretation does not hold anymore if one considers the cycle graph instead of the linear graph (that is, if one was to identify $X$ and $V$ in the expressions above). 
+
+A similar description holds for the permutahedra and the operahedra \cite{CLA1}, giving coherence theorems for categorified permutads and operads, respectively. 
+All contextual families of nestohedra and their associated coherence theorems considered so far are summarized in \cref{table:contextual-hyper}.
+
+\begin{table}[h!]
+	\begin{center}
+	\begin{tabular}{c|c|c}
+	Family & Algebraic structure & Coherence theorem \\
+	\hline
+	Simplices & - & - \\
+	Cubes & - & - \\
+	Associahedra & Monoidal category & \cite{MacLane63} \\
+	Permutahedra & Categorified permutads & \cite{CLA1} \\
+	Operahedra & Categorified operads & \cite{DP15,CLA1} \\
+	Contextual graph-associahedra & - & - \\
+	Contextual nestohedra & - & - 
+	\end{tabular}
+	\end{center}
+  \caption{Families of contextual hypergraphs, the categorical structures that they encode, and their associated coherence theorems.}
+  \label{table:contextual-hyper}
+\end{table}
+
+\begin{rem}
+  It would be interesting to complete \cref{table:contextual-hyper} with appropriate structures and coherence theorems.
+  It seems likely that contextual graph-associahedra would be related to a certain type of categorified reconnectads \cite{DotsenkoKeilthyLyskov}.
+\end{rem}
 
 
 

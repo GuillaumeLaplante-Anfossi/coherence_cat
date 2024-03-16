@@ -3,27 +3,49 @@
 \section*{Introduction} 
 \label{s:introduction}
 
+
+
 \subsection*{From rewriting to coherence}
 
+In his seminal notes~\cite{Huet-notes-cat} for a graduate course at Université Paris 7, Gérard Huet explained Mac Lane's proof of the coherence theorem for monoidal categories through the lenses of equational reasoning and  term rewriting theory. 
+Huet remarked that Mac Lane's pentagons can be read as local confluence diagrams, and that
 \begin{enumerate}
-    \item Huet's correspondence: from rewriting to coherence 
-    \item Example: the associahedra
+\item proving  the coherence statement in the case of canonical natural transformations $\lambda:F\rightarrow G$, where $\lambda$ is defined using the associator only and where $G$ is a normal form, amounts to annotating the proof of Newman's lemma with  explicit names for the rewriting steps, 
+\item the proof of the general case of the coherence theorem mimicks the proof of the Church-Rosser property, which states that if two terms $P,Q$ can be proved equal in the equational theory obtained by forgetting the orientation of the rewriting rules, then there is some $N$ such that $P\rightarrow\ldots\rightarrow N$ and
+$Q\rightarrow\ldots\rightarrow N$.
 \end{enumerate}
+Moreover, in order to check local confluence, it is enough to check local confluence of {\em critical pairs}, which are minimal situations in which $M\rightarrow P$ and $M\rightarrow Q$ and the respective subterms of $M$ to which the two reductions are applied overlap. Huet observed that Mac Lane's pentagon expresses the unique critical pair of  the rewriting system given by the associator.
 
-\subsection*{Coherence on polytopes}
+\subsection*{Coherence and polytopes}
 
-\begin{enumerate}
-    \item Kapranov and CLA: coherence on polytopes
-    \item Example: the operahedra
-\end{enumerate}
+In a previous paper~\cite{CLA1}, we discussed combinatorial topological proofs of coherence theorems.
+In particular, we gave a topological proof of Mac Lane's coherence theorem by using the fact that all diagrams involved live on the $2$-skeleton of a family of polytopes, the associahedra. 
+Here, 
+\begin{itemize}
+\item[(0)] 0-cells correspond to functors, 
+\item[(1)] paths in the 1-skeleton correspond to natural transformations,  
+\item[(2)] coherence conditions in situation correspond to 2-faces,  
+\end{itemize}
+and the coherence statement amounts to asking whether any two parallel cellular can be related by repeatedly replacing a portion of a path fitting on the boundary of a $2$-cell by the complementary path on that same boundary.
+In fact, our topological/combinatorial results can be applied to give ``one step proofs'' (quoting Kapranov~\cite{kapranov1993}) of a number of other categorical coherence theorems. 
 
-\subsection*{Contextual nestohedra}
+\subsection*{Rewriting on nestohedra}
 
-\begin{enumerate}
-    \item Both are nestohedra. Question: can we do rewriting on nestohedra? Are there coherence theorems?
-    \item We bring yes to first question, partial answer to the second, by introducing contextual families of nestohedra.
-\end{enumerate}
+It is therefore natural to ask if there is a general way to associate a term rewriting system to a polytope, yielding the above coherence results via Huet's correspondence for different families of interest. 
+In this paper, we give a positive answer to this question for the family of hypergraph polytopes, a.k.a nestohedra. 
+We construct term rewriting systems on the vertices and faces of hypergraph polytopes (\cref{ss:rewriting-constructs,ss:rewriting-constructions}), and show that the former are confluent (\cref{thm:confluent}). 
+We characterize their critical pairs as certain types of $2$-faces (\cref{thm:critical-pairs}).
+The rewrite rules on the vertices generalize Barnard--McConville's \emph{flip order} on the vertices of graph-associahedra \cite{Barnard-McConville}, and are induced by an orientation vector (\cref{Tamari-orientation-vector}).
+Meanwhile, the rewrite rules on the faces seem to generalize the \emph{facial weak order} on the faces of permutahedra \cite{KrobLatapyNovelliPhanSchwer,PalaciosRonco,DermenjianHohlwegPilaud}.
+
+To further study coherence, we restrict our attention to subfamilies of nestohedra that we call \emph{contextual} (\cref{def:contextual-family}).
+These include associahedra, permutahedra and operahedra (\cref{thm:examples}), whose term rewriting systems provide, via Huet's correspondence, coherence theorems for monoidal categories, categorified permutads and operads, respectively. 
+The idea behind the notion of contextual nestohedra is to require local confluence diagrams, which correspond to $2$-faces of the polytopes, to satisfy a certain uniformity condition, allowing the distinction between ``coherence condition'' and ``coherence condition in situation'' to be preserved.
+The observation that this distinction was lost when using topological methods \cite{CLA1} is what initially prompted the present study.  
+
+%Hypergraph polytopes are \emph{generalized permutahedra}~\cite{P09}. 
 
 \subsection*{Notations}
 
 We use $\prec$ to denote cover relations in a poset, and $|-|$ to denote the cardinality of a set.
+
