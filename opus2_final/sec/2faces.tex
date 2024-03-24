@@ -1,0 +1,147 @@
+% !TEX root = ../Coherence2.tex
+
+\section{Anatomy of the 2-skeleton} 
+\label{s:anatomy}
+
+In this section we describe all the possible $2$-faces of a hypergraph polytope.
+These will be associated with the local confluence diagrams of a rewrite system on constructions in \cref{ss:critical}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Two types of two-faces} 
+\label{two-types}
+The \defn{dimension} of a construct $T$, or equivalently of its corresponding face in the associated hypergraph polytope, is given by
+$$\dim T \eqdef \sum_{X\:\mathrm{node\: of}\: T}(|X|-1).$$
+In particular, constructions have dimension $0$. 
+Constructs of dimension $1$ have a single non-singleton node of the form $\set{x,y}$. 
+Constructs $T$ of dimension $2$ are of two kinds:
+\begin{itemize}
+\item[(A)]  $T$ has exactly two non-singleton nodes $\set{x_1,x_2}$ and $\set{y_1,y_2}$, both of cardinal $2$. 
+\item[(B)] $T$ has exactly one non-singleton node $\set{x_1,x_2,x_3}$ of cardinal $3$.
+\end{itemize}
+
+\subsubsection*{Type (A)}
+\label{ss:typeA}
+If $T$ is of type (A), we get the following generic picture.
+$$ 
+\xymatrix @-1.65pc { x_1(x_2)\cdots y_1(y_2) \ar @{-}[dddd]_{x_1(x_2)\cdots \set{y_1,y_2}} 
+ \ar @{-}[rrrr]_{\set{x_1,x_2}\cdots y_1(y_2)} &&&& x_2(x_1)\cdots y_1(y_2) \ar @{-}[dddd]^{x_2(x_1)\cdots \set{y_1,y_2}} \\
+ &&&&\\
+ && \set{x_1,x_2} \cdots \set{y_1,y_2}&&\\
+ &&&&\\
+ x_1(x_2)\cdots y_2(y_1)  \ar @{-}[rrrr]_{\set{x_1,x_2}\cdots y_2(y_1)} &&  && x_2(x_1)\cdots y_2(y_1)}
+ $$
+The central construct $T$, schematised as $\set{x_1,x_2} \cdots \set{y_1,y_2}$, has two distinct nodes $\set{x_1,x_2}$ and $\set{y_1,y_2}$. 
+All the other constructs are obtained by replacing in $T$ one or two of these nodes, say $\set{x_1,x_2}$, by a  tree $x_1(x_2)$ or $x_2(x_1)$ and redistributing the children of  $\set{x_1,x_2}$  as children of  $x_1$ or $x_2$, in a unique way dictated by connectivity. 
+
+\subsubsection*{Type (B)}
+\label{ss:typeB}
+If $T$ is of type (B), then, up to permutation of $x_1,x_2,x_3$, we get four possible shapes corresponding to the number $N$ of  elements in $X\eqdef \set{x_1,x_2,x_3}$ that disconnect the other two in~$\hyper{K}\eqdef \hyper{H}_{\supp(\occ{T}{X})}$.
+Here there are no $\cdots$ on the picture, but likewise all the edges and vertices of $T$, considered as a 2-face, are the result of replacing in $T$ the node $X$ with the indicated respective trees and redistributing uniquely the  children of $X$ (see also~\cref{instance-construct}). 
+ 
+\smallskip\noindent
+(B1)  When $N=3$, that is when $\xyz{x_1}{\hyper{K}}{\set{x_2}\!,\! \set{x_3}}$, $\xyz{x_2}{\hyper{K}}{\set{x_1}\!,\! \set{x_3}}$, and
+ $\xyz{x_3}{\hyper{K}}{\set{x_1}\!,\! \set{x_2}}$, we have
+ 
+ $$\xymatrix @-1.65pc {&& x_1(x_2,x_3) \ar @{-}[ddll]_{\set{x_1,x_2}(x_3)} \ar @{-}[ddrr]^{\set{x_1,x_3}(x_2)}&& \\
+ &&&&\\
+ x_2(x_3,x_1) \ar @{-}[rrrr]^{\set{x_2,x_3}(x_1)} &&&& x_3(x_1,x_2)}$$
+
+\smallskip\noindent
+(B2) When $N=2$, that is when $\xyz{x_1}{\hyper{K}}{\set{x_2}\!,\! \set{x_3}}$, $\xyz{x_2}{\hyper{K}}{\set{x_1,x_3}}$ and
+ $\xyz{x_3}{\hyper{K}}{\set{x_1}\!,\! \set{x_2}}$, we have
+ 
+ $$ \xymatrix @-1.65pc {&& x_1(x_2,x_3) \ar @{-}[ddll]_{\set{x_1,x_2}(x_3)} \ar @{-}[ddrr]^{\set{x_1,x_3}(x_2)}&& \\
+ &&&&\\
+ x_2(x_1(x_3)) \ar @{-}[ddrr]_{x_2(\set{x_1,x_3})}&& \set{x_1,x_2,x_3}  && x_3(x_1,x_2)\ar @{-}[ddll]^{\set{x_2,x_3}(x_1)}\\
+ &&&&\\
+ &&  x_2(x_3(x_1))&&}$$
+
+\smallskip\noindent
+(B3) When $N=1$, that is when $\xyz{x_1}{\hyper{K}}{\set{x_2}\!,\! \set{x_3}}$, $\xyz{x_2}{\hyper{K}}{\set{x_1,x_3}}$ and
+ $\xyz{x_3}{\hyper{K}}{\set{x_1,x_2}}$, we have
+ 
+$$
+ \xymatrix @-1.65pc {&& x_1(x_2,x_3) \ar @{-}[ddll]_{\set{x_1,x_2}(x_3)} \ar @{-}[ddrr]^{\set{x_1,x_3}(x_2)}&& \\
+ &&&&\\
+ x_2(x_1(x_3)) \ar @{-}[ddr]^{x_2(\set{x_1,x_3})}&& \set{x_1,x_2,x_3}  && x_3(x_1(x_2))\ar @{-}[ddl]_{x_3(\set{x_1,x_2})}\\
+ &&&&\\
+ &x_2(x_3(x_1))\ar @{-}[rr]^{\set{x_2,x_3}(x_1)}&  & x_3(x_2(x_1))&}
+$$
+
+\smallskip\noindent
+(B4) When $N=0$, that is when $\xyz{x_1}{\hyper{K}}{\set{x_2,x_3}}$, $\xyz{x_2}{\hyper{K}}{\set{x_1,x_3}}$ and
+ $\xyz{x_3}{\hyper{K}}{\set{x_1,x_2}}$, we have
+ 
+ $$\xymatrix @-1.65pc {&& x_1(x_2(x_3)) \ar @{-}[ddll]_{\set{x_1,x_2}(x_3)} \ar @{-}[ddrr]^{x_1(\set{x_2,x_3})}&& \\
+ &&&&\\
+ x_2(x_1(x_3)) \ar @{-}[dd]^{x_2(\set{x_1,x_3})}&& \set{x_1,x_2,x_3} && x_1(x_3(x_2))\ar @{-}[dd]_{\set{x_1,x_3}(x_2)}\\
+ &&  &&\\
+ x_2(x_3(x_1)) \ar @{-}[ddrr]_{\set{x_2,x_3}(x_1)} &&  && \ar @{-}[ddll]^{x_3(\set{x_1,x_2})} x_3(x_1(x_2))\\
+ &&&&\\
+ &&  x_3(x_2(x_1))&&}
+$$
+
+By~\cref{xyz-reconnected}, we can read those pictures as describing the 
+respective reconnected restrictions $\recrestr{\hyper{K}}{X}$ of $\hyper{K}$:
+$$\begin{array}{lll}
+\mathrm{(B1)} & \set{\set{x_1},\set{x_2},\set{x_3},\set{x_1,x_2,x_3}} & \mbox{(2-simplex)}\\
+\mathrm{(B2)} & \set{\set{x_1},\set{x_2},\set{x_3},\set{x_1,x_3},\set{x_1,x_2,x_3}} & \mbox{(2-cube})\\
+\mathrm{(B3)} & \set{\set{x_1},\set{x_2},\set{x_3},\set{x_1,x_3},\set{x_1,x_2},\set{x_1,x_2,x_3}} & \mbox{(2-associahedron)}\\
+\mathrm{(B4)} & \set{\set{x_1},\set{x_2},\set{x_3},\set{x_1,x_3},\set{x_1,x_2},\set{x_2,x_3},\set{x_1,x_2,x_3}} & \mbox{(2-permutahedron)}
+\end{array}$$
+
+Incidentally, these  hypergraphs witness the fact that there do exist 2-faces of type (B) of  each  of these types: take $\hyper{H}$ to be one of those four hypergraphs, and $T$ to be their unique construct of dimension 2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{$X$-faces and shapes}
+
+In the rest of this section, we make the discussion above on $\cdots$ more formal.
+For a 3-element subset $X=\set{x_1,x_2,x_3}$ of $H$, we say that a 2-face $T$ of $\hyper{H}$ is an \defn{$X$-face} if its unique non-singleton node is decorated by $X$.  By letting $X$ range over all subsets of $H$ of cardinal 3, we form in this way a partition of all 2-faces of type (B).
+If $X$ is the root of $T$, the following  lemma invites us to see $T=X(\ldots)$ as an ``instantiation'' of~$X$, viewed as the maximum face of $\recrestr{\hyper{H}}{X}$, as we shall see.
+
+\begin{lemma} 
+  \label{instance-construct} 
+  If $\hyper{H}$ is a connected hypergraph, if $X$ is a subset of $H$ such that $|X|=3$ and~$T$ is a 2-dimensional construct with root $X$, then the map $\psi$ from the poset of  faces of $T$ to the poset of faces of 
+$\recrestr{\hyper{H}}{X}$ defined on a face $S$  by pruning all nodes of $S$ that are not subsets of $X$ is an order-isomorphism.
+\end{lemma}
+
+\begin{proof}
+We shall build an inverse $\phi$ of $\psi$.
+When discussing type (B) 2-faces, we have described up to permutation all the possible connected hypergraphs on the set $X$ of vertices and their respective posets of faces. 
+We will treat the case where ${\cal A}(\recrestr{\hyper{H}}{X})$ is the poset described in case (B2). The other cases are similar.
+Pick the 0-face~$S\eqdef  x_1(x_2,x_3)$. 
+We map $S$ to a $0$-face $\phi(S)$ of $T$ as follows. 
+Let $\hyper{H},x\leadsto H_1,\ldots,H_n$. 
+By \cref{xyz-reconnected}, we have $\xyz{x_1}{\hyper{H}}{\set{x_2},\set{x_3}}$, hence we have, say $x_2\in H_1$ and $x_3\in H_2$. Then let
+  $\hyper{H_1},x_2\leadsto H_{1,1},\ldots,H_{1,p}$ and $\hyper{H_2},x_3\leadsto H_{2,1},\ldots,H_{2,q}$.
+  Then we have $\hyper{H},X\leadsto H_{1,1},\ldots,H_{1,p},H_{2,1},\ldots,H_{2,q},H_3,\ldots H_n$, so that $T$ writes as
+  $$T= X(T_{1,1},\ldots,T_{1,p},T_{2,1},\ldots,T_{2,q},T_3,\ldots T_n).$$ 
+All these data determine uniquely a 0-dimensional subface of $T$, namely
+  $$\phi(S)\eqdef x_1(x_2(T_{1,1},\ldots,T_{1,p}),x_3(T_{2,1},\ldots,T_{2,q}),T_3,\ldots T_n).$$
+It is plain that $\psi(\phi(S))=S$.
+  The same applies to all other 0-dimensional (resp. 1-dimensional) faces of $\recrestr{\hyper{H}}{X}$, establishing $\phi$ as a bijection, which is also easily seen to be monotonic: for example, we have
+ $$\phi(\set{x_1,x_2}(x_3))= \set{x_1,x_2}(x_3(T_{2,1},\ldots,T_{2,q}),T_{1,1},\ldots,T_{1,p},T_3,\ldots T_n),$$
+ evidencing $\phi(x_1(x_2,x_3))\preceq \phi(\set{x_1,x_2}(x_3))$. 
+ The map $\psi$ is also monotonic, since the above pruning does not affect the place where the contraction occurs -- e.g., the edge of $\phi(x_1(x_2,x_3))$ that is contracted to get $\phi(\set{x_1,x_2}(x_3))$ is the edge between $x_1$ and $x_2$, which can thus be contracted in the preimage $x_1(x_2,x_3)$ to yield the preimage $\set{x_1,x_2}(x_3)$.
+ Finally, we set
+ $$\phi(\set{x_1,x_2,x_3})\eqdef \set{x_1,x_2,x_3}(T_{1,1},\ldots,T_{1,p},T_{2,1},\ldots,T_{2,q},T_3,\ldots T_n)=T,$$
+ which concludes the proof.
+ \end{proof}
+
+ \begin{corollary} 
+  \label{instance-construct-general} 
+  If $\hyper{H}$ is a connected hypergraph, if $X$ is a subset of $H$ such that $|X|=3$ and $T$ is an $X$-face of $\hyper{H}$, then the poset of faces of $T$ is isomorphic to the poset of faces of~$\recrestr{(\hyper{H}_{\supp(\occ{T}{X})})}{X}$.
+\end{corollary}
+
+\begin{proof} This is an immediate consequence of the previous Lemma and of the observation that the poset of faces of $T$ is isomorphic to the poset of faces of $\occ{T}{X}$.
+\end{proof}
+ 
+Based on this Corollary, we shall say, for any $X$-face $T$, that $T$ has \defn{shape} 
+$\recrestr{(\hyper{H}_{\supp(\occ{T}{X})})}{X}$.
+
+
+
+
+

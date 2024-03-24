@@ -1,0 +1,64 @@
+% !TEX root = ../Coherence2.tex
+
+\section*{Introduction} 
+\label{s:introduction}
+
+
+
+\subsection*{From rewriting to coherence}
+In his seminal notes~\cite{Huet-notes-cat} for a graduate course at Université Paris 7, Gérard Huet explained Mac Lane's proof of the coherence theorem for monoidal categories through the lenses of equational reasoning and  term rewriting theory. 
+Huet remarked that instantiations in context of Mac Lane's pentagon can be read as local confluence diagrams. Iterated tensor bifunctors  are represented as terms over the signature on a single operation $\otimes$ of arity 2, the associator gives rise to the single rewrite rule $(X\otimes Y)\otimes Z\to X\otimes(Y\otimes Z)$ (more details are provided in~\cref{ss:coherence}), and
+\begin{enumerate}
+\item proving  the coherence statement in the case of canonical natural transformations $\lambda:F\rightarrow G$, where $\lambda$ is defined using the associator only (and not its inverse) and where $G$ is a normal form for the above rewriting system, amounts to annotating the proof of Newman's lemma with  explicit names for the rewriting steps;
+\item moreover, the proof of the general case of the coherence theorem mimicks the proof of the Church-Rosser property, which states that if two terms $P,Q$ can be proved equal in the equational theory obtained by forgetting the orientation of the rewrite rules, then there is some $N$ such that $P\rightarrow\cdots\rightarrow N$ and
+$Q\rightarrow\cdots\rightarrow N$.
+\end{enumerate}
+In addition, in order to check local confluence, it is enough to check local confluence of {\em critical pairs}, which are minimal situations in which $M\rightarrow P$ and $M\rightarrow Q$ and the respective subterms of $M$ to which the two reductions are applied overlap. Huet observed that Mac Lane's pentagon expresses the unique critical pair of  the rewriting system given by the associator. The reader unfamiliar with the terminology of rewrite systems will find a brief hopefully self-contained introduction to rewriting in~\cref{recollection-section}.
+
+\subsection*{Coherence and polytopes}
+
+In a previous paper~\cite{CLA1}, we discussed combinatorial topological proofs of coherence theorems.
+In particular, we gave an explicit  topological proof of Mac Lane's coherence theorem by using the fact that all diagrams involved live on the $2$-skeleton of a family of polytopes, the associahedra. 
+Here, 
+\begin{itemize}
+\item[(0)] 0-cells correspond to functors, 
+\item[(1)] paths in the 1-skeleton correspond to natural transformations,  
+\item[(2)]pentagons as well as naturality and bifunctoriality squares correspond to 2-faces,  
+\end{itemize}
+and the coherence statement amounts to asking whether any two parallel cellular paths can be related by repeatedly replacing a portion of a path fitting on the boundary of a $2$-face by the complementary path on that same boundary.
+In fact, our topological/combinatorial results can be applied to give ``one step proofs'' (quoting Kapranov~\cite{kapranov1993}) of a number of other categorical coherence theorems. 
+
+\subsection*{Rewriting on nestohedra}
+
+It is therefore natural to ask if we can extend Huet's correspondence and associate a term rewriting system to a polytope, yielding the above coherence results   for different families of interest in a unified way. 
+In this paper, we give a positive answer to this question for the family of hypergraph polytopes, a.k.a nestohedra. 
+We construct confluent  and terminating  term rewriting systems (\cref{thm:confluent}) on the vertices of hypergraph polytopes
+% (\cref{ss:rewriting-constructs,ss:rewriting-constructions}) 
+in such a way that edges are naturally oriented and feature rewriting steps.
+We characterize the local confluence diagrams of their critical pairs as certain types of $2$-faces (\cref{thm:critical-pairs}).
+The rewrite steps on the vertices generalize Barnard--McConville's \emph{flip order} on the vertices of graph-associahedra \cite{Barnard-McConville}, and are induced by an orientation vector (\cref{Tamari-orientation-vector}).
+Meanwhile, the rewrite rules on the faces seem to generalize the \emph{facial weak order} on the faces of permutahedra \cite{KrobLatapyNovelliPhanSchwer,PalaciosRonco,DermenjianHohlwegPilaud}.
+
+\subsection*{Contextual hypergraphs}
+
+We shall then specialize the discussion to \emph{contextual families} of hypergraphs (\cref{def:contextual-family}). 
+Among these families, one finds the associahedra and the operahedra (\cref{thm:examples}), whose term rewriting systems provide, via Huet's correspondence, coherence theorems for monoidal categories and categorified operads, see \cref{rem:coherence} and \cref{ss:coherence}.  
+The idea behind the condition satisfied by contextual nestohedra is to enforce the shape of local confluence diagrams for critical pairs to be ``uniform'', in some sense relying on the combinatorics of hypergraph polytopes, see~\cref{contextual-discussion}.
+Other contextual families of nestohedra include permutahedra and contextual graph-associahedra, whose term rewriting systems should provide coherence theorems for categorified permutads and reconnectads.
+Known and unknown structures and coherence theorems are summarized in \cref{table:contextual-hyper}.
+Another interesting question would be to characterize combinatorially contextual graph-associahedra and nestohedra, as defined in \cref{ss:examples}. 
+
+\subsection*{Plan of the paper}
+In~ \cref{s:hypergraph} we recollect some background on hypergraph polytopes, and we examine their 2-faces in~ \cref{s:anatomy}.   \cref{s:rewriting} introduces hypergraphic rewrite systems and contains our main results establishing a geometric form of Huet's correspondence for nestohedra. 
+Contextual hypergraphs are introduced and illustrated in  \cref{s:contextual}.
+
+\subsection*{Notations}
+
+We denote by ${\cal R}^*$ the reflexive and transitive closure of a relation ${\cal R}$. 
+We use~$|-|$ to denote the cardinality of a set.
+We shall manipulate trees of various sorts. They will always be rooted.  We define the  full subtree relation as follows: $\mathfrak{S}$
+is a subtree of $\mathfrak{T}$ if $\mathfrak{S}$ is obtained by picking a node of $\mathfrak{T}$ and all its descendants. The subtree relation is traditionally defined by taking connected components. Clearly full subtrees are subtrees, but not conversely. We shall only need full subtrees and as a matter of abbreviation, we shall call them just subtrees, following the computer science tradition.
+
+\subsection*{Acknowledgements}
+We would like to thank Vincent Pilaud for useful discussions.
+
