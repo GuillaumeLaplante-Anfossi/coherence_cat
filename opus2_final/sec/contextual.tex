@@ -10,7 +10,10 @@ our favourite categorical coherence results. We begin by giving some intuition.
 
 In the previous section, we have established coherence (in our polytopal sense) using standard term rewriting methods. So far so good. But  it can be argued that constructs are more economical than the terms on the signatures that we have introduced, and that, being themselves trees, they ``look like" terms. 
 Can we somehow reproduce our discussion of rewriting, and in particular of critical pairs, directly on constructs?
-An obstacle is that the bijection $\chi$ of~ \cref{l:bijection-terms} strips off useful information on the support of all subconstructions (i.e.,  subtrees) of the constructions to be ``rewritten''.  Taking~ \cref{l:instantiation-constructions} seriously, one can be tempted to consider $x(y(\cdots),\cdots)< y(x(\cdots),\cdots)$ as a rewrite rule (for $x<y$), but filling in the $\cdots$ requires knowing the support $K$ of $\occ{S}{x}$.  So, at the price of reconstructing $K$ from the inductive definition of $S$,  this description is acceptable. But for the study of critical confluence diagrams, say   $S < x_2(x_1(x_3,\cdots),\cdots),\cdots)$ and $S < x_3(x_1(\cdots),x_2(\cdots),\cdots)$, for $S\eqdef  x_1(x_2(\cdots),x_3(\cdots),\cdots)$, can we be sure that the shape of the local confluence diagram will be independent of the support of $\occ{S}{x_1}$?  In view of~ \cref{instance-construct-general}, this shape is
+
+An obstacle is that the bijection $\chi$ of~ \cref{l:bijection-terms} strips off useful information on the support of all subconstructions (i.e.,  subtrees) of the constructions to be ``rewritten''.  Taking~ \cref{l:instantiation-constructions} seriously, one can be tempted to consider $x(y(\cdots),\cdots)< y(x(\cdots),\cdots)$ as a rewrite rule (for $x<y$), but filling in the $\cdots$ requires knowing the support $K$ of $\occ{S}{x}$.  So, at the price of reconstructing $K$ from the inductive definition of $S$,  this description is acceptable. But for the study of critical confluence diagrams, say   $S < x_2(x_1(x_3,\cdots),\cdots),\cdots)$ and $S < x_3(x_1(\cdots),x_2(\cdots),\cdots)$, for $S\eqdef  x_1(x_2(\cdots),x_3(\cdots),\cdots)$, can we be sure that the shape of the local confluence diagram will be independent of the support of $\occ{S}{x_1}$?  
+
+In view of~ \cref{instance-construct-general}, this shape is
 $\recrestr{(\hyper{H}_{\supp(\occ{T}{x_1})})}{\set{x_1,x_2,x_3}}$.  It would be more satisfying if the shape was
 $\recrestr{\hyper{H}}{\set{x_1,x_2,x_3}}$, because then the critical confluence diagram would be ``context-independent'' (for this informal notion of rewriting), i.e., all $\set{x_1,x_2,x_3}$-faces would have the same shape.
 This motivates the definition of contextual hypergraph below. 
@@ -125,9 +128,10 @@ From \cref{thm:critical-pairs}, we have that all local confluence diagrams for o
 % for $X \subseteq H$, $|X|=3$ and . 
 The fact that $\calH$ is contextual imposes an additional uniformity constraint on these diagrams.
 
-\begin{thm} [A DISCUTER]
+\begin{thm}
 Let $\calH$ be a contextual family of ordered hypergraphs.
-For any $\hyper{H} \in \calH$ and subset $X \subseteq H$ with $|X|=3$, all the $X$-local confluence diagrams have the same shape $\hyper{H}_{\cap X}$. 
+For any $\hyper{H} \in \calH$ and subset $X \subseteq H$ with $|X|=3$, all the $X$-faces and hence their associated  overlapping local confluence diagrams 
+have the same shape $\hyper{H}_{\cap X}$. 
 \end{thm}
 
 \begin{proof} 
@@ -200,19 +204,17 @@ Recall that simplices, cubes, associahedra, permutahedra and operahedra were int
 \subsection{Categorical coherence}
 \label{ss:coherence}
 
-In this final Section, we recall the categorical coherence theorems associated with the associahedra and the operahedra, and conjecture one for permutahedra.
+In this final Section, we recall the categorical coherence theorems associated with associahedra and operahedra, and conjecture one for permutahedra.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Associahedra}
-The scene is the data of a category $\mathbf C$, a bifunctor $\otimes:\mathbf{C}^2\rightarrow \mathbf C$ and a natural iso $\alpha$ from the functor
+Recall that the scene is the data of a category $\mathbf C$, a bifunctor $\otimes:\mathbf{C}^2\rightarrow \mathbf C$ and a natural iso $\alpha$ from the functor
 $(X,Y,Z)\mapsto (X\otimes Y)\otimes Z$ to the functor  $(X,Y,Z)\mapsto X \otimes (Y\otimes Z)$. 
 Mac Lane's coherence theorem states that for any two functors $F,G$ from $\mathbf{C}^{n+1}$ to $\mathbf{C}$ arising from $n$ iterations of $\otimes$, any two  natural transformations $\lambda_1,\lambda_2$ from $F$ to $G$  ``written using $\alpha$ or its inverse'' are equal, provided the statement holds in the following special case, called  {\em coherence condition}: 
 \begin{itemize}
-\item $F\eqdef (X,Y,Z,U)\mapsto ((X\otimes Y)\otimes Z)\otimes U,$ 
-\item $G\eqdef (X,Y,Z,U)\mapsto X\otimes (Y\otimes (Z\otimes U)),$ 
-\item $\lambda_1\eqdef (X\otimes\alpha_{Y,Z,U})\circ\alpha_{X,Y\otimes Z,U} \circ (\alpha_{X,Y,Z}\otimes U),$ and
-\item $\lambda_2\eqdef  \alpha_{X,Y,Z\otimes U}\circ \alpha_{X\otimes Y,Z,U},$ 
+\item $F\eqdef (X,Y,Z,U)\mapsto ((X\otimes Y)\otimes Z)\otimes U,$ and $G\eqdef (X,Y,Z,U)\mapsto X\otimes (Y\otimes (Z\otimes U)),$ 
+\item $\lambda_1\eqdef (X\otimes\alpha_{Y,Z,U})\circ\alpha_{X,Y\otimes Z,U} \circ (\alpha_{X,Y,Z}\otimes U),$ and $\lambda_2\eqdef  \alpha_{X,Y,Z\otimes U}\circ \alpha_{X\otimes Y,Z,U},$ 
 \end{itemize}
 i.e. provided the following diagram (Mac Lane's pentagon) commutes:
 \begin{center}
@@ -241,15 +243,7 @@ $$\xymatrix @-1.65pc {{\cal T} & \eqdef  &X \ar @{-}[rr]^{1}&& Y \ar @{-}[rr]^{2
 %\vspace{-.2cm}
 Then $\hyper{L}({\cal T})$ is the associahedron $\hyper{K}^3$. 
 The constructs of ${\cal T}$ decorate a pentagon as follows
-%$$
-% \xymatrix @-1.65pc {&& 3(2(1)) \ar @{->}[ddll]_{3(\set{1,2})} \ar @{->}[dddrr]^{\set{2,3}(1)}&& \\
-% &&&&\\
-%3(1(2)) \ar @{->}[dd]^{\set{1,3}(2)} }&&   && \\
-% &&&&2(1,3) \ar @{->}[dddll]_{\set{1,2}(3)}\\
-%1(3(2)) \ar @{->}[ddrr]^{1(2,3)} &  &\\
-% &&&&\\
-% &&1(2(3))&&}
-%$$
+
 \begin{center}
 $$\xymatrix @-1.65pc {&& 3(2(1)) \ar @{->}[ddll]_{3(\set{1,2})} \ar @{->}[dddrr]^{\set{2,3}(1)}&& \\
  &&&&\\
@@ -262,7 +256,7 @@ $$\xymatrix @-1.65pc {&& 3(2(1)) \ar @{->}[ddll]_{3(\set{1,2})} \ar @{->}[dddrr]
 and are in bijective correspondence with the vertices and edges of Mac Lane's pentagon. 
 The encoding is given as follows:
   \begin{itemize}
-  \item $(X\otimes_1 Y)\otimes_2 (Z\otimes_3 U)$, where we annotated the ``compositions'' $\otimes$ with the vertices of $\hyper{K}^3$, can be written $\otimes_2(\otimes_1(X,Y),\otimes_3(Z,U))$ in prefix (or tree) notation. Then we get 
+  \item $(X\otimes_1 Y)\otimes_2 (Z\otimes_3 U)$, where we annotated the ``compositions'' $\otimes$ with the vertices of $\hyper{K}^2$, can be written $\otimes_2(\otimes_1(X,Y),\otimes_3(Z,U))$ in prefix (or tree) notation. Then we get 
  $2(1,3)$ by removing the leaf nodes of that tree.
  \item $\alpha_{X,Y,Z}\otimes_3 U$ can be interpreted as $(X\otimes_1 Y\otimes_2 Z)\otimes_3 U$ (a non fully parenthesized expression), which likewise 
  translates as $3(\set{1,2})$,where $3(-)$ makes the job of contextualization.
@@ -306,36 +300,66 @@ Rigorously, the above data define a term rewriting system, that we shall call th
 This rewriting system is in exact correspondence with our rewriting system for  $\hyper{K}^{\set{0,1,2,3,4}}$. 
 More precisely, we can go from constructs to  Huet--Mac Lane terms by applying the following recipe. 
 Consider the linear tree 
-\vspace{-.7cm}
+\vspace{-.5cm}
 \begin{center}
 $$\xymatrix @-1.65pc {{\cal T}' & \eqdef  &X_1 \ar @{-}[rr]^{0}&& X_2 \ar @{-}[rr]^{1}&& Y \ar @{-}[rr]^{2}&& Z \ar @{-}[rr]^{3}&& U \ar @{-}[rr]^{4}&& V}.
   $$
   \end{center}
 Then, building, say the construct $4(3(1(0,2)))$ ``on this tree'' rather than on its associated  line graph $\mathbb{L}({\cal T}')=\hyper{K}^5$, we can see that picking 4 amounts to cutting $\cal T'$ by removing edge 4. This leaves  the one-node tree $V$ alone on the right and the term associated to $3(1(0,2))$ on the left, thus determining $-\otimes V$. And so on, until reaching $( ((X_1\otimes X_2)\otimes  (Y\otimes Z))\otimes U)\otimes V $. 
 Note that the information ``leaving $V$ alone" is lost on the associated line graph. 
-As a final remark, we note that linear Huet--Mac Lane terms, as well as the  partially parenthesised expressions such as those written above, can also be described as all possible nestings on, say, ${\cal T'}$.
 
-As we have seen in \cref{non-contextual-2}, this interpretation would not hold anymore if one were to consider the cycle graph instead of the linear graph, that is, if one were to identify $X$ and $V$ in the expressions above. 
+We note that linear Huet--Mac Lane terms, as well as the  partially parenthesised expressions such as those written above, can also be described as all possible nestings on, say~${\cal T'}$.
+
+As for the ``easy'' local confluence diagrams of type (a1) and (a2), let us point out that they correspond in categorical terms to the bifunctoriality and naturality conditions, respectively, as exemplified below:
+\begin{center}
+\begin{tikzpicture}
+\node (a) at (0,1) {};
+\node (b) at (-2,0) {};
+\node (c) at (2,0) {};
+\draw[->] (a)--(b);
+\draw[->] (a)--(c);
+\node at (0,1.3) {$((X\otimes Y)\otimes Z)\otimes((U\otimes V)\otimes W) $};
+\node at (-3,-0.3) {$(X\otimes (Y\otimes Z))\otimes((U\otimes V)\otimes W) $};
+\node at (3,-0.3) {$ ((X\otimes Y)\otimes Z)\otimes(U\otimes (V\otimes W))$};
+\end{tikzpicture}
+\end{center}
+
+\medskip
+
+\begin{center}
+  \begin{tikzpicture}
+  \node (a) at (0,1) {};
+  \node (b) at (-2,0) {};
+  \node (c) at (2,0) {};
+  \draw[->] (a)--(b);
+  \draw[->] (a)--(c);
+  \node at (0,1.3) {$(((X\otimes Y)\otimes Z)\otimes U)\otimes V $};
+  \node at (-3,-0.3) {$ ((X\otimes (Y\otimes Z))\otimes U)\otimes V$};
+  \node at (3,-0.3) {$ ((X\otimes Y)\otimes Z)\otimes (U\otimes V)$};
+  \end{tikzpicture}
+\end{center}
+
+As we have seen in \cref{non-contextual-2}, this interpretation would not hold anymore if one were to consider the cycle graph instead of the line graph, that is, if one were to identify $X$ and $V$ in the expressions above. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Operahedra}[A DISCUTER]
+\subsubsection{Operahedra}
 In the case of operahedra, it turns out that the shape of a $\set{x_1,x_2,x_3}$-face is entirely determined by the relative positions of the edges $x_1,x_2,x_3$ in the underlying  planar tree.  Let us make this more precise.
 % Again, one reads constructs directly on operadic trees rather than on their line graph. This leads to a representation of constructs as pairs
 %$({\cal S},w)$, where $w$ is a partially parenthesised word ``suiting'' ${\cal S}$. For example, applying the same recipe as in~\cref{Huet-MacLane}, for the operadic tree ${\cal T}$ of~\cref{fig:line-graph}, the construct 
 %$z(x(y),u)$ is represented as $({\cal T},(c(bd))(ae)$. We refer to~\cite{CO-categorified}[Section 2.4.3] for details.
-Let $S$ be an $X$-face of $\mathbb{L}({\cal T})$, for some  planar tree $\cal T$. Then its shape is given by (the linear graph associated to)  the tree ${\cal T}_{\setminus X}$ obtained from  ${\cal T}$  by contracting all edges except the three elements of $X$ (which are edges of ${\cal T}$).  We leave the details to the reader, but note that
+Let $S$ be an $X$-face of $\mathbb{L}({\cal T})$, for some  planar tree $\cal T$. Then its shape is given by (the line graph associated to)  the tree ${\cal T}_{\setminus X}$ obtained from  ${\cal T}$  by contracting all edges except the three elements of $X$ (which are edges of ${\cal T}$).  We leave the details to the reader, but note that
 this illustrates contextuality: this shape is only determined by ${\cal T}$ and $X$, and does not depend on the position of $X$ in $S$.
 
-Let us also say a word on the actual coherence statement for categorified operads: it relies on a signature and rewrite rules much in the spirit of the Huet--Mac Lane rewriting system (see~\cite{DP15,laplante-anfossiDiagonalOperahedra2022a,CLA1}), that correspond to  constructs of operahedra,  to their equivalent representations as nestings of planar trees (the linear trees of associahedra being a particular case), and to our rewriting systems on the linear graphs of planar trees. 
+Let us also say a word on the actual coherence statement for categorified operads: it relies on a signature and rewrite rules much in the spirit of the Huet--Mac Lane rewriting system (see~\cite{DP15,laplante-anfossiDiagonalOperahedra2022a,CLA1}), that correspond to  constructs of operahedra,  to their equivalent representations as nestings of planar trees (the linear trees of associahedra being a particular case), and to our rewriting systems on the line graphs of planar trees. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Permutahedra and friends}
 It seems likely that the family of permutahedra admits a similar categorical coherence theorem. 
 The corresponding algebraic structure would be here that of \emph{permutads} \cite{LodayRonco11,Markl19}. 
-In the same fashion as associahedra are operahedra associated to linear trees, permutahedra are operahedra associated to $2$-leveled trees \cite{laplante-anfossiDiagonalOperahedra2022a}.
-Therefore, one could define categorified permutads by restricting the definition of categorified operads \cite{CLA1} to these trees.
+In the same fashion as associahedra are operahedra associated to linear trees, permutahedra are operahedra associated to $2$-leveled trees \cite[Def.~2.8]{laplante-anfossiDiagonalOperahedra2022a}.
+Therefore, one could define categorified permutads by adapting the definition of categorified operads \cite{CLA1} to these trees.
 
 In the case of contextual graph-associahedra, it seems likely that a corresponding coherence theorem could be associated to a certain type of categorified reconnectads \cite{DotsenkoKeilthyLyskov}.
 The situation is summarized in \cref{table:contextual-hyper}.

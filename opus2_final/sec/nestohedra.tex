@@ -10,6 +10,7 @@ We refer to \cite{DP-HP,COI} for more details.
 
 \subsection{Hypergraphs}
 A \defn{hypergraph} is given by a finite set $H$ of \defn{vertices} and a subset of \defn{hyperedges} $\hyper{H}\inc {\cal P}(H)\setminus\emptyset$ such that $\Union \hyper{H}=H$. 
+We say that $\hyper{H}$ is \defn{ordered} if $H$ is equipped with a total order.
 We always assume that $\hyper{H}$ is \defn{atomic}, that is $\set{x}\in \hyper{H}$, for all $x\in H$. 
 A hyperedge of cardinality 2 is called an \defn{edge}.  
 For $X\inc H$, the \defn{plain restriction} of $\hyper{H}$ to $X$ is the set 
@@ -29,9 +30,8 @@ The \defn{reconnected restriction} of $\hyper{H}$ to $X$ is the set $$\recrestr{
     Atomic and saturated hypergraphs are called \defn{building sets} in the  literature on nestohedra, see for example \cite{P09,FS05}.
 \end{rem}
 
-For $X\inc H$, we will express the fact that $\setc{H_i}{i\in I}$ is the set of connected components of $\restrH{H}{X}$ by the notation $\hyper{H},X  \leadsto  \setc{H_i}{i\in I}.$
-If $I=\set{1,\ldots,n}$, we write simply $\hyper{H},X  \leadsto H_1,\ldots,H_n$, with no order intended.
-We will write $\hyper{H}_i$ for $\hyper{H}_{H_i}$.
+For $X\inc H$, we will express the fact that $\setc{H_i}{i\in I}$ is the set of connected components of $\restrH{H}{X}$ by the notation $\hyper{H},X  \leadsto  \setc{H_i}{i\in I}$.
+If $\hyper{H}$ is ordered, we order the connected components by \defn{increasing order} of their maximal vertices, \textit{i.e.}, $\setc{H_i}{i\in I}=\{H_{i_1}<\cdots < H_{i_n}\}$, and we write $\hyper{H},X  \leadsto H_{i_1},\ldots,H_{i_n}$.
 In the specific situation where $x,y,z\in H$ and $\hyper{H},\set{x}\leadsto \setc{H_i}{i\in I}$, we shall write
 $$\begin{array}{ll}
 \xyz{x}{\hyper{H}}{\set{y,z}} & \mathrm{if}\; y,z\in H_i\; \mbox{for some}\; i \in I\\
@@ -50,7 +50,7 @@ $$\begin{array}{lll}
 \end{lemma}
 
 \begin{proof} 
-    Let $\hyper{H},\set{x}\leadsto H_1,\ldots,H_n$. 
+    Let $\hyper{H},\set{x}\leadsto \set{H_1,\ldots,H_n}$. 
     Suppose that $\xyz{x}{\hyper{H}}{\set{y,z}}$. 
     Then there exists $i$ such that~$\set{y,z}\inc H_i$, and hence $\set{y,z}\inc H_i\cap\set{x,y,z}$, and in fact $\set{y,z} = H_i\cap\set{x,y,z}$ since~$x\not\in H_i$. 
     Thus $\recrestr{\hyper{H}}{\set{x,y,z}},\set{x}\leadsto\set{y,z}$ holds by definition of reconnected restriction.
@@ -70,12 +70,15 @@ A {connected} hypergraph $\hyper{H}$ gives rise to a set of \defn{constructs}, w
 Let $\hyper{H}$ be a connected hypergraph and $Y$ be a non-empty subset of $H$.
 \begin{enumerate}
 \item  If $Y = H$, then the one-node tree $H$ decorated with $H$ is a construct of $\hyper{H}$.
-\item If $\hyper{H},Y  \leadsto H_1,\ldots,H_n$, and if $T_1,\ldots,T_n$ are constructs of $\hyper{H}_1,\ldots,\hyper{H}_n$, respectively, then the
-tree $Y(T_1,\ldots,T_n)$ whose root is decorated by $Y$, with $n$ outgoing edges on which the respective $T_i\,$'s are grafted is a construct.  
+\item If $\hyper{H},Y  \leadsto \{H_1,\ldots,H_n\}$, and if $T_1,\ldots,T_n$ are constructs of $\hyper{H}_1,\ldots,\hyper{H}_n$, respectively, then the
+non-planar tree $Y(T_1,\ldots,T_n)$ whose root is decorated by $Y$, with $n$ outgoing edges on which the respective $T_i\,$'s are grafted is a construct.  
 \end{enumerate}
+In the notation $Y(T_1,\ldots,T_n)$, no order is intended on  $T_1,\ldots,T_n$.
+However, when $\hyper{H}$ is ordered, the trees $T_1,\ldots,T_n$ are listed according to the order given by $\hyper{H},Y  \leadsto H_1,\ldots,H_n$, making constructs planar.
 When $Y={z}$ is a singleton, we freely write $z$ in place of $\set{z}$.
 A \defn{construction} is a construct all of whose nodes are  decorated with singletons. 
 \end{definition}
+
 
 Since all decorations in a construct are disjoint, we freely identify nodes with subsets of~$H$. 
 We use the notation $\occ{T}{X}$ to denote the  subtree of $T$ rooted at $X$, defined only if $X$ is indeed a decoration of a node of $T$. 
@@ -110,7 +113,7 @@ We shall need the following lemma.
 \begin{lemma} 
   \label{partial-construct}
 Let $\hyper{H}$ be a connected hypergraph. 
-If $\hyper{H},X\leadsto H_1,\ldots,H_n$ and if constructs $T_i$ of~$\hyper{H}_i$ are given for all $i\in I\subseteq \set{1,\ldots,n}$, then $X(\setc{T_i}{i\in I})$ is a construct of $\recrestr{\hyper{H}}{(H\setminus\cup\setc{H_j}{j\not\in I})}$.
+If $\hyper{H},X\leadsto \{H_1,\ldots,H_n\}$ and if constructs $T_i$ of~$\hyper{H}_i$ are given for all $i\in I\subseteq \set{1,\ldots,n}$, then $X(\setc{T_i}{i\in I})$ is a construct of $\recrestr{\hyper{H}}{(H\setminus\cup\setc{H_j}{j\not\in I})}$.
 \end{lemma}
 \begin{proof} This is an immediate consequence of the following two observations: we have
 $$\recrestr{\hyper{H}}{(H\setminus\cup\setc{H_j}{j\not\in I})},X\leadsto \setc{H_i}{i\in I}\;\; \mbox{and}\;\; (\recrestr{\hyper{H}}{(H\setminus\cup\setc{H_j}{j\not\in I})})_{H_i}=\hyper{H}_{H_i}=\hyper{H}_i.$$
@@ -165,7 +168,7 @@ Note that the definition of $\hyper{S}_n$ and $\hyper{P}_n$ does not depend on a
 To every  planar tree $\calT$ with $n+2$ vertices, one can associate its $n$-dimensional \defn{operahedron}, whose faces are in bijection with the nestings of $\calT$ \cite{laplante-anfossiDiagonalOperahedra2022a,CLA1}, which in turn
 are in bijection with the tubings of the \defn{line graph} $\mathbb{L}(\calT)$ of $\calT$.
 The vertices of $\mathbb{L}(\calT)$ are the edges of ${\cal T}\!$, and two vertices are connected whenever as edges of ${\cal T}$ they share a common vertex, see \cref{fig:line-graph}.
-In other words, a $n$-dimensional operahedron is the graph-associahedron of a clawfree block graph with $n+1$ vertices.
+In other words, an $n$-dimensional operahedron is the graph-associahedron of a clawfree block graph with $n+1$ vertices.
 
 \begin{figure}[h!]
   \begin{center}

@@ -89,7 +89,7 @@ is called a \defn{local confluence diagram}.
 %It can be seen as the graph of a $2$-dimensional polytope $P$ (which is not necessarily is square!), with terms in bijection with vertices of $P$, and rewrites in bijection with edges of $P$.
 %We shall say that a convergent  pair $s \to t_1$, $s\to t_2$ has \defn{form} $P$.
 
-There are two cornerstone lemmas in term rewriting theory.
+There are two cornerstone lemmas in term rewriting theory (\cref{thm:Newman,l:local-confluence-critical-pair} below).
 
 \begin{lemma}[Newman's lemma]
   \label{thm:Newman}
@@ -112,6 +112,7 @@ $s=C[\sigma(s')]$, $s'\to t'_1$, $t_1=C[\sigma(t'_1)]$, $\sigma(x)\to t'_2$ and
 $t_2=C[\sigma'(s')]$, where $\sigma'(x)\eqdef t'_2$ and $\sigma'(y)\eqdef \sigma(y)$ for $y\not = x$.
 \item[(b)] $s,t_1,t_2$ are such that there exists a critical pair $s',t'_1,t'_2$, a substitution $\sigma$ and a context $C$ such that $s=C[\sigma(s')]$, $t_1=C[\sigma(t'_1)]$, and $t_2=C[\sigma(t'_2)]$.
 \end{enumerate}
+We refer to \cref{Huet-MacLane} for an illustration of these three cases in the seminal rewriting system underlying Mac Lane's coherence theorem.
 Situation (b) above is called an \defn{overlapping}, and critical pairs are alternatively called minimal overlappings.
 It can also be shown that all pairs of type~(a1) or~(a2) above can always be completed into local confluence diagrams, that is, they \defn{converge}. 
 For pairs of type (a1), those  diagrams are squares, i.e. $t_1 \to t \leftarrow t_2$. 
@@ -141,9 +142,10 @@ $t$ would reflect in an infinite reduction sequence for $\sigma(t)$.
 \subsection{Rewriting on constructs}
 \label{ss:rewriting-constructs}
 We define our first term rewriting system on constructs. 
+From now on, we will consider only \emph{ordered} hypergraphs.
 
 \begin{definition} \label{def:signature-hyper}
-  Let $\hyper{H}$ be a connected hypergraph. 
+  Let $\hyper{H}$ be an ordered connected hypergraph. 
 Consider the \defn{signature} $\Sigma_\hyper{H}$ made of the following data: 
 \begin{itemize}
   \item Variables are connected subsets of $H$, that is $V\eqdef \{ X \subseteq H \ | \ \hyper{H}_{X} \text{ is connected}\}$. 
@@ -165,17 +167,17 @@ observe that any term $t$ may be considered as a closed term $\overline{t}$, by 
 
 \begin{lemma} 
   \label{l:bijection-terms}
-  There is a bijection between the set of closed terms of  sort $H$ over $\Sigma_\hyper{H}$ and the set of constructs of $\hyper{H}$, defined by projecting all function symbols $(X,Y)$ to their first component $X$.
+  There is a bijection between the set of closed terms of sort $H$ over $\Sigma_\hyper{H}$ and the set of constructs of $\hyper{H}$, defined by projecting all function symbols $(X,Y)$ to their first component $X$.
 \end{lemma}
 
 \begin{proof}
   We compare the inductive definition of constructs (\cref{inductive-construct}) with the inductive definition of $\Ter(\Sigma_\hyper{H})$ above.
   First observe that there is only one arity $0$ function symbol of output sort $H$, the pair $(H,H)$. 
-  We associate to this term the tree with only one node, decorated by $H$.
+  We associate to this term the non-planar tree with only one node, decorated by $H$.
   Now, an arity $n$ function symbol of output sort $H$ is a pair $(Y,H)$ with $Y \subseteq H$. 
   If $\hyper{H},Y \leadsto H_1,\ldots,H_n$, then a valid closed term $(Y,H)(t_1,\ldots,t_n)$ is made of closed terms $t_i$ of  sort $H_i$, for $1 \leq i \leq n$. 
 %  This means that $t_i$ is of the form $(Y',H_i)(t_1',\ldots,t_k')$ for some subset $Y' \subseteq H_i$. 
-  We associate to the term $(Y,H)(t_1,\ldots,t_n)$ the tree $Y(T_1,\ldots,T_n)$ with root decorated by $Y$, and the trees~$T_i$, associated by induction to the various $t_i$'s, grafted on its leaves.
+  We associate to the term $(Y,H)(t_1,\ldots,t_n)$ the non-planar tree $Y(T_1,\ldots,T_n)$ with root decorated by $Y$, and the non-planar trees~$T_i$, associated by induction to the various $t_i$'s, grafted on its leaves.
   It is clear from the inductive nature of the definitions that this correspondence is bijective.
 \end{proof}
 
@@ -195,10 +197,7 @@ It cannot be a variable, as it would have to be $H$, contradicting the non-empty
 Thus, ignoring the order of subterms, $t$ has the form $(Y,H)(\setc{t_i}{i\in I}\cup\setc{H_j}{j\not\in I})$, where $\hyper{H},Y \leadsto H_1,\ldots,H_n$ and $I\inc\set{1,\ldots,n}$, and we conclude by induction together with \cref{partial-construct}.
 \end{proof}
 
-
-Now suppose that the vertices of our hypergraph $\hyper{H}$ are equipped with a total ordering.
-We shall say that $\hyper{H}$ is \defn{ordered}.
-Then, we can define a family of rewrite rules as follows.
+We define a family of rewrite rules as follows.
 
 \begin{definition} \label{def:rules}
   Let $\hyper{H}$ be a connected hypergraph. 
@@ -236,7 +235,7 @@ Behind the scene, the two clauses are not as symmetric as they seem to be.
 Procedurally speaking, in the first case, when moving from $S$ to $T$, there is nothing else to check than the condition $\max(X\cup Y)\in Y$, while in the second case, when moving from $T$ to $S$, one has first to decide on a splitting of a node $Z$ of $T$ as some $X\cup Y$ in such a way that $Y$ is connected in $\supp(\occ{T}{Z})\setminus X$ and  that  the condition $\max(X\cup Y)\in X$ holds.
 
 \begin{rem}
-  This can be seen as the definition of a preorder $\to$ on the set $\mathcal{A}(\hyper{H})$ of constructs of $\hyper{H}$, distinct from the face relation. 
+  This can be seen as the definition of a preorder on the set $\mathcal{A}(\hyper{H})$ of constructs of $\hyper{H}$, distinct from the face relation. 
   Is this preorder a partial order?
   Computations suggest that this is the case, and that this order should define a \emph{facial order} on nestohedra, and in particular coincide with the \emph{facial weak order} \cite{KrobLatapyNovelliPhanSchwer,PalaciosRonco,DermenjianHohlwegPilaud} on the permutahedra and the \emph{generalised Tamari order} \cite{Ronco-Tamari} on the associahedra.
 \end{rem}
@@ -284,7 +283,6 @@ Restricting our attention to constructions, it is natural to adapt the term rewr
 %   Note that \cref{l:bijection-open} subsumes  \cref{l:bijection-constructions} (take $X=H$).
 
 The rewrite rules are obtained by joining together the rules in \cref{def:rules}. 
-As before, we suppose that $\hyper{H}$ is ordered.
 
 \begin{definition} 
   \label{def:rules-2}
@@ -368,16 +366,19 @@ prevents to create cycles when composing flips, concluding the proof.
 
 %In other words, we have the following.
 
-\begin{thm}
-  \label{thm:termination}
-  The rewriting system $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$ is terminating.
-\end{thm}
+\begin{samepage}
+  \begin{thm}
+    \label{thm:termination}
+    The rewriting system $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$ is terminating.
+  \end{thm}
+  
+  \begin{proof} 
+    We observe that there is a closed term for every sort $X$: just take of 0-ary function symbol $(X,X)$ (cf.~ \cref{open-to-closed}). 
+    Therefore, by~ \cref{closed-termination}, it suffices to show that termination holds for closed terms. 
+    This follows immediately from \cref{l:instantiation-constructions,p:flip-partial-order}.
+  \end{proof}
+\end{samepage}
 
-\begin{proof} 
-  We observe that there is a closed term for every sort $X$: just take of 0-ary function symbol $(X,X)$ (cf.~ \cref{open-to-closed}). 
-  Therefore, by~ \cref{closed-termination}, it suffices to show that termination holds for closed terms. 
-  This follows immediately from \cref{l:instantiation-constructions,p:flip-partial-order}.
-\end{proof}
 
 But there is more to it. 
 It turns out that the map $v^{\bullet}$ from constructions to $\mathbb{R}^{|H|}$
@@ -432,8 +433,8 @@ But it stresses the fact that the proof of termination in~ \cref{p:flip-partial-
 
 We next examine the orientation induced on the $X$-faces of $\hyper{H}$, for some $X=\set{x_1,x_2,x_3}\inc H$. 
 Depending on the total order chosen on $H$, each of the four shapes of type (B) from~\cref{ss:typeB} gives rise to 6 possible local confluence diagrams. 
-We list them below in schematic form (i.e., without the $\cdots$) for the quadrilateral shape (B2).
-We overline (resp.\ underline) the minimum (resp.\ maximum) in the partial order.
+We list them below in \cref{fig:critical} in schematic form (i.e., without the $\cdots$) for the quadrilateral shape (B2).
+\begin{figure}
 $$\begin{array}{ccc}
 \boxed{x_1>x_2>x_3} && \boxed{x_1>x_3>x_2}\\
 &&\\
@@ -491,15 +492,18 @@ x_2(x_1(x_3)) \ar @{<-}[ddrr]_{x_2(\set{x_1,x_3})}&&   && \overline{x_3(x_1,x_2)
 &&  x_2(x_3(x_1))&&}
   \end{array}
 $$
+\caption{The 6 local confluence diagrams associated to the shape (B2) from~\cref{ss:typeB}, induced by a choice of total order on the set $\{x_1,x_2,x_3\}$.
+The mininum (resp.\ maximum) in the partial order is overlined (resp.\ underlined).}
+\label{fig:critical}
+\end{figure}
+
 Each of these local confluence diagrams stems from a critical pair. 
 For example, in the first diagram, we can see the minimal overlapping between applying rewriting to the parts $x_1(-,x_3)$ and $x_1(x_2,-)$ of the construct $x_1(x_2,x_3)$.   Let us make precise what we mean by ``parts''.
 Calling $\hyper{K}$ the hypergraph underlying the poset (B2), and $t$ the term corresponding to the construction $x_1(x_2,x_3)$, we have
 (cf.~ \cref{open-to-closed})
 $t=\sigma_1(t_1)$ (resp.  $t=\sigma_2(t_2)$), where $t_1 \eqdef (x_1,K)(\set{x_2},(x_3,\set{x_3}))$ and $\sigma_1(x_2)\eqdef (x_2,\set{x_2})$ (resp.
 $t_2\eqdef (x_1,K)((x_2,\set{x_2}),\set{x_3})$ and $\sigma_2(x_3)\eqdef (x_3,\set{x_3}$)). This allows us to see 
-the edges from $t_1$  to $x_2(x_1(x_3))$  and to  $x_3(x_1,x_2)$ as instantiations of the rewrite rules of~ \cref{def:rules-2}. We make this formal in \cref{face-flip,thm:critical-pairs}. Recall the functions $\psi$ and $\chi$ from 
- \cref{instance-construct,l:bijection-open}.
-
+the edges from $t_1$  to $x_2(x_1(x_3))$  and to  $x_3(x_1,x_2)$ as instantiations of the rewrite rules of~ \cref{def:rules-2}. We shall make this formal in \cref{face-flip,thm:critical-pairs}. 
 %we can use  to view
 %the construction (or closed term)  $x_1(x_2,x_3)$ as either the open term  or the open term
 %$(x_1,K)((x_2,\set{x_2}),\set{x_3})$, in which $\set{x_2}$ (resp. $\set{x_3}$) is a variable, thus  formalising $x_1(-,x_3)$ and  $x_1(x_2,-)$, respectively and the rewriting steps  $x_1(x_2,x_3)\to x_2(x_1(x_3))$ and
@@ -522,38 +526,13 @@ $x\:{\cal R}\:y$).
 \begin{proof} The proof is an easy variation on the proof of~\cref{instance-construct} (resp. of  \cref{l:bijection-open}).
 
 \end{proof}
-The following Lemma substantiates the view that $X$-faces are instantiations in context of their shape, and is the key to the analysis of critical pairs in the next theorem. 
-Its statement requires a bit of ``yoga''. Our goal is to exhibit any closed term $s$ corresponding to a construct of an $X$-face $T$ as an instantiation in context  of an open term associated with the shape of that face.
-For this we use the bijections $\chi$ and $\psi$. We first transform $s$ into a construct $S:=\chi(s)$. 
-Then we use $\psi$ to get a construct $S':=\psi(S)$ of the same dimension in the shape of $T$. 
-Finally, we use the inverse of $\chi$ to get an open term
-$t':=\chi^{-1}(S')$. 
-The Lemma states that our original $t$ is an instance in context of $t'$.
-
-\begin{lemma} 
-  \label{instance-in-context}
-Let $T$ be a $X$-face of a connected hypergraph $\hyper{H}$, and suppose that $\hyper{H},X\leadsto U_1,\ldots U_n$. 
-Then, the composite $\xi\eqdef \chi^{-1}\circ \psi\circ \chi$ mapping terms over $\Sigma_{\recrestr{(\hyper{H}_{\supp(\occ{T}{X})})}{X}}$ to closed terms over $\Sigma_{\hyper{H}}$ admits the following description: 
-\begin{itemize}
-  \item Writing $\chi^{-1}(T)=C[(X,\supp(\occ{T}{X}))(t_1,\ldots t_n)]$ and defining the substitution $\sigma$ by $\sigma(U_i)\eqdef t_i$, then we have $\xi(t')=C[\sigma(t')]$, for all $t'$ in the domain of $\xi$.
-\end{itemize}
-
-\end{lemma}
-
-\begin{proof}
-As is quite common in matters involving syntax, the difficulty lies more in formulating the statement than in proving it. The proof consists in carefully tracking the successive transformations. 
-The key observation is that the construction of the inverse $\phi$ of $\psi$ in the proof of \cref{instance-construct} ``secretly" performs an instantiation. 
-The details are left to the reader.
-\end{proof}
 
 
 \begin{thm}
-  \label{thm:critical-pairs} [A DISCUTER]
+  \label{thm:critical-pairs} 
   The rewriting system $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$  is locally confluent. The local confluence diagrams originating from  closed terms of  sort $H$ 
  are in one-to-one correspondence with the oriented 2-faces of $\hyper{H}$.
- 
-  More precisely, the 2-faces of type (A) provide  the local confluence diagrams of type (a1) and (a2), the critical confluence diagrams are provided by the maximal  faces of all $\recrestr{(\hyper{H}_Y)}{X}$, for $X\inc Y \inc H$ with $Y$ connected and $X$ of cardinal 3,
- and the $X$-faces of type (B) provide all  the confluence diagrams of type (b).
+  More precisely, the 2-faces of type (A) provide  the local confluence diagrams of type (a1) and (a2),  and the $X$-faces of type (B) provide all  the confluence diagrams of type (b).
 \end{thm}
 
 \begin{proof}
@@ -573,10 +552,8 @@ Let us consider three constructions $S,T,U$ such that $S\pre{x}{y}T$ and $S \pre
   \end{itemize}
   This gives evidence that case (B) features the two (and only two) overlapping situations $x(y(\ldots),v(\ldots),\ldots)$ (with $x<y$ and $x<v$) and 
   $x(y(v(\ldots),\ldots),\ldots)$ (with $x<y<v$), and the four subcases  (in their oriented version as above) show how to complete the local confluence diagrams.  
-\end{itemize}
-Finally, the part of the statement regarding critical pairs follows from \cref{instance-in-context}.
+\end{itemize}.
 \end{proof}
-
 
 \begin{thm}
   \label{thm:confluent}
@@ -587,6 +564,44 @@ Finally, the part of the statement regarding critical pairs follows from \cref{i
 %  Since all critical pairs can be resolved, we have that $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$ is locally confluent (\cref{l:local-confluence-critical-pair}). 
   By \cref{thm:termination} and \cref{thm:critical-pairs}, $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$ is terminating and locally confluent, and therefore confluent by~\cref{thm:Newman}.
 %  In fact, since every pair of elements has a unique common normal form (\cref{thm:normal-form}), the system is terminating. 
+\end{proof}
+
+We note that the  proof of \cref{thm:critical-pairs} above  does not make use of the critical pair \cref{l:local-confluence-critical-pair}. But we can analyse critical pairs geometrically, as we show now.
+Recall the functions $\psi$ and $\chi$ from 
+ \cref{instance-construct,l:bijection-open}.
+The following Lemma substantiates the view that $X$-faces are instantiations in context of their shape, and is the key to the analysis of critical pairs in \cref{critical-pairs-nestohedra} below. 
+Its statement requires a bit of ``yoga''.
+ 
+Our goal is to exhibit any closed term $s$ corresponding to a construct of an $X$-face $T$ as an instantiation in context  of an open term associated with the shape of that face.
+For this we use the bijections $\chi$ and $\psi$. We first transform $s$ into a construct $S:=\chi(s)$. 
+Then we use $\psi$ to get a construct $S':=\psi(S)$ of the same dimension in the shape of $T$. 
+Finally, we use the inverse of $\chi$ to get an open term
+$t':=\chi^{-1}(S')$. 
+The Lemma states that our original~$t$ is an instance in context of $t'$.
+
+\begin{lemma} 
+  \label{instance-in-context}
+Let $T$ be a $X$-face of a connected hypergraph $\hyper{H}$, and suppose that $\hyper{H},X\leadsto U_1,\ldots U_n$. 
+Then, the composite $\xi\eqdef \chi^{-1}\circ \psi\circ \chi$ mapping terms over $\Sigma_{\recrestr{(\hyper{H}_{\supp(\occ{T}{X})})}{X}}$ to closed terms over $\Sigma_{\hyper{H}}$ admits the following description: 
+\begin{itemize}
+  \item Writing $\chi^{-1}(T)=C[(X,\supp(\occ{T}{X}))(t_1,\ldots t_n)]$ and defining the substitution $\sigma$ by $\sigma(U_i)\eqdef t_i$, then we have $\xi(t')=C[\sigma(t')]$, for all $t'$ in the domain of $\xi$.
+\end{itemize}
+
+\end{lemma}
+
+\begin{proof}
+As is quite common in matters involving syntax, the difficulty lies more in formulating the statement than in proving it. The proof consists in carefully tracking the successive transformations. 
+The key observation is that the construction of the inverse $\phi$ of $\psi$ in the proof of \cref{instance-construct} ``secretly" performs an instantiation. 
+The details are left to the reader.
+\end{proof}
+
+
+\begin{proposition}
+\label{critical-pairs-nestohedra}
+The critical confluence diagrams of the rewriting system $(\Sigma_\hyper{H}^c,R_\hyper{H}^c)$  are provided by the maximal  faces of all $\recrestr{(\hyper{H}_Y)}{X}$, for $X\inc Y \inc H$ with $Y$ connected and $X$ of cardinal 3.
+\end{proposition}
+\begin{proof}
+This follows from \cref{instance-in-context}.
 \end{proof}
 
 \begin{rem}

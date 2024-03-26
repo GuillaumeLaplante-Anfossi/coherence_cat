@@ -99,7 +99,7 @@ Incidentally, these  hypergraphs witness the fact that there do exist 2-faces of
 
 In the rest of this section, we make the discussion above on $\cdots$ more formal.
 For a 3-element subset $X=\set{x_1,x_2,x_3}$ of $H$, we say that a 2-face $T$ of $\hyper{H}$ is an \defn{$X$-face} if its unique non-singleton node is decorated by $X$.  By letting $X$ range over all subsets of $H$ of cardinal 3, we form in this way a partition of all 2-faces of type (B).
-If $X$ is the root of $T$, the following  lemma invites us to see $T=X(\ldots)$ as an ``instantiation'' of~$X$, viewed as the maximum face of $\recrestr{\hyper{H}}{X}$, as we shall see.
+If $X$ is the root of $T$, the following  lemma invites us to see $T=X(\ldots)$ as an ``instantiation'' of~$X$ (viewed as the maximum face of $\recrestr{\hyper{H}}{X}$), as we shall see.
 
 \begin{lemma} 
   \label{instance-construct} 
@@ -113,10 +113,10 @@ When discussing type (B) 2-faces, we have described up to permutation all the po
 We will treat the case where ${\cal A}(\recrestr{\hyper{H}}{X})$ is the poset described in case (B2). The other cases are similar.
 Pick the 0-face~$S\eqdef  x_1(x_2,x_3)$. 
 We map $S$ to a $0$-face $\phi(S)$ of $T$ as follows. 
-Let $\hyper{H},x\leadsto H_1,\ldots,H_n$. 
+Let $\hyper{H},x\leadsto \{H_1,\ldots,H_n\}$. 
 By \cref{xyz-reconnected}, we have $\xyz{x_1}{\hyper{H}}{\set{x_2},\set{x_3}}$, hence we have, say $x_2\in H_1$ and $x_3\in H_2$. Then let
-  $\hyper{H_1},x_2\leadsto H_{1,1},\ldots,H_{1,p}$ and $\hyper{H_2},x_3\leadsto H_{2,1},\ldots,H_{2,q}$.
-  Then we have $\hyper{H},X\leadsto H_{1,1},\ldots,H_{1,p},H_{2,1},\ldots,H_{2,q},H_3,\ldots H_n$, so that $T$ writes as
+  $\hyper{H_1},x_2\leadsto \{H_{1,1},\ldots,H_{1,p}\}$ and $\hyper{H_2},x_3\leadsto \{H_{2,1},\ldots,H_{2,q}\}$.
+  Then we have $\hyper{H},X\leadsto \{H_{1,1},\ldots,H_{1,p},H_{2,1},\ldots,H_{2,q},H_3,\ldots H_n\}$, so that $T$ writes as
   $$T= X(T_{1,1},\ldots,T_{1,p},T_{2,1},\ldots,T_{2,q},T_3,\ldots T_n).$$ 
 All these data determine uniquely a 0-dimensional subface of $T$, namely
   $$\phi(S)\eqdef x_1(x_2(T_{1,1},\ldots,T_{1,p}),x_3(T_{2,1},\ldots,T_{2,q}),T_3,\ldots T_n).$$
