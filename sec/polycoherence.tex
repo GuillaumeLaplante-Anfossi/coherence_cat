@@ -223,30 +223,34 @@ However, it will be sufficient for our purposes, presented in the next Section, 
 \subsection{Rewriting systems}
 
 \correction{
-    We refer to \cite{baaderTermRewritingAll1998} for more details. 
+    We refer to \cite{baaderTermRewritingAll1998} for more details on rewriting systems. 
 \begin{definition}
     An \defn{abstract rewriting system} is a set $A$ together with a binary relation $\to$. 
 \end{definition}
-We denote by ${\cal R}^*$ the reflexive and transitive closure of a relation ${\cal R}$. 
-We say that $(A,\to)$ is \defn{locally confluent} (resp.\ \defn{confluent}) if for all $s,t_1,t_2$ such that $t_1 \leftarrow s \to t_2$ (resp.\ $t_1 \:{}^*\!\!\leftarrow s \to^* t_2$), there exists a term $t$ with $t_1 \to^* t\; {}^*\!\!\leftarrow t_2$.  
-A rewriting system is \defn{terminating} if every reduction sequence eventually must terminate.}
+We denote by $\xrightarrow{*}$ the reflexive and transitive closure of ${\to}$. 
+We say that $(A,\to)$ is \defn{locally confluent} (resp.\ \defn{confluent}) if for all $a,a_1,a_2$ such that $a_1 \leftarrow a \to a_2$ (resp.\ $a_1 \xleftarrow{*} a \xrightarrow{*} a_2$), there exists a term $b$ with $a_1 \xrightarrow{*} b\; \xleftarrow{*} a_2$.  
+A rewriting system is \defn{terminating} if every reduction sequence $a \to a_1 \to a_2 \to \cdots$ eventually must terminate.}
 
 \correction{
     Given a polyhedral complex $X$ and a generic vector $\vec v$, one can consider the abstract rewriting system defined by $\vec v$ on the vertices of $X$.
 \begin{definition}
-    The \defn{abstract rewriting system} is the pair made of the set of vertices of $X$, together with the relation: we have $a \to b$ if $a$ and $b$ are vertices of the same edge and $\langle v, a \rangle < \langle v, b \rangle$.
+    The \defn{vertices rewriting system} is the pair $(X_0,\to)$ made of the set of vertices $X_0$ of $X$, together with the following relation: we have $x \to y$ if $x$ and $y$ are vertices of the same edge and $\langle v, x \rangle < \langle v, y \rangle$.
 \end{definition}
- saying that $x$ can be rewritten into $y$ if and only if there is an oriented path from $x$ to $y$ in $X$. 
+According to this definition, we have $x \xrightarrow{*} y$ if and only if there is an oriented path from $x$ to $y$ in~$X_1$. 
+The hypotheses of \cref{p:second-proof} impose that the rewriting system $(X_0,\to)$ is terminating and confluent.
 \begin{proposition}
-    If there is a unique sink and the outgoing link of every vertex is connected, then $()$ is terminating and confluent. 
+    If there is a unique sink, then $(X_0,\to)$ is terminating and confluent. 
 \end{proposition}
 \begin{proof}
-    TBC
+    Since $\vec v$ is generic, and thus strictly increasing along edges, it defines a partial order, and since the set $X_0$ is finite, the rewriting system $(X_0,\to)$ is terminating.
+    Confluence follows from the existence of a unique sink $\sk(X)$: given any pair of vertices $x,y$, since $\vec v$ is generic there are oriented paths $x \xrightarrow{*} \sk(X) \xleftarrow{*} y$. 
 \end{proof}
-The hypotheses of \cref{p:second-proof} impose that this rewriting system is terminating and confluent.
 \begin{corollary}
     The abstract rewriting system on any polytope is terminating and confluent.
 \end{corollary}
+\begin{proof}
+    The existence and uniqueness of a sink is one of the basic, very useful facts about polytopes, see \cite[Theorem 3.7]{Ziegler95}.
+\end{proof}
 This definition is fairly general, and in practice one considers \emph{term} rewriting systems, which possess much more structure, compare with \cite{CLA24}}
 
 %Terminating and confluent
