@@ -64,7 +64,7 @@ In the course of the preceding proof, we have in particular showed the following
 
 \subsection{Coherence \`a la Morse}
 
-Let $X\subset \R^n$ be a polyhedral complex, \correction{endowed with a regular CW structure}. 
+Let $X\subset \R^n$ be a polyhedral complex. 
 Let $\vec v \in \R^n$ be \defn{generic} on the edges of $X$, meaning that for any pair of vertices $x,y \in X$ belonging to the same edge of $X$, we have $\langle \vec v , x \rangle \neq \langle \vec v, y\rangle$.  
 Such a generic vector $\vec v$ induces a natural orientation on the edges of $X$, directed from the source vertex where the functional $\langle \vec v, - \rangle$ is minimal to the target vertex where it is maximal. 
 
@@ -89,76 +89,9 @@ For every vertex $x \in X$, choose $\varepsilon >0$ such that the interval betwe
     Each maximal face of $\mathcal{F}(x,X)$ with respect to inclusion is a polytope $P$, for which the intersection $P \cap (H+x+\varepsilon \vec v)$ is the vertex figure $P/x$ of $P$ at $x$. 
     By \cite[Prop.~2.4]{Ziegler95}, there is a bijection between the $k$-faces of $P$ and the $(k-1)$-faces of $P/x$.
     Collecting these bijections for all maximal faces of $\mathcal{F}(x,X)$, and making the appropriate identifications, we get the desired global bijection.
-\end{proof}
-}
+\end{proof}}
 
-A combinatorial path $\gamma$ on $X$ is \defn{oriented} if for any pair $(e, f)$ of consective edges in $\gamma$, we have that $\sk(e)=\so(f)$.  
-When no ambiguity arises, we will omit the adjective ``combinatorial" and say only ``oriented path".
-Two parallel oriented paths are said to be \defn{elementary combinatorially homotopic} if they are as non-oriented paths. 
-They are \defn{combinatorially homotopic} if they are related by a sequence of elementary combinatorial homotopies between oriented paths. 
-
-The following Lemma and its consequence \cref{p:second-proof} translate into topological terms the proof of \cite[Theorem 3.1]{MacLane63}.
-
-\begin{lemma}
-\label{l:oriented}
-    Let $X$ be a polyhedral complex, and let $\vec v$ be generic on the edges of $X$. 
-    If there is a unique global sink $\sk(X)$, then the outgoing link of every vertex is \correction{combinatorially} connected if and only if any two parallel oriented combinatorial paths on $X$ are combinatorially homotopic.
-\end{lemma}
-
-\begin{proof}
-    We prove the first implication. 
-    Suppose that the outgoing link of every vertex is connected. 
-    Let $\gamma$ and $\gamma'$ be two parallel oriented paths between two vertices $x$ and $y$. 
-    We prove that they are combinatorially homotopic. 
-    We proceed by induction on the maximal length $m$ of an oriented path between $x$ and $y$ in $X$. 
-    Without loss of generality, we can suppose that $y=\sk(X)$, since if $y\neq\sk(X)$ we can always find an oriented path between $y$ and $\sk(X)$.
-    The cases when $m=0$ and $m=1$ are trivial. 
-    Suppose that the hypothesis holds up to $m=k-1, k\geq 2$, and consider two paths $\gamma$ and $\gamma'$ for which $m=k$. 
-    Let $e$ and $e'$ denote the edges of $\gamma$ and $\gamma'$ that are adjacent to $x$. 
-    We examine three cases.
-    \begin{enumerate}
-        \item If $e=e'$, we can apply the induction hypothesis to $\gamma \setminus e$ and $\gamma' \setminus e'$. 
-        \item If $e \neq e'$ and both edges are on the same $2$-face $F$ of $X$, then using the induction hypothesis we have that $\gamma$ and $\gamma'$ are respectively combinatorially homotopic to the paths $\delta$ and $\delta'$ defined as follows: they go from $x=\so(F)$ to $\sk(F)$ by the unique path containing $e$ and $e'$, respectively, and then from $\sk(F)$ to $y$ along the same arbitrary oriented path. 
-        Since $\delta$ and $\delta'$ are combinatorially homotopic by definition, the conclusion follows from the transitivity of the combinatorial homotopy equivalence relation. 
-        \item Suppose that $e\neq e'$, and that $e$ and $e'$ are \emph{not} on the same $2$-face of $X$. 
-        Since the outgoing link of $x$ is \correction{combinatorially} connected, there exists a \correction{combinatorial} path $\theta$ between \correction{the vertices corresponding to} $e$ and $e'$ in this link \correction{(\cref{l:vertex-figure})}. 
-        For every edge $e_i$ of $X$ in the path $\theta$, choose an oriented path $\gamma_i$ in $X$ from $x$ to $y=\sk(X)$ going through $e_i$. 
-        Now apply Point (2) above to every pair of parallel oriented paths $(\gamma_i, \gamma_{i+1})$ with $e_i$ and $e_{i+1}$ consecutive in $\theta$, and conclude again by transitivity of the combinatorial homotopy equivalence relation. 
-    \end{enumerate}
-
-    In the other direction, suppose that every pair of parallel oriented combinatorial paths are combinatorially homotopic. 
-    We show that for any vertex $x$, its outgoing link is \correction{combinatorially} connected. 
-    Indeed, take two edges $e,e'$ of $X$ with source $x$, and consider their extensions to oriented paths $\gamma, \gamma'$ from $x$ to $\sk(X)$. 
-    By hypothesis, these two paths are combinatorially homotopic, that is, there is a sequence of parallel oriented paths from $\gamma$ to $\gamma'$. 
-    The collection of first edges in each of these paths defines a path between $e$ and $e'$ in the outgoing link of $x$. 
-    Thus, this link is connected. 
-\end{proof}
-
-\begin{thm}
-\label{p:second-proof}
-    Let $X$ be a polyhedral complex, and let $\vec v$ be generic on the edges of $X$.
-    Suppose that 
-    \begin{enumerate}[label=\roman*)]
-        \item there is a unique sink $\sk(X)$, and
-        \item the outgoing link of every vertex is \correction{combinatorially} connected.
-    \end{enumerate}
-    Then, any two parallel combinatorial paths on $X$ are combinatorially homotopic.
-\end{thm}
-
-\begin{proof} 
-    By \cref{l:oriented}, the conclusion holds for \emph{oriented} paths.  
-    Let us show that this implies the non-oriented version.
-    Let $\gamma$ be a (non-oriented) combinatorial path on $X$ between $x$ and $y$.
-    For every vertex $z$ along $\gamma$, one can choose an oriented path $\delta_z$ from $z$ to $\sk(X)$. 
-    We observe that for any edge $e: z \to z'$ of $\gamma$, the oriented paths $\delta_z$ and $\delta_{z'}e$ are combinatorially homotopic by hypothesis. 
-    Going from $x$ to $y$ inductively one edge at a time and using transitivity of the homotopy equivalence relation, one obtains that $\gamma$ is combinatorially homotopic to $\delta_y^{-1}\delta_x$. 
-    Taking another combinatorial path $\gamma'$ parallel to $\gamma$, the same argument shows that $\gamma'$ is combinatorial homotopic to $\delta_y^{-1}\delta_x$.
-    Thus $\gamma$ and $\gamma'$ are combinatorially homotopic, which completes the proof. 
-\end{proof}
-
-The class of polyhedral complexes to which \cref{p:second-proof} applies is a strict subclass of simply connected complexes, as the following Proposition shows.
-\correction{
-Recall from \cref{cor:combinatorially-connected} that a polyhedral complex is combinatorially connected if and only if it is connected.}
+\correction{In this Section we shall focus on polyhedral complexes whose outgoing links are connected.}
 
 \begin{proposition}
     \label{lemma:outgoing-link}
@@ -168,15 +101,15 @@ Recall from \cref{cor:combinatorially-connected} that a polyhedral complex is co
 
 \begin{proof}
     Let $\vec v \in \R^n$ be generic with respect to $X$, and suppose that the outgoing link of every vertex is connected. 
-    Since $\vec v$ is generic on edges, it defines a Morse function $\langle \vec v , -\rangle$ on $X$, in the sense of \cite[Definition 2.2]{bestvinaMorseTheoryFiniteness1997}.
+    Since $\vec v$ is generic on edges, it defines a Morse function $\langle \vec v , -\rangle$ on $X$, in the sense of \cite[Def.~2.2]{bestvinaMorseTheoryFiniteness1997}.
     As in classical Morse theory, one can determine the homotopy type of $X$ by considering its successive level sets. 
     For $t \in \R$ denote by $X_t$ the closed subspace of $X$ containing points $x$ such that $\langle x, \vec v \rangle$ is at least $t$.
     Let $x$ be a vertex of $X$ of height $h=\langle x, \vec v \rangle$.
     Observe first that $X_{h+\epsilon}$, for some small $\epsilon>0$, is homotopy equivalent to $X_{h'}$ where $h' > h$ is the next greater height at which there is a vertex.
-    That is, the homotopy type of $X$ can only change at vertices  \cite[Lemma 2.3]{bestvinaMorseTheoryFiniteness1997}.
-    Then, one proves that $X_h$ is homotopy equivalent to the pushout of $X_{h+\epsilon}$ with the cone over the outgoing link of $x$ along the outgoing link of $x$  \cite[Lemma 2.5]{bestvinaMorseTheoryFiniteness1997}.
+    That is, the homotopy type of $X$ can only change at vertices  \cite[Lem.~2.3]{bestvinaMorseTheoryFiniteness1997}.
+    Then, one proves that $X_h$ is homotopy equivalent to the pushout of $X_{h+\epsilon}$ with the cone over the outgoing link of $x$ along the outgoing link of $x$  \cite[Lem.~2.5]{bestvinaMorseTheoryFiniteness1997}.
     By our assumption, the outgoing link of $x$ is connected, and thus the cone over it is simply connected. 
-    Since the pushout of simply connected spaces over a connected space is always simply connected (this is an application of the Seifert--Van Kampen theorem), we obtain by induction that every path component of $X$ is simply connected \cite[Point (3) of Corollary 2.6]{bestvinaMorseTheoryFiniteness1997}.
+    Since the pushout of simply connected spaces over a connected space is always simply connected (this is an application of the Seifert--Van Kampen theorem), we obtain by induction that every path component of $X$ is simply connected \cite[Point (3) of Cor.~2.6]{bestvinaMorseTheoryFiniteness1997}.
 \end{proof}
 
 The converse of \cref{lemma:outgoing-link} is not true in general: many simply connected polyhedral complexes, as the one represented in \cref{fig:outgoingpoly}, have disconnected outgoing links, for many (sometimes for all) choices of generic orientation vectors. 
@@ -201,22 +134,112 @@ The converse of \cref{lemma:outgoing-link} is not true in general: many simply c
 \label{fig:outgoingpoly}
 \end{figure}
 
-This implies that the converse of \cref{p:second-proof} does not hold, and thus that MacLane's original proof is far from reaching the full generality of \cref{thm:top-coherence}.
-However, it will be sufficient for our purposes, presented in the next Section, since it applies to any polytope.
+\correction{An important class of complexes which have connected outgoing links are polytopes, which will be our main object of study in the next sections.}
 
 \begin{proposition}
 \label{prop:polytopes}
     Let $P \subset \R^n$ be a polytope, and let $\vec v \in \R^n$ be generic with respect to $P$. 
-    Then, $P$ admits a unique sink $\sk(P)$, and
-    the outgoing link of every vertex is \correction{combinatorially} connected.
+    Then, the outgoing link of every vertex of $P$ is connected.
 \end{proposition}
 
 \begin{proof}
-    The existence and uniqueness of a sink is one of the basic, very useful facts about polytopes, see \cite[Theorem 3.7]{Ziegler95}.
-    For the second part, define the linear hyperplane $H:=\{y \in \R^n \ | \ \langle \vec v, y \rangle = 0\}$, and consider the two half-spaces $H^{-}:=\{y \in \R^n \ | \ \langle \vec v, y \rangle < 0\}$ and $H^{+}:=\{y \in \R^n \ | \ \langle \vec v, y \rangle < 0\}$.
+    Define the linear hyperplane $H:=\{y \in \R^n \ | \ \langle \vec v, y \rangle = 0\}$, and consider the two half-spaces $H^{-}:=\{y \in \R^n \ | \ \langle \vec v, y \rangle < 0\}$ and $H^{+}:=\{y \in \R^n \ | \ \langle \vec v, y \rangle < 0\}$.
     Since $\vec v$ is not perpendicular to any edge of $P$, it defines a partition of the vertices of the vertex figure $P/x$ into two connected components: the vertices that lie in $H^{-}$, which correspond to incoming edges of $P$ at $x$, and the vertices that lie in $H^{+}$, which correspond to outgoing edges of $P$ at $x$.
     Thus, the outgoing link of $x$ is connected, and the proof is complete.
 \end{proof}
+
+\correction{From now on we shall suppose that the polyhedral complexes $X$ that we consider are endowed with a regular CW structure and provided with a generic vector $\vec v$.
+Combining \cref{lemma:outgoing-link} with \cref{thm:top-coherence}, we have that any polyhedral complex $X$ whose outgoing links are all connected satisfies the property ``any two parallel combinatorial paths on $X$ are combinatorially homotopic''.
+We shall now derive this same result by following an alternative, more combinatorial path, getting as close as possible to the proof of \cite[Thm~3.1]{MacLane63}.}
+
+\correction{Let us start with a small Lemma.
+In the rest of this Section we shall use the notion of combinatorially connectedness, which as we have seen in \cref{cor:combinatorially-connected}, is equivalent to connectedness for the spaces we consider.
+\begin{lemma}
+    \label{l:unique-sink}
+    Let $X$ be a polyhedral complex with generic vector $\vec v$ such that the outgoing link of every vertex is combinatorially connected. 
+    Let $e,e'$ be two edges of $X$ such that $\so(e)=\so(e')$, and suppose that there are oriented paths from $\sk(e)$ and $\sk(e')$ to local sinks~$s$ and~$s'$, respectively. 
+    Then, we have $s=s'$.
+\end{lemma}
+\begin{proof}
+    TBC
+\end{proof}
+}
+
+A combinatorial path $\gamma$ on $X$ is \defn{oriented} if for any pair $(e, f)$ of consective edges in $\gamma$, we have that $\sk(e)=\so(f)$.  
+When no ambiguity arises, we will omit the adjective ``combinatorial" and say only ``oriented path".
+Two parallel oriented paths are said to be \defn{elementary combinatorially homotopic} if they are as non-oriented paths. 
+They are \defn{combinatorially homotopic} if they are related by a sequence of elementary combinatorial homotopies between oriented paths. 
+
+The following Lemma and its consequence \cref{p:second-proof} translate into topological terms the proof of \cite[Thm~3.1]{MacLane63}.
+
+\begin{lemma}
+\label{l:oriented}
+    Let $X$ be a polyhedral complex, and let $\vec v$ be generic on the edges of $X$. 
+    \correction{Consider the following three properties
+    \begin{enumerate}
+        \item[(i)] the outgoing link of every vertex is combinatorially connected,
+        \item[(ii)] there is a unique global sink $\sk(X)$ in every connected component,
+        \item[(iii)] any two parallel oriented combinatorial paths on $X$ are combinatorially homotopic.
+    \end{enumerate}
+    Then, $X$ satisfies (i) if and only if it satisfies (ii) and (iii).}
+\end{lemma}
+
+\begin{proof}
+    \correction{First, we prove that (i) implies (ii). Suppose that there are two local sinks $s_1$ and $s_2$.}
+
+    \correction{Second, we prove that (i) implies (iii).}
+    Suppose that the outgoing link of every vertex is \correction{combinatorially} connected. 
+    Let $\gamma$ and $\gamma'$ be two parallel oriented paths between two vertices $x$ and $y$. 
+    We prove that they are combinatorially homotopic. 
+    We proceed by induction on the maximal length $m$ of an oriented path between $x$ and $y$ in $X$. 
+    Without loss of generality, we can suppose that $y=\sk(X)$, since if $y\neq\sk(X)$ we can always find an oriented path between $y$ and $\sk(X)$.
+    The cases when $m=0$ and $m=1$ are trivial. 
+    Suppose that the hypothesis holds up to $m=k-1, k\geq 2$, and consider two paths $\gamma$ and $\gamma'$ for which $m=k$. 
+    Let $e$ and $e'$ denote the edges of $\gamma$ and $\gamma'$ that are adjacent to $x$. 
+    We examine three cases.
+    \begin{enumerate}
+        \item If $e=e'$, we can apply the induction hypothesis to $\gamma \setminus e$ and $\gamma' \setminus e'$. 
+        \item If $e \neq e'$ and both edges are on the same $2$-face $F$ of $X$, then using the induction hypothesis we have that $\gamma$ and $\gamma'$ are respectively combinatorially homotopic to the paths $\delta$ and $\delta'$ defined as follows: they go from $x=\so(F)$ to $\sk(F)$ by the unique path containing $e$ and $e'$, respectively, and then from $\sk(F)$ to $y$ along the same arbitrary oriented path. 
+        Since $\delta$ and $\delta'$ are combinatorially homotopic by definition, the conclusion follows from the transitivity of the combinatorial homotopy equivalence relation. 
+        \item Suppose that $e\neq e'$, and that $e$ and $e'$ are \emph{not} on the same $2$-face of $X$. 
+        Since the outgoing link of $x$ is \correction{combinatorially} connected, there exists a \correction{combinatorial} path $\theta$ between \correction{the vertices corresponding to} $e$ and $e'$ in this link \correction{(\cref{l:vertex-figure})}. 
+        For every edge $e_i$ of $X$ in the path $\theta$, choose an oriented path $\gamma_i$ in $X$ from $x$ to $y=\sk(X)$ going through $e_i$. 
+        Now apply Point (2) above to every pair of parallel oriented paths $(\gamma_i, \gamma_{i+1})$ with $e_i$ and $e_{i+1}$ consecutive in $\theta$, and conclude again by transitivity of the combinatorial homotopy equivalence relation. 
+    \end{enumerate}
+
+    \correction{Finally, we prove that (ii) and (iii) imply (i).}
+    Suppose that every pair of parallel oriented combinatorial paths are combinatorially homotopic. 
+    We show that for any vertex $x$, its outgoing link is \correction{combinatorially} connected. 
+    Indeed, take two edges $e,e'$ of $X$ with source $x$, and consider their extensions to oriented paths $\gamma, \gamma'$ from $x$ to $\sk(X)$. 
+    By hypothesis, these two paths are combinatorially homotopic, that is, there is a sequence of parallel oriented paths from $\gamma$ to $\gamma'$. 
+    The collection of first edges in each of these paths defines a path between $e$ and $e'$ in the outgoing link of $x$. 
+    Thus, this link is connected. 
+\end{proof}
+
+\begin{thm}
+\label{p:second-proof}
+    Let $X$ be a polyhedral complex, and let $\vec v$ be generic on the edges of $X$.
+    \correction{Suppose that the outgoing link of every vertex is combinatorially connected.}
+    Then, any two parallel combinatorial paths on $X$ are combinatorially homotopic.
+\end{thm}
+
+\begin{proof} 
+    \correction{Adapt proof}
+    By \cref{l:oriented}, the conclusion holds for \emph{oriented} paths.  
+    Let us show that this implies the non-oriented version.
+    Let $\gamma$ be a (non-oriented) combinatorial path on $X$ between $x$ and $y$.
+    For every vertex $z$ along $\gamma$, one can choose an oriented path $\delta_z$ from $z$ to $\sk(X)$. 
+    We observe that for any edge $e: z \to z'$ of $\gamma$, the oriented paths $\delta_z$ and $\delta_{z'}e$ are combinatorially homotopic by hypothesis. 
+    Going from $x$ to $y$ inductively one edge at a time and using transitivity of the homotopy equivalence relation, one obtains that $\gamma$ is combinatorially homotopic to $\delta_y^{-1}\delta_x$. 
+    Taking another combinatorial path $\gamma'$ parallel to $\gamma$, the same argument shows that $\gamma'$ is combinatorial homotopic to $\delta_y^{-1}\delta_x$.
+    Thus $\gamma$ and $\gamma'$ are combinatorially homotopic, which completes the proof. 
+\end{proof}
+
+As \cref{lemma:outgoing-link} shows, the class of polyhedral complexes to which \cref{p:second-proof} applies is a strict subclass of simply connected complexes.
+This implies that the converse of \cref{p:second-proof} does not hold, and thus that Mac Lane's original proof is far from reaching the full generality of \cref{thm:top-coherence}.
+However, it will be sufficient for our purposes, presented in the next Section, since as we have seen in \cref{prop:polytopes} it applies to any polytope.
+\correction{Moreover, it has an associated rewriting system...}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -251,7 +274,8 @@ The hypotheses of \cref{p:second-proof} impose that the rewriting system $(X_0,\
 \begin{proof}
     The existence and uniqueness of a sink is one of the basic, very useful facts about polytopes, see \cite[Theorem 3.7]{Ziegler95}.
 \end{proof}
-This definition is fairly general, and in practice one considers \emph{term} rewriting systems, which possess much more structure, see \cite{CLA24}.}
+This definition is fairly general, and in practice one considers \emph{term} rewriting systems, which possess much more structure, see \cite{CLA24}.
+Aussi, on ne peut pas aller dans l'autre sens; pas necessairement de forme normale unique etc. Polytope SIMPLE est condition necessaire dans l'autre sens}
 
 %Terminating and confluent
 %Rewriting rules
