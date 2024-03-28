@@ -149,11 +149,11 @@ The converse of \cref{lemma:outgoing-link} is not true in general: many simply c
 \end{proof}
 
 \correction{From now on we shall suppose that the polyhedral complexes $X$ that we consider are endowed with a regular CW structure and provided with a generic vector $\vec v$.
-Combining \cref{lemma:outgoing-link} with \cref{thm:top-coherence}, we have that any polyhedral complex $X$ whose outgoing links are all connected satisfies the property ``any two parallel combinatorial paths on $X$ are combinatorially homotopic''.
+Combining \cref{lemma:outgoing-link} with \cref{thm:top-coherence}, we have that any polyhedral complex $X$ whose outgoing links are connected satisfies the property that ``any two parallel combinatorial paths on $X$ are combinatorially homotopic''.
 We shall now derive this same result by following an alternative, more combinatorial path, getting as close as possible to the proof of \cite[Thm~3.1]{MacLane63}.}
 
 \correction{Let us start with a small Lemma.
-In the rest of this Section we shall use the notion of combinatorially connectedness, which as we have seen in \cref{cor:combinatorially-connected}, is equivalent to connectedness for the spaces we consider.
+In the rest of this Section we shall use the notion of combinatorial connectedness, which as we have seen in \cref{cor:combinatorially-connected}, is equivalent to connectedness for the spaces we consider.
 \begin{lemma}
     \label{l:unique-sink}
     Let $X$ be a polyhedral complex with generic vector $\vec v$ such that the outgoing link of every vertex is combinatorially connected. 
@@ -170,19 +170,20 @@ When no ambiguity arises, we will omit the adjective ``combinatorial" and say on
 Two parallel oriented paths are said to be \defn{elementary combinatorially homotopic} if they are as non-oriented paths. 
 They are \defn{combinatorially homotopic} if they are related by a sequence of elementary combinatorial homotopies between oriented paths. 
 
-The following Lemma and its consequence \cref{p:second-proof} translate into topological terms the proof of \cite[Thm~3.1]{MacLane63}.
+The following \cref{l:oriented} and its consequence \cref{p:second-proof} translate into topological terms the proof of \cite[Thm~3.1]{MacLane63}.
+\correction{Note that this \cref{l:oriented} involves first \emph{oriented} paths, while \cref{p:second-proof} treats the general, non-oriented case.}
 
-\begin{lemma}
+\begin{proposition}
 \label{l:oriented}
     Let $X$ be a polyhedral complex, and let $\vec v$ be generic on the edges of $X$. 
     \correction{Consider the following three properties
     \begin{enumerate}
         \item[(i)] the outgoing link of every vertex is combinatorially connected,
         \item[(ii)] there is a unique global sink $\sk(X)$ in every connected component,
-        \item[(iii)] any two parallel oriented combinatorial paths on $X$ are combinatorially homotopic.
+        \item[(iii)] any two parallel \emph{oriented} combinatorial paths on $X$ are combinatorially homotopic.
     \end{enumerate}
     Then, $X$ satisfies (i) if and only if it satisfies (ii) and (iii).}
-\end{lemma}
+\end{proposition}
 
 \begin{proof}
     \correction{First, we prove that (i) implies (ii). Suppose that there are two local sinks $s_1$ and $s_2$.}
@@ -218,8 +219,7 @@ The following Lemma and its consequence \cref{p:second-proof} translate into top
 
 \begin{thm}
 \label{p:second-proof}
-    Let $X$ be a polyhedral complex, and let $\vec v$ be generic on the edges of $X$.
-    \correction{Suppose that the outgoing link of every vertex is combinatorially connected.}
+    Let $X$ be a polyhedral complex with generic vector $\vec v$ \correction{such that the outgoing link of every vertex is combinatorially connected.}
     Then, any two parallel combinatorial paths on $X$ are combinatorially homotopic.
 \end{thm}
 
@@ -237,7 +237,7 @@ The following Lemma and its consequence \cref{p:second-proof} translate into top
 
 As \cref{lemma:outgoing-link} shows, the class of polyhedral complexes to which \cref{p:second-proof} applies is a strict subclass of simply connected complexes.
 This implies that the converse of \cref{p:second-proof} does not hold, and thus that Mac Lane's original proof is far from reaching the full generality of \cref{thm:top-coherence}.
-However, it will be sufficient for our purposes, presented in the next Section, since as we have seen in \cref{prop:polytopes} it applies to any polytope.
+However, it will be sufficient for our purposes, presented in the next Section, since it applies to any polytope --as we have seen in \cref{prop:polytopes}.
 \correction{Moreover, it has an associated rewriting system...}
 
 
