@@ -57,8 +57,8 @@ In the course of the preceding proof, we have in particular showed the following
     \label{cor:combinatorially-connected}
     A regular CW complex $X$ is combinatorially connected if and only it is connected.
 \end{corollary}
+Note also that any CW complex is locally path connected, and therefore is connected if and only if it is path connected. %Hatcher Appendix A
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -190,16 +190,25 @@ The following \cref{l:oriented} and its consequence \cref{p:second-proof} transl
     \correction{Consider the following three properties
     \begin{enumerate}
         \item[(i)] the outgoing link of every vertex is combinatorially connected,
-        \item[(ii)] there is a unique global sink $\sk(X)$ in every connected component,
+        \item[(ii)] there is a unique global sink in every connected component,
         \item[(iii)] any two parallel \emph{oriented} combinatorial paths on $X$ are combinatorially homotopic.
     \end{enumerate}
     Then, $X$ satisfies (i) if and only if it satisfies (ii) and (iii).}
 \end{proposition}
 
 \begin{proof}
-    \correction{First, we prove that (i) implies (ii). Suppose that there are two local sinks $s_1$ and $s_2$.}
+    \correction{First, we prove that (i) implies (ii). 
+    Suppose that there are two local sinks~$s_1$ and~$s_2$ in the same connected component of $X$.
+    Consider a combinatorial path $\gamma$ between~$s_1$ and~$s_2$ (whose existence is garanteed by \cref{cor:combinatorially-connected}).
+    Starting at $s_1$, let $x$ be the first vertex of $\gamma$ which is the source $\so(e)=x=\so(e')$ of two edges $e,e'$ of $\gamma$.
+    By \cref{l:unique-sink}, there is an oriented path $\delta$ from $\sk(e')$ to $s_1$. 
+    We can thus replace $\gamma$ by another combinatorial path $\gamma'$ going through $\delta$.
+    Continuing in this fashion, we reach a combinatorial path $\gamma''$ between $s_1$ and $s_2$ with a unique vertex $x$ which is the source $\so(e)=x=\so(e')$ of two edges $e,e'$ of $\gamma$.
+    Then, \cref{l:unique-sink} implies that $s_1=s_2$.}
 
-    \correction{Second, we prove that (i) implies (iii).}
+    \correction{Second, we prove that (i) implies (iii).
+    Let us assume that $X$ is connected, otherwise we apply the same reasoning to each connected component. 
+    From the preceding paragraph, we know that $X$ has a unique sink $\sk(X)$.}
     Suppose that the outgoing link of every vertex is \correction{combinatorially} connected. 
     Let $\gamma$ and $\gamma'$ be two parallel oriented paths between two vertices $x$ and $y$. 
     We prove that they are combinatorially homotopic. 
@@ -224,9 +233,13 @@ The following \cref{l:oriented} and its consequence \cref{p:second-proof} transl
     We show that for any vertex $x$, its outgoing link is \correction{combinatorially} connected. 
     Indeed, take two edges $e,e'$ of $X$ with source $x$, and consider their extensions to oriented paths $\gamma, \gamma'$ from $x$ to $\sk(X)$. 
     By hypothesis, these two paths are combinatorially homotopic, that is, there is a sequence of parallel oriented paths from $\gamma$ to $\gamma'$. 
-    The collection of first edges in each of these paths defines a path between $e$ and $e'$ in the outgoing link of $x$. 
-    Thus, this link is connected. 
+    The collection of first edges in each of these paths defines a \correction{combinatorial} path between $e$ and $e'$ in the outgoing link of $x$. 
+    Thus, this link is \correction{combinatorially} connected. 
 \end{proof}
+
+\begin{rem}
+    Note that the existence and uniqueness of a global sink is one of the basic, very useful facts about polytopes, see \cite[Thm.~3.7]{Ziegler95}.
+\end{rem}
 
 \begin{thm}
 \label{p:second-proof}
@@ -235,10 +248,10 @@ The following \cref{l:oriented} and its consequence \cref{p:second-proof} transl
 \end{thm}
 
 \begin{proof} 
-    \correction{Adapt proof}
-    By \cref{l:oriented}, the conclusion holds for \emph{oriented} paths.  
+    \correction{Assume that $X$ is connected, otherwise apply the argument to each connected component.
+    By \cref{l:oriented}, the polyhedral complex $X$ admits a unique global sink $\sk(X)$ and} the conclusion holds for \emph{oriented} paths.  
     Let us show that this implies the non-oriented version.
-    Let $\gamma$ be a (non-oriented) combinatorial path on $X$ between $x$ and $y$.
+    Let $\gamma$ be a non-oriented combinatorial path on $X$ between $x$ and $y$.
     For every vertex $z$ along $\gamma$, one can choose an oriented path $\delta_z$ from $z$ to $\sk(X)$. 
     We observe that for any edge $e: z \to z'$ of $\gamma$, the oriented paths $\delta_z$ and $\delta_{z'}e$ are combinatorially homotopic by hypothesis. 
     Going from $x$ to $y$ inductively one edge at a time and using transitivity of the homotopy equivalence relation, one obtains that $\gamma$ is combinatorially homotopic to $\delta_y^{-1}\delta_x$. 
@@ -248,9 +261,8 @@ The following \cref{l:oriented} and its consequence \cref{p:second-proof} transl
 
 As \cref{lemma:outgoing-link} shows, the class of polyhedral complexes to which \cref{p:second-proof} applies is a strict subclass of simply connected complexes.
 This implies that the converse of \cref{p:second-proof} does not hold, and thus that Mac Lane's original proof is far from reaching the full generality of \cref{thm:top-coherence}.
-However, it will be sufficient for our purposes, presented in the next Section, since it applies to any polytope --as we have seen in \cref{prop:polytopes}.
-\correction{Moreover, it has an associated rewriting system...}
-
+However, it will be sufficient for our purposes, since --as we have seen in \cref{prop:polytopes}-- it applies to any polytope.
+\correction{Another feature of generically oriented polyhedral complexes is that their $1$-skeleton define abstract rewriting systems which are terminating and confluent, as we now show.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -259,11 +271,22 @@ However, it will be sufficient for our purposes, presented in the next Section, 
 \correction{
     We refer to \cite{baaderTermRewritingAll1998} for more details on rewriting systems. 
 \begin{definition}
-    An \defn{abstract rewriting system} is a set $A$ together with a binary relation $\to$. 
+    An \defn{abstract rewriting system} is a set $A$ together with a binary relation~$\to$. 
 \end{definition}
 We denote by $\xrightarrow{*}$ the reflexive and transitive closure of ${\to}$. 
-We say that $(A,\to)$ is \defn{locally confluent} (resp.\ \defn{confluent}) if for all $a,a_1,a_2$ such that $a_1 \leftarrow a \to a_2$ (resp.\ $a_1 \xleftarrow{*} a \xrightarrow{*} a_2$), there exists a term $b$ with $a_1 \xrightarrow{*} b\; \xleftarrow{*} a_2$.  
-A rewriting system is \defn{terminating} if every reduction sequence $a \to a_1 \to a_2 \to \cdots$ eventually must terminate.}
+We say that $(A,\to)$ is \defn{locally confluent} (resp.\ \defn{confluent}) if for all $a,a_1,a_2 \in A$ such that $a_1 \leftarrow a \to a_2$ (resp.\ $a_1 \xleftarrow{*} a \xrightarrow{*} a_2$), there exists a term $b$ with $a_1 \xrightarrow{*} b \xleftarrow{*} a_2$.  
+The diagram}
+\begin{center}
+  \begin{tikzcd}
+    & a \arrow[ld] \arrow[rd] &                     \\
+a_1 \arrow[rd, "*"'] &                         & a_2 \arrow[ld, "*"] \\
+    & b                       &                    
+\end{tikzcd}
+\end{center}
+\correction{is called a \defn{local confluence diagram}.
+A rewriting system is \defn{terminating} if every reduction sequence $a \to a_1 \to a_2 \to \cdots$ eventually must terminate.
+An element $a \in A$ is \defn{reducible} if there exists an $a' \in A$ such that $a \to a'$; otherwise it is called \defn{irreducible}.
+We say that $b$ is a \defn{normal form} of $a$ if $a \xrightarrow{*} b$ and $b$ is irreducible.}
 
 \correction{
     Given a polyhedral complex $X$ and a generic vector $\vec v$, one can consider the abstract rewriting system defined by $\vec v$ on the vertices of $X$.
@@ -271,22 +294,26 @@ A rewriting system is \defn{terminating} if every reduction sequence $a \to a_1 
     The \defn{vertices rewriting system} is the pair $(X_0,\to)$ made of the set of vertices $X_0$ of $X$, together with the following relation: we have $x \to y$ if $x$ and $y$ are vertices of the same edge and $\langle v, x \rangle < \langle v, y \rangle$.
 \end{definition}
 According to this definition, we have $x \xrightarrow{*} y$ if and only if there is an oriented path from $x$ to $y$ in~$X_1$. 
-The hypotheses of \cref{p:second-proof} impose that the rewriting system $(X_0,\to)$ is terminating and confluent.
+The hypothesis of \cref{p:second-proof} imposes that the rewriting system $(X_0,\to)$ is terminating and confluent.
 \begin{proposition}
-    If there is a unique sink, then $(X_0,\to)$ is terminating and confluent. 
+    Let $X$ be a polyhedral complex and $\vec v$ be a generic vector. 
+    If the outgoing link of every vertex is combinatorially connected, the rewriting system $(X_0,\to)$ is terminating and confluent. 
 \end{proposition}
 \begin{proof}
     Since $\vec v$ is generic, and thus strictly increasing along edges, it defines a partial order, and since the set $X_0$ is finite, the rewriting system $(X_0,\to)$ is terminating.
-    Confluence follows from the existence of a unique sink $\sk(X)$: given any pair of vertices $x,y$, since $\vec v$ is generic there are oriented paths $x \xrightarrow{*} \sk(X) \xleftarrow{*} y$. 
+    By \cref{l:oriented}, there is a unique sink in each connected component of $X$.
+    Confluence then follows: given any pair of vertices $x,y$ in the same connected component, since $\vec v$ is generic there are oriented paths $x \xrightarrow{*} s \xleftarrow{*} y$ to the global sink $s$ of this connected component. 
 \end{proof}
 \begin{corollary}
-    The abstract rewriting system on any polytope is terminating and confluent.
+    The abstract rewriting system on the vertices of any oriented polytope~$P$ is terminating and confluent.
+    Moreover, every pair of vertices admits a unique normal form~$\sk(P)$.
 \end{corollary}
-\begin{proof}
-    The existence and uniqueness of a sink is one of the basic, very useful facts about polytopes, see \cite[Theorem 3.7]{Ziegler95}.
-\end{proof}
-This definition is fairly general, and in practice one considers \emph{term} rewriting systems, which possess much more structure, see \cite{CLA24}.
-Aussi, on ne peut pas aller dans l'autre sens; pas necessairement de forme normale unique etc. Polytope SIMPLE est condition necessaire dans l'autre sens}
+Recall that a polytope $P$ is \emph{simple} if each vertex of $P$ is incident to precisely $\dim P$ edges.
+\begin{lemma}
+    If a polytope $P$ is simple, then there is a bijection between the local confluence diagrams of $(P_0,\to)$ and the oriented boundaries of the $2$-faces of~$P$.
+\end{lemma}
+Not much more can be said at this level of generality. 
+For the specific families of polytopes that we will consider in the next Section, the rewriting systems possess more structure (they are \emph{term} rewriting system) and deserve their own study, see \cite{CLA24} for more details.}
 
 %Terminating and confluent
 %Rewriting rules
