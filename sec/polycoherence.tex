@@ -152,6 +152,9 @@ The converse of \cref{lemma:outgoing-link} is not true in general: many simply c
 Combining \cref{lemma:outgoing-link} with \cref{thm:top-coherence}, we have that any polyhedral complex $X$ whose outgoing links are connected satisfies the property that ``any two parallel combinatorial paths on $X$ are combinatorially homotopic''.
 We shall now derive this same result by following an alternative, more combinatorial path, getting as close as possible to the proof of \cite[Thm~3.1]{MacLane63}.}
 
+A combinatorial path $\gamma$ on $X$ is \defn{oriented} if for any pair $(e, f)$ of consective edges in~$\gamma$, we have that $\sk(e)=\so(f)$.  
+When no ambiguity arises, we will omit the adjective ``combinatorial" and say only ``oriented path".
+
 \correction{Let us start with a small Lemma.
 In the rest of this Section we shall use the notion of combinatorial connectedness, which as we have seen in \cref{cor:combinatorially-connected}, is equivalent to connectedness for the spaces we consider.
 \begin{lemma}
@@ -161,12 +164,20 @@ In the rest of this Section we shall use the notion of combinatorial connectedne
     Then, we have $s=s'$.
 \end{lemma}
 \begin{proof}
-    TBC
-\end{proof}
-}
+    Define the \emph{height} $\frakh(x)$ of a vertex $x$ as the length of the longest oriented path in $X$ starting at $x$.
+    Since $\vec v$ is generic, this is well-defined.
+    We proceed by induction on $\frakh(x)$.
+    It is clear that the statement holds for vertices $x$ such that $\frakh(x)=0$.
+    Suppose that the assertion above holds for all vertices $x \in X$ such that $\frakh(x)=n$, and consider an $x$ with $\frakh(x)=n+1$.
+    Since the outgoing link $\oLk(x,X)$ is combinatorially connected, there is a combinatorial path $\theta$ in $\oLk(x,X)$ between the vertices corresponding to $e$ and $e'$ (\cref{l:vertex-figure}).
+    $\theta$ determines a sequence of edges $e_0 \eqdef e, e_1, \ldots, e_k, e' \defeq e_{k+1}$ of $X$ with $\so(e_i)=x$ for all $0 \leq i \leq k+1$.
+    Moreover, each consecutive pair $e_i,e_{i+1}$ determines a $2$-face~$F_{i+1}$ of $X$.
+    Now, choose for each $e_i$ with $1 \leq i \leq k$, an oriented path of maximal length starting at $\sk(e_i)$ and passing through $\sk(F_{i})$.
+    Each of these paths end at a local sink $s_i$, including $s_0 \eqdef s$ and $s_{k+1} \eqdef s'$. 
+    Since we have $\frakh(\sk(e_i))<\frakh(x)$ for all $0 \leq i \leq k+1$, we can apply induction to the two oriented paths from $\sk(e_i)$ to $s_i$ and $s_{i+1}$, which gives~$s_i=s_{i+1}$.
+    Therefore, we have $s=s_0=s_1=\cdots =s_k=s_{k+1}=s'$, as desired.
+\end{proof}}
 
-A combinatorial path $\gamma$ on $X$ is \defn{oriented} if for any pair $(e, f)$ of consective edges in $\gamma$, we have that $\sk(e)=\so(f)$.  
-When no ambiguity arises, we will omit the adjective ``combinatorial" and say only ``oriented path".
 Two parallel oriented paths are said to be \defn{elementary combinatorially homotopic} if they are as non-oriented paths. 
 They are \defn{combinatorially homotopic} if they are related by a sequence of elementary combinatorial homotopies between oriented paths. 
 
