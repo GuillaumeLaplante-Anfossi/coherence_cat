@@ -106,9 +106,11 @@ and hexagonal identities \\
 The diagrams above hold for all instances of composable $\beta$ and $\theta$; these depend on the indices $i,j,k$, which are omitted for the sake of readability. 
 Observe that a categorified non-symmetric operad concentrated in arity $1$ is a non-symmetric monoidal category.
 
-One can picture an object $\mu \in \mathcal{P}(n)$ as a planar tree with one vertex decorated by $\mu$, $n$ leaves and one root (a \defn{corolla}). 
+\correction{As explained in \cref{prop:bijection-nestings} below}, one can picture an object $\mu \in \mathcal{P}(n)$ as a planar tree with one vertex decorated by $\mu$, $n$ leaves and one root (a \defn{corolla}). 
 The $\circ_i$ bifunctors then correspond to the operation of \defn{grafting} a corolla on top of another.
-Iterated applications of the $\circ_i$ can be visualized as fully nested planar trees \cite[Def.~2.2]{laplante-anfossiDiagonalOperahedra2022a}, with vertices decorated by objects of $\mathcal{P}$, see \cref{fig:treeandnesting}. 
+Iterated applications of the $\circ_i$ can be visualized as fully nested planar trees, with vertices decorated by objects of $\mathcal{P}$, see \cref{fig:treeandnesting}. 
+\correction{A \defn{nesting} of a planar tree is a collection of subtrees (\defn{nests}) which are either included in one another or disjoint. 
+A nesting is \defn{full} if its number of nests is maximal, equal to the number of internal edges of the tree \cite[Def.~2.2]{laplante-anfossiDiagonalOperahedra2022a}.}
 
 \begin{figure}[h!]
 \centering
@@ -142,7 +144,7 @@ Iterated applications of the $\circ_i$ can be visualized as fully nested planar 
 \label{fig:treeandnesting}
 \end{figure} 
 
-The $\beta$ and $\theta$ arrows correspond to the sequential and parallel axioms of an operad, and relate the two possible ways of nesting a tree with $3$ vertices, see \cref{fig:betatheta}. 
+The $\beta$ and $\theta$ arrows correspond to the sequential and parallel axioms of an operad, and relate the two possible ways of \correction{fully} nesting a tree with $3$ vertices, see \cref{fig:betatheta}. 
 Moreover, there is then one coherence diagram (pentagon or hexagon) for every planar tree with $4$ vertices, see \cref{fig:planar4trees}.
 
 \begin{figure}[h!]
@@ -254,7 +256,6 @@ The set of diagrams of the form ($\beta$ $pent_e$) is the same as the set of dia
 
 We will give in \cref{thm:coherence-operahedra} two topological proofs of coherence for categorified non-symmetric operads.
 A benefit of our presentation is that, adopting the oriented approach (see the second proof of \cref{thm:coherence-operahedra}), we get a proof of coherence where $\beta$ and $\theta$ are both treated as rewriting rules, in contrast with the proof in \cite{DP15}, which proceeds in two stages: first get rid of $\beta$ (rewriting), then deal with $\theta$. 
-See also \cref{rem:29}.
 \end{rem}
 
 \begin{definition}
@@ -332,38 +333,58 @@ By precomposing it with the quotient map $\mathcal{S} \to \mathcal{F}(S)$, we ge
 \end{thm}
 
 \correction{
-In order to prove this Theorem, we need to first recall from \cite[Sec.~2.1]{laplante-anfossiDiagonalOperahedra2022a}, see also \cite[Sec.~13]{DP15} and \cite{curienSyntacticAspectsHypergraph2019a} the construction of the operahedra, a family of polytopes whose faces are in bijection with the set of all nestings on a planar tree.
+In order to prove this \cref{thm:coherence-operahedra}, we need to first recall the construction of the \defn{operahedra}, a family of polytopes whose faces are in bijection with the set of all nestings of a planar tree.
+We refer to \cite[Sec.~2]{laplante-anfossiDiagonalOperahedra2022a} for details, see also \cite[Sec.~13]{DP15} and \cite{curienSyntacticAspectsHypergraph2019a}.
+Given a planar tree $t$ with $n$ internal edges, and a full nesting $\mathcal{N}$ of $t$, one associates a point~$M(t) \in \R^n$ via a Loday-type algorithm \cite[Sec.~2.2]{laplante-anfossiDiagonalOperahedra2022a}.  
+The operahedron $P_t \subset \R^n$ is the convex hull of the points $M(t)$, for all maximal nestings of $t$.
+It has dimension $n-1$. 
+One then shows \cite[Prop.~2.15]{laplante-anfossiDiagonalOperahedra2022a} that the poset of nestings of $t$, ordered by de-refinement, is isomorphic to the poset of faces of $P_t$. 
+The dimension of a face is given by $n$ minus the number of nests in the corresponding nesting of $t$.
 \begin{proposition}
+\label{prop:bijection-nestings}
     There are bijections between
-    \begin{itemize}
-        \item objects of $\calS$ and vertices 
-        \item generating morphisms and edges
-        \item coherence, bifunctoriality and naturality diagrams and $2$-faces
-    \end{itemize}
+    \begin{enumerate}
+        \item objects of $\calS$ and vertices of the operahedra,
+        \item generating morphisms of $\calS$ and edges of the operahedra,
+        \item coherence, bifunctoriality and naturality diagrams and $2$-faces of the operahedra,
+    \end{enumerate}
+    with one operahedron for each planar tree whose vertices are decorated by elements of $S$.
 \end{proposition}
 \begin{proof}
-    One can think about the objects of $\mathcal{S}$ as the set of fully nested planar trees whose vertices are decorated by objects of $S$, subject to the requirement that if a vertex has $n$ incoming edges, it must be decorated by an element of $S_n$. 
-The nests in the tree represent the order in which the objects decorating the vertices should be formally composed, as represented in \cref{fig:treeandnesting}.
-Morphisms in $\mathcal{S}$ are sequences of applications of the associativity rules~$\beta$ and~$\theta$, moving one nest at a time to a neighbouring pair of vertices as in \cref{fig:betatheta}.
+    To each element $\mu$ of $S_n$, we associate a planar corolla with $n$ leaves and vertex decorated by $\mu$. 
+Then, we identify $\mu \circ_i \nu$ with the planar tree obtained from grafting the corolla decorated by $\nu$ at the $i$th leaf of the corolla decorated by $\mu$.
+Continuing in this fashion, and remembering the order in which we graft the corollas, we obtain all possible fully nested planar trees with vertices decorated by elements of $S$ (\cref{fig:treeandnesting}).
+A generating morphism $f$ in $\mathcal{S}$ is an application of one of the associativity rules~$\beta$ or~$\theta$ to a fully nested tree $t$, moving only one nest (\cref{fig:betatheta}). 
+If $t$ has $n$ internal edges, forgetting the nest that has been moved gives a nesting of $t$ with $n-1$ nests.
+We associate to $f$ the edge of the operahedron $P_t$ labeled by this nesting, see \cite[Def.~2.8 \& Prop.~3.11]{laplante-anfossiDiagonalOperahedra2022a}.
+It remains to consider all the possible diagrams one can obtain by applying $\beta$ and $\theta$ arrows to a given fully nested tree $t$ with $n$ internal edges. 
+Starting by moving one or the other of $2$ nests, one faces two types of situations:
+\begin{itemize}
+    \item[(A)] If the two nests are disjoint, one obtains a naturality or bifunctoriality square,
+    \item[(B)] If the two nests are nested, one obtains either a pentagon or an hexagon as in \cref{def:catoperad}.
+\end{itemize}
+To such a diagram, we associate the $2$-face of the operahedron~$P_t$ corresponding to the nesting of $t$ obtained by forgetting the nests that have been moved along the edges.
+We refer to \cite[Sec.~2]{CLA24} for a more detailed anaylsis of the $2$-faces.  
 \end{proof}
-then}
+\begin{rem}
+    The fact that every possible choice of initial moves gives rise to a $2$-face amounts to the fact that the operahedron $P_t$ is a \emph{simple} polytope \cite[Sec.~9]{DP-HP}.
+\end{rem}}
 
-\begin{proof}
-The morphisms of $\mathcal{S}$ are in bijection with combinatorial paths on a family of polytopes called operahedra \cite[Sec.~2.1]{laplante-anfossiDiagonalOperahedra2022a}, see also \cite[Sec.~13]{DP15} and \cite{curienSyntacticAspectsHypergraph2019a}, whose faces are in bijection with the set of all nestings on a planar tree. 
-There is one operahedron for each planar tree $t$, and its vertices are in bijection with the maximal (full) nestings of~$t$ and edges between them are in bijection with the generating morphisms between the corresponding terms. 
+\begin{proof}[Proof of {\cref{thm:coherence-operahedra}}]
+    \correction{From Point (2) in \cref{prop:bijection-nestings}, we have that} the morphisms of $\mathcal{S}$ are in bijection with combinatorial paths on the operahedra.
 Two parallel morphisms in $\mathcal{S}$ thus define two parallel combinatorial paths on some operahedron. 
 Since an operahedron is simply connected, \cref{thm:top-coherence} implies that these two combinatorial paths are combinatorially homotopic. 
-The result then follows from the fact that a $2$-face of an operahedron is exactly either a square (witnessing naturality), a pentagon or an hexagon (witnessing a coherence condition) as in \cref{def:catoperad} above.
+The result then follows from \correction{Point (3) in \cref{prop:bijection-nestings}, that is} the fact that a $2$-face of an operahedron is exactly either a square (witnessing naturality \correction{or bifunctoriality}), a pentagon or an hexagon (witnessing a coherence condition) as in \cref{def:catoperad}.
 \end{proof}
 
-\begin{proof}[Second proof]
+\begin{proof}[Second proof of {\cref{thm:coherence-operahedra}}]
     Alternatively, since the operahedra are polytopes, one can use \cref{prop:polytopes} and \cref{p:second-proof}. 
-    Choosing a generic vector $\vec v$ which has strictly decreasing coordinates for the Loday realizations \cite[Section 2.2]{laplante-anfossiDiagonalOperahedra2022a} gives the orientations of the diagrams given in \cref{def:catoperad} on every $2$-face \cite[Proposition 3.11]{laplante-anfossiDiagonalOperahedra2022a}.
-    The posets/rewriting system obtained generalize the Tamari lattice on fully nested linear trees \cite[Definition 2.8]{laplante-anfossiDiagonalOperahedra2022a}.
-    One then obtains a topological proof of coherence which is almost word for word the original proof of MacLane \cite[Theorem 3.1]{MacLane63}, suitably generalized to categorified operads. 
+    Choosing a generic vector $\vec v$ which has strictly decreasing coordinates gives the orientations of the diagrams given in \cref{def:catoperad} on the $2$-faces \cite[Prop.~3.11]{laplante-anfossiDiagonalOperahedra2022a}.
+    The \correction{lattices obtained on fully nested trees} generalize the Tamari lattice, \correction{which corresponds to} fully nested \emph{linear} trees \cite{DefanSack24}.
+    One then obtains a topological proof of coherence which \correction{follows closely} the original proof of MacLane \cite[Thm.~3.1]{MacLane63}, suitably generalized to categorified operads. 
 \end{proof}
    
-Following \cref{rem:DPLA}, we have that \cref{thm:coherence-operahedra} gives an alternative, more economical proof of coherence for weak Cat-operads \cite[Proposition 14.2]{DP15}.
+Following \cref{rem:DPLA}, we have that \cref{thm:coherence-operahedra} gives an alternative, more economical proof of coherence for weak Cat-operads \cite[Prop.~14.2]{DP15}.
 Incidentally, it gives an alternative input to the proof of coherence for cyclic symmetric categorified operads \cite{curienCategorifiedCyclicOperads2020}.
 
 Restricting the theorem above to non-symmetric operads concentrated in arity $1$, the category $\mathcal{F}(S)$ becomes the free non-symmetric monoidal category on $S$, and we get the following corollary. 
@@ -373,19 +394,15 @@ Restricting the theorem above to non-symmetric operads concentrated in arity $1$
     For any non-symmetric monoidal category $\mathcal{C}$, for any function $\rho : S \to \obj(\mathcal{C})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{S}$, we have $[\phi_1]=[\phi_2]$.
 \end{corollary}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Rewriting perspective}
-
-\correction{make this a paragraph}
 \begin{rem}
-    In the tree representation for $\mathcal{S}$, there is a coherence diagram for every decorated planar tree with 4 vertices, see \cref{fig:planar4trees}.
-    In the rewriting system formed by the fully nested planar trees and the $\beta$ and $\theta$ arrows, these correspond precisely to the critical pairs \cite[Section 6.2]{baaderTermRewritingAll1998}.
+    \correction{
+    As mentioned at the end of \cref{ss:abstract-rewriting}, the rewriting systems obtained on the vertices of the operahedra by choosing a generic vector with strictly decreasing coordinates are in fact \emph{term} rewriting systems.
+    The faces of type (B) in Point (3) of \cref{prop:bijection-nestings} (the coherence conditions) correspond precisely to the \emph{critical pairs} of these rewriting systems, see \cite[Sec.~3.4]{CLA24}.}
 \end{rem}
 
 \begin{rem}
 \label{rem:29}
+\correction{Que faire de cette remarque?}
 MacLane's original proof \cite{MacLane63} proceeds in two stages, (anachronically) much like the one of Do{\v s}en--Petri{\'c} for weak Cat-operads (\cref{rem:DPLA}).
 But the second proof of \cref{thm:coherence-operahedra} suggests a one stage proof: indeed, fixing a total order on the letters, allowing $\tau: ab \to ba$ only if the maximal letter is in $a$ (and adding $\tau^{-1}$), we get a terminating and confluent rewriting system. 
 \end{rem}
