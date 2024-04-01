@@ -313,14 +313,14 @@ Now we define a set $M$ of basic morphisms $\beta: (\kappa \circ_i \mu) \circ_{j
 We then define the generating morphisms of the family $\mathcal{S}$ by the following rules:
 \begin{enumerate}
     \item if $\phi \in M$, then $\phi$ is a generating morphism of $\mathcal{S}$; 
-    \item if $\phi : t_1 \to t_2$ is a generating morphism in $\mathcal{S}$, and $t_3 \in \mathcal{S}$, then $\phi \circ_i \id : t_1 \circ_i t_3 \to t_2 \circ_i t_3$ and $\id \circ_j \phi : t_3 \circ_j t_1 \to t_3 \circ_j t_2$ are morphisms, for any $i$ (resp. $j$) between $1$ and the arity of $t_1$ (resp. $t_3$).
+    \item if $\phi : t_1 \to t_2$ is a generating morphism in $\mathcal{S}$, and $t_3 \in \mathcal{S}$, then $\phi \circ_i \id : t_1 \circ_i t_3 \to t_2 \circ_i t_3$ and $\id \circ_j \phi : t_3 \circ_j t_1 \to t_3 \circ_j t_2$ are \correction{generating} morphisms, for any $i$ (resp. $j$) between $1$ and the arity of $t_1$ (resp. $t_3$).
 \end{enumerate}
 Note that by construction, for every morphism $\phi : t_1 \to t_2$, the objects $t_1$ and $t_2$ have the same arity, and we say that $\phi$ has this \defn{arity}. 
 We then define $\mathcal{S}_n$ as the free category over all generating morphisms of arity $n$. 
 This finishes the construction of our family $\mathcal{S}$ of categories.
 
 \begin{definition}
-    We denote by $\mathcal{F}(S)$ the quotient of the family of categories $\mathcal{S}$ by localization (inverting the $\beta$ and $\theta$ morphisms), the axioms of bifunctors, and the coherence diagrams defining a categorified non-symmetric operad. 
+    We denote by $\mathcal{F}(S)$ the quotient of the family of categories $\mathcal{S}$ by localization (inverting the $\beta$ and $\theta$ morphisms), the axioms of bifunctors for the $\circ_i$, \correction{the naturality conditions for $\beta$ and $\theta$}, and the coherence diagrams (i.e. the pentagons and hexagons) defining a categorified non-symmetric operad. 
 \end{definition}
 
 We obtain that $\mathcal{F}(S)$ is the free categorified non-symmetric operad on $S$. 
@@ -400,12 +400,6 @@ Restricting the theorem above to non-symmetric operads concentrated in arity $1$
     The faces of type (B) in Point (3) of \cref{prop:bijection-nestings} (the coherence conditions) correspond precisely to the \emph{critical pairs} of these rewriting systems, see \cite[Sec.~3.4]{CLA24}.}
 \end{rem}
 
-\begin{rem}
-\label{rem:29}
-\correction{Que faire de cette remarque?}
-MacLane's original proof \cite{MacLane63} proceeds in two stages, (anachronically) much like the one of Do{\v s}en--Petri{\'c} for weak Cat-operads (\cref{rem:DPLA}).
-But the second proof of \cref{thm:coherence-operahedra} suggests a one stage proof: indeed, fixing a total order on the letters, allowing $\tau: ab \to ba$ only if the maximal letter is in $a$ (and adding $\tau^{-1}$), we get a terminating and confluent rewriting system. 
-\end{rem}
 
 
 

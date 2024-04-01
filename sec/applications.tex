@@ -33,4 +33,61 @@ It would be interesting to see how the permutoassociahedra arise in the strictif
 \correction{Add Kapranov--Voevodsky one dimension higher; autre reference ou la correspondance semble etre faite}
 
 
+\newpage 
+
+\begin{figure}[h!]
+\begin{center}
+\resizebox{0.8\linewidth}{!}{
+ \begin{tikzpicture}[scale=6.5]
+    \node (P1) at (0,1) {$(A \otimes B) \otimes C$};
+    \node (P2) at (-0.5,0.866) {$A \otimes (B \otimes C)$};
+    \node (P3) at (-0.866,0.5) {$A \otimes (C \otimes B)$};
+    \node (P4) at (-1,0) {$(A \otimes C) \otimes B$};
+    \node (P5) at (-0.866,-0.5) {$(C \otimes A) \otimes B$} ;
+    \node (P6) at (-0.5,-0.866) {$C \otimes (A \otimes B)$};
+    \node (P7) at (0,-1) {$C \otimes (B \otimes A)$};
+    \node (P8) at (0.5,-0.866) {$(C \otimes B) \otimes A$};
+    \node (P9) at (0.866,-0.5) {$(B \otimes C) \otimes A$};
+    \node (P10) at (1,0) {$B \otimes (C \otimes A)$};
+    \node (P11) at (0.866,0.5) {$B \otimes (A \otimes C)$} ;
+    \node (P12) at (0.5,0.866) {$(B \otimes A) \otimes C$};
+    \draw[->] (P1)--(P2) node[midway,above left] {$\alpha$};
+    \draw[->] (P2)--(P3) node[midway,above left] {$\beta$};
+    \draw[->] (P3)--(P4) node[midway,above left] {$\kappa$};
+    \draw[->] (P4)--(P5) node[midway,below left] {$\theta$};
+    \draw[->] (P5)--(P6) node[midway,below left] {$\mu$};
+    \draw[->] (P6)--(P7) node[midway,below left] {$\beta$};
+    \draw[->] (P1)--(P12) node[midway,above right] {$\alpha$};
+    \draw[->] (P12)--(P11) node[midway,above right] {$\beta$};
+    \draw[->] (P11)--(P10) node[midway,above right] {$\kappa$};
+    \draw[->] (P10)--(P9) node[midway,below right] {$\theta$};
+    \draw[->] (P9)--(P8) node[midway,below right] {$\mu$};
+    \draw[->] (P8)--(P7) node[midway,below right] {$\beta$};
+    \draw[->,dashed] (P2)--(P9) node[midway,above right] {$\alpha$};
+    \draw[->,dashed] (P3)--(P8) node[midway,below left] {$\beta$};
+\end{tikzpicture}} 
+\end{center}
+\caption{FIgure}
+\label{fig:dodecagon}
+\end{figure}
+
+
+\begin{center}
+\resizebox{0.5\linewidth}{!}{
+    \begin{tikzpicture}[scale=2.5]
+    \node (P1) at (0,1) {$(A\otimes B) \otimes C$};
+    \node (P2) at (-0.866,0.5) {$A\otimes (B \otimes C)$};
+    \node (P3) at (-0.866,-0.5) {$(B \otimes C) \otimes A$};
+    \node (P4) at (0,-1) {$B \otimes (C \otimes A)$};
+    \node (P5) at (0.866,0.5) {$(B \otimes A) \otimes C$} ;
+    \node (P6) at (0.866,-0.5) {$B \otimes (A \otimes C)$};
+    \draw[->] (P1)--(P2) node[midway,above left] {$\beta$};
+    \draw[->] (P2)--(P3) node[midway,left] {$\beta$};
+    \draw[->] (P3)--(P4) node[midway,below left] {$1_\kappa$};
+    \draw[->] (P1)--(P5) node[midway,above right] {$\theta$};
+    \draw[->] (P5)--(P6) node[midway,right] {$\beta$};
+    \draw[->] (P6)--(P4) node[midway,below right] {$\beta$};
+\end{tikzpicture}}
+\end{center}
+
 
