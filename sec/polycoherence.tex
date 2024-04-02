@@ -52,13 +52,16 @@ Let $\Pi(X)$ denote the \defn{fundamental groupoid }of $X$, that is the groupoid
 \end{proof}
 
 \correction{
+Note that any CW complex is locally path connected, and therefore is connected if and only if it is path connected.
+Therefore, we could have replaced in the preceding theorem ``path component'' by ``connected component''.}
+
+\correction{
 Let us say that $X$ is \defn{combinatorially connected} if there is a combinatorial path between any two vertices of $X$. 
 In the course of the preceding proof, we have in particular showed the following.
 \begin{corollary}
     \label{cor:combinatorially-connected}
     A regular CW complex $X$ is combinatorially connected if and only it is connected.
 \end{corollary}
-Note also that any CW complex is locally path connected, and therefore is connected if and only if it is path connected. %Hatcher Appendix A
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -300,6 +303,7 @@ We say that $b$ is a \defn{normal form} of $a$ if $a \xrightarrow{*} b$ and $b$ 
 According to this definition, we have $x \xrightarrow{*} y$ if and only if there is an oriented path from $x$ to $y$ in~$X_1$. 
 The hypothesis of \cref{p:second-proof} imposes that the rewriting system $(X_0,\to)$ is terminating and confluent.
 \begin{proposition}
+    \label{prop:terminating-confluent}
     Let $X$ be a polyhedral complex and $\vec v$ be a generic vector. 
     If the outgoing link of every vertex is combinatorially connected, the rewriting system $(X_0,\to)$ is terminating and confluent. 
 \end{proposition}
@@ -314,6 +318,7 @@ The hypothesis of \cref{p:second-proof} imposes that the rewriting system $(X_0,
 \end{corollary}
 Recall that a polytope $P$ is \emph{simple} if each vertex of $P$ is incident to precisely $\dim P$ edges.
 \begin{lemma}
+    \label{l:simple-local-diagrams}
     If a polytope $P$ is simple, then there is a bijection between the local confluence diagrams of $(P_0,\to)$ and the oriented boundaries of the $2$-faces of~$P$.
 \end{lemma}
 \begin{proof}
@@ -321,7 +326,7 @@ Recall that a polytope $P$ is \emph{simple} if each vertex of $P$ is incident to
     Thus every pair of edges $e,e'$ with source $x=\so(e)=\so(e')$ determines a $2$-face of~$P$. 
 \end{proof}
 Not much more can be said at this level of generality. 
-For the specific families of polytopes that we will consider in the next Section, the rewriting systems possess more structure (they are \emph{term} rewriting system) and deserve their own study, see \cite{CLA24} for more details.}
+For the specific families of polytopes that we will consider in the next section, the rewriting systems possess more structure (they are \emph{term} rewriting system) and are studied in a companion paper \cite{CLA24}.}
 
 %Terminating and confluent
 %Rewriting rules

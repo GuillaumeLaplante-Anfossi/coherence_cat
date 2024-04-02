@@ -2,8 +2,11 @@
 
 \section{Categorical coherence} 
 \label{s:catoperads}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 \subsection{Basic definitions}
+\label{ss:def-catoperads}
 
 Throughout this section we consider structures without units.
 Unless otherwise stated, the adjective ``non-unital" will be implicitly assumed. 
@@ -300,88 +303,99 @@ Observe that a strong (resp. strict) morphism between categorified non-symmetric
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Coherence theorem}
+\label{ss:coherence-catoperads}
 
 We now aim at the coherence theorem for categorified non-symmetric operads.
 In order to state the theorem, we construct the free non-symmetric categorified operad on a family of sets $S=\{S_n\}_{n \geq 1}$.
-We define a family of categories $\mathcal{S}=\{\mathcal{S}_n\}_{n \geq 1}$ whose objects are given by the following rules:
+We define a family of categories~$\mathcal{S}=\{\mathcal{S}_n\}_{n \geq 1}$ whose objects are given by the following rules:
 \begin{enumerate}
-    \item if $\mu \in S_n$, then $\mu$ is an object of $\mathcal{S}_n$;
-    \item if $\mu \in \mathcal{S}_m$ and $\nu \in \mathcal{S}_n$, then $\mu \circ_i \nu$ is an object of $\mathcal{S}_{m-1+n}$, for any $1 \leq i \leq m$.
+    \item if $a \in S_n$, then $a$ is an object of $\mathcal{S}_n$;
+    \item if $t_1 \in \mathcal{S}_m$ and $t_2 \in \mathcal{S}_n$, then $t_1 \circ_i t_2$ is an object of $\mathcal{S}_{m-1+n}$, for any $1 \leq i \leq m$.
 \end{enumerate}
-If an object $\mu$ is in $\mathcal{S}_n$, we say that $\mu$ has \defn{arity} $n$. 
-Now we define a set $M$ of basic morphisms $\beta: (\kappa \circ_i \mu) \circ_{j+i-1} \nu \leftrightarrow \kappa \circ_i (\mu \circ_j \nu) : \beta^{-1}$ for every $\kappa \in \mathcal{S}_m, \mu \in \mathcal{S}_n, \nu \in \mathcal{S}_k$, $1 \leq i \leq m$ and $1 \leq j \leq n$, and $\theta: (\kappa \circ_i \nu) \circ_{j-1+k} \mu \leftrightarrow (\kappa \circ_j \mu) \circ_i \nu : \theta^{-1}$ whenever $i<j$.
-We then define the generating morphisms of the family $\mathcal{S}$ by the following rules:
+If an object $t_1$ is in $\mathcal{S}_n$, we say that $t_1$ has \defn{arity} $n$. 
+Now we define a set $M$ of \defn{basic morphisms} $\beta: (t_1 \circ_i t_2) \circ_{j+i-1} t_3 \leftrightarrow t_1 \circ_i (t_2 \circ_j t_3) : \beta^{-1}$ for every $t_1 \in \mathcal{S}_m, t_2 \in \mathcal{S}_n, t_3 \in \mathcal{S}_k$, $1 \leq i \leq m$ and $1 \leq j \leq n$, and $\theta: (t_1 \circ_i t_3) \circ_{j-1+k} t_2 \leftrightarrow (t_1 \circ_j t_2) \circ_i t_3 : \theta^{-1}$ whenever $i<j$.
+We then define the \defn{generating morphisms} of the family $\mathcal{S}$ by the following rules:
 \begin{enumerate}
     \item if $\phi \in M$, then $\phi$ is a generating morphism of $\mathcal{S}$; 
-    \item if $\phi : t_1 \to t_2$ is a generating morphism in $\mathcal{S}$, and $t_3 \in \mathcal{S}$, then $\phi \circ_i \id : t_1 \circ_i t_3 \to t_2 \circ_i t_3$ and $\id \circ_j \phi : t_3 \circ_j t_1 \to t_3 \circ_j t_2$ are \correction{generating} morphisms, for any $i$ (resp. $j$) between $1$ and the arity of $t_1$ (resp. $t_3$).
+    \item if $\phi : t_1 \to t_2$ is a generating morphism in $\mathcal{S}$, and $t_3 \in \mathcal{S}$, then $\phi \circ_i \id : t_1 \circ_i t_3 \to t_2 \circ_i t_3$ and $\id \circ_j \phi : t_3 \circ_j t_1 \to t_3 \circ_j t_2$ are \correction{generating} morphisms, for any $i$ (resp. $j$) between~$1$ and the arity of $t_1$ (resp. $t_3$).
 \end{enumerate}
 Note that by construction, for every morphism $\phi : t_1 \to t_2$, the objects $t_1$ and $t_2$ have the same arity, and we say that $\phi$ has this \defn{arity}. 
 We then define $\mathcal{S}_n$ as the free category over all generating morphisms of arity $n$. 
 This finishes the construction of our family $\mathcal{S}$ of categories.
 
 \begin{definition}
-    We denote by $\mathcal{F}(S)$ the quotient of the family of categories $\mathcal{S}$ by localization (inverting the $\beta$ and $\theta$ morphisms), the axioms of bifunctors for the $\circ_i$, \correction{the naturality conditions for $\beta$ and $\theta$}, and the coherence diagrams (i.e. the pentagons and hexagons) defining a categorified non-symmetric operad. 
+    We denote by $\mathcal{F}(S)$ the quotient of the family of categories $\mathcal{S}$ by localization (inverting the $\beta$ and $\theta$ morphisms), the axioms of bifunctors for the $\circ_i$, \correction{the naturality conditions for $\beta$ and $\theta$}, and the coherence diagrams (pentagons and hexagons) defining a categorified non-symmetric operad. 
 \end{definition}
 
 We obtain that $\mathcal{F}(S)$ is the free categorified non-symmetric operad on $S$. 
 That is, for any categorified non-symmetric operad $\mathcal{P}$, and for any family of functions $\rho_n : S_n \to \obj(\mathcal{P}(n))$, there is a unique \emph{strict} morphism of non-symmetric categorified operads $\mathcal{F}(S) \to \mathcal{P}$ which extends $\rho=\{\rho_n\}_{n\geq 1}$. 
-By precomposing it with the quotient map $\mathcal{S} \to \mathcal{F}(S)$, we get a levelwise functor $[-]:\mathcal{S} \to \mathcal{P}$.
+By precomposing it with the quotient map $\mathcal{S} \to \mathcal{F}(S)$, we get a levelwise functor $\extu{-}:\mathcal{S} \to \mathcal{P}$.
 
 \begin{thm}[Coherence theorem]
 \label{thm:coherence-operahedra}
-    For any categorified non-symmetric operad $\mathcal{P}$, for any family of functions $\rho : S \to \obj(\mathcal{P})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in~$\mathcal{S}$, we have $[\phi_1]=[\phi_2]$.
+    For any categorified non-symmetric operad $\mathcal{P}$, for any family of functions $\rho : S \to \obj(\mathcal{P})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in~$\mathcal{S}$, we have $\extu{\phi_1}=\extu{\phi_2}$.
 \end{thm}
 
 \correction{
 In order to prove this \cref{thm:coherence-operahedra}, we need to first recall the construction of the \defn{operahedra}, a family of polytopes whose faces are in bijection with the set of all nestings of a planar tree.
 We refer to \cite[Sec.~2]{laplante-anfossiDiagonalOperahedra2022a} for details, see also \cite[Sec.~13]{DP15} and \cite{curienSyntacticAspectsHypergraph2019a}.
-Given a planar tree $t$ with $n$ internal edges, and a full nesting $\mathcal{N}$ of $t$, one associates a point~$M(t) \in \R^n$ via a Loday-type algorithm \cite[Sec.~2.2]{laplante-anfossiDiagonalOperahedra2022a}.  
-The operahedron $P_t \subset \R^n$ is the convex hull of the points $M(t)$, for all maximal nestings of $t$.
+Given a planar tree $t$ with $n$ internal edges, and a full nesting $\mathcal{N}$ of $t$, one associates a point~$M(t,\mathcal{N}) \in \R^n$ via a simple algorithm which is due to Jean-Louis Loday \cite[Sec.~2.2]{laplante-anfossiDiagonalOperahedra2022a}.  
+The \defn{operahedron}~$P_t \subset \R^n$ is the convex hull of the points $M(t,\mathcal{N})$, for all maximal nestings $\mathcal{N}$ of $t$.
 It has dimension $n-1$. 
-One then shows \cite[Prop.~2.15]{laplante-anfossiDiagonalOperahedra2022a} that the poset of nestings of $t$, ordered by de-refinement, is isomorphic to the poset of faces of $P_t$. 
-The dimension of a face is given by $n$ minus the number of nests in the corresponding nesting of $t$.
-\begin{proposition}
-\label{prop:bijection-nestings}
-    There are bijections between
-    \begin{enumerate}
-        \item objects of $\calS$ and vertices of the operahedra,
-        \item generating morphisms of $\calS$ and edges of the operahedra,
-        \item coherence, bifunctoriality and naturality diagrams and $2$-faces of the operahedra,
-    \end{enumerate}
-    with one operahedron for each planar tree whose vertices are decorated by elements of $S$.
-\end{proposition}
+One then shows that the poset of nestings of~$t$, ordered by reverse inclusion, is isomorphic to the poset of faces of~$P_t$ \cite[Prop.~2.15]{laplante-anfossiDiagonalOperahedra2022a}. 
+The dimension of a face is given by $n$ minus the number of nests in the corresponding nesting of $t$.}
+
+\correction{
+    Reading a planar tree $t$ from the leaves to the root defines a family of \defn{incoming edges} and one \defn{outgoing edge} at each vertex of $t$.
+    Given the family of sets $S$ and a planar tree $t$, we say that a decoration of the vertices of $t$ by elements of $S$ is \defn{admissible} if at every vertex the number of incoming edges is equal to the arity of the element of $S$ decorating it. 
+Now, let us consider the collection $\mathcal{O}(S)$ of polytopes with one copy of the operahedron~$P_t$ for each admissible decoration of the planar tree $t$ by elements of $S$. 
+\begin{samepage}
+    \begin{proposition}
+        \label{prop:bijection-nestings}
+            There are bijections between
+            \begin{enumerate}
+                \item objects of $\calS$ and vertices of the operahedra in $\mathcal{O}(S)$,
+                \item generating morphisms of $\calS$ and edges of the operahedra in $\mathcal{O}(S)$,
+                \item bifunctoriality, naturality and coherence diagrams and $2$-faces of the operahedra in~$\mathcal{O}(S)$.
+            \end{enumerate}
+        \end{proposition}
+\end{samepage}
 \begin{proof}
-    To each element $\mu$ of $S_n$, we associate a planar corolla with $n$ leaves and vertex decorated by $\mu$. 
-Then, we identify $\mu \circ_i \nu$ with the planar tree obtained from grafting the corolla decorated by $\nu$ at the $i$th leaf of the corolla decorated by $\mu$.
+To each element $a$ of $S_n$, we associate a planar corolla with $n$ leaves and vertex decorated by $a$. 
+Then, we identify $a \circ_i b$ with the planar tree obtained from grafting the corolla decorated by $b$ at the $i$th leaf of the corolla decorated by $a$.
 Continuing in this fashion, and remembering the order in which we graft the corollas, we obtain all possible fully nested planar trees with vertices decorated by elements of $S$ (\cref{fig:treeandnesting}).
 A generating morphism $f$ in $\mathcal{S}$ is an application of one of the associativity rules~$\beta$ or~$\theta$ to a fully nested tree $t$, moving only one nest (\cref{fig:betatheta}). 
 If $t$ has $n$ internal edges, forgetting the nest that has been moved gives a nesting of $t$ with $n-1$ nests.
-We associate to $f$ the edge of the operahedron $P_t$ labeled by this nesting, see \cite[Def.~2.8 \& Prop.~3.11]{laplante-anfossiDiagonalOperahedra2022a}.
+We associate to $f$ the edge of the operahedron $P_t$ in $\mathcal{O}(S)$ labeled by this nesting, see \cite[Def.~2.8 \& Prop.~3.11]{laplante-anfossiDiagonalOperahedra2022a}.
 It remains to consider all the possible diagrams one can obtain by applying $\beta$ and $\theta$ arrows to a given fully nested tree $t$ with $n$ internal edges. 
-Starting by moving one or the other of $2$ nests, one faces two types of situations:
+These arise from moving two different nests in the same fully nested tree. 
+Starting by moving one or the other of these $2$ nests, one faces two types of situations:
 \begin{itemize}
-    \item[(A)] If the two nests are disjoint, one obtains a naturality or bifunctoriality square,
-    \item[(B)] If the two nests are nested, one obtains either a pentagon or an hexagon as in \cref{def:catoperad}.
+    \item[(A1)] If the two nests are disjoint, one obtains a bifunctoriality square,
+    \item[(A2)] If the two nests are nested, but do not share the same root, one obtains a naturality square,
+    \item[(B)] If the two nests are nested and share the same root, one obtains either a pentagon or an hexagon as in \cref{def:catoperad}.
 \end{itemize}
-To such a diagram, we associate the $2$-face of the operahedron~$P_t$ corresponding to the nesting of $t$ obtained by forgetting the nests that have been moved along the edges.
-We refer to \cite[Sec.~2]{CLA24} for a more detailed anaylsis of the $2$-faces.  
+To such a diagram, we associate the $2$-face of the operahedron~$P_t$ in $\mathcal{O}(S)$ corresponding to the nesting of $t$ obtained by forgetting the two nests that have been moved along the edges.
+We refer to \cite[Sec.~2]{CLA24} for a more detailed analysis of the $2$-faces.  
 \end{proof}
 \begin{rem}
     The fact that every possible choice of initial moves gives rise to a $2$-face amounts to the fact that the operahedron $P_t$ is a \emph{simple} polytope \cite[Sec.~9]{DP-HP}.
+    As \cref{l:simple-local-diagrams} shows, this property garantees the correspondence between geometric and rewriting-theoretic proofs of coherence, see \cite{CLA24} for the latter one.
 \end{rem}}
 
 \begin{proof}[Proof of {\cref{thm:coherence-operahedra}}]
-    \correction{From Point (2) in \cref{prop:bijection-nestings}, we have that} the morphisms of $\mathcal{S}$ are in bijection with combinatorial paths on the operahedra.
-Two parallel morphisms in $\mathcal{S}$ thus define two parallel combinatorial paths on some operahedron. 
-Since an operahedron is simply connected, \cref{thm:top-coherence} implies that these two combinatorial paths are combinatorially homotopic. 
-The result then follows from \correction{Point (3) in \cref{prop:bijection-nestings}, that is} the fact that a $2$-face of an operahedron is exactly either a square (witnessing naturality \correction{or bifunctoriality}), a pentagon or an hexagon (witnessing a coherence condition) as in \cref{def:catoperad}.
+    \correction{From Point (2) in \cref{prop:bijection-nestings}, we have that} the morphisms of~$\mathcal{S}$ are in bijection with combinatorial paths on the operahedra of $\mathcal{O}(S)$.
+Two parallel morphisms in~$\mathcal{S}$ thus define two parallel combinatorial paths on some operahedron $P_t$ in $\mathcal{O}(S)$. 
+Since an operahedron $P_t$ is simply connected, \cref{thm:top-coherence} implies that these two combinatorial paths are combinatorially homotopic. 
+By \correction{Point (3) in \cref{prop:bijection-nestings}} the $2$-faces of the operahedra are exactly either a bifunctoriality or naturality square, a pentagon or an hexagon (witnessing a coherence condition) as in \cref{def:catoperad}.
+\correction{
+Therefore, two parallel morphisms $\phi_1,\phi_2$ in $\mathcal{S}$ are equal in the quotient $\mathcal{F}(S)$, and thus their images $\extu{\phi_1},\extu{\phi_2}$ are also equal in $\mathcal{P}$.} 
 \end{proof}
 
 \begin{proof}[Second proof of {\cref{thm:coherence-operahedra}}]
     Alternatively, since the operahedra are polytopes, one can use \cref{prop:polytopes} and \cref{p:second-proof}. 
-    Choosing a generic vector $\vec v$ which has strictly decreasing coordinates gives the orientations of the diagrams given in \cref{def:catoperad} on the $2$-faces \cite[Prop.~3.11]{laplante-anfossiDiagonalOperahedra2022a}.
-    The \correction{lattices obtained on fully nested trees} generalize the Tamari lattice, \correction{which corresponds to} fully nested \emph{linear} trees \cite{DefanSack24}.
-    One then obtains a topological proof of coherence which \correction{follows closely} the original proof of MacLane \cite[Thm.~3.1]{MacLane63}, suitably generalized to categorified operads. 
+    As shown in \cite[Prop.~3.11]{laplante-anfossiDiagonalOperahedra2022a}, choosing a generic vector $\vec v$ which has strictly decreasing coordinates gives the orientations of the diagrams given in \cref{def:catoperad} on the $2$-faces.
+    One then obtains a topological proof of coherence which \correction{follows closely} the original proof of Mac Lane \cite[Thm.~3.1]{MacLane63}, suitably generalized to categorified operads. 
 \end{proof}
    
 Following \cref{rem:DPLA}, we have that \cref{thm:coherence-operahedra} gives an alternative, more economical proof of coherence for weak Cat-operads \cite[Prop.~14.2]{DP15}.
@@ -389,15 +403,16 @@ Incidentally, it gives an alternative input to the proof of coherence for cyclic
 
 Restricting the theorem above to non-symmetric operads concentrated in arity $1$, the category $\mathcal{F}(S)$ becomes the free non-symmetric monoidal category on $S$, and we get the following corollary. 
 
-\begin{corollary}[MacLane's coherence theorem for non-symmetric monoidal categories]
+\begin{corollary}[Mac Lane coherence theorem for non-symmetric monoidal categories]
 \label{cor:MacLane}
-    For any non-symmetric monoidal category $\mathcal{C}$, for any function $\rho : S \to \obj(\mathcal{C})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{S}$, we have $[\phi_1]=[\phi_2]$.
+    For any non-symmetric monoidal category $\mathcal{C}$, for any function $\rho : S \to \obj(\mathcal{C})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in $\mathcal{S}$, we have $\extu{\phi_1}=\extu{\phi_2}$.
 \end{corollary}
 
 \begin{rem}
     \correction{
     As mentioned at the end of \cref{ss:abstract-rewriting}, the rewriting systems obtained on the vertices of the operahedra by choosing a generic vector with strictly decreasing coordinates are in fact \emph{term} rewriting systems.
-    The faces of type (B) in Point (3) of \cref{prop:bijection-nestings} (the coherence conditions) correspond precisely to the \emph{critical pairs} of these rewriting systems, see \cite[Sec.~3.4]{CLA24}.}
+    The faces of type (B) in Point (3) of \cref{prop:bijection-nestings} (the coherence conditions) correspond precisely to the \emph{critical pairs} of these rewriting systems, see \cite[Sec.~3.4]{CLA24}.
+    Moreover, the associated posets on fully nested planar trees have recently been shown to be lattices \cite{DefanSack24}.}
 \end{rem}
 
 

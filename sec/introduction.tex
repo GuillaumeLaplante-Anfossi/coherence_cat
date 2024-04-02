@@ -3,23 +3,25 @@
 \section*{Introduction} 
 \label{s:introduction}
 
-The $n$-dimensional permutoassociahedron, a CW-complex whose faces are in bijection with parenthesized permutations of $n+1$ letters, was first introduced by M. Kapranov in his study of higher dimensional Yang--Baxter equations, through the moduli spaces of curves $\overline{\mathcal{M}_{0,n+1}}(\R)$ and the solutions of the Knizhnik--Zamolodchikov equation \cite{kapranov1993}.
-It was later realized as a convex polytope by V. Reiner and G. M. Ziegler \cite{reinerCoxeterassociahedra1994}, and more recently as a simple polytope in \cite{baralicSimplePermutoassociahedron2019} and through the nested braid fan in \cite{CastilloLiu21}.
+The $n$-dimensional permuto-associahedron, a CW-complex whose faces are in bijection with parenthesized \correction{ordered partitions} of $n+1$ letters, was first introduced by M. Kapranov in his study of higher dimensional Yang--Baxter equations, through the moduli spaces of curves $\overline{\mathcal{M}_{0,n+1}}(\R)$ and the solutions of the Knizhnik--Zamolodchikov equation \cite{kapranov1993}.
+It was later realized as a convex polytope by V. Reiner and G. M. Ziegler \cite{reinerCoxeterassociahedra1994}, and more recently through the nested braid fan in \cite{CastilloLiu21}.
+%as a simple polytope in \cite{baralicSimplePermutoassociahedron2019} and .
 
-The present note stems from a desire to understand the epigraph, taken from the introduction of \cite{kapranov1993}: what is the precise relationship between the permutoassociahedron and MacLane's coherence theorem for symmetric monoidal categories? 
-We show that the \emph{simple connectedness} of the former implies the latter, thereby refining and proving Kapranov's claim (see \cref{thm:MacLane}).
+The present note stems from a desire to understand the epigraph, taken from the introduction of \cite{kapranov1993}: what is the precise relationship between the permuto-associahedron and Mac Lane's coherence theorem for symmetric monoidal categories? 
+We show that the \emph{simple connectedness} of the former implies the latter, thereby refining and proving Kapranov's claim (see \cref{thm:coherence-MacLane}).
 
 This is done through a general ``topological coherence theorem" which applies to any simply connected, regular CW complex (\cref{thm:top-coherence}).
-We use it to prove coherence result for categorified non-symmetric operads, symplifying the proof of \cite{DP15}. 
+We use it to prove coherence result for categorified non-symmetric operads (\cref{thm:coherence-operahedra}), symplifying the proof of \cite{DP15}. 
 These objects, introduced in \cite{DP15}, are an operadic generalization of non-symmetric monoidal categories. 
 
-We also investigate a topological incarnation of MacLane's original argument, in the spirit of rewriting theory. 
+We also investigate a topological incarnation of Mac Lane's original argument, in the spirit of rewriting theory. 
 Using Morse theory on affine cell complexes \cite{bestvinaMorseTheoryFiniteness1997}, we obtain a general topological theorem which applies to a certain family of simply connected polyhedral complexes; the ones that admit a terminating and confluent rewriting system on their $1$-skeleton (\cref{p:second-proof}). 
-In particular, this second theorem can be applied to polytopes, allowing us to give a second, rewriting-theoretic proof of both previously mentioned coherence results. 
+In particular, this second theorem can be applied to polytopes, allowing us to give a second, ``rewriting-theoretic'' proof of both previously mentioned coherence results (see \cref{ss:abstract-rewriting}). 
 
-These two general topological coherence theorems can be used to prove other categorical results where polytopes appear, such as coherence for monoidal functors between monoidal categories \cite{epsteinFunctorsTensoredCategories1966}, which we present in \cref{sec:further}.
+\correction{While general polyhedral complexes admit \emph{abstract} rewriting systems on their sets of vertices, the specific families of polytopes studied in \cref{s:catoperads} admit \emph{term} rewriting systems, which exhibit more structure and are the subject of a companion paper~\cite{CLA24}.}
+
+Our two general topological coherence theorems can be used to prove other categorical results where polytopes appear, such as coherence for monoidal functors between monoidal categories \cite{epsteinFunctorsTensoredCategories1966}, see \cref{sec:further}.
+\correction{They also shed light on some statements in the literature, such as the proof of \cite[Prop.~3.9]{KapranovVoevodsky94}.}
 This all points towards further investigation of the relationship between $n$-categorical coherence and $n$-connectedness of appropriate spaces.
-As a motivation in this direction, the present results could well be the strict, $n=1$ case of recent theorems of S. Barkan in the $\infty$-categorical setting \cite{barkanArityApproximationInfty2022}, see \cref{sec:higher}.
-
-\correction{ajouter les perspectives au sujet des term rewriting systems}
+\correction{While topological proofs of $2$-categorical coherence already appeared in \cite{Gurski11}, higher dimensional results have been obtained recently by S. Barkan in the context of $\infty$-operads~\cite{barkanArityApproximationInfty2022}}, for which the present results could well be the strict, $n=1$ case.
 
