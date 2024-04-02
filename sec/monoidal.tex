@@ -30,13 +30,13 @@ In addition to the pentagons, obtained from the first pentagon in~\cref{def:cato
 for all objects $\kappa,\mu,\nu$ in $\mathcal{C}$.}
 
 \correction{
-In order to state the coherence theorem, we construct the free symmetric monoidal category on a set $S$ of \defn{generating objects}. 
+In order to state the coherence theorem, we construct a free category on a set $S$ of \defn{generating objects}. 
 We define a small category $\mathcal{S}^{\mathrm{ML}}$ whose set of objects $${\cal T}_S=\bigcup\setc{{\cal T}_A}{A \;\mbox{is a non-empty finite subset of}\;S}$$ is defined as follows:
 \begin{enumerate}
     \item if $a \in S$, then $a\in{\cal T}_{\set{a}}$;
     \item if $t_1 \in {\cal T}_A$ and $t_2 \in {\cal T}_B$, and if $A\cap B=\emptyset$,  then $t_1 \otimes t_2\in{\cal T}_{A\cup B}$.
 \end{enumerate}
-We can see the objects of $\mathcal{S}^{\mathrm{ML}}$ as (fully) parenthesized words over $A$ where letters are not repeated.
+We can see the objects of $\mathcal{S}^{\mathrm{ML}}$ as fully parenthesized words over $S$ where letters are not repeated.
 We then define a set $M^{\mathrm{ML}}$ of \defn{basic morphisms} $\beta: (t_1 \otimes t_2) \otimes t_3 \leftrightarrow t_1 \otimes (t_2\otimes t_3) : \beta^{-1}$  and $\tau: t_1\otimes t_2 \leftrightarrow t_2 \otimes t_1 : \tau^{-1}$,  for every $t_1,t_2,t_3  \in {\cal T}_S$.
 We then define the \defn{generating morphisms} of $\mathcal{S}^{\mathrm{ML}}$ by the following rules:
 \begin{enumerate}
@@ -131,7 +131,7 @@ We pause here to reflect on the difference between the two presentations. In the
     \label{q:ML}
 The instance $\tau_{\kappa\otimes \mu,\nu}$ interchanges the block $\kappa\mu$ with the single letter $\nu$; the hexagon condition states that this interchange may be replaced by two instances of $\tau$ which interchange single letters with $\nu$. Repeated such replacement using instances of the hexagon shows that any interchange of successive blocks may be replaced by interchanges of successive letters.
 \end{quote}
-In other words, hexagons are now taken as definitions rather than axioms. But how do we guarantee that the  general $\tau$ morphisms defined in this way define a natural transformation? This is what the dodecagons are for, as we will now see.}
+In other words, hexagons are now taken as definitions rather than axioms. But how do we guarantee that the  general $\tau$ morphisms defined in this way define a natural transformation? This is what the dodecagons are for.}
 
 \correction{
 Let $\mathcal{C}$  be a symmetric monoidal category. 
@@ -145,12 +145,12 @@ This functor is the restriction of $\extd{-}{\mathrm{ML}}$ to $\mathcal{S}^{\mat
 \correction{
 In order to prove this ``Kapranov style'' coherence, we need to first recall the construction of the \defn{permuto-associahedra}, a family of polytopes whose faces are in bijection with parenthesized ordered partitions of a finite set.
 We refer to \cite[Sec.~9.3]{Ziegler95} for details, see also \cite{kapranov1993} and \cite{reinerCoxeterassociahedra1994}.
-Given a finite set $A$ and a parenthesized permutation $\sigma$ of the its $n$ elements, one associates a section $\gamma^\sigma$ of the projection from the $n$-cube to the cyclic polygon with $n+1$ vertices \cite[Ex.~9.14]{Ziegler95}, whose integral over the base gives a point~$M(\sigma)$ in $\R^n$. 
+Given a finite set $A$ of cardinal $n$ and a parenthesized permutation $\sigma$ of its elements, one associates a section $\gamma^\sigma$ of the projection from the $n$-cube to the cyclic polygon with $n+1$ vertices \cite[Ex.~9.14]{Ziegler95}, whose integral over the base gives a point~$M(\sigma)$ in $\R^n$. 
 The \defn{permuto-associahedron} $P_A$ is the convex hull of the points $M(\sigma)$, for all parenthesized permutations $\sigma$ of the elements of $A$. 
 It has dimension $n-1$. 
 One then shows that the poset of parenthesized ordered partitions of $A$, ordered according to the rules below, is isomorphic to the poset of faces of $P_A$ \cite[Thm.~9.15]{Ziegler95}.}
 
-\correction{Parenthesized ordered partitions of $A$ can be drawn as planar trees whose leaves are parts of a partition of $A$.
+\correction{Parenthesized ordered partitions of $A$ can be drawn as planar trees whose leaves are decorated with the parts of a partition of $A$.
 The subface relation $\prec$ is defined by two clauses: one can contract an edge of the tree, or remove a node all of whose  incoming edges are leaves and decorate its outcoming edge -- now a leaf -- with the union of the decorations of those incoming edges.
 The maximal face is $A$.
 For example, with $A=\set{a_1,\ldots,a_7}$, the following is a face:
@@ -191,8 +191,10 @@ The proof is similar to the proof of \cref{thm:coherence-operahedra}, using eith
 \end{proof}
 \begin{rem}
     Note that contrary to the case of operahedra, there does not seem to exist a generic vector inducing an orientation of the edges of the permuto-associahedra which coincides with the orientation of the $\beta$ and $\tau$ arrows, as the dodecagon (\cref{fig:dodecagon}, left) involves $\beta^{-1}$ arrows. 
-    This goes together with the fact that the permuto-associahedra are not simple polytopes.
-    Alternatively, one can use the \emph{simple permuto-associahedra} from~\cite{baralicSimplePermutoassociahedron2019}, involving a different presentation of symmetric monoidal categories.
+\end{rem}
+\begin{rem}
+    Notice that the permuto-associahedra are not simple polytopes.
+    Alternatively, one could use the same strategy with the \emph{simple permuto-associahedra} from~\cite{baralicSimplePermutoassociahedron2019}, involving yet another presentation of symmetric monoidal categories.
 \end{rem}
 The following proposition establishes relations between the Mac Lane and Kapranov presentations of symmetric monoidal categories.
 \begin{proposition}[Kapranov--Mac Lane comparison]
@@ -215,7 +217,7 @@ As for Point (2), we observe that a morphism $\psi$ as in the statement can be o
     For any symmetric monoidal category $\mathcal{C}$, for any  function $\rho : S \to \obj(\mathcal{C})$, and for any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in~$\mathcal{S}^{\mathrm{ML}}$, we have $\extd{\phi_1}{\mathrm{ML}}=\extd{\phi_2}{\mathrm{ML}}$.
 \end{thm}
 \begin{proof} 
-Since the functor $\extd{-}{\mathrm{ML}}$ factorises through the functor $[-]^{\mathrm{ML}}$, it is enough to prove that $[\phi_1]^{\mathrm{ML}}=
+Since the functor $\extd{-}{\mathrm{ML}}$ factorizes through the functor $[-]^{\mathrm{ML}}$, it is enough to prove that $[\phi_1]^{\mathrm{ML}}=
 [\phi_2]^{\mathrm{ML}}$. 
 By Point (2) of~\cref{Kapranov-MacLane}, there exist $\psi_1$ and $\psi_2$ in $\mathcal{S}^{\mathrm{K}}$ such that $[\psi_1]^{\mathrm{ML}}=[\phi_1]^{\mathrm{ML}}$ and 
 $[\psi_2]^{\mathrm{ML}}=[\phi_2]^{\mathrm{ML}}$.
