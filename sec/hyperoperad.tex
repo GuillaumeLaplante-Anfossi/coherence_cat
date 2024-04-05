@@ -54,3 +54,67 @@ Note that restricting the definitio above to subsets $X$ of cardinal $1$, we obt
 \end{example}
 
 Now, we can all specialize these results to contextual nestohedra!
+
+\begin{figure}[h!]
+  \begin{center}
+  \resizebox{\linewidth}{!}{
+   \begin{tikzpicture}[scale=6.5]
+      \node (P1) at (0,1) {$(a \otimes b) \otimes c$};
+      \node (P2) at (-0.5,0.866) {$a \otimes (b \otimes c)$};
+      \node (P3) at (-0.866,0.5) {$a \otimes (c \otimes b)$};
+      \node (P4) at (-1,0) {$(a \otimes c) \otimes b$};
+      \node (P5) at (-0.866,-0.5) {$(c \otimes a) \otimes b$} ;
+      \node (P6) at (-0.5,-0.866) {$c \otimes (a \otimes b)$};
+      \node (P7) at (0,-1) {$c \otimes (b \otimes a)$};
+      \node (P8) at (0.5,-0.866) {$(c \otimes b) \otimes a$};
+      \node (P9) at (0.866,-0.5) {$(b \otimes c) \otimes a$};
+      \node (P10) at (1,0) {$b \otimes (c \otimes a)$};
+      \node (P11) at (0.866,0.5) {$b \otimes (a \otimes c)$} ;
+      \node (P12) at (0.5,0.866) {$(b \otimes a) \otimes c$};
+      \draw[->] (P1)--(P2) node[midway,above left] {$\beta$};
+      \draw[->] (P2)--(P3) node[midway,above left] {$1\otimes\tau$};
+      \draw[->] (P3)--(P4) node[midway,above left] {$\beta^{-1}$};
+      \draw[->] (P4)--(P5) node[midway,below left] {$\tau\otimes 1$};
+      \draw[->] (P5)--(P6) node[midway,below left] {$\beta$};
+      \draw[->] (P6)--(P7) node[midway,below left] {$1\otimes\tau$};
+      \draw[->] (P1)--(P12) node[midway,above right] {$\tau\otimes 1$};
+      \draw[->] (P12)--(P11) node[midway,above right] {$\beta$};
+      \draw[->] (P11)--(P10) node[midway,above right] {$1\otimes\tau$};
+      \draw[->] (P10)--(P9) node[midway,below right] {$\beta^{-1}$};
+      \draw[->] (P9)--(P8) node[midway,below right] {$\tau\otimes 1$};
+      \draw[->] (P8)--(P7) node[midway,below right] {$\beta$};
+      \draw[->,dashed] (P2)--(P9) node[midway,above right] {$\tau$};
+      \draw[->,dashed] (P3)--(P8) node[midway,below left] {$\tau$};
+  \end{tikzpicture}
+  \quad\quad
+   \begin{tikzpicture}[scale=6.5]
+      \node (P1) at (0,1) {$(\set{a}  \set{b})  \set{c}$};
+      \node (P2) at (-0.5,0.866) {$\set{a}  (\set{b}  \set{c})$};
+      \node (P3) at (-0.866,0.5) {$\set{a}  (\set{c}  \set{b})$};
+      \node (P4) at (-1,0) {$(\set{a}  \set{c})  \set{b}$};
+      \node (P5) at (-0.866,-0.5) {$(\set{c}  \set{a})  \set{b}$} ;
+      \node (P6) at (-0.5,-0.866) {$\set{c}  (\set{a}  \set{b})$};
+      \node (P7) at (0,-1) {$\set{c}  (\set{b}  \set{a})$};
+      \node (P8) at (0.5,-0.866) {$(\set{c}  \set{b})  \set{a}$};
+      \node (P9) at (0.866,-0.5) {$(\set{b}  \set{c})  \set{a}$};
+      \node (P10) at (1,0) {$\set{b}  (\set{c}  \set{a})$};
+      \node (P11) at (0.866,0.5) {$\set{b}  (\set{a}  \set{c})$} ;
+      \node (P12) at (0.5,0.866) {$(\set{b}  \set{a})  \set{c}$};
+      \node (P13) at (0,0) {$\set{a,b,c}$} ;
+      \draw[-] (P1)--(P2) node[midway,above left] {$\set{a}\set{b}\set{c}$};
+      \draw[-] (P2)--(P3) node[midway,above left] {$\set{a}\set{b,c}$};
+      \draw[-] (P3)--(P4) node[midway,above left] {$\set{a}\set{c}\set{b}$};
+      \draw[-] (P4)--(P5) node[midway,below left] {$\set{a,c}\set{b}$};
+      \draw[-] (P5)--(P6) node[midway,below left] {$\set{c}\set{a}\set{b}$};
+      \draw[-] (P6)--(P7) node[midway,below left] {$\set{c}\set{a,b}$};
+      \draw[-] (P1)--(P12) node[midway,above right] {$\set{a,b}\set{c}$};
+      \draw[-] (P12)--(P11) node[midway,above right] {$\set{b}\set{a}\set{c}$};
+      \draw[-] (P11)--(P10) node[midway,above right] {$\set{b}\set{a,c}$};
+      \draw[-] (P10)--(P9) node[midway,below right] {$\set{b}\set{c}\set{a}$};
+      \draw[-] (P9)--(P8) node[midway,below right] {$\set{b,c}\set{a}$};
+      \draw[-] (P8)--(P7) node[midway,below right] {$\set{c}\set{b}\set{a}$};
+  \end{tikzpicture}} 
+  \end{center}
+  \caption{Kapranov dodecagons.}
+  \label{fig:dodecagon}
+  \end{figure}

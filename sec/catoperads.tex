@@ -380,9 +380,12 @@ We refer to \cite[Sec.~2]{CLA24} for a more detailed analysis of the $2$-faces.
 \end{proof}
 \begin{rem}
     The fact that every possible choice of initial moves gives rise to a $2$-face amounts to the fact that the operahedron $P_t$ is a \emph{simple} polytope \cite[Sec.~9]{DP-HP}.
-    As \cref{l:simple-local-diagrams} shows, this property garantees the correspondence between geometric and rewriting-theoretic proofs of coherence, see \cite{CLA24} for the latter one.
-\end{rem}}
+    As \cref{l:simple-local-diagrams} shows, this property garantees the correspondence between geometric and rewriting-theoretic proofs of coherence, see \cite{CLA24} for more details on the latter.
+\end{rem}
+The conceptual origin of the bijections of \cref{prop:bijection-nestings} is the fact that the combinatorics of the faces of the operahedra correspond exactly to the monad of trees \cite[Sec.~5.6.1]{LodayVallette12}.
+Or, said differently, it lies in the fact that the operahedra encode (via the cellular chains functor) the minimal resolution of the colored symmetric operad whose algebras are non-unital non-symmetric operads, see \cite{VanDerLaan03} and \cite[Sec.~4.1]{laplante-anfossiDiagonalOperahedra2022a}.}
 
+\correction{We are now ready to prove \cref{thm:coherence-operahedra}, using either our non-oriented or oriented topological coherence results for polytopes.}
 \begin{proof}[Proof of {\cref{thm:coherence-operahedra}}]
     \correction{From Point (2) in \cref{prop:bijection-nestings}, we have that} the morphisms of~$\mathcal{S}$ are in bijection with combinatorial paths on the operahedra of $\mathcal{O}(S)$.
 Two parallel morphisms in~$\mathcal{S}$ thus define two parallel combinatorial paths on some operahedron $P_t$ in $\mathcal{O}(S)$. 
