@@ -64,7 +64,7 @@ We note that by construction $\mathcal{S}^{\mathrm{K}}$ is a wide subcategory of
 }
 
 \begin{figure}[h!]
-	\centerline{\includegraphics[scale=.6]{figures/dodecagons.png}}
+	\centerline{\includegraphics[scale=.5]{figures/dodecagons.png}}
 	\caption{Kapranov dodecagons.}
     \label{fig:dodecagon}
 \end{figure}
@@ -174,8 +174,31 @@ In other words, the  proof that Kapranov's conditions imply Mac Lane's condition
 \end{rem}
 \begin{rem}
 \label{MacLane-Kapranov-Simple}
-    Note that contrary to the case of the operahedra, there does not seem to exist a generic vector inducing an orientation of the edges of the permuto-associahedra which gives a consistent orientation of the $\beta$ and $\tau$ arrows, based on  conventions independent of the orientation vector (say, move parentheses to the right for $\beta$ as done here, and orient $\tau$ according to a global order on $S$, and move the maximum to the right as in the weak Bruhat ordering), as the dodecagon (\cref{fig:dodecagon}, left) involves $\beta^{-1}$ arrows.  
-    The same apply to the simple permuto-associahedra of \cite{baralicSimplePermutoassociahedron2019} and also to the case of the original presentation of Mac Lane. 
-    For the latter, no polytopal correspondence is known, but one could still consider the associated abstract rewriting system.  
-    Mac Lane's proof proceeds in two stages: rewriting for the monoidal part, and then dealing with the symmetric part using Coxeter's presentation of the symmetric group. It seems that one cannot do better. Indeed, even if  Mac Lane's hexagon as described above does not involve   $\beta^{-1}$  arrows, the latter pop up when taking into account the combinatorics of orientation of the $\tau$ arrows.
+Note that contrary to the case of the operahedra, there does not seem to exist an orientation vector whose induced orientation on the edges of the permuto-associahedra coincides with a consistent orientation of the $\beta$ and $\tau$ arrows \emph{based on conventions independent of the orientation vector}.
+This follows from the observation that the dodecagon (\cref{fig:dodecagon}, left) involves $\beta^{-1}$ arrows.  
+The same remarks apply to the simple permuto-associahedra of \cite{baralicSimplePermutoassociahedron2019}.
+As for the original presentation of Mac Lane (for which no polytopal correspondence is known), one could still hope to have an associated  term rewriting system.  
+But instead Mac Lane's proof (rightly!) proceeds in two stages: first using rewriting for the monoidal part ($\beta$ only), and then dealing with the symmetric part using Coxeter's presentation of the symmetric groups. 
+It seems that one cannot do better. 
+Indeed, even if  Mac Lane's hexagon does not involve $\beta^{-1}$  arrows, the latter would pop up when taking the combinatorics of orientation of the $\tau$ arrows into account. 
+As an illustration, suppose that we decide to move parentheses to the right for $\beta$, fix a total order on $S$ and split the involutive $\tau$ into $\tau$ and $\tau^{-1}$ according to where the maximum lies. 
+Then, for $\mu<\kappa<\nu$ the hexagon becomes
+ \begin{center}
+\resizebox{0.35\linewidth}{!}{
+    \begin{tikzpicture}[scale=2.5]
+    \node (P1) at (0,1) {$(\kappa\otimes \mu) \otimes \nu$};
+    \node (P2) at (-0.866,0.5) {$\kappa\otimes (\mu \otimes \nu)$};
+    \node (P3) at (-0.866,-0.5) {$(\mu \otimes \nu) \otimes \kappa$};
+    \node (P4) at (0,-1) {$\mu \otimes (\nu \otimes \kappa)$};
+    \node (P5) at (0.866,0.5) {$(\mu \otimes \kappa) \otimes \nu$} ;
+    \node (P6) at (0.866,-0.5) {$\mu \otimes (\kappa \otimes \nu)$};
+    \draw[->] (P1)--(P2) node[midway,above left] {$\beta$};
+    \draw[<-] (P2)--(P3) node[midway,left] {$\tau$};
+    \draw[->] (P3)--(P4) node[midway,below left] {$\beta$};
+    \draw[->] (P1)--(P5) node[midway,above right] {$\tau\otimes 1$};
+    \draw[->] (P5)--(P6) node[midway,right] {$\beta$};
+    \draw[<-] (P6)--(P4) node[midway,below right] {$1\otimes\tau$};
+\end{tikzpicture}}
+\end{center}
+and a local confluence diagram for the pair of rewritings  out of $(\mu\otimes\nu)\otimes \kappa$ cannot be completed without inverting $\beta$ arrows.
 \end{rem}}
