@@ -8,19 +8,30 @@ It was later realized as a convex polytope by V. Reiner and G. M. Ziegler \cite{
 %as a simple polytope in \cite{baralicSimplePermutoassociahedron2019} and .
 
 The present note stems from a desire to understand the epigraph, taken from the introduction of \cite{kapranov1993}: what is the precise relationship between the permuto-associahedron and Mac Lane's coherence theorem for symmetric monoidal categories? 
-We show that the \emph{simple connectedness} of the former implies the latter, thereby refining and proving Kapranov's claim (see \cref{thm:coherence-MacLane}).
+We show that the \emph{simple connectedness} of the former implies the latter, thereby refining and proving Kapranov's claim (see \cref{thm:coherence-MacLane}). 
 
 This is done through a general ``topological coherence theorem" which applies to any simply connected, regular CW complex (\cref{thm:top-coherence}).
-\correction{We apply this theorem to another family of polytopes, the operahedra, which encode categorified non-symmetric operads~\cite{DP15,curienSyntacticAspectsHypergraph2019a,laplante-anfossiDiagonalOperahedra2022a}.
-We obtain a ``one-step proof'' of coherence (\cref{thm:coherence-operahedra}) which simplifies the original proof of Do{\v s}en and Petri{\'c}~\cite{DP15}.}
+\correction{We apply this theorem to another family of polytopes, the operahedra, which encode categorified non-symmetric operads,~\cite{DP15,curienSyntacticAspectsHypergraph2019a,laplante-anfossiDiagonalOperahedra2022a}, yielding a ``one-step'' proof of the associated coherence theorem as well.}
 
-We also investigate a topological incarnation of Mac Lane's original argument, in the spirit of rewriting theory. 
-Using Morse \correction{functions} on affine cell complexes \cite{bestvinaMorseTheoryFiniteness1997}, \correction{we define terminating and confluent rewriting system on their $1$-skeleton and} obtain a general topological theorem which applies to a certain family of simply connected polyhedral complexes; the ones \correction{whose outgoing links are all connected} (\cref{p:second-proof}). 
-In particular, this second theorem can be applied to polytopes, allowing us to give a second, ``rewriting-theoretic'' proof of both previously mentioned coherence results (see \cref{ss:abstract-rewriting}). 
-\correction{It is worth noting that while general polyhedral complexes admit \emph{abstract} rewriting systems on their sets of vertices, the specific families of polytopes studied in \cref{s:catoperads} admit \emph{term} rewriting systems, which exhibit more structure and are the subject of a companion paper~\cite{CLA24}.}
+\smallskip
 
+\correction{There is little price to pay, though. For both theorems, we provide a precise bijective correspondence between the 1-skeleton (resp. the 2--cells) on the topological side,  and canonical morphisms (resp. bifunctoriality, naturality, and applications of coherence conditions) on the categorical side (\cref{{bijections-Kapranov},prop:bijection-nestings}). In the case of  permuto-associahedra, we note that their 2-skeleton corresponds to other basic canonical morphisms and coherence conditions than those of Mac Lane (hexagons and naturality of the involutive braiding on one hand versus dodecagons on the other hand), and that the equivalence between these presentations holds true but is  non-trivial (see~\cref{rem:Kapranov-to-MacLane}).  There is also yet another equivalent presentation (and hence yet another proof of coherence), due to Barali\'c, Ivanovi\'c and Petri\'c, that matches the 2-skeleton of a different polytope, which unlike the permuto-associahedron is simple~(see \cref{rem:simple-permutoassociahedron} and \cite{baralicSimplePermutoassociahedron2019}).
+}
+
+\smallskip
+We also investigate a topological incarnation of Mac Lane's original argument, in the spirit of rewriting theory, see \cref{ss:abstract-rewriting}.  
+\correction{We concentrate on  a certain family of simply connected polyhedral complexes endowed with an orientation vector:  the ones \correction{whose outgoing links are all connected} (\cref{p:second-proof}). We show that the orientation vector induces a terminating and confluent rewriting system on  their $1$-skeleton and} obtain  from there another general prood of coherence. In particular, this second theorem can be applied to all polytopes, allowing us to give a second, ``rewriting-theoretic'' proof of both previously mentioned coherence results.  \correction{In the case of operahedra, our rewriting proof simplifies the original proof of Do{\v s}en and Petri{\'c}~\cite{DP15} (see~\cref{rem:DPLA}).}
+
+\correction{It is worth noting that, while general polyhedral complexes admit \emph{abstract} rewriting systems on their sets of vertices,
+the families of operahedra  (that include associahedra, encoding non-symmetric monoidal categories) further admit  \emph{term} rewriting systems, which exhibit more structure and are the subject of a companion paper~\cite{CLA24}. In contrast, we shall argue that the abstract rewriting approach to \emph{symmetric} monoidal categories is not informative (see \cref{MacLane-Kapranov-Simple}).}
+
+\smallskip
+\correction{Using Morse \correction{theory} on affine cell complexes \cite{bestvinaMorseTheoryFiniteness1997},
+ we relate our two approaches by showing that the second is (strictly) less general than the first (\cref{lemma:outgoing-link}).}
+ 
+ \smallskip
 Our two general topological coherence theorems can be used to prove other categorical results where polytopes appear, such as coherence for monoidal functors between monoidal categories \cite{epsteinFunctorsTensoredCategories1966}, see \cref{sec:further}.
-\correction{They also shed light on some statements in the literature, such as the proof of \cite[Prop.~3.9]{KapranovVoevodsky94}.}
+\correction{They also shed light on some statements in the literature, such as the proof of \cite[Prop.~3.9]{KapranovVoevodsky94}, see\cref{sec:higher}.}
 This all points towards further investigation of the relationship between $n$-categorical coherence and $n$-connectedness of appropriate spaces.
 \correction{While topological proofs of $2$-categorical coherence already appeared in \cite{Gurski11}, higher dimensional results have been obtained recently by S. Barkan in the context of $\infty$-operads~\cite{barkanArityApproximationInfty2022}}, for which the present results could well be the strict, $n=1$ case.
 
