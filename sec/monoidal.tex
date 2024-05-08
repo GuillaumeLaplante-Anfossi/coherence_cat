@@ -5,7 +5,6 @@
 
 \subsection{Symmetric monoidal categories} 
 
-\correction{
 We now formulate and prove Mac Lane's coherence theorem for \emph{symmetric} monoidal categories in the same style as above.  Recall that in a symmetric monoidal category $\mathcal{C}$, in addition to the natural isomorphisms $\beta$, with components $\beta_{\kappa,\mu,\nu}:(\kappa\otimes\mu)\otimes\nu\to
 \kappa\otimes(\mu\otimes\nu)$, there are involutive natural transformations $\tau$, with components $\tau_{\mu,\nu}:\mu\otimes\nu\to\nu\otimes\mu$.
 Here, we use $\kappa,\mu,\nu,\ldots$ to range over the objects of the category, consistently with the notation used in~\cref{ss:def-catoperads,ss:coherence-catoperads}.
@@ -27,9 +26,8 @@ In addition to the pentagons, obtained from the first pentagon in~\cref{def:cato
     \draw[->] (P6)--(P4) node[midway,below right] {$1\otimes\tau$};
 \end{tikzpicture}}
 \end{center}
-for all objects $\kappa,\mu,\nu$ in $\mathcal{C}$.}
+for all objects $\kappa,\mu,\nu$ in $\mathcal{C}$.
 
-\correction{
 In order to state the coherence theorem, we construct a free category on a set $S$ of \defn{generating objects}. 
 We define a small category $\mathcal{S}^{\mathrm{ML}}$ whose set of objects $${\cal T}_S=\bigcup\setc{{\cal T}_A}{A \;\mbox{is a non-empty finite subset of}\;S}$$ is defined as follows:
 \begin{enumerate}
@@ -37,7 +35,7 @@ We define a small category $\mathcal{S}^{\mathrm{ML}}$ whose set of objects $${\
     \item if $t_1 \in {\cal T}_A$ and $t_2 \in {\cal T}_B$, and if $A\cap B=\emptyset$,  then $t_1 \otimes t_2\in{\cal T}_{A\cup B}$.
 \end{enumerate}
 We can see the objects of $\mathcal{S}^{\mathrm{ML}}$ as fully parenthesized words over $S$ where letters are not repeated.
-We then define a set $M^{\mathrm{ML}}$ of \defn{basic morphisms} $\beta: (t_1 \otimes t_2) \otimes t_3 \leftrightarrow t_1 \otimes (t_2\otimes t_3) : \beta^{-1}$  and $\tau: t_1\otimes t_2 \leftrightarrow t_2 \otimes t_1 : \tau^{-1}$,  for every $t_1,t_2,t_3  \in {\cal T}_S$.
+We then define a set $M^{\mathrm{ML}}$ of \defn{basic morphisms} $\beta: (t_1 \otimes t_2) \otimes t_3 \leftrightarrow t_1 \otimes (t_2\otimes t_3) : \beta^{-1}$  and $\tau: t_1\otimes t_2 \leftrightarrow t_2 \otimes t_1$,  for every $t_1,t_2,t_3  \in {\cal T}_S$.
 We then define the \defn{generating morphisms} of $\mathcal{S}^{\mathrm{ML}}$ by the following rules:
 \begin{enumerate}
     \item if $\phi \in M^{\mathrm{ML}}$, then $\phi$ is a generating morphism; 
@@ -49,19 +47,17 @@ This finishes the construction of the category $\mathcal{S}^{\mathrm{ML}}$.
     We denote by $\mathcal{F}(S)$ the quotient of $\mathcal{S}^{\mathrm{ML}}$ by localization (inverting the $\beta$ morphisms), by the axioms $\tau_{t_1,t_2}\circ \tau_{t_2,t_1}=1$, by the axioms of bifunctors, by the naturality conditions for $\beta$ and $\tau$, and by the coherence conditions of symmetric monoidal categories.
 \end{definition}
 By freeness, we have that for any symmetric monoidal category $\mathcal{C}$, and for any function $\rho : S \to \obj(\mathcal{C})$, there is a unique functor  $\extd{-}{\mathrm{ML}}:\mathcal{S}^{\mathrm{ML}} \to \mathcal{C}$ which extends $\rho$ and sends the formal basic morphisms to the actual canonical morphisms of $\mathcal{C}$.
-This functor factorizes  through the quotient map $[-]^{\mathrm{ML}} :\mathcal{S}^{\mathrm{ML}} \to \mathcal{F}(S)$.}
+This functor factorizes  through the quotient map $[-]^{\mathrm{ML}} :\mathcal{S}^{\mathrm{ML}} \to \mathcal{F}(S)$.
 
-\correction{
 It turns out that Kapranov's topological proof is not based on the above presentation of~$\mathcal{F}(S)$, but on another presentation of this category, that is made explicit in~\cite[Sec.~2]{baralicSimplePermutoassociahedron2019}. 
 Let us recall this presentation. 
-We define another category $\mathcal{S}^{\mathrm{K}}$ as follows. Its objects are the same as those of $\mathcal{S}^{\mathrm{ML}}$. We define a set $M^{\mathrm{K}}$ of \defn{basic morphisms} $\beta: (t_1 \otimes t_2) \otimes t_3 \leftrightarrow t_1 \otimes (t_2\otimes t_3) : \beta^{-1}$ for every $t_1,t_2,t_3  \in {\cal T}_S$, and $\tau: a\otimes b \leftrightarrow b \otimes a : \tau^{-1}$ for every $a,b \in S$, i.e., we \emph{limit $\tau$ to generating objects}.
+We define another category $\mathcal{S}^{\mathrm{K}}$ as follows. Its objects are the same as those of $\mathcal{S}^{\mathrm{ML}}$. We define a set $M^{\mathrm{K}}$ of \defn{basic morphisms} $\beta: (t_1 \otimes t_2) \otimes t_3 \leftrightarrow t_1 \otimes (t_2\otimes t_3) : \beta^{-1}$ for every $t_1,t_2,t_3  \in {\cal T}_S$, and $\tau: a\otimes b \leftrightarrow b \otimes a$ for every $a,b \in S$, i.e., we \emph{limit $\tau$ to generating objects}.
 \defn{Generating morphisms} are defined in the same way as for $\mathcal{S}^{\mathrm{ML}}$.
 We note that by construction $\mathcal{S}^{\mathrm{K}}$ is a wide subcategory of $\mathcal{S}^{\mathrm{ML}}$.
 \begin{definition}
     \label{def:free-Kap}
     We denote  by $\mathcal{F}(S)^{\mathrm{K}}$ the quotient of $\mathcal{S}^{\mathrm{K}}$ by localization (inverting the $\beta$ morphisms), by the axioms $\tau_{a,b}\circ \tau_{b,a}=1$, by the axioms of bifunctors, by the naturality conditions for $\beta$, by the coherence conditions of  monoidal categories, and by the axioms in dodecagonal form given by the solid arrows in~\cref{fig:dodecagon} (left), for $a,b,c$ ranging over $S$ only.
 \end{definition}
-}
 
 \begin{figure}[h!]
 	\centerline{\includegraphics[scale=.5]{figures/dodecagons.png}}
@@ -69,32 +65,31 @@ We note that by construction $\mathcal{S}^{\mathrm{K}}$ is a wide subcategory of
     \label{fig:dodecagon}
 \end{figure}
 
-\correction{
 We pause here to reflect on the difference between the two presentations. In the second one, we have less generators, and we have lost hexagons. For an intuition, here is how Mac Lane himself motivated his hexagonal axioms (verbatim, just changing the notation to fit with ours) in~\cite{MacLane63}:
 \begin{quote}
     \label{q:ML}
 The instance $\tau_{\kappa\otimes \mu,\nu}$ interchanges the block $\kappa\mu$ with the single letter $\nu$; the hexagon condition states that this interchange may be replaced by two instances of $\tau$ which interchange single letters with $\nu$. Repeated such replacement using instances of the hexagon shows that any interchange of successive blocks may be replaced by interchanges of successive letters.
 \end{quote}
-In other words, hexagons are now taken as definitions rather than axioms. But how do we guarantee that the  general $\tau$ morphisms defined in this way define a natural transformation? This is what the dodecagons are for.}
+In other words, hexagons are now taken as definitions rather than axioms. 
+But how do we guarantee that the  general $\tau$ morphisms defined in this way define a natural transformation? 
+This is what the dodecagons are for.
 
-\correction{
 Let $\mathcal{C}$  be a symmetric monoidal category. 
 By freeness again, any function $\rho : S \to \obj(\mathcal{C})$ extends uniquely to a functor $\extd{-}{\mathrm{K}}:\mathcal{S}^{\mathrm{K}} \to \mathcal{C}$.
 This functor is the restriction of $\extd{-}{\mathrm{ML}}$ to $\mathcal{S}^{\mathrm{K}}$, and factorizes through the quotient functor $[-]^{\mathrm{K}}:\mathcal{S}^{\mathrm{K}}\to  \mathcal{F}(S)^{\mathrm{K}}$.
 \begin{thm}[Kapranov coherence theorem for symmetric monoidal categories]
 \label{thm:coherence-Kapranov}
  For any two parallel morphisms $\phi_1,\phi_2: t_1 \to t_2$ in~$\mathcal{S}^{\mathrm{K}}$, we have~$[\phi_1]^{\mathrm{K}}=[\phi_2]^{\mathrm{K}}$.
-\end{thm}}
+\end{thm}
 
-\correction{
 In order to prove this ``Kapranov style'' coherence, we need to first recall the construction of the \defn{permuto-associahedra}, a family of polytopes whose faces are in bijection with parenthesized ordered partitions of a finite set.
 We refer to \cite[Sec.~9.3]{Ziegler95} for details, see also \cite{kapranov1993} and \cite{reinerCoxeterassociahedra1994}.
 Given a finite set $A$ of cardinal $n$ and a parenthesized permutation $\sigma$ of its elements, one associates a section $\gamma^\sigma$ of the projection from the $n$-cube to the cyclic polygon with $n+1$ vertices \cite[Ex.~9.14]{Ziegler95}, whose integral over the base gives a point~$M(\sigma)$ in $\R^n$. 
 The \defn{permuto-associahedron} $P_A$ is the convex hull of the points $M(\sigma)$, for all parenthesized permutations $\sigma$ of the elements of $A$. 
 It has dimension $n-1$. 
-One then shows that the poset of parenthesized ordered partitions of $A$, ordered according to the rules below, is isomorphic to the poset of faces of $P_A$ \cite[Thm.~9.15]{Ziegler95}.}
+One then shows that the poset of parenthesized ordered partitions of $A$, ordered according to the rules below, is isomorphic to the poset of faces of $P_A$ \cite[Thm.~9.15]{Ziegler95}.
 
-\correction{Parenthesized ordered partitions of $A$ can be drawn as planar trees whose leaves are decorated with the parts of a partition of $A$.
+Parenthesized ordered partitions of $A$ can be drawn as planar trees whose leaves are decorated with the parts of a partition of $A$.
 The subface relation $\prec$ is defined by two clauses: one can contract an edge of the tree, or remove a node all of whose  incoming edges are leaves and decorate its outcoming edge -- now a leaf -- with the union of the decorations of those incoming edges.
 The maximal face is $A$.
 For example, with $A=\set{a_1,\ldots,a_7}$, the following is a face:
@@ -105,9 +100,9 @@ which is covered by the following two elements.
 $$\begin{array}{lll}
 (\set{a_1} \set{a_4} \set{a_2,a_6}) \set{a_3,a_5,a_7} & \prec & \set{a_1} \set{a_4} \set{a_2,a_6} \set{a_3,a_5,a_7} \\
 (\set{a_1} \set{a_4} \set{a_2,a_6}) \set{a_3,a_5,a_7} & \prec &  \set{a_1,a_2,a_4,a_6} \set{a_3,a_5,a_7}.
-\end{array}$$}
+\end{array}$$
 
-\correction{Given the set $S$, let us consider the collection $\mathcal{P}(S)$ of polytopes with one copy of the permuto-associahedron $P_A$ for each finite subset $A \subset S$.
+Given the set $S$, let us consider the collection $\mathcal{P}(S)$ of polytopes with one copy of the permuto-associahedron $P_A$ for each finite subset $A \subset S$.
 \begin{proposition}
 \label{bijections-Kapranov}
     There are bijections between
@@ -129,7 +124,7 @@ either fully parenthesized words whose letters are singletons but for one letter
 Finally, the 2-dimensional faces can be analyzed much in the same way as in~\cref{prop:bijection-nestings}, and seen to correspond to bifunctoriality, naturality of $\beta$, and to the pentagons and dodecagons. 
 We have pictured the poset view of the 
 latter in~\cref{fig:dodecagon} (right). 
-The reader can also convince himself on this figure how the orientation of the $\beta$ arrows on the left can be reconstructed from the non oriented dodecagon on the right.
+The reader can also convince himself on this figure how the orientation of the $\beta$ arrows on the left can be reconstructed from the non-oriented dodecagon on the right.
 \end{proof}
 \begin{proof}[Proof of \cref{thm:coherence-Kapranov}]
 The proof is similar to the proof of \cref{thm:coherence-operahedra}, using either the Van Kampen (\cref{thm:top-coherence}) or the Morse (\cref{prop:polytopes,p:second-proof}) technique.
@@ -201,4 +196,4 @@ Then, for $\mu<\kappa<\nu$ the hexagon becomes
 \end{tikzpicture}}
 \end{center}
 and a local confluence diagram for the pair of rewritings  out of $(\mu\otimes\nu)\otimes \kappa$ cannot be completed without inverting $\beta$ arrows.
-\end{rem}}
+\end{rem}
