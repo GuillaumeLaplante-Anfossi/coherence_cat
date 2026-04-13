@@ -1,0 +1,217 @@
+%%%%%%%%%%%%%%%%%%%% author.tex %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% sample root file for your "contribution" to a proceedings volume
+%
+% Use this file as a template for your own input.
+%
+%%%%%%%%%%%%%%%% Springer %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass{svproc}
+%
+% RECOMMENDED %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+
+\usepackage{graphicx,amsfonts,amssymb,amsmath,newlfont}
+\usepackage{epsfig,url}
+\usepackage{enumerate,enumitem}
+\usepackage[colorlinks=true,linkcolor=red,citecolor=blue]{hyperref}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{color}
+
+%Clever ref
+\usepackage[noabbrev,capitalize]{cleveref}
+
+\usepackage[all,2cell]{xy} \UseAllTwocells \SilentMatrices
+
+\usepackage{pstricks,pst-node,pst-tree}
+
+
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\newcommand{\To}{\longrightarrow}
+\newcommand*{\Longhookrightarrow}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Ok}{\mathcal O}
+\newcommand{\ai}{\mathfrak{a}}
+\newcommand{\bi}{\mathfrak{b}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\AM}{A}
+\newcommand{\xx}{\mathsf{x}}
+\newcommand{\eqv}{\mathrm{ev}}
+\font \rus= wncyr10
+\newcommand{\sha}{\, \hbox{\rus x} \,}
+
+\newcommand{\ari}{\mathrm{ar}} %arity
+\newcommand{\obj}{\mathrm{Ob}} %object
+
+\newcommand{\GC}{\mathcal{GC}}
+\newcommand{\q}{/\!/}
+
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\can}{\mathrm{can}}
+
+\newcommand{\mm}{\mathfrak{m}}
+
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\LP}{L}
+\newcommand{\FL}{F\!L}
+\newcommand{\mc}{\mu}
+
+\newcommand{\0}{\color{blue}{\mathsf{0}}}
+
+%%%%Macros Vincent
+\newcommand{\eqdef}{\mbox{\,\raisebox{0.2ex}{\scriptsize\ensuremath{\mathrm:}}\ensuremath{=}\,}} % :=
+\newcommand{\defeq}{\mbox{~\ensuremath{=}\raisebox{0.2ex}{\scriptsize\ensuremath{\mathrm:}} }} % =:
+
+%%%%Macros PL
+\newcommand{\Alt}{ \mid\!\!\mid  } 
+\newcommand{\inc}{\subseteq}
+\newcommand{\incs}{\subsetneq}
+\newcommand{\union}{\cup}
+\newcommand{\Union}{\bigcup}	
+\newcommand{\comp}{\circ}
+\newcommand{\setc}[2]{\set{#1 \mid #2}}
+\newcommand \seq[2]{\shortstack{$#1$ \\ \mbox{}\\
+                    \mbox{}\hrulefill\mbox{}\\ \mbox{}\\ $#2$}}
+\newcommand{\cat}[1]{{\mathbb #1}}
+\newcommand{\dl}{[\![} 			
+\newcommand{\dr}{]\!]} 
+\newcommand{\hyper}[1]{{\mathbb #1}}	
+\newcommand{\restrH}[2]{\hyper{#1}\backslash #2}
+
+%Operades
+
+\def\calO{\mathcal{O}}
+\newcommand{\KK}{\mathbb{K}}
+\newcommand{\opd}[1]{\mathcal{#1}}
+
+%Antischrieck
+\newcommand{\as}{{\scriptstyle \text{\rm !`}}}
+
+%Definitions
+\definecolor{darkblue}{rgb}{0,0,0.7} % darkblue color
+\newcommand{\darkblue}{\color{darkblue}} % darkblue command
+\newcommand{\defn}[1]{{\darkblue \emph{#1}}}
+
+%Commentaires 
+
+\newcommand{\Guillaume}[1]{\textcolor{magenta}{\underline{Guillaume}: #1}}
+\newcommand{\correction}[1]{\textcolor{red}{#1}}
+\newcommand{\correctionbis}[1]{\textcolor{magenta}{#1}}
+
+%Source and sink
+\newcommand{\so}{\mathrm{sc}} 
+\newcommand{\sk}{\mathrm{sk}} 
+\newcommand{\op}{\mathrm{op}}
+
+%PL
+\newcommand{\occ}[2]{#1/#2}
+\newcommand{\recrestr}[2]{#1_{\cap #2}}
+\newcommand{\xyz}[3]{#1\stackrel{#2}{\rightsquigarrow}#3}
+\newcommand{\pre}[2]{<_{#1,#2}}
+
+\newcommand{\PL}[1]{{\color{red}{#1}}}
+
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+
+%Operators
+\newcommand{\Sat}{\mathrm{Sat}}
+\newcommand{\supp}{\mathrm{supp}}
+\newcommand{\Ter}{\mathrm{Ter}}
+\newcommand{\outsort}{\mathrm{out}}
+\newcommand{\insort}{\mathrm{in}}
+\newcommand{\var}{\mathrm{var}}
+
+%Dessins
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\tikzset{math3d/.style=
+    {x= {(-0.353cm,-0.353cm)}, z={(0cm,1cm)},y={(1cm,0cm)}}}
+\tikzset{JLL3d/.style=
+    {x= {(0.4cm,-0.2cm)}, z={(0cm,1cm)},y={(-1cm,0cm)}}}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes,shapes.geometric,fit,positioning,calc,matrix}
+\tikzset{
+  optree/.style={scale=.5,thick,grow'=up,level distance=10mm,inner sep=1pt},
+  comp/.style={draw=none,circle,fill,line width=0,inner sep=0pt},
+  dot/.style={draw,circle,fill,inner sep=0pt,minimum width=3pt},
+  circ/.style={draw,circle,inner sep=1pt,minimum width=4mm},
+  emptycirc/.style={draw,circle,inner sep=1pt,minimum width=2mm},
+  root/.style={level distance=10mm,inner sep=1pt},
+  leaf/.style={draw=none,circle,fill,line width=0,inner sep=0pt},
+  nodot/.style={draw,circle,inner sep=1pt},
+}
+
+\pgfplotsset{compat=1.12}
+
+
+% to typeset URLs, URIs, and DOIs
+\usepackage{url}
+\def\UrlFont{\rmfamily}
+
+\begin{document}
+
+
+\mainmatter              % start of a contribution
+%
+\title{Term Rewriting on Nestohedra}
+%
+\titlerunning{Term Rewriting on Nestohedra}  % abbreviated title (for running head)
+%                                     also used for the TOC unless
+%                                     \toctitle is used
+%
+\author{Pierre-Louis Curien\inst{1} \and Guillaume Laplante-Anfossi\inst{2}}
+%
+\authorrunning{Pierre-Louis Curien and Guillaume Laplante-Anfossi} % abbreviated author list (for running head)
+%
+%%%% list of authors for the TOC (use if author list has to be modified)
+\tocauthor{Pierre-Louis Curien and Guillaume Laplante-Anfossi}
+%
+\institute{IRIF, Universit\'e Paris Diderot and $Picube$ team, Inria, France,\\
+\email{curien@irif.fr},\\ ORCiD: 0009-0000-1226-9574
+\and
+Centre for Quantum Mathematics, IMADA, Syddansk Universitet, Odense, Denmark,\\
+\email{glaplanteanfossi@imada.sdu.dk},\\ ORCiD: 0000-0002-7383-4474}
+
+\maketitle              % typeset the title of the contribution
+
+\begin{abstract}
+  We define term rewriting systems on the vertices and faces of nestohedra, and show that the former are  
+  confluent and terminating. 
+  While the associated posets on vertices generalize Barnard--McConville's flip order for graph-associahedra, the preorders on faces generalize the facial weak order for permutahedra and the generalized Tamari order for associahedra. 
+  Moreover, we define and study contextual families of nestohedra, whose local confluence diagrams satisfy a certain uniformity condition. 
+  Among them are associahedra and operahedra, whose associated proofs of confluence for their rewriting systems reproduce proofs of categorical coherence theorems for monoidal categories and categorified operads.
+% We would like to encourage you to list your keywords within
+% the abstract section using the \keywords{...} command.
+\keywords{term rewriting, nestohedra, facial weak order, generalized Tamari order, categorical coherence}
+\end{abstract}
+
+\input{sec/introduction2}
+\input{sec/nestohedra}
+\input{sec/2faces}
+\input{sec/rewriting2}
+\input{sec/contextual}
+
+%
+% ---- Bibliography ----
+%
+\bibliographystyle{amsalpha}
+
+\bibliography{Coherence2}
+
+\end{document}
